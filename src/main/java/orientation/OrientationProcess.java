@@ -61,6 +61,7 @@ public class OrientationProcess extends Thread {
 		return gim;
 	}
 
+	@Override
 	public void run() {
 		log.reset();
 

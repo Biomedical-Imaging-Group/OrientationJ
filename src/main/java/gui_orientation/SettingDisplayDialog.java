@@ -36,7 +36,7 @@
 // are based on it.
 //
 //=============================================================================================================
- 
+
 package gui_orientation;
 
 import java.awt.BorderLayout;
@@ -63,38 +63,36 @@ import javax.swing.JTextField;
 import ij.gui.GUI;
 import orientation.OrientationParameters;
 
-
 public class SettingDisplayDialog extends JDialog implements ActionListener, WindowListener {
 
-	private GridBagLayout 		layout 		= new GridBagLayout();
-	private GridBagConstraints 	constraint	= new GridBagConstraints();
-	private JTextField txtEllipseThickness = new JTextField(" ", 5);
-	private JTextField txtEllipseOpacity = new JTextField(" ", 5);
-	private JTextField txtEllipseR = new JTextField(" ", 5);
-	private JTextField txtEllipseG = new JTextField(" ", 5);
-	private JTextField txtEllipseB = new JTextField(" ", 5);
-	private JButton bnEllipseColor = new JButton("Choose...");
+	private GridBagLayout			layout				= new GridBagLayout();
+	private GridBagConstraints		constraint			= new GridBagConstraints();
+	private JTextField				txtEllipseThickness	= new JTextField(" ", 5);
+	private JTextField				txtEllipseOpacity	= new JTextField(" ", 5);
+	private JTextField				txtEllipseR			= new JTextField(" ", 5);
+	private JTextField				txtEllipseG			= new JTextField(" ", 5);
+	private JTextField				txtEllipseB			= new JTextField(" ", 5);
+	private JButton					bnEllipseColor		= new JButton("Choose...");
 
-	private JTextField txtAreaOpacity = new JTextField(" ", 5);
-	private JTextField txtAreaR = new JTextField(" ", 5);
-	private JTextField txtAreaG = new JTextField(" ", 5);
-	private JTextField txtAreaB = new JTextField(" ", 5);
-	private JTextField txtSigma = new JTextField("0", 5);
-	private JButton bnAreaColor = new JButton("Choose...");
+	private JTextField				txtAreaOpacity		= new JTextField(" ", 5);
+	private JTextField				txtAreaR			= new JTextField(" ", 5);
+	private JTextField				txtAreaG			= new JTextField(" ", 5);
+	private JTextField				txtAreaB			= new JTextField(" ", 5);
+	private JTextField				txtSigma			= new JTextField("0", 5);
+	private JButton					bnAreaColor			= new JButton("Choose...");
 
-	private JButton bnOK = new JButton("OK");
-	private OrientationParameters params;
-	
+	private JButton					bnOK				= new JButton("OK");
+	private OrientationParameters	params;
+
 	public SettingDisplayDialog(OrientationParameters params) {
 		super(new JFrame(), "Options");
-       	this.params = params;
-       	
+		this.params = params;
+
 		JPanel pnPrefilter = new JPanel(layout);
 		pnPrefilter.setBorder(BorderFactory.createTitledBorder("Prefilter"));
 		addComponent(pnPrefilter, 1, 0, 1, 1, 2, new JLabel("Laplacian of Gaussian (sigma)"));
 		addComponent(pnPrefilter, 1, 3, 1, 1, 2, txtSigma);
-     	
-       	
+
 		JPanel pnEllipse = new JPanel(layout);
 		pnEllipse.setBorder(BorderFactory.createTitledBorder("Ellipse"));
 		addComponent(pnEllipse, 1, 0, 1, 1, 2, new JLabel("Thickness"));
@@ -106,9 +104,9 @@ public class SettingDisplayDialog extends JDialog implements ActionListener, Win
 		addComponent(pnEllipse, 3, 2, 1, 1, 2, txtEllipseG);
 		addComponent(pnEllipse, 3, 3, 1, 1, 2, txtEllipseB);
 		addComponent(pnEllipse, 3, 4, 1, 1, 2, bnEllipseColor);
-		
-       	JPanel pnArea = new JPanel(layout);
-       	pnArea.setBorder(BorderFactory.createTitledBorder("Area"));
+
+		JPanel pnArea = new JPanel(layout);
+		pnArea.setBorder(BorderFactory.createTitledBorder("Area"));
 		addComponent(pnArea, 1, 0, 1, 1, 2, new JLabel("Opacity [0-100]"));
 		addComponent(pnArea, 1, 3, 1, 1, 2, txtAreaOpacity);
 		addComponent(pnArea, 2, 0, 1, 1, 2, new JLabel("Color"));
@@ -117,19 +115,19 @@ public class SettingDisplayDialog extends JDialog implements ActionListener, Win
 		addComponent(pnArea, 2, 3, 1, 1, 2, txtAreaB);
 		addComponent(pnArea, 2, 4, 1, 1, 2, bnAreaColor);
 
-       	JPanel pnButton = new JPanel(new FlowLayout());
+		JPanel pnButton = new JPanel(new FlowLayout());
 		pnButton.add(bnOK);
-		
-       	JPanel pnMain = new JPanel(layout);
+
+		JPanel pnMain = new JPanel(layout);
 		addComponent(pnMain, 0, 0, 1, 1, 8, pnPrefilter);
 		addComponent(pnMain, 1, 0, 1, 1, 8, pnEllipse);
 		addComponent(pnMain, 2, 0, 1, 1, 8, pnArea);
 		addComponent(pnMain, 3, 0, 1, 1, 8, pnButton);
-		
+
 		bnOK.addActionListener(this);
 		bnEllipseColor.addActionListener(this);
 		bnAreaColor.addActionListener(this);
-			
+
 		addWindowListener(this);
 		setLayout(new BorderLayout());
 		getContentPane().add(pnMain);
@@ -139,11 +137,11 @@ public class SettingDisplayDialog extends JDialog implements ActionListener, Win
 		setResizable(false);
 		GUI.center(this);
 		setVisible(true);
-  	}
+	}
 
 	/**
-	* Add a component in a panel in the northwest of the cell.
-	*/
+	 * Add a component in a panel in the northwest of the cell.
+	 */
 	private void addComponent(JPanel pn, int row, int col, int width, int height, int space, JComponent comp) {
 		constraint.gridx = col;
 		constraint.gridy = row;
@@ -156,10 +154,8 @@ public class SettingDisplayDialog extends JDialog implements ActionListener, Win
 		pn.add(comp);
 	}
 
-	/**
-	* Implements the actionPerformed for the ActionListener.
-	*/
-	public synchronized  void actionPerformed(ActionEvent e) {
+	@Override
+	public synchronized void actionPerformed(ActionEvent e) {
 
 		params.sigmaLoG = (new Double(txtSigma.getText())).doubleValue();
 		params.colorEllipseR = (new Integer(txtEllipseR.getText())).intValue();
@@ -171,7 +167,7 @@ public class SettingDisplayDialog extends JDialog implements ActionListener, Win
 		params.colorAreaG = (new Integer(txtAreaG.getText())).intValue();
 		params.colorAreaB = (new Integer(txtAreaB.getText())).intValue();
 		params.colorAreaOpacity = (new Integer(txtAreaOpacity.getText())).intValue();
-		
+
 		if (e.getSource() == bnOK) {
 			dispose();
 		}
@@ -188,32 +184,48 @@ public class SettingDisplayDialog extends JDialog implements ActionListener, Win
 			params.colorAreaB = c.getBlue();
 		}
 		updateInterface();
-	}	
-			
+	}
+
 	private void updateInterface() {
-		txtSigma.setText(""+params.sigmaLoG);
-		txtEllipseR.setText(""+params.colorEllipseR);
-		txtEllipseG.setText(""+params.colorEllipseG);
-		txtEllipseB.setText(""+params.colorEllipseB);
-		txtEllipseOpacity.setText(""+params.colorEllipseOpacity);
-		txtEllipseThickness.setText(""+params.colorEllipseThickness);
-		txtAreaR.setText(""+params.colorAreaR);
-		txtAreaG.setText(""+params.colorAreaG);
-		txtAreaB.setText(""+params.colorAreaB);
-		txtAreaOpacity.setText(""+params.colorAreaOpacity);
+		txtSigma.setText("" + params.sigmaLoG);
+		txtEllipseR.setText("" + params.colorEllipseR);
+		txtEllipseG.setText("" + params.colorEllipseG);
+		txtEllipseB.setText("" + params.colorEllipseB);
+		txtEllipseOpacity.setText("" + params.colorEllipseOpacity);
+		txtEllipseThickness.setText("" + params.colorEllipseThickness);
+		txtAreaR.setText("" + params.colorAreaR);
+		txtAreaG.setText("" + params.colorAreaG);
+		txtAreaB.setText("" + params.colorAreaB);
+		txtAreaOpacity.setText("" + params.colorAreaOpacity);
 	}
-	
-	/**
-	* Implements the methods for the WindowListener.
-	*/
-	public void windowActivated(WindowEvent e) 		{}
-	public void windowClosed(WindowEvent e) 		{}
-	public void windowDeactivated(WindowEvent e) 	{}
-	public void windowDeiconified(WindowEvent e)	{}
-	public void windowIconified(WindowEvent e)		{}
-	public void windowOpened(WindowEvent e)			{}			
-	public void windowClosing(WindowEvent e) 		{
-		dispose(); 
+
+	@Override
+	public void windowActivated(WindowEvent e) {
 	}
-	
+
+	@Override
+	public void windowClosed(WindowEvent e) {
+	}
+
+	@Override
+	public void windowDeactivated(WindowEvent e) {
+	}
+
+	@Override
+	public void windowDeiconified(WindowEvent e) {
+	}
+
+	@Override
+	public void windowIconified(WindowEvent e) {
+	}
+
+	@Override
+	public void windowOpened(WindowEvent e) {
+	}
+
+	@Override
+	public void windowClosing(WindowEvent e) {
+		dispose();
+	}
+
 }

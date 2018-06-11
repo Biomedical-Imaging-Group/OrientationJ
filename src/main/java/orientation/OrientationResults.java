@@ -115,12 +115,16 @@ public class OrientationResults {
 			display(feature, gim, params, countRun);
 
 		feature = OrientationParameters.DIST_MASK;
-		if (view[feature] && params.isServiceDistribution())
+		if (view[feature] && params.isServiceDistribution()) {
+			plotDistribution(gim, params, countRun);
 			display(feature, gim, params, countRun);
+		}
 		
 		feature = OrientationParameters.DIST_ORIENTATION;
-		if (view[feature] && params.isServiceDistribution())
+		if (view[feature] && params.isServiceDistribution()) {
+			plotDistribution(gim, params, countRun);
 			display(feature, gim, params, countRun);
+		}
 		
 		if (params.isServiceHarris())
 			displayHarris(gim, params, countRun);
@@ -149,7 +153,6 @@ public class OrientationResults {
 		gim.selectedDistributionOrientation.fillConstant(0);
 		gim.selectedDistributionMask.fillConstant(0);
 		float histo[][] = new float[gim.nt][180];
-		float anglesMin[] = new float[180];
 	
 		int nx = gim.nx;
 		int ny = gim.ny;
@@ -340,7 +343,11 @@ public class OrientationResults {
 			ResultsTable table = new ResultsTable();
 			for (int t = 0; t < nt; t++)
 			for (Cluster c : clusters[t]) {
-				double a = Math.atan2(c.dy, c.dy);						
+				double a = Math.toDegrees(Math.atan2(c.dy, c.dx));
+				if (a < -90)
+					a += 180;
+				if (a > 90)
+					a -= 180;
 				table.incrementCounter();
 				table.addValue("X", c.x + size / 2);
 				table.addValue("Y", c.y + size / 2);

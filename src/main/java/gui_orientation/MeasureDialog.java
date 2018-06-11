@@ -138,9 +138,7 @@ public class MeasureDialog extends JFrame implements ActionListener, Runnable {
 		pack();
 	}
 
-	/**
-	* Implements the actionPerformed for the ActionListener.
-	*/
+	@Override
 	public synchronized  void actionPerformed(ActionEvent e) {
 
      	if (e.getSource() == walk.getButtonClose()) {
@@ -186,8 +184,7 @@ public class MeasureDialog extends JFrame implements ActionListener, Runnable {
         }
 	}
 	
-	/**
-	*/
+	@Override
 	public void run() {
 		
 		Roi roi = imp.getRoi();

@@ -66,9 +66,7 @@ public class Gaussian implements Runnable {
 		this.ny = ny;
 	}
 	
-	/**
-	* Run method.
-	*/
+	@Override
 	public void run() {
 		double s2 = sigma * sigma;
 		double pole = 1.0 + (3.0/s2) - (Math.sqrt(9.0+6.0*s2)/s2);

@@ -71,6 +71,7 @@ public class MeasureCanvas extends ImageCanvas {
 		this.params = params;
 	}
 
+	@Override
 	public void paint(Graphics g) {
 		super.paint(g);
 		if (params == null)

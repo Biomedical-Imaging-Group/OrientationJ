@@ -77,6 +77,7 @@ public class StructureTensor implements Runnable {
 		this.params = params;
 	}
 
+	@Override
 	public void run() {
 		if (params.gradient == OrientationParameters.HESSIAN)
 			analysisOnHessian();

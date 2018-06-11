@@ -141,8 +141,7 @@ public class MeasureTable extends JPanel implements TableModelListener {
 			canvas.repaint();
 	}
 
-	/**
-	*/
+	@Override
 	public void tableChanged(TableModelEvent e) {
 		if (model == null)
 			return;
@@ -216,8 +215,6 @@ public class MeasureTable extends JPanel implements TableModelListener {
 		}
 	}
 
-	/**
-	*/
 	public void add(Measure measure) {
 		model.addRow(measure.makeTableLine());
 		if (canvas != null)
@@ -228,10 +225,12 @@ public class MeasureTable extends JPanel implements TableModelListener {
 	/**
 	*/
 	class MyModel extends DefaultTableModel {
+		@Override
 		public Class getColumnClass(int c) {
 			return getValueAt(0, c).getClass();
 		}
 
+		@Override
 		public boolean isCellEditable(int row, int col) {
 			return (col == 4 || col == 5);
 		}
