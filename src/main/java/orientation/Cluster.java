@@ -104,10 +104,12 @@ public class Cluster implements Comparable<Cluster> {
 		}
 	}
 
+	@Override
 	public int compareTo(Cluster test) {
 		return (test.costBest > costBest ? 1 : 0);
 	}
 
+	@Override
 	public String toString() {
 		if (indexBest >= 0) {
 			String s = "(" + x + "," + y + ") " + " -- " + costBest + " sizeliste:" + list.size() + " ";

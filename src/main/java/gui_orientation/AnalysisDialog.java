@@ -105,7 +105,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 	private SpinnerInteger			spnHarrisL				= new SpinnerInteger(3, 1, 201, 1);
 	private SpinnerDouble			spnHarrisMin				= new SpinnerDouble(10, 0, 100.0, 0.1);
 
-	private SpinnerDouble			spnVectorFieldScale		= new SpinnerDouble(1.0, 0, 10000, 1);
+	private SpinnerDouble			spnVectorFieldScale		= new SpinnerDouble(80.0, 0, 10000, 1);
 	private JComboBox<String>		cmbVectorFieldType		= new JComboBox<String>(new String[] { "Maximum", "~ Energy", "~ Coherency", "~ Ene. x Coh." });
 	private SpinnerInteger			spnVectorFieldGrid		= new SpinnerInteger(10, 1, 10000, 1);
 
@@ -350,6 +350,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		updateInterface();
 	}
 
+	@Override
 	public synchronized void actionPerformed(ActionEvent e) {
 
 		getParameters();
@@ -398,6 +399,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		thread.start();		
 	}
 	
+	@Override
 	public void stateChanged(ChangeEvent e) {
 		if (e.getSource() == spnHarrisL || e.getSource() == spnHarrisMin)
 			start(Job.HARRIS_CORNERS);
@@ -464,7 +466,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		showHarrisCornerTable.setSelected(params.showHarrisTable);
 	}
 
-
+	@Override
 	public void run() {		
 		getParameters();
 		walk.reset();
@@ -505,6 +507,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 	public void updateInterface() {
 
 		SwingUtilities.invokeLater(new Runnable() {
+			@Override
 			public void run() {
 				int list[] = WindowManager.getIDList();
 				bnHide.setEnabled(false);
@@ -641,24 +644,31 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		return params;
 	}
 
+	@Override
 	public void windowActivated(WindowEvent e) {
 	}
 
+	@Override
 	public void windowClosed(WindowEvent e) {
 	}
 
+	@Override
 	public void windowDeactivated(WindowEvent e) {
 	}
 
+	@Override
 	public void windowDeiconified(WindowEvent e) {
 	}
 
+	@Override
 	public void windowIconified(WindowEvent e) {
 	}
 
+	@Override
 	public void windowOpened(WindowEvent e) {
 	}
 
+	@Override
 	public void windowClosing(WindowEvent e) {
 		dispose();
 	}
