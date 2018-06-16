@@ -632,7 +632,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		if (params.isServiceVectorField()) {
 			options += "vectorgrid=" + spnVectorFieldGrid.get() + " ";
 			options += "vectorscale=" + spnVectorFieldScale.get() + " ";
-			options += "vectortype=" + cmbVectorFieldType.getSelectedIndex();
+			options += "vectortype=" + cmbVectorFieldType.getSelectedIndex() + " ";
 			options += params.showVectorOverlay ? "vectoroverlay=on " : "vectoroverlay=off ";
 			options += params.showVectorTable ? "vectortable=on " : "vectortable=off ";
 		}

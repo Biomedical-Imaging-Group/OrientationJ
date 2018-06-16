@@ -203,29 +203,29 @@ public class OrientationParameters {
 
 		int k;
 		k = GRADIENT_HORIZONTAL;
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = GRADIENT_VERTICAL;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = TENSOR_ENERGY;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = TENSOR_ORIENTATION;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = TENSOR_COHERENCY;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = HARRIS;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = SURVEY;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "on").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "on").equals("on");
 
 		// Distribution
 		k = DIST_MASK;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = DIST_ORIENTATION;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = DIST_HISTO_PLOT;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "on").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "on").equals("on");
 		k = DIST_HISTO_TABLE;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k], "off").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		minCoherency = Double.parseDouble(Macro.getValue(options, "min-coherency", "0"));
 		minEnergy = Double.parseDouble(Macro.getValue(options, "min-energy", "0"));
 
