@@ -1,3 +1,9 @@
+Version 2.0.3 (15 June 2018)
+=============
+_Daniel Sage_
+
+* Fixed a bug in the record of the macro (vectortype) 
+
 Version 2.0.2 (11 June 2018)
 =============
 _Daniel Sage_
