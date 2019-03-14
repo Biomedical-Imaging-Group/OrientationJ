@@ -322,12 +322,12 @@ public class OrientationResults {
 					double energies = 0.0;
 					for (int k = 0; k < size; k++)
 						for (int l = 0; l < size; l++) {
-							double angle = gim.orientation.getPixel(x, y, t);
-							double coh = gim.coherency.getPixel(x, y, t);
+							double angle = gim.orientation.getPixel(x+k, y+l, t);
+							double coh = gim.coherency.getPixel(x+k, y+l, t);
 							dx += Math.cos(angle);
 							dy += Math.sin(angle);
 							coherencies += coh;
-							energies += gim.energy.getPixel(x, y,t);
+							energies += gim.energy.getPixel(x+k, y+l,t);
 						}
 					dx /= size2;
 					dy /= size2;
@@ -374,10 +374,10 @@ public class OrientationResults {
 				else if (type == 3)
 					a = r * c.energy * c.coherency;
 
-				int x1 = (int) Math.round(c.x + a * c.dx);
-				int y1 = (int) Math.round(c.y - a * c.dy);
-				int x2 = (int) Math.round(c.x - a * c.dx);
-				int y2 = (int) Math.round(c.y + a * c.dy);
+				int x1 = (int) Math.round(c.x + size / 2 + a * c.dx);
+				int y1 = (int) Math.round(c.y + size / 2 - a * c.dy);
+				int x2 = (int) Math.round(c.x + size / 2 - a * c.dx);
+				int y2 = (int) Math.round(c.y + size / 2 + a * c.dy);
 				Roi roi = new Line(x1, y1, x2, y2);
 				roi.setPosition(t + 1);
 				//Roi.setColor(new Color(200, 0, (int)(200*Math.random()), 100));
