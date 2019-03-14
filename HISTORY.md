@@ -1,3 +1,9 @@
+Version 2.0.4 (15 March 2019)
+=============
+_Daniel Sage_
+
+* Fixed a bug in the computation of the mean of cells for the vector field. The overlay line was also not at the right position (shited by size/2) 
+
 Version 2.0.3 (15 June 2018)
 =============
 _Daniel Sage_
