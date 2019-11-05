@@ -41,10 +41,7 @@ import gui_orientation.AnalysisDialog;
 import gui_orientation.WalkBarOrientationJ;
 import ij.Macro;
 import ij.plugin.PlugIn;
-import orientation.GroupImage;
-import orientation.OrientationParameters;
-import orientation.OrientationProcess;
-import orientation.OrientationService;
+import orientation.*;
 import orientation.imageware.ImageWare;
 
 public class OrientationJ_Clustering implements PlugIn {
@@ -69,6 +66,8 @@ public class OrientationJ_Clustering implements PlugIn {
 			WalkBarOrientationJ walk = new WalkBarOrientationJ();
 			OrientationProcess process = new OrientationProcess(walk, source, params);
 			process.run();
+			OrientationResults.show(process.getGroupImage(), params, 1);
+
 		}
 	}
 }
