@@ -71,8 +71,8 @@ public class OrientationJ_Distribution implements PlugIn {
 			OrientationProcess process = new OrientationProcess(walk, source, params);
 			process.run();
 			OrientationResults.show(process.getGroupImage(), params, 1);
-			OrientationResults.plotDistribution(process.getGroupImage(), params, 1);
-			OrientationResults.tableDistribution(process.getGroupImage(), params, 1);
+			//OrientationResults.plotDistribution(process.getGroupImage(), params, 1);
+			//OrientationResults.tableDistribution(process.getGroupImage(), params, 1);
 		}
 	}
 }
