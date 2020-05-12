@@ -44,6 +44,7 @@ import ij.plugin.PlugIn;
 import orientation.GroupImage;
 import orientation.OrientationParameters;
 import orientation.OrientationProcess;
+import orientation.OrientationResults;
 import orientation.OrientationService;
 import orientation.imageware.ImageWare;
 
@@ -58,8 +59,7 @@ public class OrientationJ_Vector_Field implements PlugIn {
 		if (Macro.getOptions() == null) {
 			AnalysisDialog orientation = new AnalysisDialog(OrientationService.VECTORFIELD);
 			orientation.showDialog();
-		}
-		else {
+		} else {
 			OrientationParameters params = new OrientationParameters(OrientationService.VECTORFIELD);
 			params.getMacroParameters(Macro.getOptions());
 			ImageWare source = GroupImage.getCurrentImage();
@@ -69,6 +69,8 @@ public class OrientationJ_Vector_Field implements PlugIn {
 			WalkBarOrientationJ walk = new WalkBarOrientationJ();
 			OrientationProcess process = new OrientationProcess(walk, source, params);
 			process.run();
+			// Version 2.0.5: ansewer to pull request
+			OrientationResults.show(process.getGroupImage(), params, 1);
 		}
 	}
 }
