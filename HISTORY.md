@@ -16,7 +16,7 @@ _Daniel Sage_
 
 * Make the orientation in degrees [-90,90] in the table VectorField, like in the other plugins 
 
-Version 2.0.0 (01 May 2018)
+Version 2.0.0 (1 May 2018)
 =============
 _Daniel Sage_
 
