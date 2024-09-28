@@ -14,12 +14,12 @@
 
 	<groupId>ch.epfl.big</groupId>
 	<artifactId>OrientationJ_</artifactId>
-	<version>2.0.5</version>
+	<version>2.0.6</version>
 
 	<name>OrientationJ</name>
-	<description>OrientationJ: ImageJ plugins for directional image analysis - http://bigwww.epfl.ch/demo/orientation/</description>
-	<url>http://bigwww.epfl.ch/demo/orientation</url>
-	<inceptionYear>2020</inceptionYear>
+	<description>OrientationJ: ImageJ plugins for directional image analysis - https://bigwww.epfl.ch/demo/orientation/</description>
+	<url>https://bigwww.epfl.ch/demo/orientation</url>
+	<inceptionYear>2024</inceptionYear>
 	<organization>
 		<name>Biomedical Imaging Group, EPFL</name>
 		<url>http://bigwww.epfl.ch/demo/orientation</url>
@@ -49,7 +49,7 @@
 	<contributors>
 		<contributor>
 			<name>Daniel Sage</name>
-			<url>http://bigwww.epfl.ch/sage/</url>
+			<url>https://bigwww.epfl.ch/sage/</url>
 			<roles><role>founder</role></roles>
 			<properties><id>sage</id></properties>
 		</contributor>
