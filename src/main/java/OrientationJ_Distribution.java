@@ -29,6 +29,7 @@
 
 import gui_orientation.AnalysisDialog;
 import gui_orientation.WalkBarOrientationJ;
+import ij.ImageJ;
 import ij.Macro;
 import ij.plugin.PlugIn;
 import orientation.GroupImage;
@@ -41,7 +42,8 @@ import orientation.imageware.ImageWare;
 public class OrientationJ_Distribution implements PlugIn {
 
 	public static void main(String arg[]) {
-		new OrientationJ_Test_Stack_Image_Small().run("");
+		new ImageJ();
+		new OrientationJ_Test_Chirp_Image_Small().run("");
 		new OrientationJ_Distribution().run("");
 	}
 
@@ -61,8 +63,8 @@ public class OrientationJ_Distribution implements PlugIn {
 			OrientationProcess process = new OrientationProcess(walk, source, params);
 			process.run();
 			OrientationResults.show(process.getGroupImage(), params, 1);
-			OrientationResults.plotDistribution(process.getGroupImage(), params, 1);
-			OrientationResults.tableDistribution(process.getGroupImage(), params, 1);
+			//OrientationResults.plotDistribution(process.getGroupImage(), params, 1);
+			//OrientationResults.tableDistribution(process.getGroupImage(), params, 1);
 		}
 	}
 }
