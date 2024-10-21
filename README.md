@@ -23,7 +23,7 @@ OrientationJ has also others tools:
 * alignment of images based on the gradient structure tensor;
 * plugins to generate test images (chirp).
 
-From the version 2.0.6. OrientationJ includes a plugin for a multiresolution wavelet-based 
+From the version 2.0.7. OrientationJ includes a plugin for a multiresolution wavelet-based 
 [monogenic](https://bigwww.epfl.ch/demo/monogenicj/) analyse of 2D images. 
 
 ## References

@@ -193,8 +193,8 @@ public class OrientationResults {
 		for (int t = 0; t<nt; t++) {
 			float max = -Float.MIN_VALUE;
 			for (int a = 0; a < 180; a++) {
-			if (histo[t][a] > max)
-				max = histo[t][a];
+				if (histo[t][a] > max)
+					max = histo[t][a];
 			}
 			String title = prefix + OrientationParameters.name[OrientationParameters.DIST_HISTO_PLOT] + "-" + countRun;
 			title = title + "-slice-" + (t+1);

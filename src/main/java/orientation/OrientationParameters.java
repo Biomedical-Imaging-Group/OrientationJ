@@ -205,7 +205,7 @@ public class OrientationParameters {
 		k = HARRIS;	
 		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = SURVEY;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "on").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 
 		// Distribution
 		k = DIST_MASK;	
@@ -213,7 +213,7 @@ public class OrientationParameters {
 		k = DIST_ORIENTATION;	
 		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = DIST_HISTO_PLOT;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "on").equals("on");
+		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		k = DIST_HISTO_TABLE;	
 		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
 		minCoherency = Double.parseDouble(Macro.getValue(options, "min-coherency", "0"));
