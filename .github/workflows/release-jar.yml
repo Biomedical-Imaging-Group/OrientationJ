@@ -1,0 +1,46 @@
+# Builds the plugin JAR with Maven and attaches it to a GitHub Release.
+#
+# Trigger: push a version tag, e.g.
+#     git tag v2.1.0
+#     git push origin v2.1.0
+#
+# The release then offers OrientationJ_-<version>.jar (plus sources) and a
+# stable-name copy OrientationJ_.jar, so the permanent link
+#   https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest/download/OrientationJ_.jar
+# always downloads the newest build — handy for the README and the docs site.
+
+name: release-jar
+
+on:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '8'
+          cache: maven
+
+      - name: Build with Maven
+        run: mvn -B package
+
+      - name: Create the release with the JARs attached
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          MAIN=$(ls target/OrientationJ_-*.jar | grep -v -- -sources)
+          cp "$MAIN" OrientationJ_.jar
+          gh release create "$GITHUB_REF_NAME" "$MAIN" \
+            target/OrientationJ_-*-sources.jar OrientationJ_.jar \
+            --verify-tag \
+            --title "OrientationJ ${GITHUB_REF_NAME#v}" \
+            --generate-notes

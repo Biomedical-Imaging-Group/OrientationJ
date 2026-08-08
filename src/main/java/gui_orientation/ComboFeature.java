@@ -39,6 +39,8 @@ public class ComboFeature extends JComboBox<String> {
 		addItem("Gradient-Y");
 		addItem("Orientation");
 		addItem("Coherency");
+		addItem("Directionality");
+		addItem("Anisotropy-FA");
 		addItem("Energy");
 		addItem("Constant");
 		addItem("Original-Image");

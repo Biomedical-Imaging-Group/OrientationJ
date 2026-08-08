@@ -56,6 +56,8 @@ public class GroupImage {
 	
 	public ImageWare energy;
 	public ImageWare coherency;
+	public ImageWare directionality;
+	public ImageWare fa;
 	public ImageWare orientation;
 	public ImageWare harris;
 	
@@ -124,6 +126,8 @@ public class GroupImage {
 		energy	= allocate("Tensor Energy", kb);
 		log.progress("Alloc E", 70);
 		coherency 	= allocate("Coherency", kb);
+		directionality = allocate("Directionality", kb);
+		fa = allocate("Anisotropy FA", kb);
 		log.progress("Alloc Coh", 80);
 		orientation = allocate("Orientation", kb);
 		
@@ -167,9 +171,17 @@ public class GroupImage {
 			image = coherency;
 			scalability = SCALABLE_NO;
 		}
+		else if (feature == OrientationParameters.TENSOR_DIRECTIONALITY) {
+			image = directionality;
+			scalability = params.scaleDirectionality ? SCALABLE : SCALABLE_NO;
+		}
+		else if (feature == OrientationParameters.TENSOR_FA) {
+			image = fa;
+			scalability = SCALABLE_NO;
+		}
 		else if (feature == OrientationParameters.TENSOR_ENERGY) {
 			image = energy;
-			scalability = SCALABLE;
+			scalability = params.scaleEnergy ? SCALABLE : SCALABLE_NO;
 		}
 		else if (feature == OrientationParameters.HARRIS) {
 			image = harris;
@@ -191,9 +203,9 @@ public class GroupImage {
 		}
 			
 		if (feature == OrientationParameters.SURVEY) {
-			ImageWare c1 = selectChannel(params.featureHue);
-			ImageWare c2 = selectChannel(params.featureSat);
-			ImageWare c3 = selectChannel(params.featureBri);
+			ImageWare c1 = selectChannel(params.featureHue, params);
+			ImageWare c2 = selectChannel(params.featureSat, params);
+			ImageWare c3 = selectChannel(params.featureBri, params);
 			ImagePlus imp = null;
 			if (params.hsb)
 				imp = ColorMapping.colorHSB(nt,  OrientationParameters.name[OrientationParameters.SURVEY] + "-" + countRun,  c1, c2, c3);
@@ -274,13 +286,13 @@ public class GroupImage {
 		}
 	}
 		
-	public ImageWare selectChannel(String name) {
-	
-		if (name.equals("Gradient-X") && gy != null) {
-			return prepare(gy, SCALABLE, false, true);
+	public ImageWare selectChannel(String name, OrientationParameters params) {
+
+		if (name.equals("Gradient-X") && gx != null) {
+			return prepare(gx, SCALABLE, false, true);
 		}
 		else if (name.equals("Gradient-Y") && gy != null) {
-			return prepare(gx, SCALABLE, false, true);
+			return prepare(gy, SCALABLE, false, true);
 		}
 		else if (name.equals("Orientation") && orientation != null) {
 			return prepare(orientation, SCALABLE_RANGE_PI, false, true);
@@ -288,8 +300,14 @@ public class GroupImage {
 		else if (name.equals("Coherency") && coherency != null) {
 			return prepare(coherency, SCALABLE_NO, false, true);
 		}
+		else if (name.equals("Directionality") && directionality != null) {
+			return prepare(directionality, params.scaleDirectionality ? SCALABLE : SCALABLE_NO, false, true);
+		}
+		else if (name.equals("Anisotropy-FA") && fa != null) {
+			return prepare(fa, SCALABLE_NO, false, true);
+		}
 		else if (name.equals("Energy") && energy != null) {
-			return prepare(energy, SCALABLE, false, true);
+			return prepare(energy, params.scaleEnergy ? SCALABLE : SCALABLE_NO, false, true);
 		}
 		else if (name.equals("Constant")) {
 			ImageWare max = Builder.create(nx, ny, nt, ImageWare.FLOAT);

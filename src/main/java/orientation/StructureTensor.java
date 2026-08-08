@@ -128,6 +128,8 @@ public class StructureTensor implements Runnable {
 					xy = dxy[x][y];
 					gim.energy.putPixel(x, y, t, xx + yy);
 					gim.coherency.putPixel(x, y, t, computeCoherency(xx, yy, xy, params.epsilon));
+					gim.directionality.putPixel(x, y, t, computeDirectionality(xx, yy, xy));
+					gim.fa.putPixel(x, y, t, computeFA(xx, yy, xy, params.epsilon));
 					gim.orientation.putPixel(x, y, t, computeOrientation(xx, yy, xy));
 					if (params.isServiceHarris())
 						gim.harris.putPixel(x, y, t, (xx * yy - xy * xy - K * (xx + yy) * (xx + yy)));
@@ -215,6 +217,10 @@ public class StructureTensor implements Runnable {
 					gim.energy.putPixel(x, y, t, hfeatureMax[1]);
 					gim.coherency.putPixel(x, y, t,
 							(hfeatureMax[1] - hfeatureMin[1]) / (hfeatureMax[1] + hfeatureMin[1]));
+					double dL = hfeatureMax[1] - hfeatureMin[1];
+					gim.directionality.putPixel(x, y, t, dL * dL / 4.0);
+					double sL2 = hfeatureMax[1] * hfeatureMax[1] + hfeatureMin[1] * hfeatureMin[1];
+					gim.fa.putPixel(x, y, t, Math.sqrt(dL * dL / (sL2 + params.epsilon)));
 				}
 		}
 	}
@@ -284,8 +290,28 @@ public class StructureTensor implements Runnable {
 	}
 
 	/**
-	 * Evaluates the orientation based the gradient information.
+	 * Evaluates the directionality (invariant J2 = (L1-L2)^2 / 4)
+	 * based on the gradient information.
 	 * 
+	 * @author Daniel Sage
+	 */
+	private double computeDirectionality(double xx, double yy, double xy) {
+		return ((xx - yy) * (xx - yy) + 4.0 * xy * xy) / 4.0;
+	}
+
+	/**
+	 * Evaluates the fractional anisotropy FA = |L1-L2| / sqrt(L1^2 + L2^2)
+	 * based on the gradient information. Bounded in [0..1].
+	 *
+	 * @author Daniel Sage
+	 */
+	private double computeFA(double xx, double yy, double xy, double epsilon) {
+		return Math.sqrt(((xx - yy) * (xx - yy) + 4.0 * xy * xy) / (xx * xx + yy * yy + 2.0 * xy * xy + epsilon));
+	}
+
+	/**
+	 * Evaluates the orientation based the gradient information.
+	 *
 	 * @author Daniel Sage
 	 */
 	private double computeOrientation(double xx, double yy, double xy) {
