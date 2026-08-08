@@ -49,8 +49,7 @@ public class ColorMapping {
 			float[] s = sat.getSliceFloat((k < sat.getSizeZ() ? k : 0));
 			float[] b = bri.getSliceFloat((k < bri.getSizeZ() ? k : 0));
 			for (int index=0; index<size; index++) {
-				pixels[index] = Color.HSBtoRGB(h[index], s[index], b[index]) + (0xFF << 24);
-					
+				pixels[index] = Color.HSBtoRGB(clamp(h[index]), clamp(s[index]), clamp(b[index])) + (0xFF << 24);
 			}
 			stack.addSlice("", new ColorProcessor(nx, ny, pixels));
 		}
@@ -70,9 +69,9 @@ public class ColorMapping {
 			float[] g = green.getSliceFloat((k < green.getSizeZ() ? k : 0));
 			float[] b = blue.getSliceFloat((k < blue.getSizeZ() ? k : 0));
 			for (int index=0; index<size; index++) {
-				int ri = (int)(r[index]*255);
-				int gi = (int)(g[index]*255);
-				int bi = (int)(b[index]*255);
+				int ri = (int)(clamp(r[index])*255);
+				int gi = (int)(clamp(g[index])*255);
+				int bi = (int)(clamp(b[index])*255);
 				pixels[index] = (bi + (gi<<8) + (ri<<16) + (0xFF << 24));
 			}
 			stack.addSlice("", new ColorProcessor(nx, ny, pixels));
@@ -81,7 +80,11 @@ public class ColorMapping {
 		imp.show();
 		return imp;
 	}
-	
+
+	private static float clamp(float v) {
+		return v < 0f ? 0f : (v > 1f ? 1f : v);
+	}
+
 	/*
 	private static void addBar(int bar, float[] r, float[] g, float[] b, int nx, int ny) {
 		

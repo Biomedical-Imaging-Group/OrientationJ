@@ -69,7 +69,7 @@ public class MonogenicDialog extends JDialog implements ActionListener, WindowLi
 	private JButton			job				= null;
 	private String			list[]			= new String[] {"Input",  "Laplace", "Riesz X", "Riesz Y", "Orientation", "Coherency", "Energy", "Wavenumber", "Modulus", "Phase", "Dir. Hilbert", "Maximum"};
 	
-	private WalkBar			walk			= new WalkBar("(c) 2009 EPFL, BIG", true, false, true, 40);
+	private WalkBar			walk			= new WalkBar("(c) 2009-2026 EPFL, BIG", true, false, true, 40);
 	private SpinnerDouble	spnSigma		= new SpinnerDouble(3, 0, 100, 1);
 	private SpinnerInteger	spnScale		= new SpinnerInteger(2, 1, 16, 1);
 	private SpinnerDouble	spnEpsilon		= new SpinnerDouble(1, 0, 32, 1);

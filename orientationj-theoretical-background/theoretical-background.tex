@@ -1,0 +1,251 @@
+%=============================================================================================
+% OrientationJ -- Theoretical Background
+% Daniel Sage, Biomedical Imaging Group (BIG), EPFL
+% Compile with: tectonic theoretical-background.tex   (or pdflatex)
+%=============================================================================================
+\documentclass[11pt,a4paper]{article}
+\usepackage[margin=2.1cm]{geometry}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+
+\newcommand{\J}{\mathbf{J}}
+\newcommand{\s}{\mathbf{s}}
+\newcommand{\uv}{\mathbf{u}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\wip}[2]{\langle #1,#2\rangle_{w}}
+
+\title{\vspace{-1.2cm}OrientationJ: Theoretical Background}
+\author{Daniel Sage\\ \small Biomedical Imaging Group (BIG), Ecole Polytechnique F\'ed\'erale de Lausanne (EPFL)}
+\date{\small 24 July 2026 --- OrientationJ 2.1.0}
+
+\begin{document}
+\maketitle
+
+\section*{Quantitative orientation analysis}
+
+The aim is to characterize the orientation and isotropy properties of a local area of interest
+(Region of Interest, ROI) in an image. To that end, we first define the weighted inner product
+\begin{equation}
+\wip{f}{g}=\iint_{\mathbb{R}^2} w(x,y)\,f(x,y)\,g(x,y)\,\mathrm{d}x\,\mathrm{d}y,
+\label{eq:innerproduct}
+\end{equation}
+where $w(x,y)\geq 0$ is a weighting function that specifies the area of interest. It is
+typically a normalized square window of size $L$ centered on a location of interest
+$(x_0,y_0)$, or a Gaussian window of standard deviation $\sigma_w$. The norm associated with
+this inner product is $\|f\|_w=\sqrt{\wip{f}{f}}$. Next, we consider the derivative in the
+direction specified by the unit vector $\uv_\theta=(\cos\theta,\sin\theta)^\top$, which is
+given by
+\begin{equation}
+D_{\uv_\theta}f(x,y)=\uv_\theta^\top\,\nabla f(x,y),
+\end{equation}
+where $\nabla f=(f_x,f_y)^\top$ is the gradient of the image under consideration. We are now
+interested in finding the direction $\uv$ along which the directional derivative is maximized
+over the ROI. It is given by
+\begin{equation}
+\uv_{\max}=\arg\max_{\|\uv\|=1}\ \|D_{\uv}f\|_w^2.
+\label{eq:argmax}
+\end{equation}
+A standard inner-product manipulation then yields
+\begin{equation}
+\|D_{\uv}f\|_w^2=\wip{\uv^\top\nabla f}{\nabla f^\top\uv}=\uv^\top\J\,\uv,
+\qquad
+\J=\wip{\nabla f}{\nabla f^\top}=
+\begin{pmatrix}
+\wip{f_x}{f_x} & \wip{f_x}{f_y}\\[2pt]
+\wip{f_x}{f_y} & \wip{f_y}{f_y}
+\end{pmatrix},
+\label{eq:tensor}
+\end{equation}
+where $\J$ is the so-called \emph{structure tensor}, a $2\times2$ symmetric positive-semidefinite
+matrix. The solution of the optimization problem \eqref{eq:argmax} is obtained by setting the
+derivative of $\uv^\top\J\,\uv+\lambda(1-\uv^\top\uv)$ with respect to $\uv$ to zero, which
+yields the eigenvector equation
+\begin{equation}
+\J\,\uv=\lambda\,\uv.
+\end{equation}
+This implies that the first eigenvector $\mathbf{e}_1$ of $\J$ gives the direction of maximal
+gradient energy; the corresponding eigenvalue is $\lambda_1=\max\|D_{\uv}f\|_w^2$. Conversely,
+the directional derivative is minimized along the second eigenvector $\mathbf{e}_2$, with
+$\lambda_2=\min\|D_{\uv}f\|_w^2$. Since the gradient is perpendicular to the local structures,
+the visible structures (fibres, edges) are aligned with $\mathbf{e}_2$; this is the
+orientation reported by OrientationJ. The structure tensor therefore contains all the relevant
+directional information of the ROI.
+
+\section*{Features and tensor invariants}
+
+With the eigenvalues $\lambda_1\geq\lambda_2\geq0$, the mean $\bar\lambda=\tfrac12\tr(\J)$,
+and the deviator $\s=\J-\tfrac12\tr(\J)\,\mathbf{I}$, OrientationJ computes the following
+features:
+\begin{itemize}\itemsep1pt
+\item \textbf{Orientation}:
+$\displaystyle
+\theta=\frac12\arctan\!\left(\frac{2\wip{f_x}{f_y}}{\wip{f_y}{f_y}-\wip{f_x}{f_x}}\right)
+\in[-\pi/2,\pi/2]$ \quad (direction of $\mathbf{e}_2$, along the structures)
+\item \textbf{Energy}:
+$\displaystyle E=\tr(\J)=\lambda_1+\lambda_2 \in [0,\infty)$
+\item \textbf{Coherency}:
+$\displaystyle
+C=\frac{\lambda_1-\lambda_2}{\lambda_1+\lambda_2}
+=\frac{\sqrt{\bigl(\wip{f_y}{f_y}-\wip{f_x}{f_x}\bigr)^2+4\,\wip{f_x}{f_y}^2}}
+       {\wip{f_x}{f_x}+\wip{f_y}{f_y}}
+\in[0,1]$
+\item \textbf{Directionality}:
+$\displaystyle
+J_2=\tfrac12\tr(\s^2)=\tfrac14(\lambda_1-\lambda_2)^2=\tfrac14\,C^2E^2 \in [0,\infty)$
+\item \textbf{Fractional anisotropy}:
+$\displaystyle
+\mathrm{FA}=\frac{\lambda_1-\lambda_2}{\sqrt{\lambda_1^2+\lambda_2^2}}
+=\frac{\sqrt{2}\,C}{\sqrt{1+C^2}}
+\in[0,1]$
+\end{itemize}
+The coherency indicates whether the local image features are oriented or not: $C$ is $1$ when
+the local structure has one dominant orientation, and $C$ is $0$ if the image is essentially
+isotropic in the local neighborhood. The fractional anisotropy \cite{Basser1996} carries the
+same information through the one-to-one map $\mathrm{FA}=\sqrt{2}\,C/\sqrt{1+C^2}$, but
+normalizes the eigenvalue contrast by the Frobenius norm of the tensor, following the usage
+established in diffusion-tensor imaging. The directionality $J_2$ is the second invariant of
+the deviator (the von Mises invariant \cite{vonMises1913}); it is an \emph{unnormalized}
+measure that grows with both contrast and alignment.
+
+Table~\ref{tab:invariants2d} summarizes the features and invariants and the correspondence
+between them. Two independent scalars fix the tensor up to rotation; complete sets include
+$(\lambda_1,\lambda_2)$, $(I_1,J_2)$, $(E,C)$, and $(E,\mathrm{FA})$.
+Table~\ref{tab:typical2d} evaluates every feature on canonical eigenvalue pairs, from the
+ideal oriented case $(1,0)$ to the isotropic case $(1,1)$.
+
+\begin{table}[p]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.7}
+\caption{Local orientation features and tensor invariants in 2D. The gradient structure
+tensor is $\J=\langle\nabla I\,\nabla I^\top\rangle_w$ with eigenvalues
+$\lambda_1\geq\lambda_2\geq0$, mean $\bar\lambda=\tfrac12 I_1$, and $g=\|\nabla I\|$.}
+\label{tab:invariants2d}
+\begin{tabular}{@{}>{\raggedright\arraybackslash}p{2.7cm}ccc>{\raggedright\arraybackslash}p{3.7cm}@{}}
+\toprule
+ & Components & Eigenvalues & Correspondence & Name / Interpretation\\
+\midrule
+\multicolumn{5}{@{}l}{\emph{Tensor}}\\
+Tensor $\J$\newline{\scriptsize positive-semidefinite}
+ & $\left(\begin{smallmatrix}J_{xx}&J_{xy}\\ J_{xy}&J_{yy}\end{smallmatrix}\right)$
+ & $\left(\begin{smallmatrix}\lambda_1&0\\ 0&\lambda_2\end{smallmatrix}\right)$
+ & ---
+ & Gradient structure tensor \cite{Bigun1987}\\
+Orientation $\theta$\newline{\scriptsize radians, $[-\pi/2,\pi/2]$}
+ & $\frac12\arctan\!\left(\frac{2J_{xy}}{J_{yy}-J_{xx}}\right)$
+ & $\mathbf{e}_2$
+ & ---
+ & Principal direction, nematic director\\
+\multicolumn{5}{@{}l}{\emph{Features}}\\
+Energy $E$\newline{\scriptsize $g^2$, $[0,\infty)$}
+ & $J_{xx}+J_{yy}$
+ & $\lambda_1+\lambda_2$
+ & $E=I_1$
+ & Gradient energy \cite{Jahne1997}\\
+Coherency $C$\newline{\scriptsize dimensionless, $[0,1]$}
+ & $\frac{\sqrt{(J_{yy}-J_{xx})^2+4J_{xy}^2}}{J_{xx}+J_{yy}}$
+ & $\frac{\lambda_1-\lambda_2}{\lambda_1+\lambda_2}$
+ & $C=\frac{2\sqrt{J_2}}{I_1}$
+ & Alignment index, nematic order parameter; 0 isotropic, 1 fibre \cite{Jahne1997,Weickert1999}\\
+\multicolumn{5}{@{}l}{\emph{Properties}}\\
+Deviator $\s$\newline{\scriptsize $\tr(\s)=0$}
+ & $\J-\tfrac12\tr(\J)\,\mathbf{I}$
+ & $\left(\begin{smallmatrix}\lambda_1-\bar\lambda&0\\ 0&\lambda_2-\bar\lambda\end{smallmatrix}\right)$
+ & ---
+ & Deviatoric part of $\J$\\
+Intensity $I_1$\newline{\scriptsize $g^2$, $[0,\infty)$}
+ & $\tr(\J)=J_{xx}+J_{yy}$
+ & $\lambda_1+\lambda_2$
+ & $I_1=E$
+ & First invariant\\
+Directionality $J_2$\newline{\scriptsize $g^4$, $[0,\infty)$}
+ & $\tfrac12\tr(\s^2)=\tfrac14(J_{xx}-J_{yy})^2+J_{xy}^2$
+ & $\tfrac14(\lambda_1-\lambda_2)^2$
+ & $J_2=\tfrac14 C^2E^2$
+ & Second deviatoric invariant \cite{vonMises1913}\\
+Distortion energy $\sigma$\newline{\scriptsize $g^2$, $[0,\infty)$}
+ & $\sqrt{2}\,\|\s\|$
+ & $\lambda_1-\lambda_2$
+ & $\sigma=2\sqrt{J_2}=I_1\,\mathrm{RA}$
+ & Equivalent uniaxial magnitude\\
+\multicolumn{5}{@{}l}{\emph{Anisotropy indices}}\\
+Relative anisotropy RA\newline{\scriptsize dimensionless, $[0,1]$}
+ & $\frac{\|\s\|}{\sqrt{2}\,\bar\lambda}$
+ & $\frac{\lambda_1-\lambda_2}{\lambda_1+\lambda_2}$
+ & $\mathrm{RA}=C$
+ & Coefficient of variation of the $\lambda_i$ \cite{Basser1996}\\
+Fractional anisotropy FA\newline{\scriptsize dimensionless, $[0,1]$}
+ & $\frac{\sqrt{2}\,\|\s\|}{\|\J\|}$
+ & $\frac{\lambda_1-\lambda_2}{\sqrt{\lambda_1^2+\lambda_2^2}}$
+ & $\mathrm{FA}=\frac{\sqrt{2}\,C}{\sqrt{1+C^2}}$
+ & Degree of anisotropy \cite{Basser1996}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\section*{Implementation notes}
+
+In OrientationJ, the weighting function $w$ is a Gaussian window whose standard deviation
+$\sigma_w$ (``local window'') is set in the dialog; the gradient is computed by cubic-spline
+interpolation by default. A small regularization $\epsilon$ is added to the denominators of
+$C$ and FA to avoid division by zero in flat regions.
+
+Coherency and fractional anisotropy are dimensionless and naturally bounded in $[0,1]$; they
+are displayed as computed. Energy and directionality are unbounded (units $g^2$ and $g^4$);
+since version 2.1.0, they are either linearly rescaled to $[0,1]$ for display
+(option \emph{Scale [0..1]}, the default) or shown with their raw values (option
+\emph{No scale}). The same option applies to the channels used to build the HSB/RGB color
+survey, where channel values are clamped to $[0,1]$.
+
+% Auto-generated by gen_checks.py -- do not edit by hand.
+\begin{table}[tbp]
+\centering
+\scriptsize
+\setlength{\tabcolsep}{4pt}
+\renewcommand{\arraystretch}{1.15}
+\caption{Typical cases in 2D. Features of Table~\ref{tab:invariants2d} evaluated from the eigenvalues, each by the expression given in its Eigenvalues column there; $\bar\lambda=\tfrac{1}{2}I_1$.}
+\label{tab:typical2d}
+\begin{tabular}{@{}ll cc cccc@{}}
+\toprule
+ & \textbf{Structure} & $E=I_1$ & $J_2$ & $\sigma$ & $C$ & $\mathrm{RA}$ & $\mathrm{FA}$ \\
+\midrule
+$(1,\,0)$ & ideal oriented & 1.000 & 0.250 & 1.000 & 1.000 & 1.000 & 1.000 \\
+$(5,\,0.2)$ & strong & 5.200 & 5.760 & 4.800 & 0.923 & 0.923 & 0.959 \\
+$(3,\,1)$ & oriented & 4.000 & 1.000 & 2.000 & 0.500 & 0.500 & 0.632 \\
+$(2,\,1)$ & moderate & 3.000 & 0.250 & 1.000 & 0.333 & 0.333 & 0.447 \\
+$(1,\,0.5)$ & weak & 1.500 & 0.062 & 0.500 & 0.333 & 0.333 & 0.447 \\
+$(1,\,0.9)$ & near-iso. & 1.900 & 0.002 & 0.100 & 0.053 & 0.053 & 0.074 \\
+$(1,\,1)$ & isotropic & 2.000 & 0.000 & 0.000 & 0.000 & 0.000 & 0.000 \\
+$(0,\,0)$ & flat & 0.000 & 0.000 & --- & --- & --- & --- \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+\begin{thebibliography}{9}
+\bibitem{Bigun1987} J.~Big\"un and G.~H.~Granlund,
+``Optimal orientation detection of linear symmetry,''
+\emph{Proceedings of the First IEEE International Conference on Computer Vision}, London, 1987.
+\bibitem{Jahne1997} B.~J\"ahne,
+\emph{Digital Image Processing}, Springer, 1997.
+\bibitem{Weickert1999} J.~Weickert,
+``Coherence-enhancing diffusion filtering,''
+\emph{International Journal of Computer Vision}, vol.~31, 1999.
+\bibitem{vonMises1913} R.~von~Mises,
+``Mechanik der festen K\"orper im plastisch-deformablen Zustand,''
+\emph{Nachrichten von der Gesellschaft der Wissenschaften zu G\"ottingen}, 1913.
+\bibitem{Basser1996} P.~J.~Basser and C.~Pierpaoli,
+``Microstructural and physiological features of tissues elucidated by quantitative-diffusion-tensor MRI,''
+\emph{Journal of Magnetic Resonance, Series B}, vol.~111, 1996.
+\bibitem{Puspoki2016} Z.~P\"usp\"oki, M.~Storath, D.~Sage, and M.~Unser,
+``Transforms and operators for directional bioimage analysis: A survey,''
+\emph{Focus on Bio-Image Informatics}, Springer, 2016.
+\end{thebibliography}
+
+\end{document}

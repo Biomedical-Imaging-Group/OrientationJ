@@ -1,0 +1,4 @@
+# Pinned deliberately: MkDocs 2.0 removes the plugin system and has no migration
+# path, so an unpinned build would break without warning.
+mkdocs>=1.6,<2
+mkdocs-material>=9.5,<10

@@ -90,6 +90,8 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 
 	private JComboBox<String>		cmbColorHSB				= new JComboBox<String>(new String[] {"HSB", "RGB"});
 	private JComboBox<String>		cmbUnitOrientation		= new JComboBox<String>(new String[] {"rad", "deg"});
+	private JComboBox<String>		cmbScaleEnergy			= new JComboBox<String>(new String[] {"Scale [0..1]", "No scale"});
+	private JComboBox<String>		cmbScaleDirectionality	= new JComboBox<String>(new String[] {"Scale [0..1]", "No scale"});
 	private SpinnerDouble			spnEpsilonCoherency		= new SpinnerDouble(0.01, 0.00001, 10, 0.01);
 	private SpinnerDouble			spnHarrisK				= new SpinnerDouble(0.1, 0.01, 0.2, 0.01);
 	private SpinnerInteger			spnHarrisL				= new SpinnerInteger(3, 1, 201, 1);
@@ -159,12 +161,22 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 			}
 		
 		for (int k = 2; k < OrientationParameters.SURVEY; k++) {
-			if (k != OrientationParameters.HARRIS) {
-				pnFeatures.place(k, 1, chkFeature[k]);
-				pnFeatures.place(k, 3, bnShow[k]);
-			}
+			if (k == OrientationParameters.HARRIS)
+				continue;
+			if (k == OrientationParameters.TENSOR_DIRECTIONALITY && !params.isServiceAnalysis())
+				continue;
+			if (k == OrientationParameters.TENSOR_FA && !params.isServiceAnalysis())
+				continue;
+			pnFeatures.place(k, 1, chkFeature[k]);
+			pnFeatures.place(k, 3, bnShow[k]);
 			if (k == OrientationParameters.TENSOR_ORIENTATION) {
 				pnFeatures.place(k, 4, 2, 1, cmbUnitOrientation);
+			}
+			if (k == OrientationParameters.TENSOR_ENERGY) {
+				pnFeatures.place(k, 4, 2, 1, cmbScaleEnergy);
+			}
+			if (k == OrientationParameters.TENSOR_DIRECTIONALITY) {
+				pnFeatures.place(k, 4, 2, 1, cmbScaleDirectionality);
 			}
 		}
 		if (params.isServiceHarris()) {
@@ -183,7 +195,8 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 			cmbColorHSB.addActionListener(this);
 		}
 		
-		pnFeatures.place(OrientationParameters.SURVEY+2, 3, bnHide);
+		if (!params.isServiceDistribution() && !params.isServiceHarris() && !params.isServiceVectorField())
+			pnFeatures.place(OrientationParameters.SURVEY+2, 3, bnHide);
 
 		GridPanel pnMain1 = new GridPanel("Structure Tensor", 2);
 		pnMain1.place(0, 0, pnTensor);
@@ -313,6 +326,8 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		settings.record("cmbColorHSB", cmbColorHSB, cmbColorHSB.getItemAt(0));
 		settings.record("spnEpsilonCoherency", spnEpsilonCoherency, "0.001");
 		settings.record("cmbUnitOrientation", cmbUnitOrientation, cmbUnitOrientation.getItemAt(0));
+		settings.record("cmbScaleEnergy", cmbScaleEnergy, cmbScaleEnergy.getItemAt(0));
+		settings.record("cmbScaleDirectionality", cmbScaleDirectionality, cmbScaleDirectionality.getItemAt(0));
 		settings.record("showHarrisCornerTable", showHarrisCornerTable, true);
 		settings.record("showHarrisCornerOverlay", showHarrisCornerOverlay, true);
 		settings.record("spnHarrisK", spnHarrisK, "0.1");
@@ -415,6 +430,8 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		params.epsilon = spnEpsilonCoherency.get();
 		params.radian = cmbUnitOrientation.getSelectedIndex() == 0;
 		params.hsb = cmbColorHSB.getSelectedIndex() == 0;
+		params.scaleEnergy = cmbScaleEnergy.getSelectedIndex() == 0;
+		params.scaleDirectionality = cmbScaleDirectionality.getSelectedIndex() == 0;
 
 		params.vectorGrid = spnVectorFieldGrid.get();
 		params.vectorType = cmbVectorFieldType.getSelectedIndex();
@@ -443,6 +460,8 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		spnEpsilonCoherency.set(params.epsilon);
 		cmbUnitOrientation.setSelectedIndex(params.radian ? 0 : 1);
 		cmbColorHSB.setSelectedIndex(params.hsb ? 0 : 1);
+		cmbScaleEnergy.setSelectedIndex(params.scaleEnergy ? 0 : 1);
+		cmbScaleDirectionality.setSelectedIndex(params.scaleDirectionality ? 0 : 1);
 
 		spnVectorFieldGrid.set(params.vectorGrid);
 		cmbVectorFieldType.setSelectedIndex(params.vectorType);
@@ -519,6 +538,8 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 					bnShow[OrientationParameters.GRADIENT_VERTICAL].setEnabled(gim.gy != null || gim.hyy != null);
 					bnShow[OrientationParameters.TENSOR_ORIENTATION].setEnabled(gim.orientation != null);
 					bnShow[OrientationParameters.TENSOR_COHERENCY].setEnabled(gim.coherency != null);
+					bnShow[OrientationParameters.TENSOR_DIRECTIONALITY].setEnabled(gim.directionality != null);
+					bnShow[OrientationParameters.TENSOR_FA].setEnabled(gim.fa != null);
 					bnShow[OrientationParameters.TENSOR_ENERGY].setEnabled(gim.energy != null);
 					bnShow[OrientationParameters.HARRIS].setEnabled(gim.harris != null);
 					bnShow[OrientationParameters.SURVEY].setEnabled(gim != null);
@@ -576,42 +597,48 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		int k = 0;
 		if (params.isServiceAnalysis()) {
 			k = OrientationParameters.SURVEY;	
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 			k = OrientationParameters.GRADIENT_HORIZONTAL;
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 			k = OrientationParameters.GRADIENT_VERTICAL;
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
-			options += "hsb=" + (params.hsb ? "on ": "off "); 
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
+			options += "hsb=" + (params.hsb ? "on ": "off ");
 			options += "hue=" + cmbHue.getSelectedItem() + " ";
 			options += "sat=" + cmbSaturation.getSelectedItem() + " ";
 			options += "bri=" + cmbBrightness.getSelectedItem() + " ";
+			k = OrientationParameters.TENSOR_DIRECTIONALITY;
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
+			k = OrientationParameters.TENSOR_FA;
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
+			options += "scale-directionality=" + (params.scaleDirectionality ? "on ": "off ");
 		}
 
 		k = OrientationParameters.TENSOR_ENERGY;
-		options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+		options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 		k = OrientationParameters.TENSOR_ORIENTATION;
-		options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+		options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 		k = OrientationParameters.TENSOR_COHERENCY;
-		options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
-		options += "radian=" + (params.radian ? "on ": "off "); 
+		options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
+		options += "scale-energy=" + (params.scaleEnergy ? "on ": "off ");
+		options += "radian=" + (params.radian ? "on ": "off ");
 
 		// Distribution
 		if (params.isServiceDistribution()) {
 			k = OrientationParameters.DIST_MASK;	
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 			k = OrientationParameters.DIST_ORIENTATION;	
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 			k = OrientationParameters.DIST_HISTO_PLOT;	
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 			k = OrientationParameters.DIST_HISTO_TABLE;	
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 			options += "min-coherency=" + spnMinCoherency.get() + " ";
 			options += "min-energy=" + spnMinEnergy.get() + " ";
 		}
 
 		if (params.isServiceHarris()) {
 			k = OrientationParameters.HARRIS;	
-			options += params.view[k] ? OrientationParameters.name[k].toLowerCase() + "=on " : "";
+			options += params.view[k] ? OrientationParameters.keyMacro[k] + "=on " : "";
 			options += "harrisk=" + spnHarrisK.get() + " ";
 			options += "harrisl=" + spnHarrisL.get() + " ";
 			options += "harrismin=" + spnHarrisMin.get() + " ";

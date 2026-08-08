@@ -93,6 +93,14 @@ public class OrientationResults {
 		if (view[feature])
 			display(feature, gim, params, countRun);
 
+		feature = OrientationParameters.TENSOR_DIRECTIONALITY;
+		if (view[feature] && params.isServiceAnalysis())
+			display(feature, gim, params, countRun);
+
+		feature = OrientationParameters.TENSOR_FA;
+		if (view[feature] && params.isServiceAnalysis())
+			display(feature, gim, params, countRun);
+
 		feature = OrientationParameters.HARRIS;
 		if (view[feature] && params.isServiceHarris())
 			display(feature, gim, params, countRun);
@@ -106,13 +114,13 @@ public class OrientationResults {
 
 		feature = OrientationParameters.DIST_MASK;
 		if (view[feature] && params.isServiceDistribution()) {
-			plotDistribution(gim, params, countRun);
+			distribution(gim, params);
 			display(feature, gim, params, countRun);
 		}
-		
+
 		feature = OrientationParameters.DIST_ORIENTATION;
 		if (view[feature] && params.isServiceDistribution()) {
-			plotDistribution(gim, params, countRun);
+			distribution(gim, params);
 			display(feature, gim, params, countRun);
 		}
 		

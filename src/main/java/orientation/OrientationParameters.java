@@ -53,13 +53,15 @@ public class OrientationParameters {
 	final public static int		TENSOR_ENERGY			= 2;
 	final public static int		TENSOR_ORIENTATION		= 3;
 	final public static int		TENSOR_COHERENCY			= 4;
-	final public static int		HARRIS					= 5;
-	final public static int		SURVEY					= 6;
-	final public static int		DIST_MASK				= 7;
-	final public static int		DIST_ORIENTATION			= 8;
-	final public static int		DIST_HISTO_PLOT			= 9;
-	final public static int		DIST_HISTO_TABLE			= 10;
-	final public static int		NB_FEATURES				= 11;
+	final public static int		TENSOR_DIRECTIONALITY	= 5;
+	final public static int		TENSOR_FA				= 6;
+	final public static int		HARRIS					= 7;
+	final public static int		SURVEY					= 8;
+	final public static int		DIST_MASK				= 9;
+	final public static int		DIST_ORIENTATION			= 10;
+	final public static int		DIST_HISTO_PLOT			= 11;
+	final public static int		DIST_HISTO_TABLE			= 12;
+	final public static int		NB_FEATURES				= 13;
 
 	public int					gradient					= GRADIENT_CUBIC_SPLINE;
 
@@ -85,12 +87,23 @@ public class OrientationParameters {
 	public int					vectorType				= 0;
 
 	public boolean				hsb						= true;
+	public boolean				scaleEnergy				= true;
+	public boolean				scaleDirectionality		= true;
 	public boolean				view[]					= new boolean[NB_FEATURES];
 
-	final static public String	name[]					= { 
+	final static public String	name[]					= {
 			"Gradient-X", "Gradient-Y", "Energy", "Orientation",
-			"Coherency", "Harris-index", "Color-survey", "Binary Mask", "Orientation Mask", 
+			"Coherency", "Directionality", "Anisotropy-FA", "Harris-index", "Color-survey", "Binary Mask", "Orientation Mask",
 			"Histogram", "Table"};
+
+	// Macro keys, parallel to name[]. They cannot be derived from name[] by lowercasing:
+	// Macro.getValue() trims a key at its first space, so "binary mask" is looked up as
+	// "binary" and never matches, and "orientation mask" collapses onto "orientation",
+	// switching on the tensor orientation and the distribution mask together.
+	final static public String	keyMacro[]				= {
+			"gradient-x", "gradient-y", "energy", "orientation",
+			"coherency", "directionality", "anisotropy-fa", "harris-index", "color-survey", "binary_mask", "orientation_mask",
+			"histogram", "table"};
 
 	// Parameters for the measurement tools
 	public int					colorEllipseR			= 255;
@@ -151,6 +164,8 @@ public class OrientationParameters {
 		epsilon = settings.loadValue("epsilon", epsilon);
 		radian = settings.loadValue("radian", true);
 		hsb = settings.loadValue("hsb", hsb);
+		scaleEnergy = settings.loadValue("scaleEnergy", scaleEnergy);
+		scaleDirectionality = settings.loadValue("scaleDirectionality", scaleDirectionality);
 		for (int k = 0; k < OrientationParameters.NB_FEATURES; k++) {
 			view[k] = settings.loadValue("view_" + name[k],
 					((k == SURVEY || k == HARRIS || k == DIST_HISTO_TABLE  || k == DIST_HISTO_PLOT) ? true : false));
@@ -171,6 +186,8 @@ public class OrientationParameters {
 		settings.storeValue("epsilon", epsilon);
 		settings.storeValue("radian", radian);
 		settings.storeValue("hsb", hsb);
+		settings.storeValue("scaleEnergy", scaleEnergy);
+		settings.storeValue("scaleDirectionality", scaleDirectionality);
 		for (int k = 0; k < OrientationParameters.NB_FEATURES; k++) {
 			settings.storeValue("view_" + name[k], view[k]);
 		}
@@ -190,32 +207,38 @@ public class OrientationParameters {
 		gradient = Integer.parseInt(Macro.getValue(options, "gradient", "0"));
 		radian = Macro.getValue(options, "radian", "on").equals("on");
 		hsb = Macro.getValue(options, "hsb", "on").equals("on");
+		scaleEnergy = Macro.getValue(options, "scale-energy", "on").equals("on");
+		scaleDirectionality = Macro.getValue(options, "scale-directionality", "on").equals("on");
 
 		int k;
 		k = GRADIENT_HORIZONTAL;
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = GRADIENT_VERTICAL;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = TENSOR_ENERGY;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = TENSOR_ORIENTATION;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = TENSOR_COHERENCY;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = HARRIS;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = SURVEY;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = GRADIENT_VERTICAL;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = TENSOR_ENERGY;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = TENSOR_ORIENTATION;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = TENSOR_COHERENCY;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = TENSOR_DIRECTIONALITY;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = TENSOR_FA;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = HARRIS;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = SURVEY;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
 
 		// Distribution
-		k = DIST_MASK;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = DIST_ORIENTATION;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = DIST_HISTO_PLOT;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
-		k = DIST_HISTO_TABLE;	
-		view[k] = Macro.getValue(options, OrientationParameters.name[k].toLowerCase(), "off").equals("on");
+		k = DIST_MASK;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = DIST_ORIENTATION;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = DIST_HISTO_PLOT;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
+		k = DIST_HISTO_TABLE;
+		view[k] = Macro.getValue(options, keyMacro[k], "off").equals("on");
 		minCoherency = Double.parseDouble(Macro.getValue(options, "min-coherency", "0"));
 		minEnergy = Double.parseDouble(Macro.getValue(options, "min-energy", "0"));
 
