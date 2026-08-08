@@ -1,0 +1,70 @@
+name: Build and deploy documentation
+
+on:
+  push:
+    branches: [master]      # OrientationJ's default branch is 'master'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # ---------- documentation site ----------
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+
+      - run: pip install -r docs/requirements-docs.txt
+
+      - name: Build docs site
+        run: mkdocs build --strict     # writes to ./site
+
+      # ---------- Javadoc ----------
+      # Built after MkDocs and copied into ./site/api, so MkDocs never has to walk
+      # several thousand generated HTML files on every build.
+      - uses: actions/setup-java@v4
+        with:
+          java-version: "8"            # match what OrientationJ targets
+          distribution: temurin
+          cache: maven
+
+      - name: Build Javadoc
+        run: |
+          mvn -B -q javadoc:javadoc \
+            -Dmaven.javadoc.failOnError=false \
+            -Ddoclint=none
+          # the output path moved between Maven/plugin versions, so locate it
+          JAVADOC_DIR=$(find target -type d -name apidocs | head -n 1)
+          if [ -n "$JAVADOC_DIR" ]; then
+            mkdir -p site/api
+            cp -r "$JAVADOC_DIR"/. site/api/
+            echo "Javadoc published at /api/"
+          else
+            echo "::warning::No Javadoc produced - the site will deploy without /api/"
+          fi
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

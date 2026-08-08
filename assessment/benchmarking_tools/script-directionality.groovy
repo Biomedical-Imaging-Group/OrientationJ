@@ -14,7 +14,7 @@ import ij.IJ
 import fiji.analyze.directionality.Directionality_
 
 root = "/Users/dsage/Desktop/dev/OrientationJ/"
-input = root + "orientationj-test-images/"
+input = root + "orientationj-test-images/images/"
 output = root + "assessment/benchmarking_tools/results/fiji/"
 names = ["synthetic_rings_dither_512", "synthetic_nematic_512",
          "synthetic_noise_512", "collagen"]

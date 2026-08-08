@@ -37,10 +37,10 @@ def normalize(image):
 def save(image, name, folder=None):
     """Save a 32-bit TIFF as <folder>/synthetic_<name>_<N>.tif and return the path.
 
-    The default folder is the one holding this module (orientationj-test-images).
+    The default folder is ../images relative to this module.
     """
     if folder is None:
-        folder = os.path.dirname(os.path.abspath(__file__))
+        folder = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'images')
     path = os.path.join(folder, 'synthetic_' + name + '_' + str(image.shape[0]) + '.tif')
     imsave(path, image.astype(np.float32), check_contrast=False)
     return path

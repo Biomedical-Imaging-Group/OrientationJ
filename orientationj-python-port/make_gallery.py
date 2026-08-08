@@ -3,7 +3,7 @@
 For every image of ../orientationj-test-images: one 2 x 4 panel figure --
 image, mask, orientation, coherency, energy, color survey, orientation
 distribution inside the mask, vector field -- written to
-../orientationj-test-images/gallery/<name>.png (analysis sigma = 1, the
+../orientationj-test-images/results/<name>.png (analysis sigma = 1, the
 plugin default).
 
 Run:  python3 make_gallery.py
@@ -21,7 +21,7 @@ import orientationj as oj
 
 SIGMA = 1.0
 INPUT = os.path.join('..', 'orientationj-test-images')
-GALLERY = os.path.join(INPUT, 'gallery')
+GALLERY = os.path.join(INPUT, 'results')
 os.makedirs(GALLERY, exist_ok=True)
 
 plt.rcParams.update({
@@ -31,7 +31,7 @@ plt.rcParams.update({
     'text.color': '#3a3a37', 'axes.labelcolor': '#3a3a37',
     'xtick.color': '#6b6a63', 'ytick.color': '#6b6a63'})
 
-for path in sorted(glob.glob(os.path.join(INPUT, '*.tif'))):
+for path in sorted(glob.glob(os.path.join(INPUT, 'images', '*.tif'))):
     name = os.path.basename(path)[:-4]
     image = oj.load(path)
     mask = tifffile.imread(os.path.join(INPUT, 'masks', name + '.tif')) > 0
@@ -83,6 +83,6 @@ for path in sorted(glob.glob(os.path.join(INPUT, '*.tif'))):
     fig.savefig(os.path.join(GALLERY, name + '.png'), dpi=110,
                 bbox_inches='tight')
     plt.close(fig)
-    print('gallery:', name)
+    print('panel:', name)
 
 print('done ->', GALLERY)
