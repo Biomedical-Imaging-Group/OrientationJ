@@ -16,7 +16,7 @@ notebooks that run it on the 16 images of [../orientationj-test-images](../orien
 
 ## Experiments
 
-The images are published in the [test-images gallery](../orientationj-test-images#gallery).
+The images are published in the [test-images results](../orientationj-test-images).
 
 ##### Masks
 The distribution and the vector field are computed **inside the masks** of

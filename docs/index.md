@@ -31,8 +31,8 @@ Each is described in [Plugin modes](modes.md).
 
 ## Beyond the plugin
 
-- **[Test images](test-images.md)** — 16 images with masks and a complete result
-  gallery.
+- **[Test images](test-images.md)** — 16 images with masks and an overview
+  panel of the results for each.
 - **[Benchmarking](benchmarking.md)** — the orientation distribution of OrientationJ
   compared with six other tools on a common dataset.
 - **[Theory](theory.md)** — the structure tensor, its features and invariants, with

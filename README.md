@@ -6,20 +6,21 @@ energy and coherency from the gradient structure tensor.
 *Written by Daniel Sage, Biomedical Imaging Group (BIG), EPFL, Switzerland —
 [bigwww.epfl.ch/demo/orientation](https://bigwww.epfl.ch/demo/orientation/)*
 
-[![Download](https://img.shields.io/badge/%E2%AC%87%EF%B8%8F_Download-OrientationJ__.jar-4878a8?style=for-the-badge)](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest/download/OrientationJ_.jar)
-[![Documentation](https://img.shields.io/badge/%F0%9F%93%96_Documentation-website-3a3a37?style=for-the-badge)](https://Biomedical-Imaging-Group.github.io/OrientationJ/)
+[![Download](https://img.shields.io/badge/Download-OrientationJ__.jar-4878a8?style=for-the-badge)](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest/download/OrientationJ_.jar)
+[![Documentation](https://img.shields.io/badge/Documentation-website-3a3a37?style=for-the-badge)](https://Biomedical-Imaging-Group.github.io/OrientationJ/)
 
 | | |
 |---|---|
-| 📖 **[Documentation](https://Biomedical-Imaging-Group.github.io/OrientationJ/)** | installation, plugin modes, theory, how to cite |
-| ⬇️ **[Releases](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases)** | the plugin JAR, ready for the ImageJ/Fiji `plugins` folder |
-| 📐 **[Theoretical background](docs/assets/theoretical-background.pdf)** | the gradient structure tensor, features and invariants (PDF) |
-| 🧪 **[Test images](orientationj-test-images/)** | 16 images with masks and a full result gallery |
-| 🐍 **[Python port](orientationj-python-port/)** | faithful NumPy reimplementation of the analysis, distribution and vector field |
-| 📊 **[Benchmarks](assessment/benchmarking_tools/)** | cross-tool comparison of the orientation distribution (7 tools) |
-| 🔬 **[GST operator](assessment/operator_gst/)** | minimal forward model and blind inversion of (C, E, θ) |
-| 📚 **[In the literature](orientationj-in-scientific-literature/)** | how published papers use and cite OrientationJ |
-| 📜 **[Version history](docs/HISTORY.md)** | releases and changes |
+| **[Documentation](https://Biomedical-Imaging-Group.github.io/OrientationJ/)** | installation, plugin modes, theory, how to cite |
+| **[Releases](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases)** | the plugin JAR, ready for the ImageJ/Fiji `plugins` folder |
+| **[Theoretical background](orientationj-theoretical-background/)** | the gradient structure tensor, features and invariants (LaTeX + PDF) |
+| **[Test images](orientationj-test-images/)** | 16 images with masks and a full result overview |
+| **[Python port](orientationj-python-port/)** | faithful NumPy reimplementation of the analysis, distribution and vector field |
+| **[Assessment](assessment/)** | reproducible experiments around the plugin |
+| — [Benchmarking](assessment/benchmarking_tools/) | cross-tool comparison of the orientation distribution (7 tools) |
+| — [GST operator](assessment/operator_gst/) | minimal forward model and blind inversion of (C, E, θ) |
+| **[In the literature](orientationj-in-scientific-literature/)** | how published papers use and cite OrientationJ |
+| **[Version history](docs/HISTORY.md)** | releases and changes |
 
 ## Outline
 
