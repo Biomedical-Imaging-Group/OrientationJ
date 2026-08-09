@@ -25,8 +25,15 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
+          cache-dependency-path: docs/requirements-docs.txt
 
       - run: pip install -r docs/requirements-docs.txt
+
+      # creates the GitHub Pages site on first run (Source: GitHub Actions),
+      # so no manual step is needed in the repository settings
+      - uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Build docs site
         run: mkdocs build --strict     # writes to ./site
