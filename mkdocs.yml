@@ -1,44 +1,46 @@
 # When moving to a custom domain, change site_url only -- nothing else.
 site_url: https://Biomedical-Imaging-Group.github.io/OrientationJ/
-repo_url: https://github.com/Biomedical-Imaging-Group/OrientationJ
-repo_name: Biomedical-Imaging-Group/OrientationJ
 
 site_name: OrientationJ
 site_description: >-
   Orientation, energy and coherency analysis of images using the gradient
   structure tensor. ImageJ and Fiji plugins from the Biomedical Imaging Group, EPFL.
 site_author: Daniel Sage
-copyright: Biomedical Imaging Group, EPFL — GPL-3.0
-
-edit_uri: edit/master/docs/
+copyright: Daniel Sage — Biomedical Imaging Group, EPFL
 
 theme:
   name: material
   language: en
-  icon:
-    repo: fontawesome/brands/github
+  logo: assets/logo.png
+  favicon: assets/favicon.png
+  font: false                   # no Google Fonts: Helvetica set in extra.css
   features:
-    - navigation.sections
     - navigation.top
     - navigation.footer
-    - content.action.edit      # "Edit this page" pencil, straight to GitHub
     - content.code.copy
     - search.suggest
     - search.highlight
+    - toc.integrate             # page headings fold into the left menu
     - toc.follow
   palette:
     - scheme: default
-      primary: indigo
-      accent: indigo
+      primary: white            # clean light header, book-like
+      accent: indigo            # fine-tuned in stylesheets/extra.css
       toggle:
         icon: material/weather-night
         name: Switch to dark mode
     - scheme: slate
-      primary: indigo
+      primary: black
       accent: indigo
       toggle:
         icon: material/weather-sunny
         name: Switch to light mode
+
+extra:
+  generator: false              # no "Made with Material for MkDocs" in the footer
+
+extra_css:
+  - stylesheets/extra.css
 
 plugins:
   - search
@@ -65,9 +67,9 @@ nav:
   - Home: index.md
   - User guide:
       - Installation: installation.md
-      - Plugin modes: modes.md
+      - How to use: how-to-use.md
   - Theory: theory.md
   - Test images: test-images.md
   - Benchmarking: benchmarking.md
-  - References: references.md
-  - History: HISTORY.md
+  - In the literature: https://Biomedical-Imaging-Group.github.io/OrientationJ/literature.html
+  - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/

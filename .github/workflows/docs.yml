@@ -29,6 +29,9 @@ jobs:
 
       - run: pip install -r docs/requirements-docs.txt
 
+      - name: Sync README-mirrored pages
+        run: python3 docs/sync-imports.py
+
       # creates the GitHub Pages site on first run (Source: GitHub Actions),
       # so no manual step is needed in the repository settings
       - uses: actions/configure-pages@v5
