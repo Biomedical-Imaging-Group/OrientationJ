@@ -2,7 +2,7 @@
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">A series of ImageJ and Fiji plugins for local directional image analysis</p>
+<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 
@@ -35,6 +35,8 @@ Each command is described in [How to use](how-to-use.md), and all of them are sc
 
 - **[Theory](theory.md)**: the structure tensor, its features and invariants, with the full derivation.
 - **[Benchmarking](benchmarking.md)**: the orientation distribution of OrientationJ compared with six other tools on a common dataset.
+- **[Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port)**: the faithful NumPy reimplementation of the plugin — spline gradient, color survey, distribution, vector field.
+- **[GST operator](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/gst_operator)**: the minimal Python version — a `forward` model (C, E, orientation) and its blind `inverse`.
 - **[In the literature](https://Biomedical-Imaging-Group.github.io/OrientationJ/literature.html)**: an annotated table of published papers that use and cite OrientationJ.
 
 ## How to cite
@@ -54,3 +56,5 @@ An annotated table of the publications that use and cite OrientationJ is on the 
 ## Other tools
 
 [OrientationPy](https://gitlab.com/epfl-center-for-imaging/orientationpy) — the Python successor of OrientationJ, 2D and 3D · [Directionality](https://imagej.net/plugins/directionality) (Fiji) · [FiberFit](https://doi.org/10.1007/s10237-016-0776-3) · [CT-FIRE](https://doi.org/10.1117/1.JBO.19.1.016007) · [FiberO](https://doi.org/10.3389/fbioe.2024.1497837) · questions: [image.sc forum](https://forum.image.sc/)
+
+The release notes are in the [version history](HISTORY.md).

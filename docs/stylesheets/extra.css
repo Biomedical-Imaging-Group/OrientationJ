@@ -39,7 +39,7 @@
   margin: 0 0 1.6em 0;
 }
 .md-typeset .oj-banner .oj-logo {
-  height: 30px;
+  height: 38px;
   width: auto;
   margin: 0 auto;
 }
@@ -82,4 +82,29 @@
 .md-typeset {
   font-size: 0.78rem;
   line-height: 1.6;
+}
+
+/* keep the left navigation visible on medium screens (default: >= 76.25em) */
+@media screen and (min-width: 60em) and (max-width: 76.234375em) {
+  .md-header__button[for="__drawer"] {
+    display: none;
+  }
+  .md-sidebar--primary {
+    display: block;
+    position: sticky;
+    top: 2.4rem;
+    height: auto;
+    transform: none;
+    width: 12.1rem;
+    background-color: transparent;
+    z-index: 0;
+  }
+  .md-sidebar--primary .md-nav__title {
+    background: none;
+    box-shadow: none;
+    color: var(--md-default-fg-color--light);
+  }
+  .md-sidebar--primary .md-nav__title[for="__drawer"] {
+    display: none;
+  }
 }

@@ -1,6 +1,6 @@
-<p align="center"><img src="docs/assets/logo-orientationj.png" height="56" alt="OrientationJ"></p>
+<p align="center"><img src="docs/assets/logo-orientationj.png" height="64" alt="OrientationJ"></p>
 
-<h3 align="center">A series of ImageJ and Fiji plugins for local directional image analysis</h3>
+<h3 align="center">Local directional analysis of 2D images — ImageJ/Fiji plugins</h3>
 
 <hr>
 
@@ -8,9 +8,11 @@
 
 <hr>
 
+![Color survey of the Tree Rings sample, sweeping the local window](docs/assets/tree-orientation.gif)
+
 <p align="center">
-<a href="https://Biomedical-Imaging-Group.github.io/OrientationJ/assets/OrientationJ_.jar"><img src="https://img.shields.io/badge/Download-OrientationJ__.jar-db3f2e?style=for-the-badge" alt="Download"></a>
 <a href="https://Biomedical-Imaging-Group.github.io/OrientationJ/"><img src="https://img.shields.io/badge/Documentation-website-db3f2e?style=for-the-badge" alt="Documentation"></a>
+<a href="https://Biomedical-Imaging-Group.github.io/OrientationJ/assets/OrientationJ_.jar"><img src="https://img.shields.io/badge/Download-OrientationJ__.jar-db3f2e?style=for-the-badge" alt="Download"></a>
 </p>
 
 ## Documentation
@@ -24,9 +26,9 @@
 [In the literature](https://Biomedical-Imaging-Group.github.io/OrientationJ/literature.html) ·
 [Javadoc API](https://Biomedical-Imaging-Group.github.io/OrientationJ/api/)
 
-The original OrientationJ website remains at [bigwww.epfl.ch/demo/orientation](https://bigwww.epfl.ch/demo/orientation/).
+Python versions: the faithful [Python port](assessment/orientationj_python_port/) and the minimal [GST operator](assessment/gst_operator/) (a `forward` model and its blind `inverse`).
 
-![Color survey of the Tree Rings sample while the local window sweeps](docs/assets/tree-orientation.gif)
+The original OrientationJ website remains at [bigwww.epfl.ch/demo/orientation](https://bigwww.epfl.ch/demo/orientation/).
 
 ## Outline
 

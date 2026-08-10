@@ -2,7 +2,7 @@
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">A series of ImageJ and Fiji plugins for local directional image analysis</p>
+<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 

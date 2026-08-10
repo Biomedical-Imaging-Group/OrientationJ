@@ -11,7 +11,7 @@ BANNER = '''<div class="oj-banner" markdown>
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">A series of ImageJ and Fiji plugins for local directional image analysis</p>
+<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 
@@ -37,7 +37,7 @@ For validation beyond a smoke test, published datasets are also useful:
 
 PAGES = {
     'docs/test-images.md': ('orientationj-test-images/README.md', EXTERNAL_DATASETS),
-    'docs/benchmarking.md': ('assessment/benchmarking_tools/README.md', ''),
+    'docs/benchmarking.md': ('assessment/benchmarking/README.md', ''),
 }
 
 for page, (source, extra) in PAGES.items():
