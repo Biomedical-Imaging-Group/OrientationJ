@@ -5,7 +5,7 @@ Compares the distribution of orientation measured by **seven tools** on 4 images
 `collagen`), all with the cubic-spline gradient and structure-tensor window σ = 1
 wherever the tool exposes those choices. Two comparisons:
 
-- **masked** — only pixels inside [../../orientationj-test-images/masks](../../orientationj-test-images/masks);
+- **masked** — only pixels inside [../../orientationj-test-images/masks](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks);
   without Directionality (no mask support);
 - **full** — every pixel; without the direct gradient (its unsmoothed histogram is
   dominated by the degenerate flat-background spikes).
@@ -18,11 +18,11 @@ hug the data to magnify the nearly flat histograms.
 
 ### Inside the structure mask
 
-[<img src="benchmark-distributions-masked.png" width="480">](benchmark-distributions-masked.png)
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/benchmarking_tools/benchmark-distributions-masked.png" width="480">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/benchmarking_tools/benchmark-distributions-masked.png)
 
 ### Over the whole image
 
-[<img src="benchmark-distributions-full.png" width="480">](benchmark-distributions-full.png)
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/benchmarking_tools/benchmark-distributions-full.png" width="480">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/benchmarking_tools/benchmark-distributions-full.png)
 
 *The Fiji plugin and its Python port agree exactly (RMSE 0 on all four images);
 OrientationPy stays within 0.4·10⁻³ probability per bin, and every other tool
@@ -31,9 +31,9 @@ within 1.6·10⁻³ — differences traceable to its gradient flavor or histogra
 ## The seven tools
 
 1. **OrientationJ (Fiji)** — the Java plugin, orientation maps binned here inside the mask.
-2. **OrientationJ Python port** — [../../orientationj-python-port](../../orientationj-python-port), the faithful reimplementation.
+2. **OrientationJ Python port** — [../../orientationj-python-port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-python-port), the faithful reimplementation.
 3. **OrientationPy** — spline gradient, σ = 1, fiber orientation.
-4. **GST minimal** — [gst_minimal.py](gst_minimal.py), the whole operator in ~15 lines:
+4. **GST minimal** — [gst_minimal.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking_tools/gst_minimal.py), the whole operator in ~15 lines:
    Gaussian-derivative gradient and Gaussian window, analytic in Fourier.
 5. **scikit-image** — `feature.structure_tensor` (finite-difference gradient), same tensor formula.
 6. **direct gradient** — per-pixel angle perpendicular to the spline gradient, no tensor smoothing (σ = 0).
@@ -47,10 +47,8 @@ displayed image. Histograms: 180 bins of 1°, normalized to probability per bin.
 
 | file | content |
 |---|---|
-| [benchmark_orientation.ipynb](benchmark_orientation.ipynb) | runs the five Python tools, loads the Fiji results, draws the comparison, writes the CSVs |
-| [gst_minimal.py](gst_minimal.py) | the gradient structure tensor operator, minimal implementation |
-| [macro-orientationj.ijm](macro-orientationj.ijm) | Fiji macro — OrientationJ Analysis (spline, σ = 1), saves the orientation maps |
-| [macro-directionality.ijm](macro-directionality.ijm) | Fiji macro — Directionality plugin (GUI only: it saves the displayed table) |
-| [script-directionality.groovy](script-directionality.groovy) | same as the macro through the plugin API, also works headless |
-| `benchmark-distributions-masked.png` / `-full.png` | the two summary figures above |
-| `results/` | per-image distributions (CSV), statistics, raw Fiji outputs — generated locally by the notebook and macros, not tracked |
+| [benchmark_orientation.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking_tools/benchmark_orientation.ipynb) | runs the five Python tools, loads the Fiji results, draws the comparison |
+| [gst_minimal.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking_tools/gst_minimal.py) | the gradient structure tensor operator, minimal implementation |
+| [macro-orientationj.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking_tools/macro-orientationj.ijm) | Fiji macro — OrientationJ Analysis (spline, σ = 1), saves the orientation maps |
+| [macro-directionality.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking_tools/macro-directionality.ijm) | Fiji macro — Directionality plugin (GUI only: it saves the displayed table) |
+| [script-directionality.groovy](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking_tools/script-directionality.groovy) | same as the macro through the plugin API, also works headless |

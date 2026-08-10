@@ -1,57 +1,51 @@
-# OrientationJ
+<p align="center"><img src="docs/assets/logo-orientationj.png" height="56" alt="OrientationJ"></p>
 
-**ImageJ and Fiji plugins for directional image analysis** — local orientation,
-energy and coherency from the gradient structure tensor.
+<h3 align="center">A series of ImageJ and Fiji plugins for local directional image analysis</h3>
 
-*Written by Daniel Sage, Biomedical Imaging Group (BIG), EPFL, Switzerland —
-[bigwww.epfl.ch/demo/orientation](https://bigwww.epfl.ch/demo/orientation/)*
+<hr>
 
-[![Download](https://img.shields.io/badge/Download-OrientationJ__.jar-4878a8?style=for-the-badge)](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest/download/OrientationJ_.jar)
-[![Documentation](https://img.shields.io/badge/Documentation-website-3a3a37?style=for-the-badge)](https://Biomedical-Imaging-Group.github.io/OrientationJ/)
+<p align="center"><sub><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a><br>AUGUST 2026</sub></p>
 
-| | |
-|---|---|
-| **[Documentation](https://Biomedical-Imaging-Group.github.io/OrientationJ/)** | installation, plugin modes, theory, how to cite |
-| **[Releases](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases)** | the plugin JAR, ready for the ImageJ/Fiji `plugins` folder |
-| **[Theoretical background](orientationj-theoretical-background/)** | the gradient structure tensor, features and invariants (LaTeX + PDF) |
-| **[Test images](orientationj-test-images/)** | 16 images with masks and a full result overview |
-| **[Python port](orientationj-python-port/)** | faithful NumPy reimplementation of the analysis, distribution and vector field |
-| **[Assessment](assessment/)** | reproducible experiments around the plugin |
-| — [Benchmarking](assessment/benchmarking_tools/) | cross-tool comparison of the orientation distribution (7 tools) |
-| — [GST operator](assessment/operator_gst/) | minimal forward model and blind inversion of (C, E, θ) |
-| **[In the literature](orientationj-in-scientific-literature/)** | how published papers use and cite OrientationJ |
-| **[Version history](docs/HISTORY.md)** | releases and changes |
+<hr>
+
+<p align="center">
+<a href="https://Biomedical-Imaging-Group.github.io/OrientationJ/assets/OrientationJ_.jar"><img src="https://img.shields.io/badge/Download-OrientationJ__.jar-db3f2e?style=for-the-badge" alt="Download"></a>
+<a href="https://Biomedical-Imaging-Group.github.io/OrientationJ/"><img src="https://img.shields.io/badge/Documentation-website-db3f2e?style=for-the-badge" alt="Documentation"></a>
+</p>
+
+## Documentation
+
+[Installation](https://Biomedical-Imaging-Group.github.io/OrientationJ/installation/) ·
+[How to use](https://Biomedical-Imaging-Group.github.io/OrientationJ/how-to-use/) ·
+[Theory](https://Biomedical-Imaging-Group.github.io/OrientationJ/theory/) ·
+[Test images](https://Biomedical-Imaging-Group.github.io/OrientationJ/test-images/) ·
+[Benchmarking](https://Biomedical-Imaging-Group.github.io/OrientationJ/benchmarking/) ·
+[How to cite](https://Biomedical-Imaging-Group.github.io/OrientationJ/#how-to-cite) ·
+[In the literature](https://Biomedical-Imaging-Group.github.io/OrientationJ/literature.html) ·
+[Javadoc API](https://Biomedical-Imaging-Group.github.io/OrientationJ/api/)
+
+The original OrientationJ website remains at [bigwww.epfl.ch/demo/orientation](https://bigwww.epfl.ch/demo/orientation/).
+
+![Color survey of the Tree Rings sample while the local window sweeps](docs/assets/tree-orientation.gif)
 
 ## Outline
 
-The aim is to characterize the orientation and isotropy properties of a region of
-interest (ROI) in an image, based on the evaluation of the gradient structure tensor
-in a local neighborhood. OrientationJ automates this orientation analysis with a
-series of Java plugins for ImageJ and Fiji:
+OrientationJ extracts the local directional information of an image: which way the structures run, how strongly they are aligned, and how that alignment varies across the field of view. It packages a solid image-processing core — cubic-spline gradients, the gradient structure tensor and its exact eigen-analysis — into easy tools for ImageJ and Fiji: one dialog per task, immediate visual feedback, and full macro scriptability.
 
-* [visual representation](https://bigwww.epfl.ch/demo/orientationj/#analysis) of the orientation of an image (color survey);
-* [vector field](https://bigwww.epfl.ch/demo/orientationj/#vector) map on a grid;
-* [distribution](https://bigwww.epfl.ch/demo/orientationj/#dist) of orientations;
-* detection of [keypoints](https://bigwww.epfl.ch/demo/orientationj/#corner) (Harris corner).
+The outputs are made both to be looked at and to be measured: color surveys that paint the orientation over the original image, vector fields ready for figures, angular histograms and per-region measurements for quantification. A companion plugin, MonogenicJ, extends the analysis to a multiresolution monogenic representation.
 
-Other tools: manual [measurement](https://bigwww.epfl.ch/demo/orientationj/#measure)
-of orientation and coherency in a ROI, computation of the dominant orientation,
-alignment of images based on the gradient structure tensor, and generators of test
-images (chirp).
+Two examples from the [test-images suite](orientationj-test-images/):
 
-Since version 2.0.7, OrientationJ also includes a plugin for the multiresolution
-wavelet-based [monogenic](https://bigwww.epfl.ch/demo/monogenicj/) analysis of 2D
-images.
+[<img src="orientationj-test-images/results/cell_aemisegger.png">](orientationj-test-images/results/cell_aemisegger.png)
+
+[<img src="orientationj-test-images/results/synthetic_chirp_1024.png">](orientationj-test-images/results/synthetic_chirp_1024.png)
+
+## Reference
+
+Z. Püspöki, M. Storath, D. Sage, M. Unser, [Transforms and Operators for Directional Bioimage Analysis: A Survey](https://bigwww.epfl.ch/publications/puespoeki1603.html), Advances in Anatomy, Embryology and Cell Biology, vol. 219, Focus on Bio-Image Informatics, Springer, 2016.
+
+The complete list of references is in the [documentation](https://Biomedical-Imaging-Group.github.io/OrientationJ/#how-to-cite).
 
 ## Install
 
-Download [`OrientationJ_.jar`](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest/download/OrientationJ_.jar),
-copy it into the `plugins` folder of ImageJ or Fiji, restart — the commands appear
-under **Plugins ▸ OrientationJ**. Details: [installation guide](https://Biomedical-Imaging-Group.github.io/OrientationJ/installation/).
-
-## References
-
-* Reference on the method: Z. Püspöki, M. Storath, D. Sage, M. Unser, [Transforms and Operators for Directional Bioimage Analysis: A Survey](https://bigwww.epfl.ch/publications/puespoeki1603.html), Advances in Anatomy, Embryology and Cell Biology, vol. 219, Focus on Bio-Image Informatics, Springer, 2016.
-* Reference on the monogenic analysis: M. Unser, D. Sage, D. Van De Ville, [Multiresolution Monogenic Signal Analysis Using the Riesz-Laplace Wavelet Transform](https://bigwww.epfl.ch/publications/unser0907.html), IEEE Transactions on Image Processing, 2009.
-* Reference on the angular distribution: R. Rezakhaniha, A. Agianniotis, J.T.C. Schrauwen, A. Griffa, D. Sage, C.V.C. Bouten, F.N. van de Vosse, M. Unser, N. Stergiopulos, [Experimental Investigation of Collagen Waviness and Orientation in the Arterial Adventitia Using Confocal Laser Scanning Microscopy](https://bigwww.epfl.ch/publications/rezakhaniha1201.html), Biomechanics and Modeling in Mechanobiology, vol. 11, no. 3-4, 2012.
-* Reference on the local measurements: E. Fonck, G.G. Feigl, J. Fasel, D. Sage, M. Unser, D.A. Rüfenacht, N. Stergiopulos, [Effect of Aging on Elastin Functionality in Human Cerebral Arteries](https://bigwww.epfl.ch/publications/fonck0901.html), Stroke, vol. 40, no. 7, 2009.
+Download [`OrientationJ_.jar`](https://Biomedical-Imaging-Group.github.io/OrientationJ/assets/OrientationJ_.jar) and copy it into the `plugins` folder of [ImageJ](https://imagej.net/ij/) or [Fiji](https://fiji.sc/), then restart — the commands appear under **Plugins ▸ OrientationJ**. Details: [installation guide](https://Biomedical-Imaging-Group.github.io/OrientationJ/installation/).

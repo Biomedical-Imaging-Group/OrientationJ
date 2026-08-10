@@ -1,0 +1,85 @@
+/* OrientationJ site — custom styling on top of Material for MkDocs. */
+
+/* Helvetica everywhere (theme.font is disabled, no Google Fonts loaded);
+   code keeps a monospace stack for legibility */
+:root {
+  --md-text-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  --md-code-font: "Menlo", "Consolas", "Liberation Mono", monospace;
+}
+
+/* accent: the blue used throughout the repository's figures */
+:root {
+  --md-accent-fg-color: #4878a8;
+  --md-typeset-a-color: #4878a8;
+}
+[data-md-color-scheme="slate"] {
+  --md-typeset-a-color: #7ba7d7;
+  --md-accent-fg-color: #7ba7d7;
+}
+
+/* book-like measure: slightly narrower content column */
+.md-grid {
+  max-width: 1160px;
+}
+
+/* headings: calm weight, a rule under H1 like a chapter head */
+.md-typeset h1 {
+  font-weight: 600;
+  color: var(--md-default-fg-color);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  padding-bottom: 0.3em;
+}
+.md-typeset h2 {
+  font-weight: 600;
+}
+
+/* page banner above the title: a book title page, centered */
+.md-typeset .oj-banner {
+  text-align: center;
+  margin: 0 0 1.6em 0;
+}
+.md-typeset .oj-banner .oj-logo {
+  height: 30px;
+  width: auto;
+  margin: 0 auto;
+}
+.md-typeset .oj-banner hr {
+  border: none;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  margin: 0.6em 0;
+}
+.md-typeset .oj-banner p {
+  margin: 0.3em 0;
+}
+.md-typeset .oj-subtitle {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: var(--md-default-fg-color);
+  margin: 0.2em 0 0.2em;
+}
+.md-typeset .oj-author,
+.md-typeset .oj-author a {
+  font-size: 0.6rem;
+  line-height: 1;
+  color: var(--md-default-fg-color--lighter);
+}
+.md-typeset .oj-author a:hover {
+  color: var(--md-accent-fg-color);
+}
+.md-typeset .oj-date {
+  font-size: 0.58rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--lighter);
+}
+.md-typeset .oj-banner .oj-tree {
+  width: 100%;
+  display: block;
+  margin: 0.2em 0 0;
+}
+
+/* comfortable body text */
+.md-typeset {
+  font-size: 0.78rem;
+  line-height: 1.6;
+}
