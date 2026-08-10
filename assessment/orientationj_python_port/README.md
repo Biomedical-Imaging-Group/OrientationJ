@@ -1,7 +1,7 @@
 # OrientationJ Python Port
 
 A faithful NumPy port of the OrientationJ gradient structure tensor (GST) and three
-notebooks that run it on the 16 images of [../orientationj-test-images](../orientationj-test-images).
+notebooks that run it on the 16 images of [../orientationj-test-images](../../orientationj-test-images).
 
 ## Contents
 
@@ -16,11 +16,11 @@ notebooks that run it on the 16 images of [../orientationj-test-images](../orien
 
 ## Experiments
 
-The images are published in the [test-images results](../orientationj-test-images).
+The images are published in the [test-images results](../../orientationj-test-images).
 
 ##### Masks
 The distribution and the vector field are computed **inside the masks** of
-[../orientationj-test-images/masks](../orientationj-test-images/masks) (nonzero = analyzed): This removes the flat background, whose degenerate structure tensor.
+[../orientationj-test-images/masks](../../orientationj-test-images/masks) (nonzero = analyzed): This removes the flat background, whose degenerate structure tensor.
 
 ##### Settings
 

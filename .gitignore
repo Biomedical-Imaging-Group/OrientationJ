@@ -33,10 +33,10 @@ hs_err_pid*
 .claude/
 __pycache__/
 
-# research material: only the two benchmark folders are public, without results
+# research material: three public folders in assessment, without results
 /assessment/*
-!/assessment/benchmarking_tools/
-!/assessment/operator_gst/
-/assessment/benchmarking_tools/results/
-/assessment/operator_gst/results/
-/orientationj-python-port/results/
+!/assessment/benchmarking/
+!/assessment/gst_operator/
+!/assessment/orientationj_python_port/
+/assessment/benchmarking/results/
+/assessment/orientationj_python_port/results/

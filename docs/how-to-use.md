@@ -2,7 +2,7 @@
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">A series of ImageJ and Fiji plugins for local directional image analysis</p>
+<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 
@@ -20,7 +20,7 @@
 
 All plugins share the same core computation: the gradient structure tensor is evaluated in a local window whose size is set by the **σ** (local window) parameter, from a gradient computed by the selected **gradient method**. What differs is how the result is presented.
 
-<img src="../assets/gui-analysis.png" alt="The OrientationJ Analysis dialog" width="290" align="right" style="margin-left: 1.5em;">
+<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/docs/assets/gui-analysis.png" alt="The OrientationJ Analysis dialog" width="290" align="right" style="margin-left: 1.5em;">
 
 The *Analysis* dialog, shown here, is representative of all the plugins: the **Structure Tensor** block sets the two parameters that matter (local window σ, gradient method) and selects which feature maps to produce — each with its display scaling (*Scale [0..1]* or raw values) — and the **Color survey** block chooses which feature drives each HSB channel (by default hue = orientation, saturation = coherency, brightness = original image).
 
@@ -52,10 +52,6 @@ Produces color-coded maps of orientation, coherency, energy, directionality and 
 
 Builds a histogram of local orientations over the image, with optional minimum-coherency and minimum-energy thresholds so that well-defined structures count more than background. This is the plugin most often used to quantify fiber alignment.
 
-## Directions
-
-Reports dominant directions per detected structure as a table.
-
 ## Measure
 
 Returns orientation, coherency and energy inside the current selection. Useful when the question is about one local area rather than the whole field.
@@ -67,6 +63,14 @@ Collapses the whole image to a single angle plus a coherency value.
 ## Vector Field
 
 Overlays orientation vectors on a regular grid; the vector length can be constant or scaled by energy, coherency, or both. Good for figures; less good for quantification.
+
+## Clustering
+
+Groups locally oriented regions into clusters and reports one representative vector per cluster (position, direction, coherency, energy) — a compact, structure-level summary of the vector field.
+
+## Horizontal Alignment
+
+Takes a stack and rotates each slice so that its dominant direction becomes horizontal — useful to register fibrous samples acquired at arbitrary orientations before further analysis.
 
 ## Corner Harris
 

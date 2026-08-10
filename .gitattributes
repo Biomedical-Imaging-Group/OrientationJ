@@ -1,0 +1,5 @@
+# GitHub language statistics: the executed notebooks weigh megabytes (embedded
+# figures), dwarfing the Java plugin source. Count them as documentation so
+# the repository is correctly reported as a Java project.
+*.ipynb linguist-documentation
+docs/literature.html linguist-documentation

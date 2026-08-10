@@ -9,10 +9,10 @@
 
 root = "/Users/dsage/Desktop/dev/OrientationJ/";
 input = root + "orientationj-test-images/images/";
-output = root + "assessment/benchmarking_tools/results/fiji/";
+output = root + "assessment/benchmarking/results/fiji/";
 
 if (!File.exists(input)) exit("Input folder not found: " + input);
-File.makeDirectory(root + "assessment/benchmarking_tools/results/");
+File.makeDirectory(root + "assessment/benchmarking/results/");
 File.makeDirectory(output);
 
 names = newArray("synthetic_rings_dither_512", "synthetic_nematic_512",
