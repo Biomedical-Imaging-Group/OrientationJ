@@ -2,7 +2,7 @@
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
+<p class="oj-subtitle">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 
@@ -98,7 +98,7 @@ J_2 = \tfrac12 \operatorname{tr}(\mathbf{s}^2) = \tfrac14 (\lambda_1 - \lambda_2
 = \frac{\sqrt{2}\, C}{\sqrt{1 + C^2}} \in [0, 1]
 \]
 
-The coherency indicates whether the local image features are oriented or not: \(C = 1\) when the local structure has one dominant orientation, and \(C = 0\) if the image is essentially isotropic in the local neighborhood. The fractional anisotropy (Basser & Pierpaoli, 1996) carries the same information through the one-to-one map \(\mathrm{FA} = \sqrt{2} C / \sqrt{1 + C^2}\), but normalizes the eigenvalue contrast by the Frobenius norm of the tensor, following the usage established in diffusion-tensor imaging. The directionality \(J_2\) is the second invariant of the deviator (the von Mises invariant); it is an **unnormalized** measure that grows with both contrast and alignment.
+The coherency indicates whether the local image features are oriented or not: \(C = 1\) when the local structure has one dominant orientation, and \(C = 0\) if the image is essentially isotropic in the local neighborhood; it is the quantity that coherence-enhancing methods build on (Weickert, 1999). The fractional anisotropy (Basser & Pierpaoli, 1996) carries the same information through the one-to-one map \(\mathrm{FA} = \sqrt{2} C / \sqrt{1 + C^2}\), but normalizes the eigenvalue contrast by the Frobenius norm of the tensor, following the usage established in diffusion-tensor imaging. The directionality \(J_2\) is the second invariant of the deviator (the von Mises invariant); it is an **unnormalized** measure that grows with both contrast and alignment.
 
 ## Summary of features and invariants
 
@@ -111,9 +111,9 @@ Two independent scalars fix the tensor up to rotation; complete sets include \((
 | Energy \(E\) | \(J_{xx} + J_{yy}\) | \(\lambda_1 + \lambda_2\) | \(E = I_1\) | gradient energy (Jähne 1997); units \(g^2\) |
 | Coherency \(C\) | \(\frac{\sqrt{(J_{yy} - J_{xx})^2 + 4 J_{xy}^2}}{J_{xx} + J_{yy}}\) | \(\frac{\lambda_1 - \lambda_2}{\lambda_1 + \lambda_2}\) | \(C = \frac{2\sqrt{J_2}}{I_1}\) | alignment index, nematic order parameter; 0 isotropic, 1 fiber |
 | Deviator \(\mathbf{s}\) | \(\mathbf{J} - \tfrac12 \operatorname{tr}(\mathbf{J})\, \mathbf{I}\) | \(\begin{bmatrix} \lambda_1 - \bar\lambda & 0 \\ 0 & \lambda_2 - \bar\lambda \end{bmatrix}\) | — | deviatoric part of \(\mathbf{J}\); \(\operatorname{tr}(\mathbf{s}) = 0\) |
-| Intensity \(I_1\) | \(\operatorname{tr}(\mathbf{J})\) | \(\lambda_1 + \lambda_2\) | \(I_1 = E\) | first invariant |
+| First invariant \(I_1\) | \(\operatorname{tr}(\mathbf{J})\) | \(\lambda_1 + \lambda_2\) | \(I_1 = E\) | first invariant |
 | Directionality \(J_2\) | \(\tfrac14 (J_{xx} - J_{yy})^2 + J_{xy}^2\) | \(\tfrac14 (\lambda_1 - \lambda_2)^2\) | \(J_2 = \tfrac14 C^2 E^2\) | second deviatoric invariant (von Mises 1913); units \(g^4\) |
-| Distortion energy \(\sigma\) | \(\sqrt{2}\, \lVert \mathbf{s} \rVert\) | \(\lambda_1 - \lambda_2\) | \(\sigma = 2\sqrt{J_2} = I_1\, \mathrm{RA}\) | equivalent uniaxial magnitude; units \(g^2\) |
+| Distortion energy \(\sigma_d\) | \(\sqrt{2}\, \lVert \mathbf{s} \rVert\) | \(\lambda_1 - \lambda_2\) | \(\sigma_d = 2\sqrt{J_2} = I_1\, \mathrm{RA}\) | equivalent uniaxial magnitude; units \(g^2\) |
 | Relative anisotropy \(\mathrm{RA}\) | \(\frac{\lVert \mathbf{s} \rVert}{\sqrt{2}\, \bar\lambda}\) | \(\frac{\lambda_1 - \lambda_2}{\lambda_1 + \lambda_2}\) | \(\mathrm{RA} = C\) | coefficient of variation of the \(\lambda_i\) (Basser 1996) |
 | Fractional anisotropy \(\mathrm{FA}\) | \(\frac{\sqrt{2}\, \lVert \mathbf{s} \rVert}{\lVert \mathbf{J} \rVert}\) | \(\frac{\lambda_1 - \lambda_2}{\sqrt{\lambda_1^2 + \lambda_2^2}}\) | \(\mathrm{FA} = \frac{\sqrt{2}\, C}{\sqrt{1 + C^2}}\) | degree of anisotropy (Basser 1996) |
 
@@ -121,7 +121,7 @@ Two independent scalars fix the tensor up to rotation; complete sets include \((
 
 Every feature evaluated on canonical eigenvalue pairs \((\lambda_1, \lambda_2)\), from the ideal oriented case \((1, 0)\) to the isotropic case \((1, 1)\):
 
-| \((\lambda_1, \lambda_2)\) | Structure | \(E = I_1\) | \(J_2\) | \(\sigma\) | \(C\) | \(\mathrm{RA}\) | \(\mathrm{FA}\) |
+| \((\lambda_1, \lambda_2)\) | Structure | \(E = I_1\) | \(J_2\) | \(\sigma_d\) | \(C\) | \(\mathrm{RA}\) | \(\mathrm{FA}\) |
 |---|---|---|---|---|---|---|---|
 | (1, 0) | ideal oriented | 1.000 | 0.250 | 1.000 | 1.000 | 1.000 | 1.000 |
 | (5, 0.2) | strong | 5.200 | 5.760 | 4.800 | 0.923 | 0.923 | 0.959 |
@@ -149,4 +149,4 @@ Coherency and fractional anisotropy are dimensionless and naturally bounded in \
 - J. Weickert, "Coherence-enhancing diffusion filtering," *International Journal of Computer Vision*, vol. 31, 1999.
 - R. von Mises, "Mechanik der festen Körper im plastisch-deformablen Zustand," *Nachrichten von der Gesellschaft der Wissenschaften zu Göttingen*, 1913.
 - P. J. Basser and C. Pierpaoli, "Microstructural and physiological features of tissues elucidated by quantitative-diffusion-tensor MRI," *Journal of Magnetic Resonance, Series B*, vol. 111, 1996.
-- Z. Püspöki, M. Storath, D. Sage, and M. Unser, "Transforms and operators for directional bioimage analysis: A survey," *Focus on Bio-Image Informatics*, Springer, 2016.
+- Z. Püspöki, M. Storath, D. Sage, and M. Unser, "Transforms and operators for directional bioimage analysis: A survey," *Advances in Anatomy, Embryology and Cell Biology*, vol. 219, Focus on Bio-Image Informatics, Springer, 2016.

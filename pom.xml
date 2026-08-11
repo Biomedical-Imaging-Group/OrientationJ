@@ -26,7 +26,7 @@
 	</organization>
 	<licenses>
 		<license>
-			<name>Simplified BSD License</name>
+			<name>GNU General Public License v3.0</name>
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
@@ -76,7 +76,7 @@
 	<properties>
 		<package-name>orientationj</package-name>
 		<main-class>OrientationJ_Analysis</main-class>
-		<license.licenseName>bsd_2</license.licenseName>
+		<license.licenseName>gpl_v3</license.licenseName>
 		<license.copyrightOwners>EPFL</license.copyrightOwners>
 	</properties>
 

@@ -58,7 +58,7 @@ def load(path):
 
 def _spline_coefficients(signal):
     """doSymmetricalExponentialFilter along the last axis (c0 = 6, a = sqrt(3) - 2),
-    with the plugin's truncated-mirror initialisation (epsilon = 1e-6)."""
+    with the plugin's truncated-mirror initialization (epsilon = 1e-6)."""
     a = SPLINE_POLE
     n = signal.shape[-1]
     flat = signal.reshape(-1, n)

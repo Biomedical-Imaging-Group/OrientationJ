@@ -2,7 +2,7 @@
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
+<p class="oj-subtitle">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 
@@ -29,9 +29,7 @@
 
 ## Checking the installation
 
-Open a test image from the [Test images](test-images.md) page and run
-**Plugins ▸ OrientationJ ▸ OrientationJ Dominant Direction**. On the chirp image the
-reported orientation should follow the local stripe direction.
+Run **Plugins ▸ OrientationJ ▸ Test Image ▸ Chirp Image Small** to generate a chirp, then **Plugins ▸ OrientationJ ▸ OrientationJ Analysis** on it. In the color survey the hue must follow the local stripe direction everywhere, turning smoothly around the center of the pattern.
 
 ## From source
 
