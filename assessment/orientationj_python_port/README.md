@@ -1,7 +1,7 @@
 # OrientationJ Python Port
 
 A faithful NumPy port of the OrientationJ gradient structure tensor (GST) and three
-notebooks that run it on the 16 images of [../orientationj-test-images](../../orientationj-test-images).
+notebooks that run it on the 16 [test images](../../orientationj-test-images).
 
 ## Contents
 
@@ -11,18 +11,19 @@ notebooks that run it on the 16 images of [../orientationj-test-images](../../or
 | [analysis.ipynb](analysis.ipynb) | OrientationJ Analysis → orientation / coherency / energy TIFFs + color survey PNG per image |
 | [distribution.ipynb](distribution.ipynb) | OrientationJ Distribution → 180-bin histogram CSV per image + statistics |
 | [vector_field.ipynb](vector_field.ipynb) | OrientationJ Vector Field → vector table CSV per image + overlays |
-| [make_gallery.py](make_gallery.py) | generates the panel gallery of test images |
+| [make_gallery.py](make_gallery.py) | generates the overview panels of the test images |
+| `results/` | everything the notebooks write (`analysis/`, `distribution/`, `vectorfield/`) — generated locally, not tracked |
 
 
 ## Experiments
 
-The images are published in the [test-images results](../../orientationj-test-images).
+The resulting panels are published in the [test-images results](../../orientationj-test-images/results).
 
-##### Masks
+### Masks
 The distribution and the vector field are computed **inside the masks** of
-[../orientationj-test-images/masks](../../orientationj-test-images/masks) (nonzero = analyzed): This removes the flat background, whose degenerate structure tensor.
+[../orientationj-test-images/masks](../../orientationj-test-images/masks) (nonzero = analyzed). This removes the flat background, whose degenerate structure tensor (exactly Jxy = 0 or Jxx = Jyy in float32) otherwise piles up in the 0°, ±45° and ±90° bins.
 
-##### Settings
+### Settings
 
 All experiments use the **cubic-spline gradient** only (the plugin default, gradient code 0), **σ = 1** for the Gaussian window of the structure tensor,
 a **16 × 16** vector-field grid, and the plugin defaults everywhere else

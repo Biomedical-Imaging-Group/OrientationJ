@@ -11,7 +11,7 @@ BANNER = '''<div class="oj-banner" markdown>
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
+<p class="oj-subtitle">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 

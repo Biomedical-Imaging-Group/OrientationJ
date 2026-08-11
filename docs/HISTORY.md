@@ -1,3 +1,21 @@
+<div class="oj-banner" markdown>
+
+![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
+
+<p class="oj-subtitle">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
+
+<hr>
+
+<p class="oj-author"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
+
+<p class="oj-date">August 2026</p>
+
+<hr>
+
+</div>
+
+# Version history
+
 Version 2.1.0 (6 August 2026)
 =============
 _Daniel Sage_
@@ -21,19 +39,19 @@ Version 2.0.4 (15 March 2019)
 =============
 _Daniel Sage_
 
-* Fixed a bug in the computation of the mean of cells for the vector field. The overlay line was also not at the right position (shifted by size/2) 
+* Fixed a bug in the computation of the mean of cells for the vector field. The overlay line was also not at the right position (shifted by size/2)
 
 Version 2.0.3 (15 June 2018)
 =============
 _Daniel Sage_
 
-* Fixed a bug in the record of the macro (vectortype) 
+* Fixed a bug in the record of the macro (vectortype)
 
 Version 2.0.2 (11 June 2018)
 =============
 _Daniel Sage_
 
-* Make the orientation in degrees [-90,90] in the table VectorField, like in the other plugins 
+* Make the orientation in degrees [-90,90] in the table VectorField, like in the other plugins
 
 Version 2.0.0 (1 May 2018)
 =============

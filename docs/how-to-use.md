@@ -2,7 +2,7 @@
 
 ![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
 
-<p class="oj-subtitle">Local directional analysis of 2D images — ImageJ/Fiji plugins</p>
+<p class="oj-subtitle">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 <hr>
 
@@ -18,60 +18,87 @@
 
 # How to use
 
-All plugins share the same core computation: the gradient structure tensor is evaluated in a local window whose size is set by the **σ** (local window) parameter, from a gradient computed by the selected **gradient method**. What differs is how the result is presented.
+Open a 2D grayscale image and pick a command under **Plugins ▸ OrientationJ**. Whatever the command, the computation is the same: a gradient is taken at every pixel, the gradient structure tensor is averaged over a local window, and its eigen-analysis gives the orientation, the coherency and the energy. Two settings govern the measurement itself — the **analysis scale σ** and the **gradient** — and both appear in the *Structure Tensor* block of every dialog; each command then adds its own options, such as the coherency and energy thresholds of *Distribution* or the grid of *Vector Field*.
 
 <img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/docs/assets/gui-analysis.png" alt="The OrientationJ Analysis dialog" width="290" align="right" style="margin-left: 1.5em;">
 
-The *Analysis* dialog, shown here, is representative of all the plugins: the **Structure Tensor** block sets the two parameters that matter (local window σ, gradient method) and selects which feature maps to produce — each with its display scaling (*Scale [0..1]* or raw values) — and the **Color survey** block chooses which feature drives each HSB channel (by default hue = orientation, saturation = coherency, brightness = original image).
+The *Analysis* dialog, shown here, is representative of all of them. The upper block sets σ ("Local window") and the gradient, then selects which feature maps to produce. Energy and directionality are unbounded, so they carry a display scaling — *Scale [0..1]* for a normalized view, *No scale* for the raw values you want to measure; coherency and anisotropy are already in [0, 1] and are shown as computed. The lower block builds the color survey: which feature drives the hue, the saturation and the brightness. Every field has a macro equivalent, so once a setting works it can be recorded and replayed over a whole folder.
 
-## Choosing σ
+## Select the scale σ
 
-σ is expressed in pixels and sets the size of the neighborhood over which the tensor is averaged. Two rules of thumb:
+σ is the standard deviation, in pixels, of the Gaussian window over which the tensor is averaged. It is the most consequential choice: it defines what *local* means, and therefore which structures the measurement describes.
 
-- **Match the structure width.** σ of about half the width of the fibers or stripes of interest is a good starting point — σ = 1–2 for thin fibers, larger for coarse bundles.
-- **Know the trade-off.** A small σ follows fine detail but yields noisy orientations and low coherency everywhere; a large σ gives stable, smooth orientations but blends neighboring structures and rounds corners. When structures exist at several scales, analyze at several σ and compare — the coherency map tells you at which scale each region is best described.
+![Color survey of collagen for increasing σ](assets/scale-survey.gif)
 
-A quick way to calibrate: run the **chirp** [test image](test-images.md), whose local period sweeps across the field, and watch where the orientation map stays faithful for your σ.
+<p class="oj-caption">The same collagen field analyzed with a growing window. A small σ resolves individual fibers and reacts to noise; a large σ merges neighbors into a smooth regional trend.</p>
 
-## Choosing the gradient
+Two rules of thumb:
 
-The gradient method sets how the derivatives \(f_x, f_y\) are computed before the tensor is assembled:
+- **Match the structure width.** Start with σ of about half the width of the fibers or stripes of interest — σ = 1–2 px for thin fibers, more for coarse bundles.
+- **Know what you trade.** A small σ follows fine detail but yields noisy angles and low coherency everywhere; a large σ gives stable, smooth angles but blends neighboring structures and rounds corners. When structures live at several scales, analyze at several σ and compare: the coherency map tells you at which scale each region is best described.
 
-- **Cubic Spline** (the default) — an exact derivative of the cubic-spline interpolation of the image; the most accurate choice on fine structures, and the setting used in all the benchmarks of this documentation. Keep it unless you have a reason not to.
-- **Finite Difference** — the simplest and fastest scheme; noticeably more biased where the structures approach the pixel scale.
-- **Fourier** — the exact spectral derivative; well suited to smooth periodic patterns, but its global support can ring near edges and image borders.
-- **Riesz** and **Gaussian** — smoother, band-limited variants that trade spatial locality for noise robustness.
+The effect is easiest to read on the angular histogram, where a growing σ sharpens a well-defined peak and suppresses the background spread:
 
-As with σ, the chirp test image makes the differences visible: compare the orientation error as the local period shrinks.
+![Orientation distributions for increasing σ on four images](assets/scale-distributions.jpg)
+
+## Select the gradient
+
+The gradient decides how the derivatives are estimated before the tensor is assembled. On a chirp, whose local period is known everywhere, the differences are measurable:
+
+![Angular error versus local period for the five gradients](assets/gradient-error.png)
+
+- **Cubic Spline** (the default) — the exact derivative of the cubic-spline interpolation of the image: accurate down to fine structures, and the setting used throughout this documentation. Keep it unless you have a reason not to.
+- **Finite Difference** — the simplest and fastest, but one to two orders of magnitude more biased, increasingly so as structures get finer.
+- **Fourier**, **Riesz** and **Gaussian** — band-limited derivatives that stay accurate at small periods, useful on noisy or oscillating data, at the cost of spatial locality (Fourier can ring near the borders).
 
 ## Analysis
 
-Produces color-coded maps of orientation, coherency, energy, directionality and anisotropy. Orientation is mapped to hue, and you can weight the display by coherency, by energy, or by both, so that flat or noisy regions do not dominate the picture. The default **color survey** uses hue = orientation, saturation = coherency, brightness = original image.
+Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — and the color survey, which paints them over the image: hue for the orientation, saturation for the coherency, brightness for the original intensity. Flat and isotropic regions therefore stay gray, and only genuinely oriented structures take on color.
+
+![The orientation color scale](assets/color-scale.jpg)
+
+<p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°.</p>
 
 ## Distribution
 
-Builds a histogram of local orientations over the image, with optional minimum-coherency and minimum-energy thresholds so that well-defined structures count more than background. This is the plugin most often used to quantify fiber alignment.
+Bins the local orientations into an angular histogram, with minimum-coherency and minimum-energy thresholds so that only meaningful pixels are counted. This is the command most often used to quantify alignment, and its table can be exported for statistics.
 
-## Measure
-
-Returns orientation, coherency and energy inside the current selection. Useful when the question is about one local area rather than the whole field.
-
-## Dominant Direction
-
-Collapses the whole image to a single angle plus a coherency value.
+![Orientation distribution of a collagen image](assets/montage3.jpg)
 
 ## Vector Field
 
-Overlays orientation vectors on a regular grid; the vector length can be constant or scaled by energy, coherency, or both. Good for figures; less good for quantification.
+Overlays one vector per grid cell, with a length that is constant or scaled by energy, coherency, or both. The most readable summary for a figure, though the histogram is the better instrument for quantification.
+
+![Vector field overlaid on an image](assets/vector-field.png)
+
+## Measure
+
+Reports orientation, coherency and energy inside the current selections, as a table — the tool for comparing a few regions rather than mapping the whole field.
+
+![Measurements inside elliptical selections](assets/montage2.jpg)
+
+## Dominant Direction
+
+Collapses the whole image to a single angle with its coherency: a one-number answer, convenient for batch comparisons across a series.
 
 ## Clustering
 
-Groups locally oriented regions into clusters and reports one representative vector per cluster (position, direction, coherency, energy) — a compact, structure-level summary of the vector field.
+Groups locally oriented regions into clusters and reports one representative vector per cluster — position, direction, coherency, energy — a structure-level summary of the vector field.
 
 ## Horizontal Alignment
 
-Takes a stack and rotates each slice so that its dominant direction becomes horizontal — useful to register fibrous samples acquired at arbitrary orientations before further analysis.
+Rotates each slice of a stack so that its dominant direction becomes horizontal, which registers fibrous samples acquired at arbitrary angles before further analysis.
+
+## Test Image
+
+Generates the calibration patterns the documentation uses: a radial chirp, whose local period sweeps across the field, and a stack of oriented patterns — in small, large and custom sizes. The fastest way to check an installation, and the reference material for choosing σ and the gradient.
+
+## MonogenicJ
+
+A companion plugin, on a different footing: instead of one local window it builds a multiresolution **monogenic** representation of the image with the Riesz–Laplace wavelet transform, and reports orientation, coherency and phase at every scale. Use it when the structures of interest live at several scales at once. Details on the [MonogenicJ page](https://bigwww.epfl.ch/demo/monogenicj/).
 
 ## Corner Harris
 
-Harris corner detection, included because it shares the structure-tensor machinery.
+Harris keypoint detection, built on the same structure tensor: corners are the places where both eigenvalues are large.
+
+![Harris corner detection](assets/harris.png)

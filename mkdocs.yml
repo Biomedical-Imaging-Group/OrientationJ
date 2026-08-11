@@ -60,14 +60,14 @@ markdown_extensions:
   - pymdownx.superfences
 
 extra_javascript:
+  - javascripts/compare.js
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
   - Home: index.md
-  - User guide:
-      - Installation: installation.md
-      - How to use: how-to-use.md
+  - Installation: installation.md
+  - How to use: how-to-use.md
   - Theory: theory.md
   - Test images: test-images.md
   - Benchmarking: benchmarking.md

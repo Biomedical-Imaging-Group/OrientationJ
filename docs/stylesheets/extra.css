@@ -108,3 +108,73 @@
     display: none;
   }
 }
+
+/* before/after comparison slider (docs/javascripts/compare.js) */
+.md-typeset .oj-compare {
+  --pos: 50%;
+  position: relative;
+  display: block;
+  max-width: 520px;
+  margin: 1.4em auto 0.6em;
+  line-height: 0;
+  border-radius: 3px;
+  overflow: hidden;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.18);
+}
+.md-typeset .oj-compare img {
+  margin: 0;
+  width: 100%;
+  display: block;
+}
+.md-typeset .oj-compare img + img {
+  position: absolute;
+  inset: 0;
+  clip-path: inset(0 0 0 var(--pos));
+}
+.md-typeset .oj-compare .oj-compare-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: var(--pos);
+  width: 2px;
+  margin-left: -1px;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+}
+.md-typeset .oj-compare .oj-compare-line::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 26px;
+  height: 26px;
+  transform: translate(-50%, -50%);
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.25);
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+.md-typeset .oj-compare input[type="range"] {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: 0;
+  cursor: ew-resize;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+}
+.md-typeset .oj-compare input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 40px;
+  height: 100%;
+}
+.md-typeset .oj-caption {
+  text-align: center;
+  font-size: 0.68rem;
+  color: var(--md-default-fg-color--light);
+  margin: 0 0 1.6em;
+}
