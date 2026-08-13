@@ -3,7 +3,7 @@ site_url: https://Biomedical-Imaging-Group.github.io/OrientationJ/
 
 site_name: OrientationJ
 repo_url: https://github.com/Biomedical-Imaging-Group/OrientationJ
-repo_name: OrientationJ on GitHub
+repo_name: GitHub
 site_description: >-
   Orientation, energy and coherency analysis of images using the gradient
   structure tensor. ImageJ and Fiji plugins from the Biomedical Imaging Group, EPFL.
@@ -75,7 +75,10 @@ extra_javascript:
 nav:
   - Home: index.md
   - Installation: installation.md
-  - User guide: user-guide.md
+  - User guide:
+      - Introduction: user-guide/index.md
+      - Selecting the parameters: user-guide/parameters.md
+      - Plugins: user-guide/plugins.md
   - Theory: theory.md
   - Test images: test-images.md
   - Assessment:
