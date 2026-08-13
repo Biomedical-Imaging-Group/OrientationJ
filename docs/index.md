@@ -1,28 +1,16 @@
-<div class="oj-banner" markdown>
-
-dev
-
-![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
-
-<p class="oj-subtitle">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
-
-<hr>
-
-<p class="oj-author"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
-
-<p class="oj-date">August 2026</p>
-
-<hr>
-
-![Color survey of the Tree Rings sample, sweeping the local window](assets/tree-orientation.gif){ .oj-tree }
-
-</div>
-
 # OrientationJ
+
+<p class="oj-tagline">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
 Fibers, filaments, fringes, crack,fractures, flows, growth rings: many images are made of elongated structures, and what matters about them is not their intensity but the direction they follow. OrientationJ measures that direction everywhere in the image, together with how consistently it holds and how strongly it stands out from the background.
 
 At every pixel the plugins evaluate the **gradient structure tensor** over a small window and extract the **orientation** of the local structure, the **coherency** telling whether that orientation is well defined or the neighborhood is isotropic, and the **energy** telling whether there is any structure at all. From these come color surveys, vector fields, angular histograms and per-region measurements — figures to look at and numbers to report.
+
+The suite covers the whole workflow. **Analysis** produces the feature maps and the color survey; **Distribution** turns them into an angular histogram; **Vector Field** overlays a readable field of directions; **Measure** and **Dominant Direction** report numbers for a selection or a whole image; **Clustering** and **Horizontal Alignment** group and straighten oriented regions; **Corner Harris** detects keypoints from the same tensor; **Test Image** generates chirps and stacks to calibrate on; and **MonogenicJ** extends the analysis to a multiresolution monogenic representation. Every command runs from a dialog and from an ImageJ macro, and all of them share the same two core settings — the analysis scale σ and the gradient — described in [User guide](user-guide.md). The **Demonstration** below shows what they produce.
+
+The mathematics behind the measurement, from the weighted inner product to the tensor invariants, is derived in [Theory](theory.md). The orientation distribution of OrientationJ is compared with six other tools on a common dataset in [Benchmarking](assessment-benchmarking.md), and the images used throughout are published in [Test images](test-images.md). Two Python implementations accompany the plugin: the faithful [Python port](assessment-python-port.md), which reproduces it bit for bit, and the [minimal operator](assessment-operator.md), sixty lines of separable convolutions that need no transform. The five gradients are compared against analytic truth in the [gradient assessment](assessment-gradients.md).
+
+## Demonstration
 
 <div class="oj-compare">
 <img src="assets/collagen-input.jpg" alt="Collagen fibers, original image">
@@ -33,9 +21,11 @@ At every pixel the plugins evaluate the **gradient structure tensor** over a sma
 
 <p class="oj-caption">Drag the handle: collagen fibers on the left, the same field as a color survey on the right — hue gives the orientation, saturation the coherency.</p>
 
-The suite covers the whole workflow. **Analysis** produces the feature maps and the color survey; **Distribution** turns them into an angular histogram; **Vector Field** overlays a readable field of directions; **Measure** and **Dominant Direction** report numbers for a selection or a whole image; **Clustering** and **Horizontal Alignment** group and straighten oriented regions; **Corner Harris** detects keypoints from the same tensor; **Test Image** generates chirps and stacks to calibrate on; and **MonogenicJ** extends the analysis to a multiresolution monogenic representation. Every command runs from a dialog and from an ImageJ macro, and all of them share the same two core settings — the analysis scale σ and the gradient — described in [User guide](user-guide.md). The animated banner above sweeps σ on the classic *Tree Rings* sample: small windows follow every detail, large ones summarize the trend ([macro](assets/tree-orientation.txt)).
+The same measurement, run at a growing analysis scale σ on the classic *Tree Rings* sample — small windows follow every detail, large ones summarize the trend ([macro](assets/tree-orientation.txt)):
 
-The mathematics behind the measurement, from the weighted inner product to the tensor invariants, is derived in [Theory](theory.md). The orientation distribution of OrientationJ is compared with six other tools on a common dataset in [Benchmarking](assessment-benchmarking.md), and the images used throughout are published in [Test images](test-images.md). Two Python implementations accompany the plugin: the faithful [Python port](assessment-python-port.md), which reproduces it bit for bit, and the [minimal operator](assessment-operator.md), sixty lines of separable convolutions that need no transform. The five gradients are compared against analytic truth in the [gradient assessment](assessment-gradients.md).
+![Color survey of the Tree Rings sample while the local window grows](assets/tree-orientation.gif){ .oj-tree }
+
+**Try it without installing anything**: the [interactive online demo](https://bigwww.epfl.ch/demo/ip/demos/orientation/) runs the analysis in the browser, on your own image or on the samples provided.
 
 If OrientationJ contributed to your results, please cite the publication matching what you used — the method, the angular distribution, the local measurements, or the monogenic analysis:
 

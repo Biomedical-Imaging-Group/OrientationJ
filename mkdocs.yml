@@ -2,11 +2,17 @@
 site_url: https://Biomedical-Imaging-Group.github.io/OrientationJ/
 
 site_name: OrientationJ
+repo_url: https://github.com/Biomedical-Imaging-Group/OrientationJ
+repo_name: OrientationJ on GitHub
 site_description: >-
   Orientation, energy and coherency analysis of images using the gradient
   structure tensor. ImageJ and Fiji plugins from the Biomedical Imaging Group, EPFL.
 site_author: Daniel Sage
-copyright: Daniel Sage — Biomedical Imaging Group, EPFL
+copyright: >-
+  <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> ·
+  <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
+  <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>,
+  <a href="https://www.epfl.ch/">EPFL</a> · August 2026
 
 theme:
   name: material

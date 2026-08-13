@@ -1,142 +1,152 @@
 # OrientationJ Test Images
 
-16 grayscale 2D images for testing and benchmarking orientation analysis: seven synthetic images — four of them with an analytic ground-truth orientation — eight real images, and one artificial fiber phantom.
+16 grayscale 2D images for testing and benchmarking orientation analysis: **9 synthetic**, whose orientation is known by construction, and **7 real** micrographs, tagged ![real](https://img.shields.io/badge/real-db3f2e) below. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png)
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png" width="560">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png)
 
 The folder is organized as:
 
 - [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/images) — the 16 source images (TIFF);
 - [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks) — a binary mask per image (uint8, 255 = meaningful structures);
-- [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results) — this montage, the raw feature maps of a selection of images (orientation, coherency, energy as float32 TIFF, regenerate any with [make_maps.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/make_maps.py)), and one overview panel per image: original, mask, orientation, coherency, energy, color survey, orientation distribution inside the mask, and vector field — computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1);
-- [code/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/code) — [synthetic_images_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/synthetic_images_2D.ipynb) generates the synthetic images, [masks_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/masks_2D.ipynb) generates the masks, [make_montage.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/make_montage.py) renders the montage above, and [make_maps.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/make_maps.py) the downloadable feature maps in `results/maps/`; the patterns themselves are drawn by `synthetic_images_2D.py`, which the notebook imports. The overview panels come from `make_gallery.py` in the Python port.
+- [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results) — the montage above, one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field), and the raw feature maps of a few images, all computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1);
+- [code/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/code) — [synthetic_images_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/synthetic_images_2D.ipynb) draws the synthetic images, [masks_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/masks_2D.ipynb) the masks, [make_montage.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/make_montage.py) the montage and [make_maps.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/make_maps.py) the feature maps.
 
-Click a panel for full size.
+The images are listed below in the order of the montage. Click a panel for full size.
 
-## synthetic_chirp_1024
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_chirp_1024.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/synthetic_chirp_1024-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/synthetic_chirp_1024-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/synthetic_chirp_1024-energy.tif)
-
-1024 × 1024, float32, values in [0, 1] — synthetic: radial chirp with a frequency sweep; the tangential ground-truth orientation is known at every pixel.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_chirp_1024.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_chirp_1024.png)
-
-## synthetic_rings_dither_512
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_rings_dither_512.tif)
-
-512 × 512, float32, values in [0, 1] — synthetic: thin concentric rings with a small dither (σ = 10⁻⁴) that avoids degenerate-tensor spikes; exact tangential truth.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_rings_dither_512.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_rings_dither_512.png)
-
-## synthetic_wave_512
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_wave_512.tif)
-
-512 × 512, float32, values in [0, 1] — synthetic: fringes at exactly +60° and −30°, two scales at once.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_wave_512.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_wave_512.png)
-
-## synthetic_nematic_512
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_nematic_512.tif)
-
-512 × 512, float32, values in [0, 1] — synthetic: nematic-like texture with a dominant direction.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_nematic_512.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_nematic_512.png)
-
-## synthetic_filaments_512
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_filaments_512.tif)
-
-512 × 512, float32, values in [0, 1] — synthetic: random curved filaments.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_filaments_512.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_filaments_512.png)
-
-## synthetic_spiral_512
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_spiral_512.tif)
-
-512 × 512, float32, values in [0, 1] — synthetic: spiral.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_spiral_512.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_spiral_512.png)
-
-## synthetic_noise_512
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_noise_512.tif)
-
-512 × 512, float32, values in [0, 1] — synthetic: isotropic noise; any measured anisotropy is bias.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_noise_512.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_noise_512.png)
-
-## collagen
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/collagen.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/collagen-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/collagen-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/collagen-energy.tif)
-
-512 × 512, uint8, values in [2, 255] — real: collagen fibers.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/collagen.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/collagen.png)
-
-## cell_aemisegger
-
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/cell_aemisegger.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/cell_aemisegger-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/cell_aemisegger-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/cell_aemisegger-energy.tif)
+## cell_aemisegger ![real](https://img.shields.io/badge/real-db3f2e)
 
 728 × 728, uint8, values in [0, 252] — real: fluorescence cell, actin fibers.
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/cell_aemisegger.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/cell_aemisegger.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/cell_aemisegger.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/cell_aemisegger.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/cell_aemisegger-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/cell_aemisegger-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/cell_aemisegger-energy.tif)
 
-## dendrochronology
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/cell_aemisegger.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/cell_aemisegger.png)
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/dendrochronology.tif)
+## collagen ![real](https://img.shields.io/badge/real-db3f2e)
+
+512 × 512, uint8, values in [2, 255] — real: collagen fibers.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/collagen.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/collagen.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/collagen-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/collagen-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/collagen-energy.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/collagen.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/collagen.png)
+
+## dendrochronology ![real](https://img.shields.io/badge/real-db3f2e)
 
 512 × 512, uint8, values in [0, 255] — real: wood section, growth rings.
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/dendrochronology.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/dendrochronology.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/dendrochronology.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/dendrochronology.tif)
 
-## fibronectin_arafat_plos2025
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/dendrochronology.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/dendrochronology.png)
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/fibronectin_arafat_plos2025.tif)
+## fibronectin_arafat_plos2025 ![real](https://img.shields.io/badge/real-db3f2e)
 
 1024 × 1024, uint8, values in [0, 255] — real: fibronectin network (Arafat et al., PLOS ONE 2025).
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibronectin_arafat_plos2025.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibronectin_arafat_plos2025.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/fibronectin_arafat_plos2025.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/fibronectin_arafat_plos2025.tif)
 
-## fibrous_tissues_fibero2024
+<sub>M. Arafat et al., *PLOS ONE* (2025), [doi:10.1371/journal.pone.0320006](https://doi.org/10.1371/journal.pone.0320006).</sub>
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/fibrous_tissues_fibero2024.tif)
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibronectin_arafat_plos2025.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibronectin_arafat_plos2025.png)
+
+## fibrous_tissues_fibero2024 ![real](https://img.shields.io/badge/real-db3f2e)
 
 2048 × 2048, uint16, values in [87, 4094] — real: fibrous tissue (FiberO, 2024).
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibrous_tissues_fibero2024.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibrous_tissues_fibero2024.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/fibrous_tissues_fibero2024.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/fibrous_tissues_fibero2024.tif)
+
+<sub>FiberO dataset (2024), [doi:10.3389/fbioe.2024.1497837](https://doi.org/10.3389/fbioe.2024.1497837).</sub>
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibrous_tissues_fibero2024.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fibrous_tissues_fibero2024.png)
 
 ## fiji_directionality_montage
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/fiji_directionality_montage.tif)
-
 1536 × 1536, uint16, values in [3089, 65535] — real: montage from the Fiji Directionality documentation.
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fiji_directionality_montage.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fiji_directionality_montage.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/fiji_directionality_montage.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/fiji_directionality_montage.tif)
 
-## nanofiber_fiji_diameterj
+<sub>Montage from the documentation of the Fiji [Directionality](https://imagej.net/plugins/directionality) plugin.</sub>
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/nanofiber_fiji_diameterj.tif)
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fiji_directionality_montage.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/fiji_directionality_montage.png)
+
+## nanofiber_fiji_diameterj ![real](https://img.shields.io/badge/real-db3f2e)
 
 512 × 512, uint8, values in [0, 255] — real: SEM nanofibers (DiameterJ sample).
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/nanofiber_fiji_diameterj.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/nanofiber_fiji_diameterj.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/nanofiber_fiji_diameterj.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/nanofiber_fiji_diameterj.tif)
 
-## polymer_slice_quanfima2018
+<sub>DiameterJ sample — S. A. Hotaling et al., *Data in Brief* (2015), [doi:10.1016/j.dib.2015.07.012](https://doi.org/10.1016/j.dib.2015.07.012).</sub>
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/polymer_slice_quanfima2018.tif)
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/nanofiber_fiji_diameterj.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/nanofiber_fiji_diameterj.png)
+
+## polymer_slice_quanfima2018 ![real](https://img.shields.io/badge/real-db3f2e)
 
 600 × 600, float32, values in [−0.0029, 0.0030] — real: polymer slice (quanfima, 2018).
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/polymer_slice_quanfima2018.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/polymer_slice_quanfima2018.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/polymer_slice_quanfima2018.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/polymer_slice_quanfima2018.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/polymer_slice_quanfima2018.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/polymer_slice_quanfima2018.png)
+
+## synthetic_chirp_1024
+
+1024 × 1024, float32, values in [0, 1] — synthetic: radial chirp with a frequency sweep; the tangential ground-truth orientation is known at every pixel.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_chirp_1024.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/synthetic_chirp_1024.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/synthetic_chirp_1024-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/synthetic_chirp_1024-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/maps/synthetic_chirp_1024-energy.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_chirp_1024.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_chirp_1024.png)
+
+## synthetic_filaments_512
+
+512 × 512, float32, values in [0, 1] — synthetic: random curved filaments.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_filaments_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/synthetic_filaments_512.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_filaments_512.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_filaments_512.png)
+
+## synthetic_nematic_512
+
+512 × 512, float32, values in [0, 1] — synthetic: nematic-like texture with a dominant direction.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_nematic_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/synthetic_nematic_512.tif)
+
+<sub>Pattern inspired by active nematics — A. Doostmohammadi, J. Ignés-Mullol, J. M. Yeomans, F. Sagués, *Active nematics*, Nature Communications 9:3246 (2018), [doi:10.1038/s41467-018-05666-8](https://doi.org/10.1038/s41467-018-05666-8).</sub>
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_nematic_512.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_nematic_512.png)
+
+## synthetic_noise_512
+
+512 × 512, float32, values in [0, 1] — synthetic: isotropic noise; any measured anisotropy is bias.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_noise_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/synthetic_noise_512.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_noise_512.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_noise_512.png)
+
+## synthetic_rings_dither_512
+
+512 × 512, float32, values in [0, 1] — synthetic: thin concentric rings with a small dither (σ = 10⁻⁴) that avoids degenerate-tensor spikes; exact tangential truth.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_rings_dither_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/synthetic_rings_dither_512.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_rings_dither_512.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_rings_dither_512.png)
+
+## synthetic_spiral_512
+
+512 × 512, float32, values in [0, 1] — synthetic: spiral.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_spiral_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/synthetic_spiral_512.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_spiral_512.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_spiral_512.png)
+
+## synthetic_wave_512
+
+512 × 512, float32, values in [0, 1] — synthetic: fringes at exactly +60° and −30°, two scales at once.
+
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/synthetic_wave_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/synthetic_wave_512.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_wave_512.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/synthetic_wave_512.png)
 
 ## z_artificial_fibers
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/z_artificial_fibers.tif)
-
 683 × 512, uint8, values in [0, 225] — artificial: fiber phantom (drawn, not generated by the synthetic-image notebook).
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/z_artificial_fibers.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/z_artificial_fibers.png)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/images/z_artificial_fibers.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/masks/z_artificial_fibers.tif)
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/z_artificial_fibers.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/z_artificial_fibers.png)
