@@ -2,7 +2,9 @@
 
 <p class="oj-tagline">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
 
-Fibers, filaments, fringes, crack,fractures, flows, growth rings: many images are made of elongated structures, and what matters about them is not their intensity but the direction they follow. OrientationJ measures that direction everywhere in the image, together with how consistently it holds and how strongly it stands out from the background.
+## Overview
+
+Fibers, filaments, fringes, cracks, fractures, flows, growth rings: many images are made of elongated structures, and what matters about them is not their intensity but the direction they follow. OrientationJ measures that direction everywhere in the image, together with how consistently it holds and how strongly it stands out from the background.
 
 At every pixel the plugins evaluate the **gradient structure tensor** over a small window and extract the **orientation** of the local structure, the **coherency** telling whether that orientation is well defined or the neighborhood is isotropic, and the **energy** telling whether there is any structure at all. From these come color surveys, vector fields, angular histograms and per-region measurements — figures to look at and numbers to report.
 
@@ -27,6 +29,8 @@ The same measurement, run at a growing analysis scale σ on the classic *Tree Ri
 
 **Try it without installing anything**: the [interactive online demo](https://bigwww.epfl.ch/demo/ip/demos/orientation/) runs the analysis in the browser, on your own image or on the samples provided.
 
+## How to cite
+
 If OrientationJ contributed to your results, please cite the publication matching what you used — the method, the angular distribution, the local measurements, or the monogenic analysis:
 
 > Püspöki Z, Storath M, Sage D, Unser M (2016). Transforms and Operators for Directional Bioimage Analysis: A Survey. *Advances in Anatomy, Embryology and Cell Biology*, vol. 219, Focus on Bio-Image Informatics, Springer. [doi:10.1007/978-3-319-28549-8_3](https://doi.org/10.1007/978-3-319-28549-8_3)
@@ -37,4 +41,4 @@ If OrientationJ contributed to your results, please cite the publication matchin
 
 > Unser M, Sage D, Van De Ville D (2009). Multiresolution Monogenic Signal Analysis Using the Riesz–Laplace Wavelet Transform. *IEEE Transactions on Image Processing* 18(11): 2402–2418. [doi:10.1109/TIP.2009.2027628](https://doi.org/10.1109/TIP.2009.2027628)
 
-An annotated table of the publications that use and cite OrientationJ is on the [In the literature](https://Biomedical-Imaging-Group.github.io/OrientationJ/literature.html) page, and the release notes are at the end of the [installation page](installation.md#version-history).
+An annotated table of the publications that use and cite OrientationJ is on the [In the literature](https://Biomedical-Imaging-Group.github.io/OrientationJ/use-cases/literature.html) page, and the release notes are at the end of the [installation page](installation.md#version-history).

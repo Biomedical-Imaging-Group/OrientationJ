@@ -17,7 +17,7 @@ copyright: >-
 theme:
   name: material
   language: en
-  logo: assets/logo.png
+  logo: assets/logo-orientationj.png   # complete logo: the mark and the wordmark
   favicon: assets/favicon.png
   font: false                   # no Google Fonts: Helvetica set in extra.css
   features:
@@ -26,8 +26,8 @@ theme:
     - content.code.copy
     - search.suggest
     - search.highlight
-    - toc.integrate             # page headings fold into the left menu
-    - toc.follow
+    # no toc.integrate: page headings would add a third level to the left menu
+    # (the right-hand table of contents is hidden in stylesheets/extra.css)
   palette:
     - scheme: default
       primary: white            # clean light header, book-like
@@ -81,5 +81,5 @@ nav:
       - Gradients: assessment-gradients.md
       - Python port: assessment-python-port.md
       - Operator: assessment-operator.md
-  - Use cases: https://Biomedical-Imaging-Group.github.io/OrientationJ/use-cases/literature.html
+  - In the literature: https://Biomedical-Imaging-Group.github.io/OrientationJ/use-cases/literature.html
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/
