@@ -1,4 +1,4 @@
-"""Regenerate the docs pages that mirror folder READMEs.
+"""Regenerate the docs pages that mirror a README elsewhere in the repository.
 
 Run from the repository root after editing one of the source READMEs:
 
@@ -35,9 +35,19 @@ For validation beyond a smoke test, published datasets are also useful:
 - **Arafat et al. (2025), *PLOS ONE*** — four extracellular-matrix datasets with manually delineated ground truth, used to benchmark seven fiber-tracing algorithms. [doi:10.1371/journal.pone.0320006](https://doi.org/10.1371/journal.pone.0320006)
 '''
 
+OTHER_TOOLS = '''
+## Other tools
+
+[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/) — the Python successor, in 2D and 3D · [Directionality](https://imagej.net/plugins/directionality) (Fiji) · [FiberFit](https://doi.org/10.1007/s10237-016-0776-3) · [CT-FIRE](https://doi.org/10.1117/1.JBO.19.1.016007) · [FiberO](https://doi.org/10.3389/fbioe.2024.1497837) · questions: [image.sc forum](https://forum.image.sc/)
+'''
+
+# docs page  <-  source README  (+ extra material appended to the page only)
 PAGES = {
     'docs/test-images.md': ('orientationj-test-images/README.md', EXTERNAL_DATASETS),
-    'docs/benchmarking.md': ('assessment/benchmarking/README.md', ''),
+    'docs/assessment-benchmarking.md': ('assessment/benchmarking/README.md', OTHER_TOOLS),
+    'docs/assessment-gradients.md': ('assessment/gradients/README.md', ''),
+    'docs/assessment-operator.md': ('assessment/gst_operator/README.md', ''),
+    'docs/assessment-python-port.md': ('assessment/orientationj_python_port/README.md', ''),
 }
 
 for page, (source, extra) in PAGES.items():

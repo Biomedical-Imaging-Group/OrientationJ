@@ -132,6 +132,35 @@ Every feature evaluated on canonical eigenvalue pairs \((\lambda_1, \lambda_2)\)
 | (1, 1) | isotropic | 2.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
 | (0, 0) | flat | 0.000 | 0.000 | — | — | — | — |
 
+## The scale parameter σ
+
+σ is the standard deviation, in pixels, of the Gaussian window over which the tensor is averaged. It is the most consequential choice: it defines what *local* means, and therefore which structures the measurement describes.
+
+![Color survey of collagen for increasing σ](assets/scale-survey.gif)
+
+<p class="oj-caption">The same collagen field analyzed with a growing window. A small σ resolves individual fibers and reacts to noise; a large σ merges neighbors into a smooth regional trend.</p>
+
+Two rules of thumb:
+
+- **Match the structure width.** Start with σ of about half the width of the fibers or stripes of interest — σ = 1–2 px for thin fibers, more for coarse bundles.
+- **Know what you trade.** A small σ follows fine detail but yields noisy angles and low coherency everywhere; a large σ gives stable, smooth angles but blends neighboring structures and rounds corners. When structures live at several scales, analyze at several σ and compare: the coherency map tells you at which scale each region is best described.
+
+The effect is easiest to read on the angular histogram, where a growing σ sharpens a well-defined peak and suppresses the background spread:
+
+![Orientation distributions for increasing σ on four images](assets/scale-distributions.jpg)
+
+## The gradient
+
+The gradient decides how the derivatives are estimated before the tensor is assembled. On a chirp, whose local period is known everywhere, the differences are measurable:
+
+![Angular error versus local period for the five gradients](assets/gradient-error.png)
+
+- **Cubic Spline** (the default) — the exact derivative of the cubic-spline interpolation of the image: accurate down to fine structures, and the setting used throughout this documentation. Keep it unless you have a reason not to.
+- **Finite Difference** — the simplest and fastest, but one to two orders of magnitude more biased, increasingly so as structures get finer.
+- **Fourier**, **Riesz** and **Gaussian** — band-limited derivatives that stay accurate at small periods, useful on noisy or oscillating data, at the cost of spatial locality (Fourier can ring near the borders).
+
+The five gradients of the plugin are compared quantitatively, against analytic ground truth, in the [gradient assessment](assessment-gradients.md), and the Gaussian derivative is the one used by the [minimal operator](assessment-operator.md).
+
 ## The color survey
 
 The default visual output of *Analysis* encodes the three features in one image: **hue** = orientation, **saturation** = coherency, **brightness** = the original image — so strongly aligned structures appear saturated in the color of their direction, while flat or isotropic regions stay gray.

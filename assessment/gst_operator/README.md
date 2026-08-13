@@ -1,16 +1,40 @@
-# GST Operator
+# OrientationJ Operator
 
-The minimal Python version of OrientationJ: one module, two public entry points.
+How short can an honest gradient-structure-tensor operator be? [gst_operator.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/gst_operator.py) computes the three OrientationJ features with **separable Gaussian derivatives in the space domain** — no Fourier transform, no spline prefilter, no boundary handling beyond mirroring — in sixty lines of NumPy:
 
-- **[gst_operator.py](gst_operator.py)** — `forward(image, sigma, sigma_gradient)` returns the three OrientationJ features (C, E, orientation) from a Gaussian-derivative gradient of width σ_G = `sigma_gradient` and a Gaussian tensor window of width σ = `sigma`, both applied analytically in Fourier; `inverse(C, E, orientation, sigma, ...)` is the naive blind reconstruction (eigenvalues → tensor → Tikhonov deconvolution → half-angle square root with 2D phase unwrapping → Tikhonov integration), defined up to the two strict invariances of the features (mean gray level, global contrast flip).
-- **[gst_operator.ipynb](gst_operator.ipynb)** — runs the full loop image → (C, E, θ) → image on the 16 images of `orientationj-test-images/`, at two gradient scales (σ_G = 1 and 5), and scores PSNR after aligning the invariances.
+```python
+from gst_operator import features
+C, E, theta = features(image, sigma=2.0, sigma_gradient=1.0)
+```
 
-For the faithful reimplementation of the plugin (cubic-spline gradient, color survey, distribution, vector field), see [the Python port](../orientationj_python_port).
+Two widths control everything: `sigma_gradient` for the derivative, `sigma` for the tensor window. `C` is the coherency in [0, 1], `E` the gradient energy, `theta` the orientation of the structures in radians, counter-clockwise from the horizontal — the OrientationJ convention.
 
-## Result
+## The three features
 
-[<img src="overview.png" width="480">](overview.png)
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png)
 
-[<img src="psnr.png" width="480">](psnr.png)
+## Is it exact?
 
-Blind invertibility is a smoothness question. At σ_G = 1 no image reconstructs usably (≤ 11 dB) — the sign retrieval breaks on dense gradient zeros. At σ_G = 5 most images reconstruct recognizably (best ≈ 25 dB), while the intrinsically oscillating ones (chirp, rings, spiral) stay lost at any scale: the profile sign flips across their ridge/valley curves are strictly invisible to (C, E, θ).
+Yes, wherever the answer is known analytically. The smoothing kernel sums to 1 and the derivative kernel differentiates exactly (−Σ x·d(x) = 1) to machine precision; sinusoidal gratings come back at exactly their imposed angle; and on the radial chirp, whose tangential orientation is known at every pixel, the median error is **0.001°**. At σ_G = 1 the minimal operator is in fact an order of magnitude *more* accurate on this smooth band-limited pattern than the plugin's cubic-spline gradient.
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-accuracy.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-accuracy.png)
+
+σ_G is a choice, not a defect: 0.5 truncates the kernel too aggressively, 2 flattens fine detail, 1 is the sweet spot for this pattern.
+
+## Does it agree with the plugin?
+
+Compared against the [Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port), which reproduces the Java plugin bit for bit, at the same tensor window σ = 2 so that the gradient is the only difference left:
+
+[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-agreement.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-agreement.png)
+
+On the smooth analytic patterns the two are indistinguishable — 0.006° on the rings, 0.009° on the spiral, 0.012° on the chirp. On real textures they differ by a few degrees, from 1.4° on the wood section to 5.4° on the nanofibers, and by 12.7° on isotropic noise where there is no orientation to agree on. That is the Gaussian derivative averaging what the spline derivative still resolves: the disagreement grows as structures approach the pixel scale. The energy maps stay strongly correlated throughout (0.64 to 0.94).
+
+The same trade-off, measured across all five OrientationJ gradients, is in the [gradient assessment](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/gradients).
+
+## Files
+
+| file | content |
+|---|---|
+| [gst_operator.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/gst_operator.py) | the operator: Gaussian kernels, gradient, structure tensor, features |
+| [gst_operator.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/gst_operator.ipynb) | the validation: exactness, agreement with the plugin, accuracy versus structure size |
+| [agreement.csv](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/agreement.csv) | per-image angular difference and feature correlations |

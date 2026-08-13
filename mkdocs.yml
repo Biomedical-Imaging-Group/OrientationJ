@@ -67,9 +67,13 @@ extra_javascript:
 nav:
   - Home: index.md
   - Installation: installation.md
-  - How to use: how-to-use.md
+  - User guide: user-guide.md
   - Theory: theory.md
   - Test images: test-images.md
-  - Benchmarking: benchmarking.md
-  - In the literature: https://Biomedical-Imaging-Group.github.io/OrientationJ/literature.html
+  - Assessment:
+      - Benchmarking: assessment-benchmarking.md
+      - Gradients: assessment-gradients.md
+      - Python port: assessment-python-port.md
+      - Operator: assessment-operator.md
+  - Use cases: https://Biomedical-Imaging-Group.github.io/OrientationJ/use-cases/literature.html
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/
