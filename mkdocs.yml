@@ -19,6 +19,8 @@ theme:
   language: en
   logo: assets/logo-orientationj.png   # complete logo: the mark and the wordmark
   favicon: assets/favicon.png
+  icon:
+    repo: fontawesome/brands/github    # the GitHub mark, not the generic git one
   font: false                   # no Google Fonts: Helvetica set in extra.css
   features:
     - navigation.top
