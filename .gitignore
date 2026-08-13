@@ -33,10 +33,13 @@ hs_err_pid*
 .claude/
 __pycache__/
 
-# research material: three public folders in assessment, without results
+# research material: the four published assessments, without their results
 /assessment/*
 !/assessment/benchmarking/
+!/assessment/gradients/
 !/assessment/gst_operator/
 !/assessment/orientationj_python_port/
 /assessment/benchmarking/results/
+/assessment/gradients/results/
+/assessment/gst_operator/results/
 /assessment/orientationj_python_port/results/

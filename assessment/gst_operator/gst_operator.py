@@ -1,106 +1,81 @@
-"""The gradient-structure-tensor operator, minimal: a forward and an inverse.
+"""The gradient structure tensor in its shortest honest form.
 
-forward(image, sigma)  ->  (C, E, orientation)
-    Gaussian-derivative gradient and Gaussian tensor window, both applied
-    analytically in Fourier (periodic boundaries); computes only the three
-    OrientationJ features.
+One function, three features, no transform: the derivatives are Gaussian
+derivatives applied as separable 1D convolutions in the space domain, and the
+tensor window is a Gaussian blur, also separable and in space.  Nothing here
+needs an FFT, a spline prefilter or a boundary trick beyond mirroring, which
+makes the whole operator readable in one screen and portable to any language.
 
-inverse(C, E, orientation, sigma)  ->  image
-    Naive blind reconstruction, one pass of the analytic chain:
+    C, E, theta = features(image, sigma=2.0, sigma_gradient=1.0)
 
-      1. eigenvalues   lambda_1,2 = (E +/- C.E) / 2                    (exact)
-      2. tensor        spectral recomposition with phi = 90deg - theta (exact)
-      3. products      Tikhonov deconvolution of the Gaussian window   (ill-posed)
-      4. gradient      half-angle square root of the doubled-angle field
-                       (Jxx - Jyy) + 2i.Jxy = (gx + i.gy)^2, branch chosen by
-                       2D phase unwrapping                             (sign retrieval)
-      5. image         Tikhonov least-squares integration              (ill-posed)
-
-    The output is defined up to the two strict invariances of the features:
-    the mean gray level and the global contrast flip.  It fails wherever the
-    gradient vanishes along whole curves (oscillating images): the sign flips
-    across those curves are invisible to the features.
+Angle convention: theta is in radians in [-pi/2, pi/2], counter-clockwise from
+the horizontal axis of the displayed image, along the structures (the direction
+in which the intensity varies the least) -- the OrientationJ convention.
 """
 import numpy as np
-import tifffile
-from skimage.restoration import unwrap_phase
+from scipy.ndimage import convolve1d
+
+__all__ = ['gaussian_kernels', 'gradient', 'structure_tensor', 'features']
 
 
-def load_image(path):
-    """Read a 2D TIFF as float64 normalized to [0, 1]."""
-    image = tifffile.imread(path).astype(np.float64)
-    if image.ndim != 2:
-        raise ValueError(f'{path}: expected a 2D image, got shape {image.shape}')
-    return (image - image.min()) / (image.max() - image.min())
+def gaussian_kernels(sigma, truncate=4.0):
+    """A sampled Gaussian and its first derivative, both normalized.
 
-
-def transfers(shape, sigma_gradient, sigma):
-    """Fourier transfer functions (dx, dy, window) for one image shape."""
-    ny, nx = shape
-    wy = 2.0 * np.pi * np.fft.fftfreq(ny)[:, None]
-    wx = 2.0 * np.pi * np.fft.fftfreq(nx)[None, :]
-    gauss = np.exp(-0.5 * sigma_gradient ** 2 * (wx ** 2 + wy ** 2))
-    window = np.exp(-0.5 * sigma ** 2 * (wx ** 2 + wy ** 2))
-    return 1j * wx * gauss, 1j * wy * gauss, window
-
-
-def apply(array, transfer):
-    """Apply a Fourier transfer function to a real 2D array."""
-    return np.fft.ifft2(np.fft.fft2(array) * transfer).real
-
-
-def forward(image, sigma=1.0, sigma_gradient=1.0, epsilon=1e-9):
-    """Forward model: image -> (C, E, orientation).
-
-    C            coherency, in [0, 1]
-    E            energy (trace of the tensor), in [0, inf)
-    orientation  of the structures in radians, in [-pi/2, pi/2]
+    The smoothing kernel sums to one; the derivative kernel is normalized so
+    that it differentiates exactly, i.e. sum(x * d(x)) = -1 with x the sample
+    positions, which removes the systematic gain error of a naive sampling.
     """
-    image = np.asarray(image, dtype=np.float64)
-    dx, dy, window = transfers(image.shape, sigma_gradient, sigma)
-    gx = apply(image, dx)
-    gy = apply(image, dy)
-    jxx = apply(gx * gx, window)
-    jxy = apply(gx * gy, window)
-    jyy = apply(gy * gy, window)
-    E = jxx + jyy
-    C = np.sqrt((jxx - jyy) ** 2 + 4.0 * jxy ** 2) / (E + epsilon)
-    orientation = 0.5 * np.arctan2(2.0 * jxy, jyy - jxx)
-    return C, E, orientation
+    radius = max(1, int(truncate * sigma + 0.5))
+    x = np.arange(-radius, radius + 1, dtype=float)
+    g = np.exp(-0.5 * (x / sigma) ** 2)
+    g /= g.sum()
+    d = -x / sigma ** 2 * g
+    d /= -np.sum(x * d)
+    return g, d
 
 
-def inverse(C, E, orientation, sigma=1.0, lambda_reg=1e-5, sigma_gradient=1.0,
-            epsilon=1e-9, mask_level=0.02):
-    """Inverse model: (C, E, orientation) -> image (zero-mean, blind)."""
-    C = np.asarray(C, dtype=np.float64)
-    E = np.asarray(E, dtype=np.float64)
-    orientation = np.asarray(orientation, dtype=np.float64)
-    dx, dy, window = transfers(C.shape, sigma_gradient, sigma)
+def gradient(image, sigma_gradient=1.0):
+    """Gaussian-derivative gradient (gx, gy), separable, in the space domain.
 
-    # steps 1-2: features -> eigenvalues -> tensor (exact)
-    lambda1 = 0.5 * (E + C * (E + epsilon))
-    lambda2 = 0.5 * (E - C * (E + epsilon))
-    phi = np.pi / 2.0 - orientation
-    jxx = lambda1 * np.cos(phi) ** 2 + lambda2 * np.sin(phi) ** 2
-    jyy = lambda1 * np.sin(phi) ** 2 + lambda2 * np.cos(phi) ** 2
-    jxy = (lambda1 - lambda2) * np.cos(phi) * np.sin(phi)
+    gx = (d/dx G) * image is computed as a 1D derivative along the columns
+    followed by a 1D smoothing along the rows, and symmetrically for gy.
+    Boundaries are mirrored, as everywhere in ImageJ.
+    """
+    image = np.asarray(image, dtype=float)
+    g, d = gaussian_kernels(sigma_gradient)
+    gx = convolve1d(convolve1d(image, d, axis=1, mode='mirror'),
+                    g, axis=0, mode='mirror')
+    gy = convolve1d(convolve1d(image, d, axis=0, mode='mirror'),
+                    g, axis=1, mode='mirror')
+    return gx, gy
 
-    # step 3: Tikhonov deconvolution of the window
-    def deconvolve(array):
-        return np.fft.ifft2(np.fft.fft2(array) * np.conj(window)
-                            / (np.abs(window) ** 2 + lambda_reg)).real
 
-    pxx, pxy, pyy = deconvolve(jxx), deconvolve(jxy), deconvolve(jyy)
+def structure_tensor(image, sigma=2.0, sigma_gradient=1.0):
+    """The three components (Jxx, Jxy, Jyy) of the gradient structure tensor.
 
-    # step 4: half-angle square root, branch by 2D phase unwrapping
-    magnitude = np.sqrt(np.maximum(pxx + pyy, 0.0))
-    psi = np.ma.array(np.angle((pxx - pyy) + 2j * pxy),
-                      mask=magnitude < mask_level * magnitude.max())
-    psi_u = np.array(unwrap_phase(psi))
-    gx = magnitude * np.cos(0.5 * psi_u)
-    gy = magnitude * np.sin(0.5 * psi_u)
+    The products of the gradient are averaged with a Gaussian window of width
+    sigma -- the "local window" of the OrientationJ dialogs.
+    """
+    gx, gy = gradient(image, sigma_gradient)
+    g, _ = gaussian_kernels(sigma)
 
-    # step 5: Tikhonov least-squares integration
-    numerator = np.conj(dx) * np.fft.fft2(gx) + np.conj(dy) * np.fft.fft2(gy)
-    denominator = np.abs(dx) ** 2 + np.abs(dy) ** 2 + lambda_reg
-    return np.fft.ifft2(numerator / denominator).real
+    def window(a):
+        return convolve1d(convolve1d(a, g, axis=1, mode='mirror'),
+                          g, axis=0, mode='mirror')
+
+    return window(gx * gx), window(gx * gy), window(gy * gy)
+
+
+def features(image, sigma=2.0, sigma_gradient=1.0, epsilon=1e-12):
+    """Coherency, energy and orientation of the local structures.
+
+    Returns (C, E, theta):
+      C      (lambda1 - lambda2) / (lambda1 + lambda2), in [0, 1];
+             1 where a single orientation dominates, 0 where isotropic
+      E      lambda1 + lambda2 = trace of the tensor, the gradient energy
+      theta  orientation of the structures, radians in [-pi/2, pi/2]
+    """
+    jxx, jxy, jyy = structure_tensor(image, sigma, sigma_gradient)
+    trace = jxx + jyy
+    split = np.hypot(jxx - jyy, 2.0 * jxy)      # lambda1 - lambda2
+    return split / (trace + epsilon), trace, 0.5 * np.arctan2(2.0 * jxy, jyy - jxx)
