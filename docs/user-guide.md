@@ -6,6 +6,10 @@ Open a 2D grayscale image and pick a command under **Plugins ▸ OrientationJ**.
 
 The *Analysis* dialog, shown here, is representative of all of them. The upper block sets σ ("Local window") and the gradient, then selects which feature maps to produce. Energy and directionality are unbounded, so they carry a display scaling — *Scale [0..1]* for a normalized view, *No scale* for the raw values you want to measure; coherency and anisotropy are already in [0, 1] and are shown as computed. The lower block builds the color survey: which feature drives the hue, the saturation and the brightness. Every field has a macro equivalent, so once a setting works it can be recorded and replayed over a whole folder.
 
+## Choosing σ and the gradient
+
+**σ ("Local window")** is the only setting that really changes the numbers: start at about half the width of the structures you care about — 1–2 px for thin fibers, more for coarse bundles — and remember the trade, a small σ following fine detail with noisy angles, a large σ giving stable angles that blend neighbors. **Gradient** keeps *Cubic Spline* unless you have a reason to change it; *Finite Difference* is faster but noticeably biased on fine structures, and *Fourier*, *Riesz* and *Gaussian* stay accurate at small periods at the cost of spatial locality. Both settings are examined at length, with figures, in [the scale parameter σ](theory.md#the-scale-parameter) and [the gradient](theory.md#the-gradient).
+
 ## Analysis
 
 Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — and the color survey, which paints them over the image: hue for the orientation, saturation for the coherency, brightness for the original intensity. Flat and isotropic regions therefore stay gray, and only genuinely oriented structures take on color.

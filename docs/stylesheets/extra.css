@@ -33,6 +33,30 @@
   font-weight: 600;
 }
 
+/* header: the complete logo alone, clickable to the home page.
+   The logo already carries the name, so the site_name text beside it is
+   hidden (site_name is kept in mkdocs.yml for the page titles and search). */
+.md-header__button.md-logo {
+  padding: 0.3rem 0.4rem;
+}
+.md-header__button.md-logo img {
+  height: 1.5rem;
+  width: auto;
+}
+.md-header__title {
+  display: none;
+}
+
+/* no table of contents at all: the left menu is the only navigation, and it
+   stops at two levels (section > page). The right-hand TOC is hidden, and so
+   is the copy Material folds into the drawer on small screens. */
+.md-sidebar--secondary {
+  display: none;
+}
+.md-sidebar--primary .md-nav--secondary {
+  display: none;
+}
+
 /* home page: the tagline under the title */
 .md-typeset .oj-tagline {
   margin-top: -0.5em;

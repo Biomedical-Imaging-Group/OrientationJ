@@ -7,16 +7,11 @@ Run from the repository root after editing one of the source READMEs:
 The CI docs workflow runs this before every site build, so the published
 pages never drift from the READMEs even if the script is forgotten locally.
 """
-OTHER_TOOLS = '''
-## Other tools
-
-[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/) — the Python successor, in 2D and 3D · [Directionality](https://imagej.net/plugins/directionality) (Fiji) · [FiberFit](https://doi.org/10.1007/s10237-016-0776-3) · [CT-FIRE](https://doi.org/10.1117/1.JBO.19.1.016007) · [FiberO](https://doi.org/10.3389/fbioe.2024.1497837) · questions: [image.sc forum](https://forum.image.sc/)
-'''
-
 # docs page  <-  source README  (+ extra material appended to the page only)
+# "Other tools" is not appended here: the benchmarking README carries it itself.
 PAGES = {
     'docs/test-images.md': ('orientationj-test-images/README.md', ''),
-    'docs/assessment-benchmarking.md': ('assessment/benchmarking/README.md', OTHER_TOOLS),
+    'docs/assessment-benchmarking.md': ('assessment/benchmarking/README.md', ''),
     'docs/assessment-gradients.md': ('assessment/gradients/README.md', ''),
     'docs/assessment-operator.md': ('assessment/gst_operator/README.md', ''),
     'docs/assessment-python-port.md': ('assessment/orientationj_python_port/README.md', ''),

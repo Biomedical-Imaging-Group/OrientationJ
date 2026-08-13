@@ -64,7 +64,3 @@ displayed image. Histograms: 180 bins of 1°, normalized to probability per bin.
 ## Other tools
 
 [OrientationPy](https://gitlab.com/epfl-center-for-imaging/orientationpy) — the Python successor of OrientationJ, 2D and 3D · [Directionality](https://imagej.net/plugins/directionality) (Fiji) · [FiberFit](https://doi.org/10.1007/s10237-016-0776-3) · [CT-FIRE](https://doi.org/10.1117/1.JBO.19.1.016007) · [FiberO](https://doi.org/10.3389/fbioe.2024.1497837) · questions: [image.sc forum](https://forum.image.sc/)
-
-## Other tools
-
-[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/) — the Python successor, in 2D and 3D · [Directionality](https://imagej.net/plugins/directionality) (Fiji) · [FiberFit](https://doi.org/10.1007/s10237-016-0776-3) · [CT-FIRE](https://doi.org/10.1117/1.JBO.19.1.016007) · [FiberO](https://doi.org/10.3389/fbioe.2024.1497837) · questions: [image.sc forum](https://forum.image.sc/)
