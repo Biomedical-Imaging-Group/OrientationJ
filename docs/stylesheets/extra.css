@@ -40,10 +40,10 @@
    carries the name (site_name is kept in mkdocs.yml for the page titles and
    the search index). */
 .md-header__button.md-logo {
-  padding: 0.3rem 0.4rem;
+  padding: 0.2rem 0.4rem;
 }
 .md-header__button.md-logo img {
-  height: 1.5rem;
+  height: 1.85rem;             /* the header itself is 2.4rem high */
   width: auto;
 }
 .md-header__title {
@@ -64,7 +64,7 @@
    the GitHub icon, then the three bars of the drawer */
 @media screen and (max-width: 59.984375em) {
   .md-header__button.md-logo img {
-    height: 1.2rem;
+    height: 1.5rem;      /* smaller, to leave room for the four icons */
   }
   .md-header__source {
     display: block;              /* Material hides the repository below 60em */
@@ -216,14 +216,9 @@
   padding-bottom: 0.42em;
 }
 
-/* a group that can be opened: show the chevron and turn it when expanded */
-.md-nav__item--nested > .md-nav__link .md-nav__icon {
-  display: inline-block;
-  transition: transform 0.2s;
-}
-.md-nav__item--nested > .md-nav__toggle:checked + .md-nav__link .md-nav__icon {
-  transform: rotate(90deg);
-}
+/* a group that can be opened: Material draws the chevron and turns it by 90°
+   when the group expands — rotating it here as well would add up to 180° and
+   leave an open group pointing backwards */
 .md-nav__item--nested > .md-nav__link {
   cursor: pointer;                       /* clicking the group toggles it */
 }
