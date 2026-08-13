@@ -1,21 +1,3 @@
-<div class="oj-banner" markdown>
-
-![OrientationJ](assets/logo-orientationj.png){ .oj-logo }
-
-<p class="oj-subtitle">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
-
-<hr>
-
-<p class="oj-author"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
-
-<p class="oj-date">August 2026</p>
-
-<hr>
-
-![Color survey of the Tree Rings sample, sweeping the local window](assets/tree-orientation.gif){ .oj-tree }
-
-</div>
-
 # User guide
 
 Open a 2D grayscale image and pick a command under **Plugins ▸ OrientationJ**. Whatever the command, the computation is the same: a gradient is taken at every pixel, the gradient structure tensor is averaged over a local window, and its eigen-analysis gives the orientation, the coherency and the energy. Two settings govern the measurement itself — the **analysis scale σ** and the **gradient** — and both appear in the *Structure Tensor* block of every dialog; each command then adds its own options, such as the coherency and energy thresholds of *Distribution* or the grid of *Vector Field*. What σ and the gradient actually do, and how to choose them, is explained in [Theory](theory.md#the-scale-parameter); the rest of this page describes the commands.
@@ -32,6 +14,10 @@ Produces the feature maps — orientation, coherency, energy, directionality, an
 
 <p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°.</p>
 
+Four images analyzed at the same setting — the survey turns every field into the same visual language:
+
+![Color surveys of four test images](assets/surveys-smoothing.jpg)
+
 ## Distribution
 
 Bins the local orientations into an angular histogram, with minimum-coherency and minimum-energy thresholds so that only meaningful pixels are counted. This is the command most often used to quantify alignment, and its table can be exported for statistics.
@@ -43,6 +29,10 @@ Bins the local orientations into an angular histogram, with minimum-coherency an
 Overlays one vector per grid cell, with a length that is constant or scaled by energy, coherency, or both. The most readable summary for a figure, though the histogram is the better instrument for quantification.
 
 ![Vector field overlaid on an image](assets/vector-field.png)
+
+The grid and the analysis scale act together: the same field, drawn while σ grows, keeps only the trend that survives at that scale.
+
+![Vector field of collagen while the analysis scale grows](assets/vectorfield-scale.gif)
 
 ## Measure
 
@@ -61,10 +51,6 @@ Groups locally oriented regions into clusters and reports one representative vec
 ## Horizontal Alignment
 
 Rotates each slice of a stack so that its dominant direction becomes horizontal, which registers fibrous samples acquired at arbitrary angles before further analysis.
-
-## Test Image
-
-Generates the calibration patterns the documentation uses: a radial chirp, whose local period sweeps across the field, and a stack of oriented patterns — in small, large and custom sizes. The fastest way to check an installation, and the reference material for choosing σ and the gradient.
 
 ## MonogenicJ
 

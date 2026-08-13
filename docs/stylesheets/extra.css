@@ -33,80 +33,11 @@
   font-weight: 600;
 }
 
-/* page banner above the title: a book title page, centered */
-.md-typeset .oj-banner {
-  text-align: center;
-  margin: 0 0 1.6em 0;
-}
-.md-typeset .oj-banner .oj-logo {
-  height: 38px;
-  width: auto;
-  margin: 0 auto;
-}
-.md-typeset .oj-banner hr {
-  border: none;
-  border-top: 1px solid var(--md-default-fg-color--lightest);
-  margin: 0.6em 0;
-}
-.md-typeset .oj-banner p {
-  margin: 0.3em 0;
-}
-.md-typeset .oj-subtitle {
-  font-size: 1.25rem;
-  font-weight: 900;
-  color: var(--md-default-fg-color);
-  margin: 0.2em 0 0.2em;
-}
-.md-typeset .oj-author,
-.md-typeset .oj-author a {
-  font-size: 0.6rem;
-  line-height: 1;
-  color: var(--md-default-fg-color--lighter);
-}
-.md-typeset .oj-author a:hover {
-  color: var(--md-accent-fg-color);
-}
-.md-typeset .oj-date {
-  font-size: 0.58rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--md-default-fg-color--lighter);
-}
-.md-typeset .oj-banner .oj-tree {
-  width: 100%;
-  display: block;
-  margin: 0.2em 0 0;
-}
-
-/* comfortable body text */
-.md-typeset {
-  font-size: 0.78rem;
-  line-height: 1.6;
-}
-
-/* keep the left navigation visible on medium screens (default: >= 76.25em) */
-@media screen and (min-width: 60em) and (max-width: 76.234375em) {
-  .md-header__button[for="__drawer"] {
-    display: none;
-  }
-  .md-sidebar--primary {
-    display: block;
-    position: sticky;
-    top: 2.4rem;
-    height: auto;
-    transform: none;
-    width: 12.1rem;
-    background-color: transparent;
-    z-index: 0;
-  }
-  .md-sidebar--primary .md-nav__title {
-    background: none;
-    box-shadow: none;
-    color: var(--md-default-fg-color--light);
-  }
-  .md-sidebar--primary .md-nav__title[for="__drawer"] {
-    display: none;
-  }
+/* home page: the tagline under the title */
+.md-typeset .oj-tagline {
+  margin-top: -0.5em;
+  font-size: 0.82rem;
+  color: var(--md-default-fg-color--light);
 }
 
 /* before/after comparison slider (docs/javascripts/compare.js) */
@@ -177,4 +108,72 @@
   font-size: 0.68rem;
   color: var(--md-default-fg-color--light);
   margin: 0 0 1.6em;
+}
+
+/* the animated Tree Rings strip, wherever it appears in the body */
+.md-typeset .oj-tree {
+  width: 100%;
+  display: block;
+  margin: 0.6em 0 0.2em;
+}
+
+/* ---------------------------------------------------------------- navigation */
+/* a hairline between the top-level entries */
+.md-nav--primary > .md-nav__list > .md-nav__item {
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+}
+.md-nav--primary > .md-nav__list > .md-nav__item:last-child {
+  border-bottom: none;
+}
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
+  padding-top: 0.42em;
+  padding-bottom: 0.42em;
+}
+
+/* a group that can be opened: show the chevron and turn it when expanded */
+.md-nav__item--nested > .md-nav__link .md-nav__icon {
+  display: inline-block;
+  transition: transform 0.2s;
+}
+.md-nav__item--nested > .md-nav__toggle:checked + .md-nav__link .md-nav__icon {
+  transform: rotate(90deg);
+}
+.md-nav__item--nested > .md-nav__link {
+  cursor: pointer;                       /* clicking the group toggles it */
+}
+
+/* keep the left navigation visible on medium screens (Material switches to the
+   hamburger drawer below 76.25em); nested groups expand in place instead of
+   sliding in as a drawer panel */
+@media screen and (min-width: 60em) and (max-width: 76.234375em) {
+  .md-header__button[for="__drawer"] {
+    display: none;
+  }
+  .md-sidebar--primary {
+    display: block;
+    position: sticky;
+    top: 2.4rem;
+    height: auto;
+    transform: none;
+    width: 11.6rem;
+    background-color: transparent;
+    z-index: 0;
+  }
+  .md-sidebar--primary .md-nav {
+    position: static;
+    width: auto;
+    height: auto;
+    background-color: transparent;
+    transform: none;
+  }
+  .md-sidebar--primary .md-nav__title {
+    display: none;                        /* the drawer header */
+  }
+  .md-sidebar--primary .md-nav .md-nav {
+    display: none;                        /* sub-lists start collapsed */
+    padding-left: 0.6rem;
+  }
+  .md-sidebar--primary .md-nav__toggle:checked ~ .md-nav {
+    display: block;                       /* ... and open on click */
+  }
 }
