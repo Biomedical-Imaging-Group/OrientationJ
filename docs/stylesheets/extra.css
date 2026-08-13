@@ -33,9 +33,12 @@
   font-weight: 600;
 }
 
-/* header: the complete logo alone, clickable to the home page.
-   The logo already carries the name, so the site_name text beside it is
-   hidden (site_name is kept in mkdocs.yml for the page titles and search). */
+/* header: the complete logo at the left at every width, clickable to the home
+   page; dark/light, search and GitHub at the right. Material hides the logo
+   below 76.25em (it shows a copy inside the drawer instead) — here it stays in
+   the header. The site_name text beside it is hidden because the logo already
+   carries the name (site_name is kept in mkdocs.yml for the page titles and
+   the search index). */
 .md-header__button.md-logo {
   padding: 0.3rem 0.4rem;
 }
@@ -46,15 +49,74 @@
 .md-header__title {
   display: none;
 }
+/* the hidden title was Material's flexible spacer: this replaces it, and keeps
+   the whole right-hand cluster against the right edge */
+.md-header__option {
+  margin-left: auto;
+}
+@media screen and (max-width: 76.234375em) {
+  .md-header__button.md-logo {
+    display: block;
+  }
+}
+
+/* small screens: logo at the left; at the right dark/light, the search icon,
+   the GitHub icon, then the three bars of the drawer */
+@media screen and (max-width: 59.984375em) {
+  .md-header__button.md-logo img {
+    height: 1.2rem;
+  }
+  .md-header__source {
+    display: block;              /* Material hides the repository below 60em */
+    width: auto;
+    max-width: none;
+    margin: 0;
+  }
+  .md-header__source .md-source__repository {
+    display: none;              /* the icon alone in the header, no repo name;
+                                   the drawer keeps the full name below */
+  }
+  .md-header__button[for="__drawer"] {
+    order: 9;                          /* the three bars go last, at the right */
+    margin-right: 0;
+  }
+}
 
 /* no table of contents at all: the left menu is the only navigation, and it
    stops at two levels (section > page). The right-hand TOC is hidden, and so
-   is the copy Material folds into the drawer on small screens. */
-.md-sidebar--secondary {
+   is the copy Material folds into the drawer on small screens.
+   The :not([hidden]) is needed to outweigh Material's own display:block. */
+.md-sidebar--secondary,
+.md-sidebar--secondary:not([hidden]) {
   display: none;
 }
 .md-sidebar--primary .md-nav--secondary {
   display: none;
+}
+/* ... and no button to open it either, in the small-screen drawer. Material
+   renders the current page twice there — as that button and as the real link —
+   and hides the link behind the button, so the link has to be given back. */
+.md-nav--primary .md-nav__link[for="__toc"] {
+  display: none;
+}
+.md-nav--primary .md-nav__link[for="__toc"] + .md-nav__link {
+  display: flex;
+}
+/* the drawer header keeps the site name, not a second copy of the logo */
+.md-nav--primary > .md-nav__title .md-logo {
+  display: none;
+}
+
+/* No panel headers in the left menu, at medium or large width: neither the
+   site name above the entries (the header logo carries it) nor the gray bar
+   with a back arrow that Material puts at the top of a drawer sub-panel. */
+@media screen and (min-width: 60em) {
+  .md-nav--primary .md-nav__title {
+    display: none;
+  }
+  .md-nav--primary .md-nav__title ~ .md-nav__list {
+    box-shadow: none;                    /* the bar's hairline goes with it */
+  }
 }
 
 /* home page: the tagline under the title */
@@ -166,38 +228,84 @@
   cursor: pointer;                       /* clicking the group toggles it */
 }
 
-/* keep the left navigation visible on medium screens (Material switches to the
-   hamburger drawer below 76.25em); nested groups expand in place instead of
-   sliding in as a drawer panel */
+/* Medium screens: Material switches to the hamburger drawer below 76.25em, so
+   the left menu is put back as a static column, as on large screens — the
+   drawer positioning, the sliding sub-panels and the drawer header are undone.
+   Mind the [dir="ltr"] prefix: Material sets the off-canvas offset through it,
+   so a plain class selector is not specific enough to bring the sidebar back
+   on screen, and the menu ends up parked 12.1rem to the left of the viewport. */
 @media screen and (min-width: 60em) and (max-width: 76.234375em) {
-  .md-header__button[for="__drawer"] {
-    display: none;
+  .md-header__button[for="__drawer"],
+  .md-overlay {
+    display: none;                        /* no hamburger, no dimming overlay */
+  }
+  [dir="ltr"] .md-sidebar--primary,
+  [dir="rtl"] .md-sidebar--primary {
+    left: 0;
+    right: auto;
   }
   .md-sidebar--primary {
-    display: block;
     position: sticky;
     top: 2.4rem;
+    align-self: flex-start;
+    flex-shrink: 0;
+    width: 12.1rem;
     height: auto;
-    transform: none;
-    width: 11.6rem;
+    padding: 1.2rem 0;
     background-color: transparent;
+    box-shadow: none;
+    transform: none;
+    transition: none;
     z-index: 0;
   }
-  .md-sidebar--primary .md-nav {
+  [data-md-toggle="drawer"]:checked ~ .md-container .md-sidebar--primary {
+    transform: none;                    /* the drawer toggle has nothing to do */
+    box-shadow: none;
+  }
+  .md-sidebar--primary .md-sidebar__scrollwrap {
     position: static;
-    width: auto;
+    margin: 0 0.2rem;
+    overflow: visible;
+  }
+  .md-sidebar--primary:not([hidden]) ~ .md-content > .md-content__inner {
+    margin-left: 1.2rem;
+  }
+
+  /* a plain nested list again, not a stack of sliding panels */
+  .md-nav--primary,
+  .md-nav--primary .md-nav {
+    position: static;
+    display: block;
     height: auto;
     background-color: transparent;
+    z-index: auto;
+  }
+  .md-nav--primary .md-nav__item {
+    border-top: 0;                     /* the hairline below is the separator */
+    font-size: 0.7rem;
+  }
+  .md-nav--primary .md-nav__link {
+    padding: 0.42em 0.6rem;
+  }
+  .md-nav--primary .md-nav__link .md-nav__icon {
+    font-size: 0.9rem;
+    height: 0.9rem;
+    width: 0.9rem;
+    margin-right: 0;
+  }
+  .md-nav--primary .md-nav .md-nav__link {
+    padding-left: 1.2rem;                              /* indent the submenu */
+  }
+
+  /* groups open and close in place */
+  .md-nav__toggle ~ .md-nav {
+    display: none;
+    opacity: 1;
     transform: none;
+    transition: none;
   }
-  .md-sidebar--primary .md-nav__title {
-    display: none;                        /* the drawer header */
-  }
-  .md-sidebar--primary .md-nav .md-nav {
-    display: none;                        /* sub-lists start collapsed */
-    padding-left: 0.6rem;
-  }
-  .md-sidebar--primary .md-nav__toggle:checked ~ .md-nav {
-    display: block;                       /* ... and open on click */
+  .md-nav__toggle:checked ~ .md-nav,
+  .md-nav__toggle.md-toggle--indeterminate ~ .md-nav {
+    display: block;
   }
 }
