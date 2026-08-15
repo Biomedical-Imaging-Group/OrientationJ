@@ -534,3 +534,99 @@
     display: block;
   }
 }
+
+/* ------------------------------------------------------------------- footer
+   The same register as the banner: a pale band, small type, quiet gray. It
+   opens on a hairline with a shadow, the mirror of the one under the header.
+   Material's footer is dark by default, so its own variables are reset. */
+:root,
+[data-md-color-primary="white"] {
+  --md-footer-bg-color: var(--oj-band);
+  --md-footer-bg-color--dark: var(--oj-band);
+  --md-footer-fg-color: var(--md-default-fg-color);
+  --md-footer-fg-color--light: var(--md-default-fg-color--light);
+  --md-footer-fg-color--lighter: var(--md-default-fg-color--lighter);
+}
+[data-md-color-scheme="slate"],
+[data-md-color-scheme="slate"][data-md-color-primary="black"] {
+  --md-footer-bg-color: var(--oj-band);
+  --md-footer-bg-color--dark: var(--oj-band);
+  --md-footer-fg-color: var(--md-default-fg-color);
+  --md-footer-fg-color--light: var(--md-default-fg-color--light);
+  --md-footer-fg-color--lighter: var(--md-default-fg-color--lighter);
+}
+.md-footer {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  box-shadow: 0 -0.1rem 0.35rem rgba(0, 0, 0, 0.07);
+}
+
+/* the previous / next bar, smaller and quieter */
+.md-footer__inner {
+  align-items: center;               /* Home rides on the same line as the arrows */
+  margin: 0 auto;
+  padding: 0.2rem 0;
+  opacity: 1;
+}
+.md-footer__link {
+  padding-top: 0.6rem;
+  padding-bottom: 0.6rem;
+  opacity: 1;
+}
+.md-footer__title {
+  font-size: 0.7rem;
+  line-height: 1.4;
+  padding: 0 0.6rem;
+  white-space: normal;               /* the page name in full, not truncated */
+}
+.md-footer__title .md-ellipsis {
+  white-space: normal;
+  overflow: visible;
+}
+.md-footer__direction {
+  font-size: 0.56rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 1;
+  color: var(--md-default-fg-color--lighter);
+}
+.md-footer__button.md-icon {
+  padding: 0.2rem;
+}
+/* Home, in the middle of that bar (inserted by docs/javascripts/nav.js) */
+.md-footer__home {
+  align-self: center;
+  margin: 0 auto;
+  padding: 0.6rem 0.9rem;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.md-footer__home:hover {
+  color: var(--oj-red);
+}
+
+/* the credit line, set like the banner title */
+.md-footer-meta {
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+}
+.md-copyright {
+  width: 100%;
+  padding: 0.4rem 0;
+  text-align: center;
+  font-size: 0.62rem;
+  color: var(--md-default-fg-color--light);
+}
+.md-copyright__highlight {
+  color: var(--md-default-fg-color--light);
+}
+.md-copyright .oj-foot-version {
+  display: block;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--lighter);
+}
