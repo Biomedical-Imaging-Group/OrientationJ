@@ -69,6 +69,7 @@ markdown_extensions:
   - pymdownx.superfences
 
 extra_javascript:
+  - javascripts/nav.js
   - javascripts/compare.js
   - javascripts/mathjax.js
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
@@ -79,26 +80,27 @@ nav:
       - installation/index.md
       - Version history: installation/history.md
   - User guide:
-      - user-guide/index.md              # clicking "User guide" opens this page
-      - Selecting the parameters: user-guide/parameters.md
-      - Plugins: user-guide/plugins.md
+      - user-guide/index.md
+      - All plugins: user-guide/plugins.md
+      - Selecting the scale σ: user-guide/select-scale.md
+      - Selecting the gradient: user-guide/select-gradient.md
   - Theory:
       - theory/index.md
-      - The structure tensor: theory/structure-tensor.md
-      - Features and invariants: theory/features.md
-      - The scale parameter: theory/scale.md
-      - The gradient: theory/gradient.md
+      # sections of the page above: see docs/javascripts/nav.js
+      - The structure tensor: "oj:theory/#the-structure-tensor"
+      - Features and invariants: "oj:theory/#features-and-invariants"
   - Test images: test-images.md
   - Assessment:
       - assessment/index.md
       - Benchmarking: assessment/benchmarking.md
-      - Gradients: assessment/gradients.md
+      - Compare gradients: assessment/compare-gradients.md
       - Python port: assessment/python-port.md
       - Operator: assessment/operator.md
   - Use cases:
       - use-cases/index.md
-      - Primary references: use-cases/references.md
-      - Software and resources: use-cases/resources.md
-      - Community discussions: use-cases/community.md
-      - Validation and related tools: use-cases/tools.md
+      - In the literature: "oj:use-cases/literature.html"
+      - Primary references: "oj:use-cases/#primary-references"
+      - Software and resources: "oj:use-cases/#software-and-resources"
+      - Community discussions: "oj:use-cases/#community-discussions"
+      - Validation and related tools: "oj:use-cases/#validation-and-related-tools"
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/

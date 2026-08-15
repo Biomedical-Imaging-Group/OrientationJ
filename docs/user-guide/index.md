@@ -35,7 +35,7 @@ Every field has a macro equivalent, so once a setting works it can be recorded w
 
 ## The pages of this section
 
-- **[Selecting the parameters](parameters.md)** — how to choose σ and the gradient, the only two settings that change the numbers.
+- **[Selecting the parameters](select-scale.md)** — how to choose σ and the gradient, the only two settings that change the numbers.
 - **[Plugins](plugins.md)** — what each command produces, with an example of its output.
 
 To try them on data whose answer is known, take one of the [test images](../test-images.md): sixteen images, real and synthetic, each with its mask.

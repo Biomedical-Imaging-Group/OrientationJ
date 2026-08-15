@@ -19,26 +19,29 @@
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
-# Selecting the parameters
+# Selecting the scale σ
 
-Every dialog opens with the same *Structure Tensor* block, and only two of its fields change the numbers: the analysis scale **σ** and the **gradient**. Everything else is presentation — which maps to display, how to scale them, how to color the survey.
-
-## The analysis scale σ
+σ ("Local window") is the one setting that really changes the numbers: it fixes the size of the structures the measurement describes.
 
 σ ("Local window") is the standard deviation, in pixels, of the Gaussian window over which the tensor is averaged. It decides what *local* means, and therefore which structures the measurement describes.
 
 Start at about **half the width of the structures you care about**: σ = 1–2 px for thin fibers, more for coarse bundles. Then keep the trade-off in mind — a small σ follows fine detail but gives noisy angles and low coherency everywhere, while a large σ gives stable, smooth angles that blend neighboring structures and round off corners. When the structures live at several scales, run the analysis at several σ and compare: the coherency map tells you at which scale each region is best described.
 
-The effect, image by image and on the angular histogram, is shown in [the scale parameter σ](../theory/scale.md).
+The effect, image by image and on the angular histogram, is shown in [the scale parameter σ](select-scale.md).
 
-## The gradient
+## The scale parameter
 
-The gradient decides how the derivatives are estimated before the tensor is assembled. Keep **Cubic Spline**, the default, unless you have a reason not to: it is the exact derivative of the cubic-spline interpolation of the image and stays accurate down to fine structures.
+σ is the standard deviation, in pixels, of the Gaussian window over which the tensor is averaged. It is the most consequential choice: it defines what *local* means, and therefore which structures the measurement describes.
 
-Of the others, *Finite Difference* is the fastest but one to two orders of magnitude more biased, increasingly so as structures get finer; *Fourier*, *Riesz* and *Gaussian* are band-limited derivatives that hold their accuracy at small periods, at the cost of spatial locality — Fourier can ring near the borders.
+![Color survey of collagen for increasing σ](../assets/scale-survey.gif)
 
-The measured angular error of all five, against analytic ground truth, is in [the gradient](../theory/gradient.md) and in the [gradient assessment](../assessment/gradients.md).
+<p class="oj-caption">The same collagen field analyzed with a growing window. A small σ resolves individual fibers and reacts to noise; a large σ merges neighbors into a smooth regional trend.</p>
 
-## The thresholds
+Two rules of thumb:
 
-*Distribution* and *Vector Field* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.
+- **Match the structure width.** Start with σ of about half the width of the fibers or stripes of interest — σ = 1–2 px for thin fibers, more for coarse bundles.
+- **Know what you trade.** A small σ follows fine detail but yields noisy angles and low coherency everywhere; a large σ gives stable, smooth angles but blends neighboring structures and rounds corners. When structures live at several scales, analyze at several σ and compare: the coherency map tells you at which scale each region is best described.
+
+The effect is easiest to read on the angular histogram, where a growing σ sharpens a well-defined peak and suppresses the background spread:
+
+![Orientation distributions for increasing σ on four images](../assets/scale-distributions.jpg)
