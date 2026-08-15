@@ -16,6 +16,7 @@ copyright: >-
 
 theme:
   name: material
+  custom_dir: overrides         # only main.html + partials/oj-banner.html
   language: en
   logo: assets/logo-orientationj.png   # complete logo: the mark and the wordmark
   favicon: assets/favicon.png
