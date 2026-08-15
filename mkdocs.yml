@@ -76,8 +76,8 @@ extra_javascript:
 nav:
   - Home: index.md
   - Installation:
-      - installation.md
-      - Version history: history.md
+      - installation/index.md
+      - Version history: installation/history.md
   - User guide:
       - user-guide/index.md              # clicking "User guide" opens this page
       - Selecting the parameters: user-guide/parameters.md
@@ -93,5 +93,10 @@ nav:
       - Gradients: assessment/gradients.md
       - Python port: assessment/python-port.md
       - Operator: assessment/operator.md
-  - In the literature: https://Biomedical-Imaging-Group.github.io/OrientationJ/use-cases/literature.html
+  - Use cases:
+      - use-cases/index.md
+      - Primary references: use-cases/references.md
+      - Software and resources: use-cases/resources.md
+      - Community discussions: use-cases/community.md
+      - Validation and related tools: use-cases/tools.md
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/

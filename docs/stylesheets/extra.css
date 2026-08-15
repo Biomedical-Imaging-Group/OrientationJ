@@ -283,6 +283,10 @@
   text-decoration: none;
   transition: background-color 125ms, color 125ms;
 }
+.md-typeset .oj-button--right {
+  float: right;                      /* rides beside the heading it precedes */
+  margin: 0.1em 0 0.4em 1em;
+}
 .md-typeset .oj-button:hover,
 .md-typeset .oj-button:focus {
   background: transparent;
