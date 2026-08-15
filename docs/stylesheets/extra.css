@@ -7,14 +7,51 @@
   --md-code-font: "Menlo", "Consolas", "Liberation Mono", monospace;
 }
 
-/* accent: the blue used throughout the repository's figures */
-:root {
-  --md-accent-fg-color: #4878a8;
-  --md-typeset-a-color: #4878a8;
+/* accent: the red of the OrientationJ mark, sampled from the logo — a cousin
+   of the EPFL red, dark enough to stay readable as text */
+/* The palette attributes sit on <body>, and Material declares its link color
+   against them — so a value set on :root alone is inherited and then beaten.
+   These selectors match the two palettes this site configures, at the same
+   specificity Material uses. */
+:root,
+[data-md-color-primary="white"] {
+  --oj-red: #d93c2c;
+  --md-accent-fg-color: var(--oj-red);
+  --md-typeset-a-color: var(--oj-red);
 }
-[data-md-color-scheme="slate"] {
-  --md-typeset-a-color: #7ba7d7;
-  --md-accent-fg-color: #7ba7d7;
+[data-md-color-scheme="slate"],
+[data-md-color-scheme="slate"][data-md-color-primary="black"] {
+  --oj-red: #f0655a;                 /* lifted for contrast on the dark page */
+  --md-accent-fg-color: var(--oj-red);
+  --md-typeset-a-color: var(--oj-red);
+}
+
+/* the logo file is ink on opaque white: on the dark page it would be a white
+   box, so the wordmark is swapped for a white-on-transparent copy */
+[data-md-color-scheme="slate"] .md-header__button.md-logo img,
+[data-md-color-scheme="slate"] .md-typeset .oj-plate__head img {
+  content: url("../assets/logo-orientationj-dark.png");
+}
+
+/* links in the EPFL manner: the text keeps the color of the page and carries
+   a red rule under it, which thickens and colors the word on hover */
+.md-typeset a {
+  color: var(--md-default-fg-color);
+  text-decoration: underline;
+  text-decoration-color: var(--oj-red);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
+  transition: color 125ms, text-decoration-thickness 125ms;
+}
+.md-typeset a:hover,
+.md-typeset a:focus {
+  color: var(--oj-red);
+  text-decoration-thickness: 2px;
+}
+.md-typeset a:has(> img),            /* a picture needs no underline */
+.md-typeset a.headerlink,
+.md-typeset a.footnote-backref {
+  text-decoration: none;
 }
 
 /* book-like measure: slightly narrower content column */
@@ -125,6 +162,12 @@
    under the mark and the imprint breaks into its own lines, so nothing ever
    collides or overflows. */
 .md-typeset .oj-plate {
+  --oj-mark: 8.4rem;                 /* scales with the reader's font size */
+  /* In the logo file the wordmark sits on a baseline 6.83% of the image width
+     above its bottom edge (the mark descends lower). A flex item's baseline is
+     its bottom margin edge, so lifting the margin box by exactly that much is
+     what puts the tagline on the same line as the letters of the logo. */
+  --oj-mark-baseline: calc(var(--oj-mark) * 0.0683);
   margin: 0 0 2.4em;
 }
 .md-typeset .oj-plate__head {
@@ -135,10 +178,21 @@
   margin: 0 0 0.7em;
 }
 .md-typeset .oj-plate__head img {
-  width: 8.4rem;                     /* scales with the reader's font size */
+  width: var(--oj-mark);
   max-width: 50vw;
   height: auto;
   margin: 0;
+}
+/* Lift the tagline onto that baseline. It has to be a relative offset: in flex
+   layout an image has no real baseline, one is synthesized from its border
+   box, so margins on the image move nothing. Only once the two sit on one row
+   — when the tagline wraps under the mark, lifting it would push it into the
+   letters above. */
+@media screen and (min-width: 45em) {
+  .md-typeset .oj-plate__tagline {
+    position: relative;
+    top: calc(-1 * var(--oj-mark-baseline));
+  }
 }
 .md-typeset .oj-plate__tagline {
   font-size: 0.66rem;
@@ -263,6 +317,25 @@
 }
 
 /* ---------------------------------------------------------------- navigation */
+/* the EPFL Center for Imaging, under the menu — only where the menu is a
+   column of its own; in the small-screen drawer the navigation is positioned
+   absolutely and this would land on top of it */
+@media screen and (min-width: 60em) {
+  .md-sidebar--primary .md-sidebar__scrollwrap::after {
+    content: "";
+    display: block;
+    height: 2.6rem;
+    margin: 1.2rem 0.6rem 0;
+    padding-top: 1.2rem;
+    border-top: 1px solid var(--md-default-fg-color--lightest);
+    background: url("../assets/center-for-imaging.svg") no-repeat left center;
+    background-size: contain;
+  }
+  [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap::after {
+    background-image: url("../assets/center-for-imaging-white.svg");
+  }
+}
+
 /* a hairline between the top-level entries */
 .md-nav--primary > .md-nav__list > .md-nav__item {
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
