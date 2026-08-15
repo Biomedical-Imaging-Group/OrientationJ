@@ -39,6 +39,7 @@
    a red rule under it, which thickens and colors the word on hover */
 .md-typeset a {
   color: var(--md-default-fg-color);
+  font-weight: 500;                  /* a shade heavier than the running text */
   text-decoration: underline;
   text-decoration-color: var(--oj-red);
   text-decoration-thickness: 1px;
@@ -54,6 +55,21 @@
 .md-typeset a.headerlink,
 .md-typeset a.footnote-backref {
   text-decoration: none;
+}
+
+/* inline code and code blocks: Material's default ink is a pale blue-gray;
+   this is the place to change how dark `code` looks */
+:root {
+  --md-code-fg-color: #24292f;
+  --md-code-bg-color: #f2f2f2;
+}
+[data-md-color-scheme="slate"] {
+  --md-code-fg-color: #e6e6e6;
+  --md-code-bg-color: #2b2f38;
+}
+.md-typeset code {
+  font-size: 0.84em;
+  padding: 0.1em 0.35em;
 }
 
 /* book-like measure: slightly narrower content column */
@@ -184,11 +200,12 @@
   margin: 0;
   text-align: right;
   font-size: 0.56rem;
-  line-height: 1.8;
+  line-height: 1.55;                 /* compact: three tight lines */
   color: var(--md-default-fg-color--light);
 }
 .oj-banner__credit a {
   color: inherit;
+  font-weight: 400;                  /* the credit stays quiet, links included */
   text-decoration: none;
 }
 .oj-banner__credit a:hover {
@@ -228,6 +245,7 @@
 /* the imprint line, under the lower rule */
 .oj-banner__version {
   margin: 0.5em 0 0;
+  text-align: left;
   font-size: 0.52rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -245,6 +263,60 @@
   .oj-banner__credit {
     text-align: left;
   }
+}
+
+/* buttons — one strong (a call to action), one quiet (a file to fetch) */
+.md-typeset .oj-button {
+  display: inline-block;
+  margin: 0.2em 0.4em 0.2em 0;
+  padding: 0.5em 1.1em;
+  border: 1px solid var(--oj-red);
+  border-radius: 3px;
+  background: var(--oj-red);
+  color: #fff;
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: background-color 125ms, color 125ms;
+}
+.md-typeset .oj-button:hover,
+.md-typeset .oj-button:focus {
+  background: transparent;
+  color: var(--oj-red);
+}
+.md-typeset .oj-chip {
+  display: inline-block;
+  margin: 0 0.3em 0 0;
+  padding: 0.12em 0.6em;
+  border: 1px solid var(--md-default-fg-color--lighter);
+  border-radius: 3px;
+  color: var(--md-default-fg-color--light);
+  font-size: 0.58rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: border-color 125ms, color 125ms;
+}
+.md-typeset .oj-chip:hover,
+.md-typeset .oj-chip:focus {
+  border-color: var(--oj-red);
+  color: var(--oj-red);
+}
+.md-typeset .oj-cite-topic {
+  margin: 1.4em 0 0.4em;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--md-default-fg-color);
+}
+.md-typeset .oj-center {
+  text-align: center;
+}
+.md-typeset .oj-center img {
+  display: inline-block;
 }
 
 /* home page: the tagline under the title */
@@ -281,24 +353,33 @@
   top: 0;
   bottom: 0;
   left: var(--pos);
-  width: 2px;
-  margin-left: -1px;
+  width: 3px;
+  margin-left: -1.5px;
   background: #fff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.35), 0 0 5px rgba(0, 0, 0, 0.45);
   pointer-events: none;
 }
+/* the handle: a solid white disc with the two arrows drawn in, so that it
+   stays visible over a bright field as well as over a dark one */
 .md-typeset .oj-compare .oj-compare-line::after {
-  content: "";
+  content: "\21D4";                  /* left-right double arrow */
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 26px;
-  height: 26px;
+  width: 34px;
+  height: 34px;
   transform: translate(-50%, -50%);
-  border: 2px solid #fff;
   border-radius: 50%;
-  background: rgba(0, 0, 0, 0.25);
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+  background: #fff;
+  border: 2px solid var(--oj-red);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.45);
+  color: var(--oj-red);
+  font-size: 17px;
+  line-height: 30px;
+  text-align: center;
+}
+.md-typeset .oj-compare:hover .oj-compare-line::after {
+  box-shadow: 0 1px 8px rgba(0, 0, 0, 0.6);
 }
 .md-typeset .oj-compare input[type="range"] {
   position: absolute;
