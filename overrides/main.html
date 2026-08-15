@@ -1,13 +1,13 @@
 {#-
   The only theme override of this site: it puts the banner of
-  partials/oj-banner.html above the content of the home page.
+  banner.html above the content of the home page.
   Everything else is Material for MkDocs, untouched.
 -#}
 {% extends "base.html" %}
 
 {% block content %}
   {% if page.is_homepage %}
-    {% include "partials/oj-banner.html" %}
+    {% include "banner.html" %}
   {% endif %}
   {{ super() }}
 {% endblock %}

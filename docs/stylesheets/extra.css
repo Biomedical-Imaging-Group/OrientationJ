@@ -158,13 +158,13 @@
   }
 }
 
-/* THE BANNER of the home page (markup: overrides/partials/oj-banner.html).
-   Two lines: the Center for Imaging with the credit beside it, then the title
-   between two rules. It is built with grid/flex so that it stays aligned at
-   every width — below 34em the credit drops under the mark and the title
-   wraps, and nothing ever overlaps or overflows. */
+/* THE BANNER of the home page (markup: docs/banner.html).
+   Three registers, quietest to loudest: the credit in the smallest gray, the
+   title line between two hairlines with only the name in red, and the version
+   under it. The red is a mark, not a field — the rules and the descriptive
+   words stay gray so the eye lands on "OrientationJ" and then on the page. */
 .oj-banner {
-  margin: 0 0 2.2em;
+  margin: 0 0 2.4em;
 }
 .oj-banner__top {
   display: flex;
@@ -172,19 +172,19 @@
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 0.8em 1.6em;
-  margin-bottom: 0.7em;
+  margin-bottom: 0.9em;
 }
 .oj-banner__mark img {
   display: block;
-  width: 6.4rem;
-  max-width: 40vw;
+  width: 4.6rem;
+  max-width: 32vw;
   height: auto;
 }
 .oj-banner__credit {
   margin: 0;
   text-align: right;
-  font-size: 0.58rem;
-  line-height: 1.75;
+  font-size: 0.56rem;
+  line-height: 1.8;
   color: var(--md-default-fg-color--light);
 }
 .oj-banner__credit a {
@@ -194,33 +194,25 @@
 .oj-banner__credit a:hover {
   color: var(--oj-red);
 }
-.oj-banner__date {
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--md-default-fg-color--lighter);
-  white-space: nowrap;
-}
-.oj-banner__date::before {
-  content: " · ";
-  letter-spacing: 0;
-}
-/* the title line, in the EPFL red */
+
+/* the title line: gray rules, gray words, the name alone in red */
 .oj-banner__title {
   margin: 0;
-  padding: 0.5em 0;
-  border-top: 1px solid var(--oj-red);
-  border-bottom: 1px solid var(--oj-red);
-  color: var(--oj-red);
-  font-size: 0.72rem;
-  letter-spacing: 0.11em;
+  padding: 0.62em 0;
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
+  color: var(--md-default-fg-color--light);
+  font-size: 0.7rem;
+  letter-spacing: 0.13em;
   text-transform: uppercase;
-  line-height: 1.6;
+  line-height: 1.7;
 }
 .oj-banner__title strong {
+  color: var(--oj-red);
   font-weight: 700;
-  letter-spacing: 0.02em;
+  font-size: 1.12em;
+  letter-spacing: 0.01em;
   text-transform: none;              /* the name keeps its own capitals */
-  font-size: 1.06em;
 }
 /* the em dash belongs to the part before it, so that a line never opens on a
    dash when the title wraps on a narrow screen */
@@ -229,11 +221,19 @@
 }
 .oj-banner__part:not(:last-child)::after {
   content: "—";
-  padding: 0 0.7em;
-  opacity: 0.6;
+  padding: 0 0.75em;
+  color: var(--md-default-fg-color--lighter);
+}
+
+/* the imprint line, under the lower rule */
+.oj-banner__version {
+  margin: 0.5em 0 0;
+  font-size: 0.52rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--lighter);
 }
 /* the banner closes on a rule: the title below needs no second one */
-.oj-banner + .md-content__inner h1,
 .md-typeset .oj-banner + h1 {
   border-bottom: none;
   padding-bottom: 0;
@@ -332,25 +332,6 @@
 }
 
 /* ---------------------------------------------------------------- navigation */
-/* the EPFL Center for Imaging, under the menu — only where the menu is a
-   column of its own; in the small-screen drawer the navigation is positioned
-   absolutely and this would land on top of it */
-@media screen and (min-width: 60em) {
-  .md-sidebar--primary .md-sidebar__scrollwrap::after {
-    content: "";
-    display: block;
-    height: 2.6rem;
-    margin: 1.2rem 0.6rem 0;
-    padding-top: 1.2rem;
-    border-top: 1px solid var(--md-default-fg-color--lightest);
-    background: url("../assets/center-for-imaging.svg") no-repeat left center;
-    background-size: contain;
-  }
-  [data-md-color-scheme="slate"] .md-sidebar--primary .md-sidebar__scrollwrap::after {
-    background-image: url("../assets/center-for-imaging-white.svg");
-  }
-}
-
 /* a hairline between the top-level entries */
 .md-nav--primary > .md-nav__list > .md-nav__item {
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
