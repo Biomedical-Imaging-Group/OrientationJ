@@ -1,0 +1,24 @@
+{#-
+  The banner of the documentation home page — edit it here and nowhere else.
+  It is pulled in by overrides/main.html, which renders it above the content
+  of the home page only. Two lines: the Center for Imaging with the credit
+  beside it, then the title line between two rules.
+-#}
+<div class="oj-banner">
+  <div class="oj-banner__top">
+    <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
+      <img src="{{ 'assets/center-for-imaging.svg' | url }}" alt="EPFL Center for Imaging">
+    </a>
+    <p class="oj-banner__credit">
+      <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a><br>
+      <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
+      <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a><br>
+      <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne</a>
+      <span class="oj-banner__date">August 2026</span>
+    </p>
+  </div>
+  {#- each part is one box, so a dash can never begin a wrapped line -#}
+  <p class="oj-banner__title"><span class="oj-banner__part"><strong>OrientationJ</strong></span><span
+     class="oj-banner__part">Directional analysis of 2D images</span><span
+     class="oj-banner__part">ImageJ/Fiji plugins</span></p>
+</div>
