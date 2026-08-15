@@ -1,3 +1,4 @@
+<!-- banner:begin -->
 <div class="oj-banner">
   <div class="oj-banner__top">
     <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
@@ -16,6 +17,7 @@
      class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
+<!-- banner:end -->
 
 # OrientationJ
 
@@ -27,7 +29,7 @@ At every pixel OrientationJ evaluates the **gradient structure tensor (GST)** ov
 
 OrientationJ is a suite of Fiji/ImageJ plugins written in Java, with a friendly user interface. `Analysis` produces the feature maps and the color survey; `Distribution` turns them into an angular histogram; `Vector Field` overlays a readable field of directions. Others report numbers or group structures: `Measure` and `Dominant Direction`, `Clustering` and `Horizontal Alignment`, and [`Corner Harris`](https://en.wikipedia.org/wiki/Harris_corner_detector). In addition, `MonogenicJ` brings a multiresolution analysis ([Unser et al., 2009](https://doi.org/10.1109/TIP.2009.2027628)). Every command runs from a dialog and from an ImageJ macro, so a setting that works on one image can be replayed over a whole folder — and a single parameter really matters: the analysis scale σ, which fixes the size of the structures the measurement describes, as explained in [Selecting the parameters](user-guide/parameters.md).
 
-Alongside the plugins, these pages document how well the measurement performs. The orientation distribution is compared with six other tools on a common dataset in [Benchmarking](assessment-benchmarking.md), and the images used throughout are published, with their masks, in [Test images](test-images.md). Two Python implementations accompany the plugin: the faithful [Python port](assessment-python-port.md), which reproduces it bit for bit, and the [minimal operator](assessment-operator.md), sixty lines of separable convolutions that need no transform. The five gradients are measured against analytic truth in the [gradient assessment](assessment-gradients.md).
+Alongside the plugins, these pages document how well the measurement performs. The orientation distribution is compared with six other tools on a common dataset in [Benchmarking](assessment/benchmarking.md), and the images used throughout are published, with their masks, in [Test images](test-images.md). Two Python implementations accompany the plugin: the faithful [Python port](assessment/python-port.md), which reproduces it bit for bit, and the [minimal operator](assessment/operator.md), sixty lines of separable convolutions that need no transform. The five gradients are measured against analytic truth in the [gradient assessment](assessment/gradients.md).
 
 ## Directional Image Analysis in 3D
 

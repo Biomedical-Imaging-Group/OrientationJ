@@ -1,3 +1,24 @@
+<!-- banner:begin -->
+<div class="oj-banner">
+  <div class="oj-banner__top">
+    <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
+      <img src="../assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
+    </a>
+    <p class="oj-banner__credit">
+      <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a><br>
+      <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
+      <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a><br>
+      <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a>
+    </p>
+  </div>
+  <!-- each part is one box, so a dash can never begin a wrapped line -->
+  <p class="oj-banner__title"><span class="oj-banner__part"><strong>Orientation<span class="oj-banner__j">J</span></strong></span><span
+     class="oj-banner__part">Directional analysis of 2D images</span><span
+     class="oj-banner__part">ImageJ/Fiji plugins</span></p>
+  <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
+</div>
+<!-- banner:end -->
+
 # Theoretical background
 
 The same material is available as a typeset [PDF](assets/theoretical-background.pdf) (LaTeX source in the repository).
@@ -141,7 +162,7 @@ The gradient decides how the derivatives are estimated before the tensor is asse
 - **Finite Difference** — the simplest and fastest, but one to two orders of magnitude more biased, increasingly so as structures get finer.
 - **Fourier**, **Riesz** and **Gaussian** — band-limited derivatives that stay accurate at small periods, useful on noisy or oscillating data, at the cost of spatial locality (Fourier can ring near the borders).
 
-The five gradients of the plugin are compared quantitatively, against analytic ground truth, in the [gradient assessment](assessment-gradients.md), and the Gaussian derivative is the one used by the [minimal operator](assessment-operator.md).
+The five gradients of the plugin are compared quantitatively, against analytic ground truth, in the [gradient assessment](assessment/gradients.md), and the Gaussian derivative is the one used by the [minimal operator](assessment/operator.md).
 
 ## The color survey
 
