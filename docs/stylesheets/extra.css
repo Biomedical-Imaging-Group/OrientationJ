@@ -119,6 +119,65 @@
   }
 }
 
+/* Title plate: a discrete masthead, set like the title page of a book — the
+   mark and the tagline on one baseline, then the imprint between two
+   hairlines. It reflows instead of shrinking: below ~30em the tagline drops
+   under the mark and the imprint breaks into its own lines, so nothing ever
+   collides or overflows. */
+.md-typeset .oj-plate {
+  margin: 0 0 2.4em;
+}
+.md-typeset .oj-plate__head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 0.3em 1em;
+  margin: 0 0 0.7em;
+}
+.md-typeset .oj-plate__head img {
+  width: 8.4rem;                     /* scales with the reader's font size */
+  max-width: 50vw;
+  height: auto;
+  margin: 0;
+}
+.md-typeset .oj-plate__tagline {
+  font-size: 0.66rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .oj-plate__imprint {
+  margin: 0;
+  padding: 0.5em 0;
+  border-top: 1px solid var(--md-default-fg-color--lighter);
+  border-bottom: 1px solid var(--md-default-fg-color--lighter);
+  font-size: 0.6rem;
+  line-height: 1.7;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .oj-plate__imprint a {
+  color: inherit;
+  text-decoration: none;
+}
+.md-typeset .oj-plate__imprint a:hover {
+  color: var(--md-accent-fg-color);
+}
+.md-typeset .oj-plate__date {
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--lighter);
+  white-space: nowrap;
+}
+.md-typeset .oj-plate__date::before {
+  content: " · ";
+  letter-spacing: 0;
+}
+/* the plate already closes on a rule: the title below needs none */
+.md-typeset .oj-plate + h1 {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
 /* home page: the tagline under the title */
 .md-typeset .oj-tagline {
   margin-top: -0.5em;

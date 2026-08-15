@@ -1,6 +1,10 @@
-# OrientationJ
 
-<p class="oj-tagline">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
+<div class="oj-plate">
+<p class="oj-plate__head"><img src="assets/logo-orientationj.png" alt="OrientationJ"><span class="oj-plate__tagline">Directional analysis of 2D images — ImageJ/Fiji plugins</span></p>
+<p class="oj-plate__imprint"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a><span class="oj-plate__date">August 2026</span></p>
+</div>
+
+# OrientationJ
 
 ## Overview
 
