@@ -51,6 +51,14 @@ extra:
 extra_css:
   - stylesheets/extra.css
 
+# banner.html is a template included by overrides/main.html, not a page
+# (no comments inside the block below: there, "#" is literal text)
+exclude_docs: |
+  banner.html
+
+hooks:
+  - hooks/banner.py           # lets Jinja find docs/banner.html
+
 plugins:
   - search
 
