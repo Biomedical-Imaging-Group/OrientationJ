@@ -50,14 +50,6 @@ extra:
 extra_css:
   - stylesheets/extra.css
 
-# banner.html is put at the top of the home page by the hook below, so it is
-# not a page of its own (no comments inside the block: "#" would be literal)
-exclude_docs: |
-  banner.html
-
-hooks:
-  - hooks/banner.py
-
 plugins:
   - search
 
