@@ -23,6 +23,7 @@ theme:
     repo: fontawesome/brands/github    # the GitHub mark, not the generic git one
   font: false                   # no Google Fonts: Helvetica set in extra.css
   features:
+    - navigation.indexes        # a section label opens its own page
     - navigation.top
     - navigation.footer
     - content.code.copy
@@ -50,6 +51,11 @@ extra:
 extra_css:
   - stylesheets/extra.css
 
+# banner.html is the source of the banner that sync-imports.py stamps into the
+# pages; it is not a page itself (no comments in the block: "#" is literal)
+exclude_docs: |
+  banner.html
+
 plugins:
   - search
 
@@ -76,15 +82,15 @@ nav:
   - Home: index.md
   - Installation: installation.md
   - User guide:
-      - Introduction: user-guide/index.md
+      - user-guide/index.md              # clicking "User guide" opens this page
       - Selecting the parameters: user-guide/parameters.md
       - Plugins: user-guide/plugins.md
   - Theory: theory.md
   - Test images: test-images.md
   - Assessment:
-      - Benchmarking: assessment-benchmarking.md
-      - Gradients: assessment-gradients.md
-      - Python port: assessment-python-port.md
-      - Operator: assessment-operator.md
+      - Benchmarking: assessment/benchmarking.md
+      - Gradients: assessment/gradients.md
+      - Python port: assessment/python-port.md
+      - Operator: assessment/operator.md
   - In the literature: https://Biomedical-Imaging-Group.github.io/OrientationJ/use-cases/literature.html
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/
