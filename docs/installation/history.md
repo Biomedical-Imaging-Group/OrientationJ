@@ -3,7 +3,7 @@
 <div class="oj-banner">
   <div class="oj-banner__top">
     <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
-      <img src="../assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
+      <img src="../../assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
     </a>
     <p class="oj-banner__credit">
       <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a><br>

@@ -23,7 +23,7 @@
 
 ## ImageJ or Fiji
 
-1. Download [`OrientationJ_.jar`](assets/OrientationJ_.jar) (version 2.1.0). Every tagged build is also attached to the [releases page](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest).
+1. Download [`OrientationJ_.jar`](../assets/OrientationJ_.jar) (version 2.1.0). Older versions are on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
 2. Copy it into the `plugins` folder of your ImageJ or Fiji installation.
 3. Restart. The commands appear under **Plugins ▸ OrientationJ**.
 

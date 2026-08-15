@@ -19,9 +19,9 @@
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
-# Features and invariants
+[PDF](../assets/theoretical-background.pdf "The theoretical background as a typeset PDF"){ .oj-button .oj-button--right }
 
-[PDF of the theoretical background](../assets/theoretical-background.pdf){ .oj-button }
+# Features and invariants
 
 ## Features and tensor invariants
 

@@ -19,9 +19,9 @@
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
-# The structure tensor
+[PDF](../assets/theoretical-background.pdf "The theoretical background as a typeset PDF"){ .oj-button .oj-button--right }
 
-[PDF of the theoretical background](../assets/theoretical-background.pdf){ .oj-button }
+# The structure tensor
 
 ## Quantitative orientation analysis
 
