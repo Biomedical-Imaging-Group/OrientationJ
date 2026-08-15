@@ -19,15 +19,13 @@
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
-[PDF](../assets/theoretical-background.pdf "The theoretical background as a typeset PDF"){ .oj-button .oj-button--right }
+# Assessment
 
-# Theory
-
-How OrientationJ measures a direction, from the definition of the tensor to the choice of its two parameters. The same material, typeset, is in the [PDF](../assets/theoretical-background.pdf).
+How well the measurement performs, measured rather than asserted. Each page is the report of one experiment, kept in step with the code that produced it in the repository.
 
 ## The pages of this section
 
-- **[The structure tensor](structure-tensor.md)** — the weighted inner product, the tensor of a region, and what its eigen-decomposition means.
-- **[Features and invariants](features.md)** — orientation, coherency, energy, directionality and anisotropy, their formulas, the summary table and the typical cases.
-- **[The scale parameter σ](scale.md)** — the size of the analysis window: what it changes, and how to choose it.
-- **[The gradient](gradient.md)** — the five ways of taking the derivative, and what each costs in accuracy.
+- **[Benchmarking](benchmarking.md)** — the orientation distribution of OrientationJ against six other tools, on the same images and the same masks.
+- **[Gradients](gradients.md)** — the five gradients of the plugin measured against analytic ground truth, error against structure size.
+- **[Python port](python-port.md)** — a faithful reimplementation in Python, agreeing with the Java plugin to the last bit, used to produce the reference maps.
+- **[Operator](operator.md)** — the same measurement in sixty lines of separable convolutions, with no transform at all, and what it costs in accuracy.

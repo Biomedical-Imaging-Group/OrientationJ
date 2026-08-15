@@ -19,11 +19,11 @@
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
-# Introduction
+# User guide
 
 OrientationJ is a suite of plugins for [ImageJ](https://imagej.net/ij/) and [Fiji](https://fiji.sc/), written in plain Java with no dependency to install: a single jar dropped into the `plugins` folder adds every command under **Plugins ▸ OrientationJ** (see [Installation](../installation/index.md)). Open a 2D grayscale image, pick a command, and the result appears as new images, an overlay or a table — nothing to configure beyond the dialog in front of you.
 
-Whatever the command, the computation underneath is the same: a gradient is taken at every pixel, the gradient structure tensor is averaged over a local window, and its eigen-analysis gives the **orientation** of the local structure, the **coherency** saying how well defined that orientation is, and the **energy** saying whether there is any structure at all. The derivation, from the weighted inner product to the tensor invariants, is in [Theory](../theory/index.md); everything you need in order to run the plugins is on these three pages.
+Whatever the command, the computation underneath is the same: a gradient is taken at every pixel, the gradient structure tensor is averaged over a local window, and its eigen-analysis gives the **orientation** of the local structure, the **coherency** saying how well defined that orientation is, and the **energy** saying whether there is any structure at all. The derivation, from the weighted inner product to the tensor invariants, is in [Theory](../theory/index.md); everything you need in order to run the plugins is on the pages of this section.
 
 ## The dialogs
 
@@ -33,8 +33,9 @@ The *Analysis* dialog, shown here, is representative of all of them. The upper b
 
 Every field has a macro equivalent, so once a setting works it can be recorded with the ImageJ macro recorder and replayed over a whole folder. That is the usual way to go from one exploratory image to a batch of hundreds.
 
-## Where to go next
+## The pages of this section
 
-- [Selecting the parameters](parameters.md) — how to choose σ and the gradient, the only two settings that change the numbers.
-- [Plugins](plugins.md) — what each command produces, with an example of its output.
-- [Test images](../test-images.md) — sixteen images, real and synthetic, with their masks: the quickest way to try a command on data whose answer is known.
+- **[Selecting the parameters](parameters.md)** — how to choose σ and the gradient, the only two settings that change the numbers.
+- **[Plugins](plugins.md)** — what each command produces, with an example of its output.
+
+To try them on data whose answer is known, take one of the [test images](../test-images.md): sixteen images, real and synthetic, each with its mask.

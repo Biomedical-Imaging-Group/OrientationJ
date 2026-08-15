@@ -21,7 +21,23 @@
 
 # Plugins
 
-The commands under **Plugins ▸ OrientationJ**, in the order they appear in the menu. All of them share the settings described in [Selecting the parameters](parameters.md), and all of them are scriptable from an ImageJ macro.
+What each command under **Plugins ▸ OrientationJ** produces, in the order the menu lists them, with an example of its output.
+
+<p class="oj-toc">On this page:
+<a href="#principle">Principle</a> ·
+<a href="#analysis">Analysis</a> ·
+<a href="#distribution">Distribution</a> ·
+<a href="#vector-field">Vector Field</a> ·
+<a href="#measure">Measure</a> ·
+<a href="#dominant-direction">Dominant Direction</a> ·
+<a href="#clustering">Clustering</a> ·
+<a href="#horizontal-alignment">Horizontal Alignment</a> ·
+<a href="#monogenicj">MonogenicJ</a> ·
+<a href="#corner-harris">Corner Harris</a></p>
+
+## Principle
+
+Every command works from the same measurement: a gradient at each pixel, the gradient structure tensor averaged over the local window σ, and the eigen-analysis that gives orientation, coherency and energy. What changes from one command to the next is only what is done with those three numbers — painted over the image, binned into a histogram, drawn as arrows, or reported in a table. They therefore share the settings described in [Selecting the parameters](parameters.md), and every one of them is scriptable from an ImageJ macro.
 
 ## Analysis
 
