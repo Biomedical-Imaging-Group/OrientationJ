@@ -15,12 +15,14 @@
 :root,
 [data-md-color-primary="white"] {
   --oj-red: #ff0000;
+  --oj-band: #f4f4f4;                /* the pale band behind the banner title */
   --md-accent-fg-color: var(--oj-red);
   --md-typeset-a-color: var(--oj-red);
 }
 [data-md-color-scheme="slate"],
 [data-md-color-scheme="slate"][data-md-color-primary="black"] {
   --oj-red: #ff3b2e;         /* the same red, lifted to stay legible on black */
+  --oj-band: #23262e;
   --md-accent-fg-color: var(--oj-red);
   --md-typeset-a-color: var(--oj-red);
 }
@@ -180,7 +182,7 @@
    under it. The red is a mark, not a field — the rules and the descriptive
    words stay gray so the eye lands on "OrientationJ" and then on the page. */
 .oj-banner {
-  margin: 0 0 2.4em;
+  margin: 0 0 2.0em;
 }
 .oj-banner__top {
   display: flex;
@@ -192,20 +194,19 @@
 }
 .oj-banner__mark img {
   display: block;
-  width: 4.6rem;
+  width: 5.6rem;
   max-width: 32vw;
   height: auto;
 }
 .oj-banner__credit {
   margin: 0;
   text-align: right;
-  font-size: 0.56rem;
-  line-height: 1.55;                 /* compact: three tight lines */
+  font-size: 0.52rem;
+  line-height: 1.3;                 /* compact: three tight lines */
   color: var(--md-default-fg-color--light);
 }
 .oj-banner__credit a {
   color: inherit;
-  font-weight: 400;                  /* the credit stays quiet, links included */
   text-decoration: none;
 }
 .oj-banner__credit a:hover {
@@ -215,21 +216,22 @@
 /* the title line: gray rules, gray words, the name alone in red */
 .oj-banner__title {
   margin: 0;
-  padding: 0.62em 0;
+  padding: 0.55em 0.85em;
   border-top: 1px solid var(--md-default-fg-color--lightest);
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  color: var(--md-default-fg-color--light);
-  font-size: 0.7rem;
-  letter-spacing: 0.13em;
-  text-transform: uppercase;
+  background-color: var(--oj-band);  /* a band of the palest gray */
+  color: var(--md-default-fg-color);           /* darker than the credit */
+  font-size: 0.88rem;                /* was "1 rem", which CSS discards */
+  letter-spacing: 0.02em;            /* lowercase needs far less tracking */
   line-height: 1.7;
 }
+/* the name is set as in the logo: the word in ink, the J in red */
 .oj-banner__title strong {
-  color: var(--oj-red);
+  color: var(--md-default-fg-color);
   font-weight: 700;
-  font-size: 1.12em;
-  letter-spacing: 0.01em;
-  text-transform: none;              /* the name keeps its own capitals */
+}
+.oj-banner__j {
+  color: var(--oj-red);
 }
 /* the em dash belongs to the part before it, so that a line never opens on a
    dash when the title wraps on a narrow screen */
@@ -238,14 +240,14 @@
 }
 .oj-banner__part:not(:last-child)::after {
   content: "—";
-  padding: 0 0.75em;
+  padding: 0 0.25em;
   color: var(--md-default-fg-color--lighter);
 }
 
 /* the imprint line, under the lower rule */
 .oj-banner__version {
   margin: 0.5em 0 0;
-  text-align: left;
+  text-align: right;
   font-size: 0.52rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;

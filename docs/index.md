@@ -53,35 +53,28 @@ If OrientationJ contributed to your results, please cite the publication matchin
 
 > Püspöki Z, Storath M, Sage D, Unser M (2016). Transforms and Operators for Directional Bioimage Analysis: A Survey. *Advances in Anatomy, Embryology and Cell Biology*, vol. 219, Focus on Bio-Image Informatics, Springer, pp. 69–93. [doi:10.1007/978-3-319-28549-8_3](https://doi.org/10.1007/978-3-319-28549-8_3)
 
-[PDF](https://bigwww.epfl.ch/publications/puespoeki1603.pdf){ .oj-chip } [BibTeX](assets/bibtex/puespoeki1603.bib){ .oj-chip }
+[PDF](https://bigwww.epfl.ch/publications/puespoeki1603.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/puespoeki1603.html){ .oj-chip }
 
 <p class="oj-cite-topic">The angular distribution — collagen waviness in the arterial adventitia</p>
 
 > Rezakhaniha R, Agianniotis A, Schrauwen JTC, Griffa A, Sage D, Bouten CVC, van de Vosse FN, Unser M, Stergiopulos N (2012). Experimental Investigation of Collagen Waviness and Orientation in the Arterial Adventitia Using Confocal Laser Scanning Microscopy. *Biomechanics and Modeling in Mechanobiology* 11(3–4): 461–473. [doi:10.1007/s10237-011-0325-z](https://doi.org/10.1007/s10237-011-0325-z)
 
-[PDF](https://bigwww.epfl.ch/publications/rezakhaniha1201.pdf){ .oj-chip } [BibTeX](assets/bibtex/rezakhaniha1201.bib){ .oj-chip }
+[PDF](https://bigwww.epfl.ch/publications/rezakhaniha1201.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/rezakhaniha1201.html){ .oj-chip }
 
 <p class="oj-cite-topic">The local measurements — elastin in human cerebral arteries</p>
 
 > Fonck E, Feigl GG, Fasel J, Sage D, Unser M, Rüfenacht DA, Stergiopulos N (2009). Effect of Aging on Elastin Functionality in Human Cerebral Arteries. *Stroke* 40(7): 2552–2556. [doi:10.1161/STROKEAHA.108.528091](https://doi.org/10.1161/STROKEAHA.108.528091)
 
-[PDF](https://bigwww.epfl.ch/publications/fonck0901.pdf){ .oj-chip } [BibTeX](assets/bibtex/fonck0901.bib){ .oj-chip }
+[PDF](https://bigwww.epfl.ch/publications/fonck0901.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/fonck0901.html){ .oj-chip }
 
 <p class="oj-cite-topic">The multiresolution analysis — MonogenicJ</p>
 
 > Unser M, Sage D, Van De Ville D (2009). Multiresolution Monogenic Signal Analysis Using the Riesz–Laplace Wavelet Transform. *IEEE Transactions on Image Processing* 18(11): 2402–2418. [doi:10.1109/TIP.2009.2027628](https://doi.org/10.1109/TIP.2009.2027628)
 
-[PDF](https://bigwww.epfl.ch/publications/unser0907.pdf){ .oj-chip } [BibTeX](assets/bibtex/unser0907.bib){ .oj-chip }
+[PDF](https://bigwww.epfl.ch/publications/unser0907.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/unser0907.html){ .oj-chip }
 
 ## Use cases
 
-OrientationJ is used wherever the direction of a structure carries the information:
-
-- **Cell biology** — the alignment of the actin cytoskeleton, of stress fibers and of microtubules, in cells spreading on patterned or stretched substrates.
-- **Cancer and the extracellular matrix** — the orientation of collagen fibers at the tumor–stroma interface, where alignment perpendicular to the boundary accompanies invasion.
-- **Tissue engineering** — the anisotropy of engineered cardiac and muscle tissue, and the alignment of cells on scaffolds.
-- **Materials and fibrous media** — electrospun nanofibers, paper, composites and wood sections, where the fiber orientation distribution is the quantity of interest.
-- **Hard tissue and biomechanics** — collagen and mineral orientation in bone, cartilage and arterial wall, related to mechanical properties.
-- **Beyond biology** — geology, cryo-electron microscopy, self-assembled and liquid-crystal patterns, and any image made of stripes or fronts.
+OrientationJ is used wherever the direction of a structure carries the information. In cell biology it measures the alignment of the actin cytoskeleton, of stress fibers and of microtubules in cells spreading on patterned or stretched substrates. In cancer research it follows the orientation of collagen fibers at the tumor–stroma interface, where alignment perpendicular to the boundary accompanies invasion, and the same measurement grades the anisotropy of engineered cardiac and muscle tissue. In materials science it characterizes electrospun nanofibers, paper, composites and wood sections, for which the fiber orientation distribution is the quantity of interest, and in biomechanics the collagen and mineral orientation of bone, cartilage and arterial wall, related to their mechanical properties. Further afield it serves geology, cryo-electron microscopy, and self-assembled or liquid-crystal patterns — any image made of stripes or fronts.
 
 The [In the literature](https://Biomedical-Imaging-Group.github.io/OrientationJ/use-cases/literature.html) page lists the published work in a sortable, searchable table, each entry with the sentence from the paper describing how the plugin was used and which command it relied on. The release notes, version by version, are at the end of the [installation page](installation.md#version-history).

@@ -16,7 +16,6 @@ copyright: >-
 
 theme:
   name: material
-  custom_dir: overrides         # only main.html + partials/oj-banner.html
   language: en
   logo: assets/logo-orientationj.png   # complete logo: the mark and the wordmark
   favicon: assets/favicon.png
@@ -51,13 +50,13 @@ extra:
 extra_css:
   - stylesheets/extra.css
 
-# banner.html is a template included by overrides/main.html, not a page
-# (no comments inside the block below: there, "#" is literal text)
+# banner.html is put at the top of the home page by the hook below, so it is
+# not a page of its own (no comments inside the block: "#" would be literal)
 exclude_docs: |
   banner.html
 
 hooks:
-  - hooks/banner.py           # lets Jinja find docs/banner.html
+  - hooks/banner.py
 
 plugins:
   - search
