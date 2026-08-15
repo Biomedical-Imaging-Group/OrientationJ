@@ -267,6 +267,21 @@
   }
 }
 
+/* the on-page contents of a long page: one quiet line under the description */
+.md-typeset .oj-toc {
+  margin: 0.6em 0 1.6em;
+  padding: 0.5em 0.85em;
+  background-color: var(--oj-band);
+  border-left: 2px solid var(--oj-red);
+  font-size: 0.68rem;
+  line-height: 1.9;
+  color: var(--md-default-fg-color--light);
+}
+.md-typeset .oj-toc a {
+  font-weight: 400;
+  white-space: nowrap;
+}
+
 /* buttons — one strong (a call to action), one quiet (a file to fetch) */
 .md-typeset .oj-button {
   display: inline-block;

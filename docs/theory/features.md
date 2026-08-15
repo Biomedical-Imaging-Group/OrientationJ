@@ -23,6 +23,19 @@
 
 # Features and invariants
 
+The quantities OrientationJ computes from the tensor, their formulas, and what each of them means on a real image.
+
+<p class="oj-toc">On this page:
+<a href="#principle">Principle</a> ·
+<a href="#features-and-tensor-invariants">The features</a> ·
+<a href="#summary-of-features-and-invariants">Summary table</a> ·
+<a href="#typical-cases">Typical cases</a> ·
+<a href="#the-color-survey">The color survey</a></p>
+
+## Principle
+
+The tensor of a region is a symmetric 2×2 matrix, so it carries exactly three numbers. Everything the plugin reports is a function of its two eigenvalues \(\lambda_1 \ge \lambda_2\) and of the direction of the first eigenvector: the orientation is that direction, and the features below are combinations of the eigenvalues — their difference over their sum, their sum, their squared difference. Choosing between them is choosing what to be sensitive to, not changing the measurement.
+
 ## Features and tensor invariants
 
 With the eigenvalues \(\lambda_1 \geq \lambda_2 \geq 0\), the mean \(\bar\lambda = \tfrac12 \operatorname{tr}(\mathbf{J})\), and the deviator \(\mathbf{s} = \mathbf{J} - \tfrac12 \operatorname{tr}(\mathbf{J})\, \mathbf{I}\), OrientationJ computes the following features:

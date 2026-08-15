@@ -84,11 +84,13 @@ nav:
       - Plugins: user-guide/plugins.md
   - Theory:
       - theory/index.md
+      - The structure tensor: theory/structure-tensor.md
       - Features and invariants: theory/features.md
       - The scale parameter: theory/scale.md
       - The gradient: theory/gradient.md
   - Test images: test-images.md
   - Assessment:
+      - assessment/index.md
       - Benchmarking: assessment/benchmarking.md
       - Gradients: assessment/gradients.md
       - Python port: assessment/python-port.md
