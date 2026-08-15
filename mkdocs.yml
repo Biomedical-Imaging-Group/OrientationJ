@@ -51,11 +51,6 @@ extra:
 extra_css:
   - stylesheets/extra.css
 
-# banner.html is the source of the banner that sync-imports.py stamps into the
-# pages; it is not a page itself (no comments in the block: "#" is literal)
-exclude_docs: |
-  banner.html
-
 plugins:
   - search
 
@@ -80,12 +75,18 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Installation: installation.md
+  - Installation:
+      - installation.md
+      - Version history: history.md
   - User guide:
       - user-guide/index.md              # clicking "User guide" opens this page
       - Selecting the parameters: user-guide/parameters.md
       - Plugins: user-guide/plugins.md
-  - Theory: theory.md
+  - Theory:
+      - theory/index.md
+      - Features and invariants: theory/features.md
+      - The scale parameter: theory/scale.md
+      - The gradient: theory/gradient.md
   - Test images: test-images.md
   - Assessment:
       - Benchmarking: assessment/benchmarking.md

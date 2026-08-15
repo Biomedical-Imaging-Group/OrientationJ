@@ -1,17 +1,11 @@
 # OrientationJ Test Images
 
-16 grayscale 2D images for testing and benchmarking orientation analysis: **9 synthetic**, whose orientation is known by construction, and **7 real** micrographs, tagged ![real](https://img.shields.io/badge/real-db3f2e) below. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.
+16 grayscale 2D images for testing and benchmarking orientation analysis: **9 synthetic**, whose orientation is known by construction, and **7 real** images, tagged ![real](https://img.shields.io/badge/real-db3f2e) below. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png" width="560">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png)
 
-The folder is organized as:
+The folder holds the 16 source images in [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/images), the 16 binary masks in [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks), and in [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results) one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field). All of it is computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1). The images are listed below in the order of the montage; click a panel for full size.
 
-- [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/images) — the 16 source images (TIFF);
-- [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks) — a binary mask per image (uint8, 255 = meaningful structures);
-- [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results) — the montage above, one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field), and the raw feature maps of a few images, all computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1);
-- [code/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/code) — [synthetic_images_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/synthetic_images_2D.ipynb) draws the synthetic images, [masks_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/masks_2D.ipynb) the masks, [make_montage.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/make_montage.py) the montage and [make_maps.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/orientationj-test-images/code/make_maps.py) the feature maps.
-
-The images are listed below in the order of the montage. Click a panel for full size.
 
 ## cell_aemisegger ![real](https://img.shields.io/badge/real-db3f2e)
 

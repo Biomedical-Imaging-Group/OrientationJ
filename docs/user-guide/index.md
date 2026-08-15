@@ -1,4 +1,5 @@
-<!-- banner:begin -->
+<!-- The banner. The same block on every page; only the logo path
+     changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
   <div class="oj-banner__top">
     <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
@@ -17,13 +18,12 @@
      class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
-<!-- banner:end -->
 
 # Introduction
 
 OrientationJ is a suite of plugins for [ImageJ](https://imagej.net/ij/) and [Fiji](https://fiji.sc/), written in plain Java with no dependency to install: a single jar dropped into the `plugins` folder adds every command under **Plugins ▸ OrientationJ** (see [Installation](../installation.md)). Open a 2D grayscale image, pick a command, and the result appears as new images, an overlay or a table — nothing to configure beyond the dialog in front of you.
 
-Whatever the command, the computation underneath is the same: a gradient is taken at every pixel, the gradient structure tensor is averaged over a local window, and its eigen-analysis gives the **orientation** of the local structure, the **coherency** saying how well defined that orientation is, and the **energy** saying whether there is any structure at all. The derivation, from the weighted inner product to the tensor invariants, is in [Theory](../theory.md); everything you need in order to run the plugins is on these three pages.
+Whatever the command, the computation underneath is the same: a gradient is taken at every pixel, the gradient structure tensor is averaged over a local window, and its eigen-analysis gives the **orientation** of the local structure, the **coherency** saying how well defined that orientation is, and the **energy** saying whether there is any structure at all. The derivation, from the weighted inner product to the tensor invariants, is in [Theory](../theory/index.md); everything you need in order to run the plugins is on these three pages.
 
 ## The dialogs
 

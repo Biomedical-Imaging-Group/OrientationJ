@@ -1,4 +1,5 @@
-<!-- banner:begin -->
+<!-- The banner. The same block on every page; only the logo path
+     changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
   <div class="oj-banner__top">
     <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
@@ -17,7 +18,6 @@
      class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
-<!-- banner:end -->
 
 # Selecting the parameters
 
@@ -29,7 +29,7 @@ Every dialog opens with the same *Structure Tensor* block, and only two of its f
 
 Start at about **half the width of the structures you care about**: σ = 1–2 px for thin fibers, more for coarse bundles. Then keep the trade-off in mind — a small σ follows fine detail but gives noisy angles and low coherency everywhere, while a large σ gives stable, smooth angles that blend neighboring structures and round off corners. When the structures live at several scales, run the analysis at several σ and compare: the coherency map tells you at which scale each region is best described.
 
-The effect, image by image and on the angular histogram, is shown in [the scale parameter σ](../theory.md#the-scale-parameter).
+The effect, image by image and on the angular histogram, is shown in [the scale parameter σ](../theory/scale.md).
 
 ## The gradient
 
@@ -37,7 +37,7 @@ The gradient decides how the derivatives are estimated before the tensor is asse
 
 Of the others, *Finite Difference* is the fastest but one to two orders of magnitude more biased, increasingly so as structures get finer; *Fourier*, *Riesz* and *Gaussian* are band-limited derivatives that hold their accuracy at small periods, at the cost of spatial locality — Fourier can ring near the borders.
 
-The measured angular error of all five, against analytic ground truth, is in [the gradient](../theory.md#the-gradient) and in the [gradient assessment](../assessment/gradients.md).
+The measured angular error of all five, against analytic ground truth, is in [the gradient](../theory/gradient.md) and in the [gradient assessment](../assessment/gradients.md).
 
 ## The thresholds
 

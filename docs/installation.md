@@ -1,4 +1,5 @@
-<!-- banner:begin -->
+<!-- The banner. The same block on every page; only the logo path
+     changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
   <div class="oj-banner__top">
     <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
@@ -17,13 +18,12 @@
      class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
-<!-- banner:end -->
 
 # Installation
 
 ## ImageJ or Fiji
 
-1. Download [`OrientationJ_.jar`](assets/OrientationJ_.jar) (version 2.1.0). Every tagged build is also attached to the [releases page](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest), where [`OrientationJ_.jar`](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest/download/OrientationJ_.jar) always points to the newest jar produced by `mvn package`.
+1. Download [`OrientationJ_.jar`](assets/OrientationJ_.jar) (version 2.1.0). Every tagged build is also attached to the [releases page](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases/latest).
 2. Copy it into the `plugins` folder of your ImageJ or Fiji installation.
 3. Restart. The commands appear under **Plugins ▸ OrientationJ**.
 
@@ -45,39 +45,4 @@ mvn package
 The plugin lands in `target/OrientationJ_-<version>.jar`; copy it into the
 `plugins` folder as above. The build needs Maven and a JDK (8 or later).
 
-## Version history
-
-All releases are by Daniel Sage. The full notes of each tagged build are on the [releases page](https://github.com/Biomedical-Imaging-Group/OrientationJ/releases).
-
-### 2.1.0 — 6 August 2026
-
-* New feature: Directionality, the second deviatoric invariant J2 = (&lambda;1-&lambda;2)&sup2;/4 of the structure tensor
-* New feature: Anisotropy FA, the fractional anisotropy FA = |&lambda;1-&lambda;2| / &radic;(&lambda;1&sup2;+&lambda;2&sup2;), bounded in [0..1]
-* Directionality and Anisotropy FA are available in the Analysis plugin only
-* New scaling option for Energy and Directionality: "Scale [0..1]" (default) or "No scale" (raw values), selectable in the dialog and scriptable in macros (`scale-energy`, `scale-directionality`)
-* Color survey channels are clamped to [0,1] to avoid overflow with unscaled channels
-* Fixed the macro recorder that did not record the Directionality view
-
-### 2.0.8 — 24 July 2026
-
-* Fixed swapped Gradient-X / Gradient-Y channels in the color survey
-* Fixed the Distribution histogram window opening when only Binary Mask or Orientation Mask was selected
-* Fixed the macro keys of the two mask views, now `binary_mask` and `orientation_mask`. The keys were derived from the display labels, and ImageJ truncates a macro key at its first space: "binary mask" was read as "binary" and never matched, so both views were unreachable from a macro, while "orientation mask" collapsed onto "orientation" and switched on the tensor orientation and the distribution mask together
-
-### 2.0.4 — 15 March 2019
-
-* Fixed a bug in the computation of the mean of cells for the vector field. The overlay line was also not at the right position (shifted by size/2)
-
-### 2.0.3 — 15 June 2018
-
-* Fixed a bug in the record of the macro (vectortype)
-
-### 2.0.2 — 11 June 2018
-
-* Make the orientation in degrees [-90,90] in the table VectorField, like in the other plugins
-
-### 2.0.0 — 1 May 2018
-
-* Redesign the graphical user interface
-* Release on the source code on GitHub
-* Push on Fiji
+The release notes of every version are on the [version history](history.md) page.
