@@ -75,41 +75,39 @@ The tensor of a region is a symmetric 2×2 matrix, so it carries exactly three n
 
 ### Features and tensor invariants
 
-With the eigenvalues \(\lambda_1 \geq \lambda_2 \geq 0\), the mean \(\bar\lambda = \tfrac12 \operatorname{tr}(\mathbf{J})\), and the deviator \(\mathbf{s} = \mathbf{J} - \tfrac12 \operatorname{tr}(\mathbf{J})\, \mathbf{I}\), OrientationJ computes the following features:
+With the eigenvalues \(\lambda_1 \geq \lambda_2 \geq 0\), the mean \(\bar\lambda = \tfrac12 \operatorname{tr}(\mathbf{J})\), and the deviator \(\mathbf{s} = \mathbf{J} - \tfrac12 \operatorname{tr}(\mathbf{J})\, \mathbf{I}\), OrientationJ computes the following features.
 
-**Orientation** — direction of \(\mathbf{e}_2\), along the structures:
+**Orientation** — the direction of the structures themselves, that of the eigenvector of the *smaller* eigenvalue, along which the intensity varies least. In \([-90°, +90°]\): an angle, not a vector, since a structure and its opposite are the same structure.
 
 \[
 \theta = \frac{1}{2} \arctan\!\left( \frac{2 \langle f_x, f_y \rangle_w}{\langle f_y, f_y \rangle_w - \langle f_x, f_x \rangle_w} \right) \in [-\pi/2,\ \pi/2]
 \]
 
-**Energy:**
+**Energy** — how much gradient there is in the window, whatever its direction. Zero on a flat region, large on a contrasted one; unbounded, and proportional to the square of the image contrast, so it is a relative quantity, comparable only between images acquired alike.
 
 \[
 E = \operatorname{tr}(\mathbf{J}) = \lambda_1 + \lambda_2 \in [0, \infty)
 \]
 
-**Coherency:**
+**Coherency** — how well defined that orientation is: \(C = 1\) where a single orientation dominates, \(C = 0\) where the neighborhood is isotropic and the angle means nothing. Bounded in \([0, 1]\) and independent of contrast, it is the quantity to threshold on, and the one coherence-enhancing methods build upon (Weickert, 1999).
 
 \[
 C = \frac{\lambda_1 - \lambda_2}{\lambda_1 + \lambda_2}
 = \frac{\sqrt{\bigl( \langle f_y, f_y \rangle_w - \langle f_x, f_x \rangle_w \bigr)^2 + 4 \langle f_x, f_y \rangle_w^2}}{\langle f_x, f_x \rangle_w + \langle f_y, f_y \rangle_w} \in [0, 1]
 \]
 
-**Directionality:**
+**Directionality** — the second invariant of the deviator, the von Mises invariant. It grows with contrast *and* with alignment at once, being the product of the two: unnormalized and unbounded, useful to rank regions within one image rather than across images.
 
 \[
 J_2 = \tfrac12 \operatorname{tr}(\mathbf{s}^2) = \tfrac14 (\lambda_1 - \lambda_2)^2 = \tfrac14\, C^2 E^2 \in [0, \infty)
 \]
 
-**Fractional anisotropy:**
+**Fractional anisotropy** — the same information as the coherency, normalized by the Frobenius norm of the tensor instead of its trace, in the usage established by diffusion-tensor imaging (Basser & Pierpaoli, 1996). Also in \([0, 1]\), and in one-to-one correspondence with \(C\), so the choice between them is one of habit.
 
 \[
 \mathrm{FA} = \frac{\lambda_1 - \lambda_2}{\sqrt{\lambda_1^2 + \lambda_2^2}}
 = \frac{\sqrt{2}\, C}{\sqrt{1 + C^2}} \in [0, 1]
 \]
-
-The coherency indicates whether the local image features are oriented or not: \(C = 1\) when the local structure has one dominant orientation, and \(C = 0\) if the image is essentially isotropic in the local neighborhood; it is the quantity that coherence-enhancing methods build on (Weickert, 1999). The fractional anisotropy (Basser & Pierpaoli, 1996) carries the same information through the one-to-one map \(\mathrm{FA} = \sqrt{2} C / \sqrt{1 + C^2}\), but normalizes the eigenvalue contrast by the Frobenius norm of the tensor, following the usage established in diffusion-tensor imaging. The directionality \(J_2\) is the second invariant of the deviator (the von Mises invariant); it is an **unnormalized** measure that grows with both contrast and alignment.
 
 ### Summary of features and invariants
 
@@ -142,10 +140,6 @@ Every feature evaluated on canonical eigenvalue pairs \((\lambda_1, \lambda_2)\)
 | (1, 0.9) | near-isotropic | 1.900 | 0.002 | 0.100 | 0.053 | 0.053 | 0.074 |
 | (1, 1) | isotropic | 2.000 | 0.000 | 0.000 | 0.000 | 0.000 | 0.000 |
 | (0, 0) | flat | 0.000 | 0.000 | — | — | — | — |
-
-### The color survey
-
-The default visual output of *Analysis* encodes the three features in one image: **hue** = orientation, **saturation** = coherency, **brightness** = the original image — so strongly aligned structures appear saturated in the color of their direction, while flat or isotropic regions stay gray.
 
 ## Implementation notes
 

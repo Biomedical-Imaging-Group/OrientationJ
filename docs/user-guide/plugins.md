@@ -23,26 +23,15 @@
 
 What each command under **Plugins ▸ OrientationJ** produces, in the order the menu lists them, with an example of its output.
 
-<p class="oj-toc">On this page:
-<a href="#principle">Principle</a> ·
-<a href="#thresholds">Thresholds</a> ·
-<a href="#analysis">Analysis</a> ·
-<a href="#distribution">Distribution</a> ·
-<a href="#vector-field">Vector Field</a> ·
-<a href="#measure">Measure</a> ·
-<a href="#dominant-direction">Dominant Direction</a> ·
-<a href="#clustering">Clustering</a> ·
-<a href="#horizontal-alignment">Horizontal Alignment</a> ·
-<a href="#monogenicj">MonogenicJ</a> ·
-<a href="#corner-harris">Corner Harris</a></p>
-
-## Principle
-
 Every command works from the same measurement: a gradient at each pixel, the gradient structure tensor averaged over the local window σ, and the eigen-analysis that gives orientation, coherency and energy. What changes from one command to the next is only what is done with those three numbers — painted over the image, binned into a histogram, drawn as arrows, or reported in a table. They therefore share the settings described in [selecting the scale](select-scale.md) and [selecting the gradient](select-gradient.md), and every one of them is scriptable from an ImageJ macro.
 
 ## Analysis
 
-Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — and the color survey, which paints them over the image: hue for the orientation, saturation for the coherency, brightness for the original intensity. Flat and isotropic regions therefore stay gray, and only genuinely oriented structures take on color.
+Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — each as a new image, and the [color survey](#color-survey) that paints them over the original. Energy and directionality are unbounded, so they carry a display scaling; coherency and anisotropy are already in [0, 1] and are shown as computed.
+
+## Color survey
+
+The default visual output of *Analysis* encodes three features in one image: **hue** for the orientation, **saturation** for the coherency, **brightness** for the original intensity. Strongly aligned structures therefore appear saturated in the color of their direction, while flat or isotropic regions stay gray — the eye reads the orientation field without having to look at three maps at once.
 
 ![The orientation color scale](../assets/color-scale.jpg)
 
@@ -57,6 +46,8 @@ Four images analyzed at the same setting — the survey turns every field into t
 Bins the local orientations into an angular histogram, with minimum-coherency and minimum-energy thresholds so that only meaningful pixels are counted. This is the command most often used to quantify alignment, and its table can be exported for statistics.
 
 ![Orientation distribution of a collagen image](../assets/montage3.jpg)
+
+*Distribution* and *Vector Field* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.
 
 ## Vector Field
 
@@ -96,6 +87,4 @@ Harris keypoint detection, built on the same structure tensor: corners are the p
 
 ![Harris corner detection](../assets/harris.png)
 
-## Thresholds
 
-*Distribution* and *Vector Field* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.

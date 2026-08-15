@@ -9,10 +9,9 @@ site_description: >-
   structure tensor. ImageJ and Fiji plugins from the Biomedical Imaging Group, EPFL.
 site_author: Daniel Sage
 copyright: >-
-  <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> ·
-  <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
-  <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>,
-  <a href="https://www.epfl.ch/">EPFL</a> · August 2026
+  <strong>Orientation<span class="oj-banner__j">J</span></strong> —
+  Directional analysis of 2D images — ImageJ/Fiji plugins
+  <span class="oj-foot-version">Version 2.1.0 · August 2026</span>
 
 theme:
   name: material

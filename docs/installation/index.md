@@ -21,11 +21,21 @@
 
 # Installation
 
-## ImageJ or Fiji
+## In ImageJ
 
 1. Download [`OrientationJ_.jar`](../assets/OrientationJ_.jar) (version 2.1.0). Older versions are on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
-2. Copy it into the `plugins` folder of your ImageJ or Fiji installation.
-3. Restart. The commands appear under **Plugins ▸ OrientationJ**.
+2. Copy it into the `plugins` folder of your ImageJ installation.
+3. Restart ImageJ. The commands appear under **Plugins ▸ OrientationJ**.
+
+## In Fiji
+
+Fiji installs and updates the plugin by itself, through the update site of the Biomedical Imaging Group:
+
+1. **Help ▸ Update…**, and let the updater finish looking for changes.
+2. **Manage update sites**, then tick **BIG-EPFL** in the list. If it is not there, add it with the URL `https://sites.imagej.net/BIG-EPFL/`.
+3. **Apply changes**, then restart Fiji. The commands appear under **Plugins ▸ OrientationJ**.
+
+Coming back to **Help ▸ Update…** later brings in every new version, without touching the `plugins` folder by hand.
 
 !!! note "Java version"
     The plugin is built for **Java 8 or later**, so it runs on every current ImageJ and Fiji distribution.
