@@ -25,6 +25,7 @@ What each command under **Plugins ▸ OrientationJ** produces, in the order the 
 
 <p class="oj-toc">On this page:
 <a href="#principle">Principle</a> ·
+<a href="#thresholds">Thresholds</a> ·
 <a href="#analysis">Analysis</a> ·
 <a href="#distribution">Distribution</a> ·
 <a href="#vector-field">Vector Field</a> ·
@@ -37,7 +38,7 @@ What each command under **Plugins ▸ OrientationJ** produces, in the order the 
 
 ## Principle
 
-Every command works from the same measurement: a gradient at each pixel, the gradient structure tensor averaged over the local window σ, and the eigen-analysis that gives orientation, coherency and energy. What changes from one command to the next is only what is done with those three numbers — painted over the image, binned into a histogram, drawn as arrows, or reported in a table. They therefore share the settings described in [Selecting the parameters](parameters.md), and every one of them is scriptable from an ImageJ macro.
+Every command works from the same measurement: a gradient at each pixel, the gradient structure tensor averaged over the local window σ, and the eigen-analysis that gives orientation, coherency and energy. What changes from one command to the next is only what is done with those three numbers — painted over the image, binned into a histogram, drawn as arrows, or reported in a table. They therefore share the settings described in [selecting the scale](select-scale.md) and [selecting the gradient](select-gradient.md), and every one of them is scriptable from an ImageJ macro.
 
 ## Analysis
 
@@ -94,3 +95,7 @@ A companion plugin, on a different footing: instead of one local window it build
 Harris keypoint detection, built on the same structure tensor: corners are the places where both eigenvalues are large.
 
 ![Harris corner detection](../assets/harris.png)
+
+## Thresholds
+
+*Distribution* and *Vector Field* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.

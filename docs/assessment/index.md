@@ -26,6 +26,6 @@ How well the measurement performs, measured rather than asserted. Each page is t
 ## The pages of this section
 
 - **[Benchmarking](benchmarking.md)** — the orientation distribution of OrientationJ against six other tools, on the same images and the same masks.
-- **[Gradients](gradients.md)** — the five gradients of the plugin measured against analytic ground truth, error against structure size.
+- **[Compare gradients](compare-gradients.md)** — the five gradients of the plugin measured against analytic ground truth, error against structure size.
 - **[Python port](python-port.md)** — a faithful reimplementation in Python, agreeing with the Java plugin to the last bit, used to produce the reference maps.
 - **[Operator](operator.md)** — the same measurement in sixty lines of separable convolutions, with no transform at all, and what it costs in accuracy.
