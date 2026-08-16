@@ -70,7 +70,18 @@
     bar.insertBefore(home, next || null);
   }
 
-  var start = function () { track(resolve()); footerHome(); };
+  // anything leaving the documentation opens in a tab of its own
+  function externalLinks() {
+    document.querySelectorAll('a[href]').forEach(function (a) {
+      var href = a.getAttribute('href');
+      if (!/^(https?:)?\/\//.test(href)) return;         // relative: stays here
+      if (a.hostname === location.hostname) return;      // the site itself
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener');
+    });
+  }
+
+  var start = function () { track(resolve()); footerHome(); externalLinks(); };
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', start);
   } else {

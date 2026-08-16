@@ -28,18 +28,14 @@ Every command works from the same measurement: a gradient at each pixel, the gra
 ## Analysis
 
 Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — each as a new image, and the [color survey](#color-survey) that paints them over the original. Energy and directionality are unbounded, so they carry a display scaling; coherency and anisotropy are already in [0, 1] and are shown as computed.
+    
+!!! note "Color Survey"
+    The default visual output of *Analysis* encodes three features in one image: **hue** for the orientation, **saturation** for the coherency, **brightness** for the original intensity. Strongly aligned structures therefore appear saturated in the color of their direction, while flat or isotropic regions stay gray — the eye reads the orientation field without having to look at three maps at once. <br>
+    ![The orientation color scale](../assets/color-scale.jpg)<p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°.</p>
 
-## Color survey
+Three images, each analyzed at a small and at a medium scale. The hue follows the local direction in both, but the small window resolves every fiber while the larger one keeps only the trend that survives at its size:
 
-The default visual output of *Analysis* encodes three features in one image: **hue** for the orientation, **saturation** for the coherency, **brightness** for the original intensity. Strongly aligned structures therefore appear saturated in the color of their direction, while flat or isotropic regions stay gray — the eye reads the orientation field without having to look at three maps at once.
-
-![The orientation color scale](../assets/color-scale.jpg)
-
-<p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°.</p>
-
-Four images analyzed at the same setting — the survey turns every field into the same visual language:
-
-![Color surveys of four test images](../assets/surveys-smoothing.jpg)
+![Color surveys of three test images at two analysis scales](../assets/analysis-surveys.jpg)
 
 ## Distribution
 
@@ -47,7 +43,8 @@ Bins the local orientations into an angular histogram, with minimum-coherency an
 
 ![Orientation distribution of a collagen image](../assets/montage3.jpg)
 
-*Distribution* and *Vector Field* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.
+!!! note "Parameters" 
+    *Distribution* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.
 
 ## Vector Field
 
@@ -58,6 +55,10 @@ Overlays one vector per grid cell, with a length that is constant or scaled by e
 The grid and the analysis scale act together: the same field, drawn while σ grows, keeps only the trend that survives at that scale.
 
 ![Vector field of collagen while the analysis scale grows](../assets/vectorfield-scale.gif)
+
+!!! note "Parameters" 
+    *Vector Field* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.
+
 
 ## Measure
 

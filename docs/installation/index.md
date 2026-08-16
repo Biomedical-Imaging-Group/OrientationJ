@@ -35,8 +35,6 @@ Fiji installs and updates the plugin by itself, through the update site of the B
 2. **Manage update sites**, then tick **BIG-EPFL** in the list. If it is not there, add it with the URL `https://sites.imagej.net/BIG-EPFL/`.
 3. **Apply changes**, then restart Fiji. The commands appear under **Plugins ▸ OrientationJ**.
 
-Coming back to **Help ▸ Update…** later brings in every new version, without touching the `plugins` folder by hand.
-
 !!! note "Java version"
     The plugin is built for **Java 8 or later**, so it runs on every current ImageJ and Fiji distribution.
 
