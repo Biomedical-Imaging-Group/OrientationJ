@@ -79,4 +79,12 @@ Harris keypoint detection, built on the same structure tensor: corners are the p
 
 ## MonogenicJ
 
-A companion plugin, on a different footing: instead of one local window it builds a multiresolution **monogenic** representation of the image with the Riesz–Laplace wavelet transform, and reports orientation, coherency and phase at every scale. Use it when the structures of interest live at several scales at once — the chirp is the clearest case, its period growing from the center outwards, so each scale of the decomposition answers for one ring of it. Details on the [MonogenicJ page](https://bigwww.epfl.ch/demo/monogenicj/), and the method in [Unser et al., 2009](https://doi.org/10.1109/TIP.2009.2027628).
+A companion plugin, on a different footing: instead of one local window it builds a multiresolution **monogenic** representation of the image with the Riesz–Laplace wavelet transform, and reports orientation, coherency, phase and wavenumber at every scale. Use it when the structures of interest live at several scales at once.
+
+The chirp is the clearest case, its period growing from the center outwards, so each scale of the decomposition answers for one ring of it:
+
+![MonogenicJ on the chirp: wavelet band, orientation, coherency and phase at four scales](../assets/monogenic-chirp.jpg)
+
+<p class="oj-caption">MonogenicJ on <code>synthetic_chirp_1024</code>, redundant transform, four scales, σ = 3. The wavelet band selects a period, and the coherency says at which scale each ring is best described: nothing at scale 1, the outer rings at scales 2 and 3, the fine center at scale 4.</p>
+
+Details on the [MonogenicJ page](https://bigwww.epfl.ch/demo/monogenicj/), and the method in [Unser et al., 2009](https://doi.org/10.1109/TIP.2009.2027628).

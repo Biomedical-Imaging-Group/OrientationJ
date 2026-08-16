@@ -1,5 +1,5 @@
 ---
-title: Assessment
+title: Assessments
 ---
 
 <!-- The banner. The same block on every page; only the logo path
@@ -13,11 +13,9 @@ title: Assessment
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-## Assessment
+## Assessments
 
-How well the measurement performs, measured rather than asserted. Each page is the report of one experiment, kept in step with the code that produced it in the repository.
-
-## The pages of this section
+Each section is the report of one experiment with the code that produced it.
 
 - **[Benchmarking](benchmarking.md)** — the orientation distribution of OrientationJ against six other tools, on the same images and the same masks.
 - **[Compare gradients](compare-gradients.md)** — the five gradients of the plugin measured against analytic ground truth, error against structure size.

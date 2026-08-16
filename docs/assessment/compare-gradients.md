@@ -9,7 +9,7 @@
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-## OrientationJ Gradients
+## Comparing the gradient computations
 
 Which gradient should OrientationJ use? The plugin offers five — **cubic spline** (the default), **finite difference**, **Fourier**, **Riesz** and **Gaussian** — and the choice changes the measured angles. This assessment quantifies it on four test images with an analytic ground truth or a known statistical property, at structure-tensor window σ = 1, with the errors evaluated inside the structure masks:
 

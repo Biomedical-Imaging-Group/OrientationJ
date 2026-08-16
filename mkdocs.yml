@@ -9,7 +9,8 @@ site_description: >-
   structure tensor. ImageJ and Fiji plugins from the Biomedical Imaging Group, EPFL.
 site_author: Daniel Sage
 copyright: >-
-  © 2026 <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> ·
+  <img class="oj-foot-mark" src="oj:assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
+  <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> ·
   <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
   <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>,
   <a href="https://www.epfl.ch/">EPFL</a>
@@ -91,7 +92,7 @@ nav:
       - The structure tensor: "oj:theory/#the-structure-tensor"
       - Features and invariants: "oj:theory/#features-and-invariants"
   - Test images: test-images.md
-  - Assessment:
+  - Assessments:
       - assessment/index.md
       - Benchmarking: assessment/benchmarking.md
       - Compare gradients: assessment/compare-gradients.md
@@ -99,9 +100,8 @@ nav:
       - Operator: assessment/operator.md
   - Use cases:
       - use-cases/index.md
-      - In the literature: "oj:use-cases/literature.html"
+      - In the literature: "oj:use-cases/#in-the-literature"
       - Primary references: "oj:use-cases/#primary-references"
       - Software and resources: "oj:use-cases/#software-and-resources"
-      - Community discussions: "oj:use-cases/#community-discussions"
       - Validation and related tools: "oj:use-cases/#validation-and-related-tools"
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/
