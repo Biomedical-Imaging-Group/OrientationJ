@@ -103,8 +103,8 @@ nav:
       - Operator: assessment/operator.md
   - Use cases:
       - use-cases/index.md
-      - In the literature: "oj:use-cases/#in-the-literature"
-      - Primary references: "oj:use-cases/#primary-references"
-      - Software and resources: "oj:use-cases/#software-and-resources"
-      - Validation and related tools: "oj:use-cases/#validation-and-related-tools"
+      - In the literature: "oj:use-cases/#orientationj-in-the-literature"
+      - References: "oj:use-cases/#references-of-orientationj"
+      - External resources: "oj:use-cases/#external-resources"
+      - Other tools: "oj:use-cases/#other-tools-for-directional-image-analysis"
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/
