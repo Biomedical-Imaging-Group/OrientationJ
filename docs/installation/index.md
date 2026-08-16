@@ -6,7 +6,6 @@ title: Installation
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
 
-  <a class="oj-banner__epfl" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging"><img src="../assets/center-for-imaging.svg" alt="EPFL Center for Imaging"></a>
   <img class="oj-banner__logo" src="../assets/logo-orientationj-clear.png" alt="OrientationJ">
   <div class="oj-banner__box">
     <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
@@ -17,13 +16,13 @@ title: Installation
 
 # Installation
 
-## Installation on ImageJ
+## On ImageJ
 
 1. Download [`OrientationJ_.jar`](../assets/OrientationJ_.jar) (version 2.1.0). Older versions are on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
 2. Copy it into the `plugins` folder of your ImageJ installation.
 3. Restart ImageJ. The commands appear under **Plugins ▸ OrientationJ**.
 
-## Installation on Fiji
+## On Fiji
 
 Fiji installs and updates the plugin by itself, through the update site of the Biomedical Imaging Group:
 
@@ -38,7 +37,7 @@ Fiji installs and updates the plugin by itself, through the update site of the B
 
 Run **Plugins ▸ OrientationJ ▸ Test Image ▸ Chirp Image Small** to generate a chirp, then **Plugins ▸ OrientationJ ▸ OrientationJ Analysis** on it. In the color survey the hue must follow the local stripe direction everywhere, turning smoothly around the center of the pattern.
 
-## Installation from source
+## From source
 
 ```bash
 git clone https://github.com/Biomedical-Imaging-Group/OrientationJ.git
