@@ -126,6 +126,11 @@
   letter-spacing: 0;
   text-transform: none;
   margin-top: 2em;
+  /* a red rule hanging in the margin: the words stay flush with the text
+     above and below them, the mark sits outside the column */
+  border-left: 2px solid var(--oj-red);
+  padding-left: 0.5em;
+  margin-left: -0.6em;
 }
 .md-typeset .oj-banner + h2 {
   margin-top: 0.4em;
