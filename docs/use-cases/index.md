@@ -51,20 +51,17 @@ The publications to cite when OrientationJ contributed to your results, each mat
 
 ## External resources
 
-**[OrientationJ, the original page](https://bigwww.epfl.ch/demo/orientation/)** — the distribution page at the Biomedical Imaging Group: the jar, a description of every mode, recordable macro examples, test images (chirp, artificial fibers, collagen MIP) and a gallery of published applications.
+**[OrientationJ, the original page](https://bigwww.epfl.ch/demo/orientation/)** and **[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/)** — the two official pages: the first at the Biomedical Imaging Group, with the jar, a description of every mode, recordable macro examples and a gallery of published applications; the second at the Center for Imaging, for the Python successor that also measures 3D volumes.
 
 **[Source code on GitHub](https://github.com/Biomedical-Imaging-Group/OrientationJ)** — the Java sources under GPL-3.0, the `plugins.config` that declares the menu commands, and the releases.
 
 **[MonogenicJ](https://bigwww.epfl.ch/demo/monogenicj/)** — the companion plugin: wavelet-based multiresolution monogenic analysis (orientation, coherency, wavenumber per scale), bundled with OrientationJ since version 2.0.7.
 
-**[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/)** — the Python successor from the EPFL Center for Imaging, for 2D images and 3D volumes, with a choice of gradients; on [PyPI](https://pypi.org/project/orientationpy/) and bioconda, with a [napari plugin](https://github.com/EPFL-Center-for-Imaging/napari-orientationpy).
+**[OrientationPy on PyPI](https://pypi.org/project/orientationpy/)** — `pip install orientationpy`, also on bioconda, with a [napari plugin](https://github.com/EPFL-Center-for-Imaging/napari-orientationpy) for those who prefer a viewer.
+
+**[image.sc forum](https://forum.image.sc/)** — where questions on the plugins and their parameters are asked and answered; tag the post `orientationj`. Bugs and wishes go to the [GitHub issues](https://github.com/Biomedical-Imaging-Group/OrientationJ/issues).
 
 **[BIII, the BioImage Informatics Index](https://biii.eu/orientationj)** — the curated registry entry: function, platform, licence and links, in the NEUBIAS tools index.
-
-### Questions
-
-Questions about the plugins, their parameters or the interpretation of their output can go to the [image.sc forum](https://forum.image.sc/), the forum of the scientific imaging community, where OrientationJ threads are already numerous and are read by other users as well as by the authors — tag the post `orientationj`, and say which command and which σ you used. A bug, or a wish, is better filed as a [GitHub issue](https://github.com/Biomedical-Imaging-Group/OrientationJ/issues); anything else can be [written to the author](mailto:daniel.sage@epfl.ch).
-
 
 ## Other tools for directional image analysis
 

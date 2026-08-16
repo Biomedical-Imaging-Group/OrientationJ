@@ -7,6 +7,8 @@
 The folder holds the 16 source images in [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/images), the 16 binary masks in [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks), and in [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results) one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field). All of it is computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1). The images are listed below in the order of the montage; click a panel for full size.
 
 
+---
+
 ## cell_aemisegger ![real](https://img.shields.io/badge/real-db3f2e)
 
 728 × 728, uint8, values in [0, 252] — real: fluorescence cell, actin fibers.
