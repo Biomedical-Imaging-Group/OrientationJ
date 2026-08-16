@@ -2,6 +2,7 @@
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
 
+  <a class="oj-banner__epfl" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging"><img src="assets/center-for-imaging.svg" alt="EPFL Center for Imaging"></a>
   <img class="oj-banner__logo" src="assets/logo-orientationj-clear.png" alt="OrientationJ">
   <div class="oj-banner__box">
     <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
@@ -10,7 +11,9 @@
 </div>
 
 
-## Overview OrientationJ
+# OrientationJ
+
+## Overview
 
 Fibers, filaments, fringes, cracks, fractures, flows, growth rings: many scientific images are made of elongated structures, and what matters about them is their direction. OrientationJ quantifies it everywhere in the image — the local orientation, how consistently it holds, and how anisotropic the neighborhood is.
 

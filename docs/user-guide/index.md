@@ -6,6 +6,7 @@ title: User guide
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
 
+  <a class="oj-banner__epfl" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging"><img src="../assets/center-for-imaging.svg" alt="EPFL Center for Imaging"></a>
   <img class="oj-banner__logo" src="../assets/logo-orientationj-clear.png" alt="OrientationJ">
   <div class="oj-banner__box">
     <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
@@ -14,6 +15,8 @@ title: User guide
 </div>
 
 *OrientationJ is a suite of plugins for [ImageJ](https://imagej.net/ij/) and [Fiji](https://fiji.sc/), written in plain Java with no dependency to install (see [Installation](../installation/index.md)). Open a 2D grayscale image, pick a command, and the result appears — nothing to configure beyond the [dialog](#the-user-interface) in front of you. Whatever the command, the computation underneath is the same: the gradient structure tensor is computed over a local window (see [Theory](../theory/index.md)) to provide pixelwise directionalities quantities.*
+
+# User guide
 
 ## The user interface
 

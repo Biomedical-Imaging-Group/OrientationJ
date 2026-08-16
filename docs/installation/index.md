@@ -6,6 +6,7 @@ title: Installation
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
 
+  <a class="oj-banner__epfl" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging"><img src="../assets/center-for-imaging.svg" alt="EPFL Center for Imaging"></a>
   <img class="oj-banner__logo" src="../assets/logo-orientationj-clear.png" alt="OrientationJ">
   <div class="oj-banner__box">
     <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
@@ -13,6 +14,8 @@ title: Installation
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
+
+# Installation
 
 ## Installation on ImageJ
 
