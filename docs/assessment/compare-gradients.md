@@ -11,34 +11,41 @@
 
 ## Comparing the gradient computations
 
-Which gradient should OrientationJ use? The plugin offers five — **cubic spline** (the default), **finite difference**, **Fourier**, **Riesz** and **Gaussian** — and the choice changes the measured angles. This assessment quantifies it on four test images with an analytic ground truth or a known statistical property, at structure-tensor window σ = 1, with the errors evaluated inside the structure masks:
+Before any tensor is assembled, the image has to be differentiated — and the way that derivative is computed is a choice, not a detail. OrientationJ offers five:
 
-- `synthetic_chirp_1024` — tangential truth with a frequency sweep, so the error can be plotted against the local period;
-- `synthetic_rings_dither_512` — exact tangential truth on thin structures;
-- `synthetic_wave_512` — fringes at exactly +60° and −30°, two very different scales at once;
-- `synthetic_noise_512` — isotropic by construction, so any measured anisotropy is bias.
+| gradient | how the derivative is taken |
+|---|---|
+| **Cubic spline** (default) | the exact derivative of the cubic-spline interpolation of the image |
+| **Finite difference** | the difference of neighboring pixels, the cheapest estimate |
+| **Fourier** | multiplication by *i*ω in the frequency domain, exact for a band-limited image |
+| **Riesz** | the Riesz transform, a band-limited derivative with a smoother spectral profile |
+| **Gaussian** | convolution with the derivative of a Gaussian, which smooths as it differentiates |
 
-## Accuracy versus structure size
+They differ in how far they reach around a pixel, and therefore in what they can resolve: the wider the support, the better the behavior at fine structures and the worse the locality. This page measures that trade-off, at structure-tensor window σ = 1, on images whose answer is known — analytically, or by construction.
+
+## Error against the size of the structures
+
+On the radial chirp, whose period grows from the center outwards, the true orientation is tangential everywhere, so the angular error can be plotted against the local period. This is the measurement that decides the default:
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gradients/chirp-error-vs-period.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gradients/chirp-error-vs-period.png)
 
-On the chirp, finite difference is one to two orders of magnitude worse than everything else, and it degrades as the structures get finer. Fourier, Riesz and Gaussian are indistinguishable from each other and stay flat; the spline follows them down to a local period of about 18 pixels and then loses a little accuracy on the finest fringes — while remaining, unlike Fourier, a strictly local operator.
+Every gradient converges once the structures are comfortably sampled. They part company below about ten pixels per period: the finite difference degrades first and worst, one to two orders of magnitude above the others, while the band-limited derivatives — Fourier, Riesz, Gaussian — and the cubic spline hold their accuracy down to the sampling limit.
 
-## Two exact orientations at two scales
+## Two orientations at two scales
+
+The wave image carries fringes at exactly +60° and −30°, of two different periods, so a gradient can be wrong on one and right on the other. The histograms show which:
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gradients/wave-distributions.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gradients/wave-distributions.png)
 
-The wave superimposes fine fringes at +60° on broad bands at −30°, and the measured distribution must show both peaks. Here the spline wins (median error 2.35°, against 2.38° Fourier, 3.25° Gaussian, 2.63° finite difference) and the Riesz gradient fails outright at 25.6°: its long-range weighting cannot keep two scales apart.
+## Bias where there is no orientation
 
-## Bias on isotropic noise
+Isotropic noise has no preferred direction, so the distribution of the measured angles must be flat. Any structure in it is bias introduced by the derivative itself, and the separable finite difference is the one that shows it, favoring the axes of the pixel grid:
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gradients/noise-isotropy.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gradients/noise-isotropy.png)
 
-White noise has no preferred direction, so a perfect estimator returns a flat histogram of orientations. Measured as the RMSE to the uniform distribution, in units of 10⁻³ probability per bin: **spline 0.16**, Riesz 0.18, Gaussian 0.19, Fourier 0.21, finite difference 0.70. The axis-aligned bias of finite difference is four times that of the spline.
+## What to choose
 
-## Conclusion
-
-The **spline is the best all-round gradient**, which is why it is the default: it wins on the multi-scale wave, it is the least biased on isotropic noise, it stays within 0.02° of the truth on the ground-truth patterns at every scale, and it is local — unlike the Fourier gradient, which matches it only on periodic synthetic images. Finite difference is uniformly the worst and should be reserved for speed. Riesz is accurate on single-scale patterns but breaks down when two scales coexist. The Gaussian derivative is a solid, simple alternative, and the version used by the [minimal operator](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/gst_operator).
+Keep the **cubic spline**: it is accurate down to fine structures, unbiased on isotropic data, and local. Take **Fourier** or **Riesz** when the structures approach the pixel and the image is band-limited and free of border artifacts, and **Gaussian** when the data is noisy and a little smoothing is welcome — it is also the gradient of the [minimal operator](operator.md). Avoid the **finite difference** unless speed outweighs everything: it is the only one that is both biased on noise and inaccurate on fine structures.
 
 ## Files
 

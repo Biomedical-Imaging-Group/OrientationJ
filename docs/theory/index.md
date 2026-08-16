@@ -13,11 +13,10 @@ title: Theory
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-[PDF](../assets/theoretical-background.pdf "The theoretical background as a typeset PDF"){ .oj-button .oj-button--right }
+[Theoretical background in PDF](../assets/theoretical-background.pdf "The theoretical background as a typeset PDF"){ .oj-button .oj-button--right }
 
-## Theory
 
-How OrientationJ measures a direction: the tensor it builds around every pixel, and the features it reads from it. The same material, typeset, is in the [PDF](../assets/theoretical-background.pdf). The two settings that steer the measurement are treated in the user guide, in [selecting the scale](../user-guide/select-scale.md) and [selecting the gradient](../user-guide/select-gradient.md).
+*How OrientationJ measures a direction: the tensor it builds around every pixel, and the features it reads from it. The two settings, scale and gradient, are explained in the [user guide](../user-guide/index.md)*
 
 ## The structure tensor
 

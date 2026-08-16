@@ -9,12 +9,14 @@ site_description: >-
   structure tensor. ImageJ and Fiji plugins from the Biomedical Imaging Group, EPFL.
 site_author: Daniel Sage
 copyright: >-
-  <img class="oj-foot-mark" src="oj:assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
-  <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> ·
-  <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
-  <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>,
-  <a href="https://www.epfl.ch/">EPFL</a>
-  <span class="oj-foot-version">· Version 2.1.0 · August 2026</span>
+  <span class="oj-foot-left"><img class="oj-foot-mark" src="oj:assets/center-for-imaging.svg"
+  alt="EPFL Center for Imaging"><span><span class="oj-foot-name"><a
+  href="mailto:daniel.sage@epfl.ch">Daniel Sage</a></span><span class="oj-foot-affiliation"><a
+  href="https://imaging.epfl.ch/">Center for Imaging</a> and <a
+  href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a
+  href="https://www.epfl.ch/">EPFL</a></span></span></span>
+  <span class="oj-foot-right"><span class="oj-foot-title">Orientation<span
+  class="oj-banner__j">J</span></span><span class="oj-foot-when">Version 2.1.0 · August 2026</span></span>
 
 theme:
   name: material
@@ -84,6 +86,7 @@ nav:
   - User guide:
       - user-guide/index.md
       - All plugins: user-guide/plugins.md
+      - Macros: user-guide/macros.md
       - Selecting the scale σ: user-guide/select-scale.md
       - Selecting the gradient: user-guide/select-gradient.md
   - Theory:
