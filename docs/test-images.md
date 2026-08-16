@@ -2,6 +2,7 @@
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
 
+  <a class="oj-banner__epfl" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging"><img src="../assets/center-for-imaging.svg" alt="EPFL Center for Imaging"></a>
   <img class="oj-banner__logo" src="../assets/logo-orientationj-clear.png" alt="OrientationJ">
   <div class="oj-banner__box">
     <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
