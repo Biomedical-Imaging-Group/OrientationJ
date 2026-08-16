@@ -27,6 +27,10 @@
       a.setAttribute('href', root + a.getAttribute('href').slice(3));
       links.push(a);
     });
+    // images too — the footer mark, which the theme renders from mkdocs.yml
+    document.querySelectorAll('img[src^="oj:"]').forEach(function (img) {
+      img.setAttribute('src', root + img.getAttribute('src').slice(3));
+    });
     return links;
   }
 

@@ -33,6 +33,9 @@
   content: url("../assets/logo-orientationj-dark.png");
 }
 /* ... and the Center for Imaging mark in the banner, likewise */
+[data-md-color-scheme="slate"] .md-copyright .oj-foot-mark {
+  content: url("../assets/center-for-imaging-white.svg");
+}
 [data-md-color-scheme="slate"] .oj-banner__logo {
   content: url("../assets/logo-orientationj-dark.png");
 }
@@ -93,10 +96,15 @@
   display: none;
 }
 
-/* headings: pages open on an H2, which carries the rule of a chapter head */
+/* headings: pages open on an H2; the level below it is set in red, so that a
+   subsection is told apart at a glance in a long page */
 .md-typeset h2 {
   font-weight: 600;
   color: var(--md-default-fg-color);
+}
+.md-typeset h3 {
+  color: var(--oj-red);
+  font-weight: 600;
 }
 .md-typeset .oj-banner + h2 {
   margin-top: 0.4em;
@@ -520,7 +528,10 @@
 }
 .md-footer {
   border-top: 1px solid var(--md-default-fg-color--lightest);
-  box-shadow: 0 -0.1rem 0.35rem rgba(0, 0, 0, 0.07);
+}
+/* the shadow closes the navigation bar, above the copyright line */
+.md-footer__inner {
+  box-shadow: 0 0.1rem 0.35rem rgba(0, 0, 0, 0.07);
 }
 
 /* the previous / next bar, smaller and quieter */
@@ -575,10 +586,11 @@
 /* the credit line, set like the banner title */
 .md-footer-meta {
   border-top: 1px solid var(--md-default-fg-color--lightest);
+  background-color: var(--md-default-bg-color);       /* white, under the band */
 }
 .md-copyright {
   width: 100%;
-  padding: 0.55rem 0;
+  padding: 0.7rem 0;
   text-align: center;
   font-size: 0.58rem;
   line-height: 1.7;
@@ -598,4 +610,10 @@
 .md-copyright .oj-foot-version {
   color: var(--md-default-fg-color--lighter);
   white-space: nowrap;
+}
+.md-copyright .oj-foot-mark {
+  display: block;
+  width: 4.4rem;
+  height: auto;
+  margin: 0 auto 0.35rem;
 }

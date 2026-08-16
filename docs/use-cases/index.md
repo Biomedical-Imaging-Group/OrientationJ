@@ -13,13 +13,9 @@ title: Use cases
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-## Use cases
-
-**More than 300 peer-reviewed publications** have used OrientationJ since 2013, across some two hundred fields: the actin cytoskeleton, collagen in tumors, electrospun nanofibers, engineered cardiac tissue, bone and mineralized tissue, and further afield geology, cryo-electron microscopy and liquid-crystal patterns.
-
 ## In the literature
 
-The reference table lists them all, each with the sentence from the paper describing how the plugin was used and which command it relied on. It sorts by year, field or mode, and it searches.
+**More than 300 peer-reviewed publications** have used OrientationJ since 2013, across some two hundred fields: the actin cytoskeleton, collagen in tumors, electrospun nanofibers, engineered cardiac tissue, bone and mineralized tissue, and further afield geology, cryo-electron microscopy and liquid-crystal patterns. The reference table lists them all, each with the sentence from the paper describing how the plugin was used and which command it relied on. It sorts by year, field or mode, and it searches.
 
 <p class="oj-center"><a href="literature.html" title="Open the reference table"><img src="../assets/literature-table.jpg" alt="The reference table of publications using OrientationJ" width="720"></a></p>
 
@@ -66,18 +62,6 @@ The publications to cite when OrientationJ contributed to your results, each mat
 **[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/)** — the Python successor from the EPFL Center for Imaging, for 2D images and 3D volumes, with a choice of gradients; on [PyPI](https://pypi.org/project/orientationpy/) and bioconda, with a [napari plugin](https://github.com/EPFL-Center-for-Imaging/napari-orientationpy).
 
 **[BIII, the BioImage Informatics Index](https://biii.eu/orientationj)** — the curated registry entry: function, platform, licence and links, in the NEUBIAS tools index.
-
-## Community discussions
-
-Threads on the [Scientific Community Image Forum](https://forum.image.sc/) where the use, the parameters and the interpretation of OrientationJ are discussed — several answered by the author of the plugin.
-
-- [Coherency in OrientationJ](https://forum.image.sc/t/coherency-in-orientation-j/83176) (2023) — how to read coherency values on collagen fibers in second-harmonic-generation images, gel-only control against cell-containing samples.
-- [Dealing with dark regions](https://forum.image.sc/t/orientationj-dealing-with-dark-regions/61179) (2021) — how background regions weigh on the coherency and on the dominant direction.
-- [How is the dominant direction calculated?](https://forum.image.sc/t/how-is-the-dominant-direction-calculated/38330) (2020) — what the orientation and coherency returned by *Dominant Direction* mean, and the part played by the local window.
-- [Angle histograms](https://forum.image.sc/t/orientationj-and-angle-histograms/119187) (2026) — why the *Distribution* histogram can show a large spike at 0°, and the preprocessing that avoids it.
-- [Interpretation for electrospun nanofibers](https://forum.image.sc/t/orientation-j-and-its-interpretation-for-electrospun-nanofibers/3821) (2017) — what energy, orientation and coherency mean when quantifying nanofiber alignment.
-- [Where is the documentation?](https://forum.image.sc/t/orientationj-documentation/69672) (2022) — the functions and parameters, beyond the original page.
-- [Macro for the plugin](https://forum.image.sc/t/macro-for-plug-in-orientationj/7224) (2017) — batch processing from the ImageJ macro language, and saving the result tables.
 
 ## Validation and related tools
 

@@ -23,7 +23,6 @@ notebooks that run it on the 16 [test images](https://github.com/Biomedical-Imag
 | [distribution.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/distribution.ipynb) | OrientationJ Distribution → 180-bin histogram CSV per image + statistics |
 | [vector_field.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/vector_field.ipynb) | OrientationJ Vector Field → vector table CSV per image + overlays |
 | [make_gallery.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/make_gallery.py) | generates the overview panels of the test images |
-| `results/` | everything the notebooks write (`analysis/`, `distribution/`, `vectorfield/`) — generated locally, not tracked |
 
 
 ## Experiments
@@ -39,3 +38,19 @@ The distribution and the vector field are computed **inside the masks** of
 All experiments use the **cubic-spline gradient** only (the plugin default, gradient code 0), **σ = 1** for the Gaussian window of the structure tensor,
 a **16 × 16** vector-field grid, and the plugin defaults everywhere else
 (ε = 0.001, min-coherency = 0 %, min-energy = 0 %, vector scale 100 %).
+
+## What the notebooks produce
+
+Three notebooks drive the port, one per family of output; each writes its results next to itself.
+
+### analysis.ipynb — the feature maps and the color survey
+
+![The color survey written by analysis.ipynb](../assets/port-analysis.jpg)
+
+### distribution.ipynb — the angular histogram
+
+![The orientation distribution written by distribution.ipynb](../assets/port-distribution.jpg)
+
+### vector_field.ipynb — the vectors, as a table and as an overlay
+
+![The vector field written by vector_field.ipynb](../assets/port-vectorfield.jpg)

@@ -24,7 +24,7 @@ Two widths control everything: `sigma_gradient` for the derivative, `sigma` for 
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png)
 
-## Is it exact?
+## Accuracy against analytic truth
 
 Yes, wherever the answer is known analytically. The smoothing kernel sums to 1 and the derivative kernel differentiates exactly (−Σ x·d(x) = 1) to machine precision; sinusoidal gratings come back at exactly their imposed angle; and on the radial chirp, whose tangential orientation is known at every pixel, the median error is **0.001°**. At σ_G = 1 the minimal operator is in fact an order of magnitude *more* accurate on this smooth band-limited pattern than the plugin's cubic-spline gradient.
 
@@ -32,7 +32,7 @@ Yes, wherever the answer is known analytically. The smoothing kernel sums to 1 a
 
 σ_G is a choice, not a defect: 0.5 truncates the kernel too aggressively, 2 flattens fine detail, 1 is the sweet spot for this pattern.
 
-## Does it agree with the plugin?
+## Agreement with the plugin
 
 Compared against the [Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port), which reproduces the Java plugin bit for bit, at the same tensor window σ = 2 so that the gradient is the only difference left:
 
