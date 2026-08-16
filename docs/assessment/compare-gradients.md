@@ -1,15 +1,15 @@
 <!-- The banner. The same block on every page; only the logo path
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
-  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
+
+  <img class="oj-banner__logo" src="../../assets/logo-orientationj-clear.png" alt="OrientationJ">
   <div class="oj-banner__box">
-    <img class="oj-banner__logo" src="../../assets/logo-orientationj-clear.png" alt="OrientationJ">
     <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
   </div>
-  <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
+  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-# OrientationJ Gradients
+## OrientationJ Gradients
 
 Which gradient should OrientationJ use? The plugin offers five — **cubic spline** (the default), **finite difference**, **Fourier**, **Riesz** and **Gaussian** — and the choice changes the measured angles. This assessment quantifies it on four test images with an analytic ground truth or a known statistical property, at structure-tensor window σ = 1, with the errors evaluated inside the structure masks:
 
