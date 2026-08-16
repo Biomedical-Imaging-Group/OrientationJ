@@ -126,11 +126,21 @@
   letter-spacing: 0;
   text-transform: none;
   margin-top: 2em;
-  /* a red rule hanging in the margin: the words stay flush with the text
-     above and below them, the mark sits outside the column */
-  border-left: 2px solid var(--oj-red);
-  padding-left: 0.5em;
-  margin-left: -0.6em;
+  /* the small red rectangle of the EPFL mark — the bar under "EPFL" in the
+     Center for Imaging logo, whose proportions it keeps (about 4:1). It sits
+     in the margin, so the words stay flush with the paragraphs around them. */
+  position: relative;
+  padding-left: 1.15em;
+  margin-left: -1.15em;
+}
+.md-typeset h3::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 0.72em;
+  height: 0.18em;
+  background-color: var(--oj-red);
 }
 .md-typeset .oj-banner + h2 {
   margin-top: 0.4em;
