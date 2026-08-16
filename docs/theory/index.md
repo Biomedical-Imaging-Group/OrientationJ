@@ -1,17 +1,17 @@
 <!-- The banner. The same block on every page; only the logo path
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
-  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
+
+  <img class="oj-banner__logo" src="../assets/logo-orientationj-clear.png" alt="OrientationJ">
   <div class="oj-banner__box">
-    <img class="oj-banner__logo" src="../assets/logo-orientationj-clear.png" alt="OrientationJ">
     <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
   </div>
-  <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
+  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
 [PDF](../assets/theoretical-background.pdf "The theoretical background as a typeset PDF"){ .oj-button .oj-button--right }
 
-# Theory
+## Theory
 
 How OrientationJ measures a direction: the tensor it builds around every pixel, and the features it reads from it. The same material, typeset, is in the [PDF](../assets/theoretical-background.pdf). The two settings that steer the measurement are treated in the user guide, in [selecting the scale](../user-guide/select-scale.md) and [selecting the gradient](../user-guide/select-gradient.md).
 
