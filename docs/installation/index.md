@@ -1,3 +1,7 @@
+---
+title: Installation
+---
+
 <!-- The banner. The same block on every page; only the logo path
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
