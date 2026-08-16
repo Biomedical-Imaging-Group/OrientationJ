@@ -90,10 +90,23 @@
 }
 
 /* No page carries an H1 any more; Material inserts one of its own from the
-   file name when it finds none, so it is hidden here. The pages name
-   themselves with their first H2. */
+   page title when it finds none, and the pages name themselves with their
+   first H2. That H1 is therefore taken out of sight — but not out of the
+   document: "display: none" would also remove it from the accessibility tree
+   and from what a search engine reads, leaving the page with no title at all.
+   This is the visually-hidden pattern instead: clipped to nothing, still
+   announced by a screen reader and still parsed as the heading of the page. */
 .md-typeset h1 {
-  display: none;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  white-space: nowrap;
 }
 
 /* headings: pages open on an H2; the level below it is set in red, so that a
