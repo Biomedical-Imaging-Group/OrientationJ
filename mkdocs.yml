@@ -11,12 +11,13 @@ site_author: Daniel Sage
 copyright: >-
   <span class="oj-foot-left"><img class="oj-foot-mark" src="oj:assets/center-for-imaging.svg"
   alt="EPFL Center for Imaging"><span><span class="oj-foot-name"><a
-  href="mailto:daniel.sage@epfl.ch">Daniel Sage</a></span><span class="oj-foot-affiliation"><a
+  href="mailto:daniel.sage@epfl.ch">daniel.sage@epfl.ch</a></span><span class="oj-foot-affiliation"><a
   href="https://imaging.epfl.ch/">Center for Imaging</a> and <a
   href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a
   href="https://www.epfl.ch/">EPFL</a></span></span></span>
   <span class="oj-foot-right"><span class="oj-foot-title">Orientation<span
-  class="oj-banner__j">J</span></span><span class="oj-foot-when">Version 2.1.0 · August 2026</span></span>
+  class="oj-banner__j">J</span></span><span class="oj-foot-when">Version 2.1.0 · August 2026 · <a
+  href="https://github.com/Biomedical-Imaging-Group/OrientationJ">GitHub</a></span></span>
 
 theme:
   name: material

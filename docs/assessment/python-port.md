@@ -41,16 +41,22 @@ a **16 × 16** vector-field grid, and the plugin defaults everywhere else
 
 ## What the notebooks produce
 
-Three notebooks drive the port, one per family of output; each writes its results next to itself.
+Three notebooks drive the port, one per family of output — the same three examples as the [macros](../user-guide/macros.md) of the plugin, computed here in Python.
 
-### analysis.ipynb — the feature maps and the color survey
+### The color survey of an image
 
-![The color survey written by analysis.ipynb](../assets/port-analysis.jpg)
+![The color survey of collagen](../assets/port-analysis.jpg)
 
-### distribution.ipynb — the angular histogram
+<p class="oj-caption">analysis.ipynb — collagen, σ = 2</p>
 
-![The orientation distribution written by distribution.ipynb](../assets/port-distribution.jpg)
+### A vector field over the structures
 
-### vector_field.ipynb — the vectors, as a table and as an overlay
+![The vector field of the nematic image](../assets/port-vectorfield.jpg)
 
-![The vector field written by vector_field.ipynb](../assets/port-vectorfield.jpg)
+<p class="oj-caption">vector_field.ipynb — nematic, σ = 4, grid 20, length by coherency</p>
+
+### An orientation distribution, background excluded
+
+![The orientation distribution of collagen, thresholded](../assets/port-distribution.jpg)
+
+<p class="oj-caption">distribution.ipynb — collagen, σ = 2, coherency ≥ 30 %, energy ≥ 10 %</p>

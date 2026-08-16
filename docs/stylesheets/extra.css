@@ -636,13 +636,19 @@
 .md-copyright__highlight {
   color: var(--md-default-fg-color--light);
 }
+/* the footer links are places to write to: they are underlined, like the
+   links of the running text */
 .md-copyright a {
   color: inherit;
-  font-weight: 400;
-  text-decoration: none;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--oj-red);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.16em;
 }
 .md-copyright a:hover {
   color: var(--oj-red);
+  text-decoration-thickness: 2px;
 }
 .md-copyright .oj-foot-version {
   color: var(--md-default-fg-color--lighter);
