@@ -13,7 +13,7 @@ title: Use cases
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-## OrientaionJ In the literature
+## OrientationJ in the literature
 
 **More than 300 peer-reviewed publications** have used OrientationJ since 2013, across some two hundred fields: the actin cytoskeleton, collagen in tumors, electrospun nanofibers, engineered cardiac tissue, bone and mineralized tissue, and further afield geology, cryo-electron microscopy and liquid-crystal patterns. The reference table lists them all, each with the sentence from the paper describing how the plugin was used and which command it relied on. It sorts by year, field or mode, and it searches.
 
@@ -61,10 +61,12 @@ The publications to cite when OrientationJ contributed to your results, each mat
 
 **[BIII, the BioImage Informatics Index](https://biii.eu/orientationj)** — the curated registry entry: function, platform, licence and links, in the NEUBIAS tools index.
 
-** Here add question .... Questions could be address to authors, github issues or [image.sc forum](https://forum.image.sc/), the forum of the scientific imaging community. Tag the post `orientationj`, there are alreday .
+### Questions
+
+Questions about the plugins, their parameters or the interpretation of their output can go to the [image.sc forum](https://forum.image.sc/), the forum of the scientific imaging community, where OrientationJ threads are already numerous and are read by other users as well as by the authors — tag the post `orientationj`, and say which command and which σ you used. A bug, or a wish, is better filed as a [GitHub issue](https://github.com/Biomedical-Imaging-Group/OrientationJ/issues); anything else can be [written to the author](mailto:daniel.sage@epfl.ch).
 
 
-## Others tools to directional image analysis
+## Other tools for directional image analysis
 
 **[FiberFit](https://doi.org/10.1007/s10237-016-0776-3)** — Morrill EE, Tulepbergenov AN, Stender CJ, Lamichhane R, Brown RJ, Lujan TJ (2016), *A validated software application to measure fiber organization in soft tissue*, Biomech Model Mechanobiol 15:1467–1478. Compares Fourier-based and structure-tensor fiber orientation; the validation reference listed on the original OrientationJ page.
 
