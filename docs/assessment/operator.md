@@ -20,27 +20,11 @@ C, E, theta = features(image, sigma=2.0, sigma_gradient=1.0)
 
 Two widths control everything: `sigma_gradient` for the derivative, `sigma` for the tensor window. `C` is the coherency in [0, 1], `E` the gradient energy, `theta` the orientation of the structures in radians, counter-clockwise from the horizontal — the OrientationJ convention.
 
-## The three features
+## The three features it returns
+
+Run on one image, the operator returns the coherency, the energy and the orientation — the same three maps the *Analysis* command produces, from the same tensor:
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png)
-
-## Accuracy against analytic truth
-
-Yes, wherever the answer is known analytically. The smoothing kernel sums to 1 and the derivative kernel differentiates exactly (−Σ x·d(x) = 1) to machine precision; sinusoidal gratings come back at exactly their imposed angle; and on the radial chirp, whose tangential orientation is known at every pixel, the median error is **0.001°**. At σ_G = 1 the minimal operator is in fact an order of magnitude *more* accurate on this smooth band-limited pattern than the plugin's cubic-spline gradient.
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-accuracy.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-accuracy.png)
-
-σ_G is a choice, not a defect: 0.5 truncates the kernel too aggressively, 2 flattens fine detail, 1 is the sweet spot for this pattern.
-
-## Agreement with the plugin
-
-Compared against the [Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port), which reproduces the Java plugin bit for bit, at the same tensor window σ = 2 so that the gradient is the only difference left:
-
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-agreement.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-agreement.png)
-
-On the smooth analytic patterns the two are indistinguishable — 0.006° on the rings, 0.009° on the spiral, 0.012° on the chirp. On real textures they differ by a few degrees, from 1.4° on the wood section to 5.4° on the nanofibers, and by 12.7° on isotropic noise where there is no orientation to agree on. That is the Gaussian derivative averaging what the spline derivative still resolves: the disagreement grows as structures approach the pixel scale. The energy maps stay strongly correlated throughout (0.64 to 0.94).
-
-The same trade-off, measured across all five OrientationJ gradients, is in the [gradient assessment](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/gradients).
 
 ## Files
 

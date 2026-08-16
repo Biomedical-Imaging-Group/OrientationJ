@@ -13,15 +13,15 @@ title: Use cases
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-## In the literature
+## OrientaionJ In the literature
 
 **More than 300 peer-reviewed publications** have used OrientationJ since 2013, across some two hundred fields: the actin cytoskeleton, collagen in tumors, electrospun nanofibers, engineered cardiac tissue, bone and mineralized tissue, and further afield geology, cryo-electron microscopy and liquid-crystal patterns. The reference table lists them all, each with the sentence from the paper describing how the plugin was used and which command it relied on. It sorts by year, field or mode, and it searches.
 
-<p class="oj-center"><a href="literature.html" title="Open the reference table"><img src="../assets/literature-table.jpg" alt="The reference table of publications using OrientationJ" width="720"></a></p>
+<p class="oj-center"><a href="literature.html" title="Open the reference table"><img src="../assets/literature-table.jpg" alt="The reference table of publications using OrientationJ" width="520"></a></p>
 
 <p class="oj-center"><a class="oj-button" href="literature.html">Open the reference table</a></p>
 
-## Primary references
+## References of OrientationJ
 
 The publications to cite when OrientationJ contributed to your results, each matching what you used — the method, the angular distribution, the local measurements, or the monogenic analysis.
 
@@ -49,13 +49,11 @@ The publications to cite when OrientationJ contributed to your results, each mat
 
 [PDF](https://bigwww.epfl.ch/publications/unser0907.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/unser0907.html){ .oj-chip }
 
-## Software and resources
+## External resources
 
 **[OrientationJ, the original page](https://bigwww.epfl.ch/demo/orientation/)** — the distribution page at the Biomedical Imaging Group: the jar, a description of every mode, recordable macro examples, test images (chirp, artificial fibers, collagen MIP) and a gallery of published applications.
 
 **[Source code on GitHub](https://github.com/Biomedical-Imaging-Group/OrientationJ)** — the Java sources under GPL-3.0, the `plugins.config` that declares the menu commands, and the releases.
-
-**[Theoretical background](../assets/theoretical-background.pdf)** — the mathematics of the gradient structure tensor, of the orientation, energy and coherency, as a typeset PDF; the same material is on the [Theory](../theory/index.md) pages.
 
 **[MonogenicJ](https://bigwww.epfl.ch/demo/monogenicj/)** — the companion plugin: wavelet-based multiresolution monogenic analysis (orientation, coherency, wavenumber per scale), bundled with OrientationJ since version 2.0.7.
 
@@ -63,9 +61,10 @@ The publications to cite when OrientationJ contributed to your results, each mat
 
 **[BIII, the BioImage Informatics Index](https://biii.eu/orientationj)** — the curated registry entry: function, platform, licence and links, in the NEUBIAS tools index.
 
-## Validation and related tools
+** Here add question .... Questions could be address to authors, github issues or [image.sc forum](https://forum.image.sc/), the forum of the scientific imaging community. Tag the post `orientationj`, there are alreday .
 
-The tools OrientationJ is most often compared with, and the studies that measure it against them. A quantitative comparison on a common dataset is in [Benchmarking](../assessment/benchmarking.md).
+
+## Others tools to directional image analysis
 
 **[FiberFit](https://doi.org/10.1007/s10237-016-0776-3)** — Morrill EE, Tulepbergenov AN, Stender CJ, Lamichhane R, Brown RJ, Lujan TJ (2016), *A validated software application to measure fiber organization in soft tissue*, Biomech Model Mechanobiol 15:1467–1478. Compares Fourier-based and structure-tensor fiber orientation; the validation reference listed on the original OrientationJ page.
 

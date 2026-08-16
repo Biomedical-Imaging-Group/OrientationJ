@@ -104,7 +104,10 @@
 }
 .md-typeset h3 {
   color: var(--oj-red);
-  font-weight: 600;
+  font-weight: 400;
+  font-size: 0.95rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
 }
 .md-typeset .oj-banner + h2 {
   margin-top: 0.4em;
@@ -590,11 +593,45 @@
 }
 .md-copyright {
   width: 100%;
-  padding: 0.7rem 0;
-  text-align: center;
-  font-size: 0.58rem;
-  line-height: 1.7;
+  padding: 0;
+  color: var(--md-default-fg-color);
+}
+/* the theme wraps the copyright in this element: the two blocks live in it */
+.md-copyright__highlight {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.6rem 1.2rem;
+  max-width: 61rem;
+  margin: 0 auto;
+  padding: 0.85rem 0.8rem;
+  text-align: left;
+  font-size: 0.62rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color);
+}
+.oj-foot-left {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+}
+.oj-foot-right {
+  text-align: right;
+  white-space: nowrap;
+}
+.oj-foot-name {
+  font-weight: 600;
+}
+.oj-foot-affiliation,
+.oj-foot-when {
+  display: block;
+  font-size: 0.56rem;
   color: var(--md-default-fg-color--light);
+}
+.oj-foot-title {
+  font-weight: 700;
+  font-size: 0.72rem;
 }
 .md-copyright__highlight {
   color: var(--md-default-fg-color--light);
@@ -612,8 +649,7 @@
   white-space: nowrap;
 }
 .md-copyright .oj-foot-mark {
-  display: block;
-  width: 4.4rem;
+  width: 4rem;
   height: auto;
-  margin: 0 auto 0.35rem;
+  flex: none;
 }
