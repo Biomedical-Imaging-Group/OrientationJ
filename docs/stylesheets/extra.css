@@ -33,8 +33,8 @@
   content: url("../assets/logo-orientationj-dark.png");
 }
 /* ... and the Center for Imaging mark in the banner, likewise */
-[data-md-color-scheme="slate"] .oj-banner__mark img {
-  content: url("../assets/center-for-imaging-white.svg");
+[data-md-color-scheme="slate"] .oj-banner__logo {
+  content: url("../assets/logo-orientationj-dark.png");
 }
 
 /* links in the EPFL manner: the text keeps the color of the page and carries
@@ -72,6 +72,13 @@
 .md-typeset code {
   font-size: 0.84em;
   padding: 0.1em 0.35em;
+}
+
+/* a figure alone in its paragraph is centered, like its caption */
+.md-typeset p > img:only-child {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /* book-like measure: slightly narrower content column */
@@ -176,79 +183,52 @@
   }
 }
 
-/* THE BANNER of the home page (markup: docs/banner.html).
-   Three registers, quietest to loudest: the credit in the smallest gray, the
-   title line between two hairlines with only the name in red, and the version
-   under it. The red is a mark, not a field — the rules and the descriptive
-   words stay gray so the eye lands on "OrientationJ" and then on the page. */
+/* THE BANNER, at the top of every page (its markup is in each .md file).
+   Three registers: the credit above, very discrete; the mark and the subtitle
+   centered in a band of the palest gray; the version under it. */
 .oj-banner {
-  margin: 0 0 2.0em;
-}
-.oj-banner__top {
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 0.8em 1.6em;
-  margin-bottom: 0.7em;
-}
-.oj-banner__mark img {
-  display: block;
-  width: 5.0rem;
-  max-width: 32vw;
-  height: auto;
+  margin: 0 0 2.2em;
 }
 .oj-banner__credit {
-  margin: 0;
-  text-align: right;
-  font-size: 0.52rem;
-  line-height: 1.3;                 /* compact: three tight lines */
-  color: var(--md-default-fg-color--light);
+  margin: 0 0 0.45em;
+  text-align: center;
+  font-size: 0.5rem;
+  line-height: 1.6;
+  color: var(--md-default-fg-color--lighter);
 }
 .oj-banner__credit a {
   color: inherit;
+  font-weight: 400;
   text-decoration: none;
 }
 .oj-banner__credit a:hover {
   color: var(--oj-red);
 }
-
-/* the title line: gray rules, gray words, the name alone in red */
-.oj-banner__title {
-  margin: 0;
-  padding: 0.25em 0.2em;
+.oj-banner__box {
+  padding: 0.85em 1em 0.95em;
   border-top: 1px solid var(--md-default-fg-color--lightest);
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  background-color: var(--oj-band);  /* a band of the palest gray */
-  color: var(--md-default-fg-color);           /* darker than the credit */
-  font-size: 1rem;                /* was "1 rem", which CSS discards */
-  letter-spacing: 0.02em;            /* lowercase needs far less tracking */
-  line-height: 1.3;
+  background-color: var(--oj-band);
+  text-align: center;
 }
-/* the name is set as in the logo: the word in ink, the J in red */
-.oj-banner__title strong {
-  color: var(--md-default-fg-color);
-  font-weight: 700;
+.oj-banner__logo {
+  display: block;
+  width: 11.5rem;
+  max-width: 62vw;
+  height: auto;
+  margin: 0 auto 0.55em;
 }
-.oj-banner__j {
-  color: var(--oj-red);
+.oj-banner__sub {
+  margin: 0;
+  font-size: 0.62rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--light);
 }
-/* the em dash belongs to the part before it, so that a line never opens on a
-   dash when the title wraps on a narrow screen */
-.oj-banner__part {
-  display: inline-block;
-}
-.oj-banner__part:not(:last-child)::after {
-  content: "—";
-  padding: 0 0.25em;
-  color: var(--md-default-fg-color--lighter);
-}
-
-/* the imprint line, under the lower rule */
 .oj-banner__version {
-  margin: 0.2em 0 0;
-  text-align: right;
-  font-size: 0.4rem;
+  margin: 0.45em 0 0;
+  text-align: center;
+  font-size: 0.5rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--md-default-fg-color--lighter);
@@ -257,14 +237,6 @@
 .md-typeset .oj-banner + h1 {
   border-bottom: none;
   padding-bottom: 0;
-}
-@media screen and (max-width: 34em) {
-  .oj-banner__top {
-    justify-content: flex-start;
-  }
-  .oj-banner__credit {
-    text-align: left;
-  }
 }
 
 /* the on-page contents of a long page: one quiet line under the description */
@@ -621,6 +593,11 @@
   color: var(--md-default-fg-color--light);
 }
 .md-copyright__highlight {
+  color: var(--md-default-fg-color--light);
+}
+.md-copyright .oj-foot-credit {
+  display: block;
+  font-size: 0.58rem;
   color: var(--md-default-fg-color--light);
 }
 .md-copyright .oj-foot-version {

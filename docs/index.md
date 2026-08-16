@@ -1,21 +1,11 @@
 <!-- The banner. The same block on every page; only the logo path
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
-  <div class="oj-banner__top">
-    <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
-      <img src="assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
-    </a>
-    <p class="oj-banner__credit">
-      <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a><br>
-      <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
-      <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a><br>
-      <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a>
-    </p>
+  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
+  <div class="oj-banner__box">
+    <img class="oj-banner__logo" src="assets/logo-orientationj-clear.png" alt="OrientationJ">
+    <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
   </div>
-  <!-- each part is one box, so a dash can never begin a wrapped line -->
-  <p class="oj-banner__title"><span class="oj-banner__part"><strong>Orientation<span class="oj-banner__j">J</span></strong></span><span
-     class="oj-banner__part">Directional analysis of 2D images</span><span
-     class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
@@ -96,6 +86,6 @@ If OrientationJ contributed to your results, please cite the publication matchin
 
 ## Use cases
 
-OrientationJ is used wherever the direction of a structure carries the information. In cell biology it measures the alignment of the actin cytoskeleton, of stress fibers and of microtubules in cells spreading on patterned or stretched substrates. In cancer research it follows the orientation of collagen fibers at the tumor–stroma interface, where alignment perpendicular to the boundary accompanies invasion, and the same measurement grades the anisotropy of engineered cardiac and muscle tissue. In materials science it characterizes electrospun nanofibers, paper, composites and wood sections, for which the fiber orientation distribution is the quantity of interest, and in biomechanics the collagen and mineral orientation of bone, cartilage and arterial wall, related to their mechanical properties. Further afield it serves geology, cryo-electron microscopy, and self-assembled or liquid-crystal patterns — any image made of stripes or fronts.
+OrientationJ is used wherever the direction of a structure carries the information: the actin cytoskeleton and stress fibers in cell biology, collagen at the tumor–stroma interface in cancer research, engineered cardiac tissue, electrospun nanofibers and composites in materials science, bone and arterial wall in biomechanics, and any other image made of stripes or fronts.
 
-The [Use cases](use-cases/index.md) page lists the published work in a sortable, searchable table, each entry with the sentence from the paper describing how the plugin was used and which command it relied on. The release notes, version by version, are at the end of the [installation page](installation/history.md).
+**More than 300 publications** have used it since 2013. They are listed, with the sentence describing each use, on the [Use cases](use-cases/index.md) page. The release notes, version by version, are on the [version history](installation/history.md) page.

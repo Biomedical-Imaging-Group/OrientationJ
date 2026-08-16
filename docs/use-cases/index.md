@@ -1,33 +1,25 @@
 <!-- The banner. The same block on every page; only the logo path
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
-  <div class="oj-banner__top">
-    <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
-      <img src="../assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
-    </a>
-    <p class="oj-banner__credit">
-      <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a><br>
-      <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
-      <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a><br>
-      <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a>
-    </p>
+  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
+  <div class="oj-banner__box">
+    <img class="oj-banner__logo" src="../assets/logo-orientationj-clear.png" alt="OrientationJ">
+    <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
   </div>
-  <!-- each part is one box, so a dash can never begin a wrapped line -->
-  <p class="oj-banner__title"><span class="oj-banner__part"><strong>Orientation<span class="oj-banner__j">J</span></strong></span><span
-     class="oj-banner__part">Directional analysis of 2D images</span><span
-     class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
 # Use cases
 
-Since 2013, OrientationJ has been used in **304 peer-reviewed publications**, in 194 distinct fields of application, using 61 different combinations of its commands. The fields that recur most tell what the measurement is good for: the actin cytoskeleton (37 papers), collagen and the extracellular matrix in tumors (27), materials and nanofibers (27), cardiac tissue engineering (10), bone and mineralized tissue (5).
-
-[Open the reference table](literature.html){ .oj-button }
+**More than 300 peer-reviewed publications** have used OrientationJ since 2013, across some two hundred fields: the actin cytoskeleton, collagen in tumors, electrospun nanofibers, engineered cardiac tissue, bone and mineralized tissue, and further afield geology, cryo-electron microscopy and liquid-crystal patterns.
 
 ## In the literature
 
-The reference table lists every one of those publications, with the sentence from the paper describing how the plugin was used and which command it relied on. It sorts by year, field or mode, and it searches.
+The reference table lists them all, each with the sentence from the paper describing how the plugin was used and which command it relied on. It sorts by year, field or mode, and it searches.
+
+<p class="oj-center"><a href="literature.html" title="Open the reference table"><img src="../assets/literature-table.jpg" alt="The reference table of publications using OrientationJ" width="720"></a></p>
+
+<p class="oj-center"><a class="oj-button" href="literature.html">Open the reference table</a></p>
 
 ## Primary references
 
