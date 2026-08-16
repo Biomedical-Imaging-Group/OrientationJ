@@ -115,12 +115,17 @@
   font-weight: 600;
   color: var(--md-default-fg-color);
 }
+/* the level below: black and bold, in sentence case like every other heading.
+   Red stays what it is elsewhere on the site — a link, an active entry, a
+   button — instead of competing with the text. The space above it does the
+   separating that the color was doing. */
 .md-typeset h3 {
-  color: var(--oj-red);
-  font-weight: 400;
-  font-size: 0.95rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  color: var(--md-default-fg-color);
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0;
+  text-transform: none;
+  margin-top: 2em;
 }
 .md-typeset .oj-banner + h2 {
   margin-top: 0.4em;
