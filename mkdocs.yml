@@ -22,7 +22,7 @@ copyright: >-
 theme:
   name: material
   language: en
-  logo: assets/logo-orientationj.png   # complete logo: the mark and the wordmark
+  logo: assets/center-for-imaging.svg   # complete logo: the mark and the wordmark
   favicon: assets/favicon.png
   icon:
     repo: fontawesome/brands/github    # the GitHub mark, not the generic git one
