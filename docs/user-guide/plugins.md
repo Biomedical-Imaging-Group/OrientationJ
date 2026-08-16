@@ -1,21 +1,11 @@
 <!-- The banner. The same block on every page; only the logo path
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
-  <div class="oj-banner__top">
-    <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
-      <img src="../../assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
-    </a>
-    <p class="oj-banner__credit">
-      <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a><br>
-      <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
-      <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a><br>
-      <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a>
-    </p>
+  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
+  <div class="oj-banner__box">
+    <img class="oj-banner__logo" src="../../assets/logo-orientationj-clear.png" alt="OrientationJ">
+    <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
   </div>
-  <!-- each part is one box, so a dash can never begin a wrapped line -->
-  <p class="oj-banner__title"><span class="oj-banner__part"><strong>Orientation<span class="oj-banner__j">J</span></strong></span><span
-     class="oj-banner__part">Directional analysis of 2D images</span><span
-     class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
@@ -30,8 +20,11 @@ Every command works from the same measurement: a gradient at each pixel, the gra
 Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — each as a new image, and the [color survey](#color-survey) that paints them over the original. Energy and directionality are unbounded, so they carry a display scaling; coherency and anisotropy are already in [0, 1] and are shown as computed.
     
 !!! note "Color Survey"
-    The default visual output of *Analysis* encodes three features in one image: **hue** for the orientation, **saturation** for the coherency, **brightness** for the original intensity. Strongly aligned structures therefore appear saturated in the color of their direction, while flat or isotropic regions stay gray — the eye reads the orientation field without having to look at three maps at once. <br>
-    ![The orientation color scale](../assets/color-scale.jpg)<p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°.</p>
+    The default visual output of *Analysis* encodes three features in one image: **hue** for the orientation, **saturation** for the coherency, **brightness** for the original intensity. Strongly aligned structures therefore appear saturated in the color of their direction, while flat or isotropic regions stay gray — the eye reads the orientation field without having to look at three maps at once.
+
+    ![The orientation color scale](../assets/color-scale.jpg)
+
+    <p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°.</p>
 
 Three images, each analyzed at a small and at a medium scale. The hue follows the local direction in both, but the small window resolves every fiber while the larger one keeps only the trend that survives at its size:
 
@@ -78,14 +71,12 @@ Groups locally oriented regions into clusters and reports one representative vec
 
 Rotates each slice of a stack so that its dominant direction becomes horizontal, which registers fibrous samples acquired at arbitrary angles before further analysis.
 
-## MonogenicJ
-
-A companion plugin, on a different footing: instead of one local window it builds a multiresolution **monogenic** representation of the image with the Riesz–Laplace wavelet transform, and reports orientation, coherency and phase at every scale. Use it when the structures of interest live at several scales at once. Details on the [MonogenicJ page](https://bigwww.epfl.ch/demo/monogenicj/).
-
 ## Corner Harris
 
 Harris keypoint detection, built on the same structure tensor: corners are the places where both eigenvalues are large.
 
 ![Harris corner detection](../assets/harris.png)
 
+## MonogenicJ
 
+A companion plugin, on a different footing: instead of one local window it builds a multiresolution **monogenic** representation of the image with the Riesz–Laplace wavelet transform, and reports orientation, coherency and phase at every scale. Use it when the structures of interest live at several scales at once — the chirp is the clearest case, its period growing from the center outwards, so each scale of the decomposition answers for one ring of it. Details on the [MonogenicJ page](https://bigwww.epfl.ch/demo/monogenicj/), and the method in [Unser et al., 2009](https://doi.org/10.1109/TIP.2009.2027628).

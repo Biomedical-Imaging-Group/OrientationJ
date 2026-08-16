@@ -1,21 +1,11 @@
 <!-- The banner. The same block on every page; only the logo path
      changes with the depth of the page in the folder tree. -->
 <div class="oj-banner">
-  <div class="oj-banner__top">
-    <a class="oj-banner__mark" href="https://imaging.epfl.ch/" title="EPFL Center for Imaging">
-      <img src="../../assets/center-for-imaging.svg" alt="EPFL Center for Imaging">
-    </a>
-    <p class="oj-banner__credit">
-      <a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a><br>
-      <a href="https://imaging.epfl.ch/">Center for Imaging</a> and
-      <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a><br>
-      <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a>
-    </p>
+  <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
+  <div class="oj-banner__box">
+    <img class="oj-banner__logo" src="../../assets/logo-orientationj-clear.png" alt="OrientationJ">
+    <p class="oj-banner__sub">Directional analysis of 2D images — ImageJ/Fiji plugins</p>
   </div>
-  <!-- each part is one box, so a dash can never begin a wrapped line -->
-  <p class="oj-banner__title"><span class="oj-banner__part"><strong>Orientation<span class="oj-banner__j">J</span></strong></span><span
-     class="oj-banner__part">Directional analysis of 2D images</span><span
-     class="oj-banner__part">ImageJ/Fiji plugins</span></p>
   <p class="oj-banner__version">Version 2.1.0 · August 2026</p>
 </div>
 
