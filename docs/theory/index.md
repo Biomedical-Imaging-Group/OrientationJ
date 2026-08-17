@@ -16,7 +16,7 @@ title: Theory
 [Theory PDF](../assets/theoretical-background.pdf "The theoretical background as a typeset PDF"){ .oj-button .oj-button--right }
 
 
-*How OrientationJ measures a direction: the tensor it builds around every pixel, and the features it reads from it. The two settings, scale and gradient, are explained in the [user guide](../user-guide/index.md)*
+How OrientationJ measures a direction: the tensor it builds around every pixel, and the features it reads from it. The two settings, scale and gradient, are explained in the [user guide](../user-guide/index.md)
 
 # Theory
 
