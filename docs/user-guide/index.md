@@ -13,9 +13,11 @@ title: How to use
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-OrientationJ is a suite of plugins for [ImageJ](https://imagej.net/ij/) and [Fiji](https://fiji.sc/), written in plain Java with no dependency to install (see [Installation](../installation/index.md)). Open a 2D grayscale image, pick a command, and the result appears — nothing to configure beyond the [dialog](#the-user-interface) in front of you. Whatever the command, the computation underneath is the same: the gradient structure tensor is computed over a local window (see [Theory](../theory/index.md)) to provide pixelwise directionalities quantities.
-
 # How to use
+
+*OrientationJ is a suite of plugins for [ImageJ](https://imagej.net/ij/) and [Fiji](https://fiji.sc/), written in plain Java with no dependency to install (see [Installation](../installation/index.md)). Open a 2D grayscale image, pick a command, and the result appears — nothing to configure beyond the dialog in front of you. Whatever the command, the computation underneath is the same: the gradient structure tensor is computed over a local window (see [Theory](../theory/index.md)) to provide pixelwise directional quantities.*
+
+The pages of this section take it in order: what [all the plugins](plugins.md) produce, how to drive them from a [macro](macros.md), and how to choose the two settings that change the numbers — [the analysis scale σ](select-scale.md) and [the gradient](select-gradient.md). To try them on data whose answer is known, take one of the sixteen [test images](../test-images.md), each with its mask.
 
 ## The user interface
 
@@ -25,10 +27,3 @@ The *Analysis* dialog, shown here, is representative of all of them. The upper b
 
 Every field has a macro equivalent, so once a setting works it can be recorded with the ImageJ macro recorder and replayed over a whole folder. That is the usual way to go from one exploratory image to a batch of hundreds.
 
-## The pages of this section
-
-- **[Selecting the parameters](select-scale.md)** — how to choose σ and the gradient, the only two settings that change the numbers.
-- **[All plugins](plugins.md)** — what each command produces, with an example of its output.
-- **[Macros](macros.md)** — recording a command, and replaying it over a folder.
-
-To try them on data whose answer is known, take one of the [test images](../test-images.md): sixteen images, real and synthetic, each with its mask.

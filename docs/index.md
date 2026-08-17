@@ -14,11 +14,11 @@
 
 OrientationJ is open-source software for the directional analysis of 2D images: a series of Java plugins, easy to install on [ImageJ and Fiji](installation/index.md), free under the GPL-3.0 licence — [how to cite](how-to-cite.md). For volumetric data, a Python successor works in 2D and in 3D, [OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/).
 
-It relies on the [gradient structure tensor](theory/index.md#gradient-structure-tensor), evaluated over a small window at every pixel, from which it computes the [directional features](theory/index.md#features-and-invariants) that describe the local structure: the **orientation** itself, the **coherency** telling whether that orientation is well defined, and the **energy** telling whether there is any structure at all. One parameter controls the measurement, [the analysis scale σ](user-guide/select-scale.md), the size of that window.
+It relies on the [gradient structure tensor](theory/index.md#gradient-structure-tensor), evaluated over a small window at every pixel, from which it computes the [directional features](theory/index.md#features-and-invariants) that say how the local structure is organized: its **orientation**, the **coherency** telling whether that orientation is well defined, the **energy** telling whether there is any structure at all, and the **anisotropy** of the neighborhood. One parameter controls the measurement, [the analysis scale σ](user-guide/select-scale.md), the size of that window.
 
-The suite holds several [plugins](user-guide/plugins.md): `Analysis` for the feature maps and the color survey, `Distribution` for the angular histogram, `Vector Field` for the overlay, `Measure` and `Dominant Direction` for numbers, and `MonogenicJ` for a multiresolution analysis. Every command runs from a dialog and from an [ImageJ macro](user-guide/macros.md), so one setting can be replayed over a whole folder.
+OrientationJ holds several [plugins](user-guide/plugins.md): `Analysis` for the feature maps and the color survey, `Distribution` for the angular histogram, `Vector Field` for the overlay, and `MonogenicJ` for a multiresolution analysis. Every command runs from a [dialog](user-guide/index.md#the-user-interface) and from an [ImageJ macro](user-guide/macros.md).
 
-In addition, sixteen [test images](test-images.md) come with the documentation, and the [assessments](assessment/index.md) built on them compare OrientationJ with six other tools, with two Python implementations of the same tensor, and its five gradients against analytic truth.
+In addition, sixteen [test images](test-images.md) come with the documentation, and the [assessments](assessment/index.md) built on them measure what the plugin does: the angular distribution against [six other tools](assessment/benchmarking.md), the five gradients against [analytic truth](assessment/compare-gradients.md), and two Python implementations of the same tensor — a [faithful port](assessment/python-port.md) and a [minimal operator](assessment/operator.md).
 
 ## Applications
 
@@ -44,7 +44,7 @@ The [interactive online demo](https://bigwww.epfl.ch/demo/ip/demos/orientation/)
 <p class="oj-center"><a href="https://bigwww.epfl.ch/demo/ip/demos/orientation/" title="Open the interactive online demo"><img src="assets/online-demo.jpg" alt="The online demo: the Tree Rings sample and its color survey, side by side" width="620"></a></p>
 
 
-## Input and color survey
+## Color survey
 
 <div class="oj-compare">
 <img src="assets/collagen-input.jpg" alt="Collagen fibers, original image">

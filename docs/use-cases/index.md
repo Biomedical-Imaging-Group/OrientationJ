@@ -37,7 +37,11 @@ title: Use cases
 
 **[BIII, the BioImage Informatics Index](https://biii.eu/orientationj)** — the curated registry entry: function, platform, licence and links, in the NEUBIAS tools index.
 
-## Other tools for directional image analysis
+## Comparisons, validation and other tools
+
+**[Validation of structure tensor analysis](https://doi.org/10.1016/j.jneumeth.2025.110539)** — Gray B, Smith A, MacKenzie-Graham A, Shattuck D, Tward D (2025), *Validation of structure tensor analysis for orientation estimation in brain tissue microscopy*, Journal of Neuroscience Methods 423:110539. A simulation study of the method itself: the choice of parameters matters little for a single orientation, accuracy falls with anisotropic pixels, and where fibers cross a poor choice makes the estimate essentially random — a limit of any single tensor per pixel.
+
+**[Comparison of fiber orientation analysis methods](https://documents.thermofisher.com/TFS-Assets/MSD/Scientific-Resources/wp0010-comparison-fiber-analysis.pdf)** — a Thermo Fisher white paper comparing the usual approaches on the same images; vendor literature rather than a peer-reviewed study, but a compact overview of what each family of methods measures.
 
 **[FiberFit](https://doi.org/10.1007/s10237-016-0776-3)** — Morrill EE, Tulepbergenov AN, Stender CJ, Lamichhane R, Brown RJ, Lujan TJ (2016), *A validated software application to measure fiber organization in soft tissue*, Biomech Model Mechanobiol 15:1467–1478. Compares Fourier-based and structure-tensor fiber orientation; the validation reference listed on the original OrientationJ page.
 

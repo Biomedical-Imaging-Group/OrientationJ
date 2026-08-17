@@ -17,14 +17,16 @@ Every command works from the same measurement: a gradient at each pixel, the gra
 
 ## Analysis
 
-Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — each as a new image, and the [color survey](#color-survey) that paints them over the original. Energy and directionality are unbounded, so they carry a display scaling; coherency and anisotropy are already in [0, 1] and are shown as computed.
+Produces the feature maps — orientation, coherency, energy, directionality, anisotropy — each as a new image, and the **color survey** that paints them over the original. Energy and directionality are unbounded, so they carry a display scaling; coherency and anisotropy are already in [0, 1] and are shown as computed.
     
-!!! note "Color Survey"
-    The default visual output of *Analysis* encodes three features in one image: **hue** for the orientation, **saturation** for the coherency, **brightness** for the original intensity. Strongly aligned structures therefore appear saturated in the color of their direction, while flat or isotropic regions stay gray — the eye reads the orientation field without having to look at three maps at once.
+!!! note "Color survey"
+    The color survey is what OrientationJ is recognized by, and it works because **orientation and hue are both circular**. An angle is defined modulo 180° — a structure at +89° and one at −89° are nearly the same structure — and hue returns to itself after a full turn of the color wheel. Mapping one onto the other therefore leaves no seam: the color changes continuously as the structure turns, and no false boundary appears where the numbers merely wrapped around. A gray scale from −90° to +90° would put a black-to-white cliff exactly where nothing happens.
+
+    The three features drive the three channels of the HSB space: **hue** the orientation, over half the wheel so that the whole range of angles is covered once — green at 0°, blue at +45°, red at ±90°, orange at −45°; **saturation** the coherency, so that a well-defined direction is vivid while an isotropic neighborhood stays gray whatever angle was measured there; **brightness** the original image, so that the structures remain recognizable. Read together they answer three questions at once: which direction, how sure, and where.
 
     ![The orientation color scale](../assets/color-scale.jpg)
 
-    <p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°.</p>
+    <p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°. Any feature can be assigned to any channel in the dialog; this is the default.</p>
 
 Three images, each analyzed at a small and at a medium scale. The hue follows the local direction in both, but the small window resolves every fiber while the larger one keeps only the trend that survives at its size:
 
