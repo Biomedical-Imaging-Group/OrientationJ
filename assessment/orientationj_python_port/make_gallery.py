@@ -1,9 +1,9 @@
 """Gallery of the OrientationJ test images, rendered with the Python port.
 
-For every image of ../../orientationj-test-images: one 2 x 4 panel figure --
+For every image of ../../test-images: one 2 x 4 panel figure --
 image, mask, orientation, coherency, energy, color survey, orientation
 distribution inside the mask, vector field -- written to
-../../orientationj-test-images/results/<name>.png (analysis sigma = 1, the
+../../test-images/results/<name>.png (analysis sigma = 1, the
 plugin default).
 
 Run:  python3 make_gallery.py
@@ -20,7 +20,7 @@ import tifffile
 import orientationj as oj
 
 SIGMA = 1.0
-INPUT = os.path.join('..', '..', 'orientationj-test-images')
+INPUT = os.path.join('..', '..', 'test-images')
 GALLERY = os.path.join(INPUT, 'results')
 os.makedirs(GALLERY, exist_ok=True)
 

@@ -1,30 +1,8 @@
-# OrientationJ Python Port
+# Python port
 
-A faithful NumPy port of the OrientationJ gradient structure tensor (GST) and three
-notebooks that run it on the 16 [test images](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images).
+A faithful reimplementation of the plugin in Python — the same cubic-spline gradient, the same tensor, the same features — which reproduces the Java output bit for bit and produces the reference maps of the test images.
 
-## Contents
+**Read it here: [Python port](https://Biomedical-Imaging-Group.github.io/OrientationJ/assessment/python-port/).** This folder holds `orientationj.py` and the three notebooks: analysis, distribution, vector field.
 
-| file | content |
-|---|---|
-| [orientationj.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/orientationj.py) | the port: spline gradient, IIR Gaussian, tensor features, color survey, distribution, vector field |
-| [analysis.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/analysis.ipynb) | OrientationJ Analysis → orientation / coherency / energy TIFFs + color survey PNG per image |
-| [distribution.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/distribution.ipynb) | OrientationJ Distribution → 180-bin histogram CSV per image + statistics |
-| [vector_field.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/vector_field.ipynb) | OrientationJ Vector Field → vector table CSV per image + overlays |
-| [make_gallery.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/orientationj_python_port/make_gallery.py) | generates the overview panels of the test images |
-| `results/` | everything the notebooks write (`analysis/`, `distribution/`, `vectorfield/`) — generated locally, not tracked |
-
-
-## Experiments
-
-The resulting panels are published in the [test-images results](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results).
-
-### Masks
-The distribution and the vector field are computed **inside the masks** of
-[../orientationj-test-images/masks](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks) (nonzero = analyzed). This removes the flat background, whose degenerate structure tensor (exactly Jxy = 0 or Jxx = Jyy in float32) otherwise piles up in the 0°, ±45° and ±90° bins.
-
-### Settings
-
-All experiments use the **cubic-spline gradient** only (the plugin default, gradient code 0), **σ = 1** for the Gaussian window of the structure tensor,
-a **16 × 16** vector-field grid, and the plugin defaults everywhere else
-(ε = 0.001, min-coherency = 0 %, min-energy = 0 %, vector scale 100 %).
+**Documentation** — [the whole assessment](https://Biomedical-Imaging-Group.github.io/OrientationJ/assessment/) · [test images](https://Biomedical-Imaging-Group.github.io/OrientationJ/test-images/) ·
+[how to use the plugin](https://Biomedical-Imaging-Group.github.io/OrientationJ/user-guide/) · [theory](https://Biomedical-Imaging-Group.github.io/OrientationJ/theory/) · [how to cite](https://Biomedical-Imaging-Group.github.io/OrientationJ/how-to-cite/)
