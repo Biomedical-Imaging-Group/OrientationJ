@@ -250,7 +250,7 @@
 }
 .oj-banner__logo {
   display: block;
-  width: 11rem;
+  width: 12.3rem;
   max-width: 60vw;
   height: auto;
   margin: 0 0 0.7em;
@@ -265,8 +265,8 @@
   margin: 0;
   font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.08em;
-  /*text-transform: uppercase;*/
+  letter-spacing: 0.032em;
+  text-transform: uppercase;
   color: #666666;                    /* brighter: 3.5:1, which is AA for type
                                         this large and bold */
 }
@@ -274,8 +274,7 @@
   margin: 0.5em 0 0;
   font-size: 0.6rem;
   line-height: 1.6;
-  letter-spacing: 0.0em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
   color: #666666;                    /* darker: nearly the ink of the text */
 }
 .oj-banner__credit a {
