@@ -9,7 +9,7 @@
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-# OrientationJ Benchmarking
+# Benchmarking
 
 Compares the distribution of orientation measured by **seven tools**, all with the cubic-spline gradient and the structure-tensor window σ = 1 wherever the tool exposes those choices, on four images of the [test set](../test-images.md). Two comparisons:
 

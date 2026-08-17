@@ -93,50 +93,45 @@
    the file — so a search engine and a screen reader read exactly what the
    reader reads. It is set at the size the second level used to have: a
    heading, not a poster. */
+/* h1 — the title of the page, named after its entry in the menu, closed by a
+   hairline like a chapter head */
 .md-typeset h1 {
   color: var(--md-default-fg-color);
   font-weight: 600;
-  font-size: 1.32rem;
-  line-height: 1.3;
-  margin: 0.6em 0 0.7em;
-  padding-bottom: 0.22em;
+  font-size: 1.45rem;
+  line-height: 1.25;
+  margin: 0.5em 0 0.8em;
+  padding-bottom: 0.25em;
   border-bottom: 1px solid var(--md-default-fg-color--lightest);
-  letter-spacing: 0;
+  letter-spacing: -0.005em;
 }
 
-/* headings: pages open on an H2; the level below it is set in red, so that a
-   subsection is told apart at a glance in a long page */
+/* h2 — a section of the page. Markedly smaller than the title, and opened by
+   a short red rule as long as its words: the one touch of color the hierarchy
+   needs, and what tells a section from the page title at a glance. */
 .md-typeset h2 {
-  font-weight: 600;
   color: var(--md-default-fg-color);
+  font-weight: 700;
+  font-size: 1.05rem;
+  line-height: 1.3;
+  letter-spacing: 0;
+  display: table;                    /* the rule stops with the words */
+  margin: 2.2em 0 0.7em;
+  padding-top: 0.45em;
+  border-top: 2px solid var(--oj-red);
 }
-/* the level below: black and bold, in sentence case like every other heading.
-   Red stays what it is elsewhere on the site — a link, an active entry, a
-   button — instead of competing with the text. The space above it does the
-   separating that the color was doing. */
+
+/* h3 — a subsection: same ink, smaller, no rule; the red above it has already
+   said where we are */
 .md-typeset h3 {
   color: var(--md-default-fg-color);
   font-weight: 700;
-  font-size: 0.92rem;
-  letter-spacing: 0;
+  font-size: 0.88rem;
+  letter-spacing: 0.01em;
   text-transform: none;
-  margin-top: 2em;
-  /* the small red rectangle of the EPFL mark — the bar under "EPFL" in the
-     Center for Imaging logo, whose proportions it keeps (about 4:1). It sits
-     in the margin, so the words stay flush with the paragraphs around them. */
-  position: relative;
-  padding-left: 1.15em;
-  margin-left: -1.15em;
+  margin: 1.8em 0 0.5em;
 }
-.md-typeset h3::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.58em;
-  width: 0.5em;
-  height: 0.26em;
-  background-color: var(--oj-red);
-}
+
 .md-typeset .oj-banner + h2 {
   margin-top: 0.4em;
 }
@@ -243,21 +238,21 @@
 }
 .oj-banner__box {
   padding: 0.5em 0;                  /* flush with the text column */
-  border-top: 1px solid var(--md-default-fg-color--lighter);
-  border-bottom: 1px solid var(--md-default-fg-color--lighter);
+  border-top: 1px solid var(--md-default-fg-color--lightest);
+  border-bottom: 1px solid var(--md-default-fg-color--lightest);
   background-color: transparent;
 }
 .oj-banner__sub {
   margin: 0;
-  font-size: 0.72rem;
+  font-size: 1rem;
   font-weight: 600;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
   color: var(--md-default-fg-color);
 }
 .oj-banner__credit {
   margin: 0.5em 0 0;
-  font-size: 0.5rem;
+  font-size: 0.6rem;
   line-height: 1.6;
   color: var(--md-default-fg-color--lighter);
 }
@@ -268,21 +263,6 @@
 }
 .oj-banner__credit a:hover {
   color: var(--oj-red);
-}
-
-/* the on-page contents of a long page: one quiet line under the description */
-.md-typeset .oj-toc {
-  margin: 0.6em 0 1.6em;
-  padding: 0.5em 0.85em;
-  background-color: var(--oj-band);
-  border-left: 2px solid var(--oj-red);
-  font-size: 0.68rem;
-  line-height: 1.9;
-  color: var(--md-default-fg-color--light);
-}
-.md-typeset .oj-toc a {
-  font-weight: 400;
-  white-space: nowrap;
 }
 
 /* buttons — one strong (a call to action), one quiet (a file to fetch) */
@@ -341,13 +321,6 @@
 }
 .md-typeset .oj-center img {
   display: inline-block;
-}
-
-/* home page: the tagline under the title */
-.md-typeset .oj-tagline {
-  margin-top: -0.5em;
-  font-size: 0.82rem;
-  color: var(--md-default-fg-color--light);
 }
 
 /* before/after comparison slider (docs/javascripts/compare.js) */
@@ -649,10 +622,15 @@
   text-align: right;
   white-space: nowrap;
 }
-.oj-foot-name {
-  font-weight: 600;
+.oj-foot-label {
+  display: block;
+  font-size: 0.5rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--md-default-fg-color--lighter);
+  margin-bottom: 0.15rem;
 }
-.oj-foot-affiliation,
 .oj-foot-when {
   display: block;
   font-size: 0.56rem;
@@ -660,7 +638,10 @@
 }
 .oj-foot-title {
   font-weight: 700;
-  font-size: 0.72rem;
+  font-size: 0.68rem;
+}
+.oj-foot-who {
+  display: block;
 }
 .md-copyright__highlight {
   color: var(--md-default-fg-color--light);
@@ -679,12 +660,8 @@
   color: var(--oj-red);
   text-decoration-thickness: 2px;
 }
-.md-copyright .oj-foot-version {
-  color: var(--md-default-fg-color--lighter);
-  white-space: nowrap;
-}
 .md-copyright .oj-foot-mark {
-  width: 4rem;
+  width: 6rem;
   height: auto;
   flex: none;
 }
