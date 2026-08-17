@@ -70,3 +70,25 @@ for (i = 0; i < list.length; i++) {
 ![The sixteen surveys written by the batch macro](../assets/macro-batch.jpg)
 
 <p class="oj-caption">The sixteen test images, analyzed and saved by the macro above in a single run.</p>
+
+### A series of scales, as an animation
+
+The macro that produced the animation of [selecting the scale σ](select-scale.md): the same image analyzed at eight windows, from one pixel to twenty-six, each survey saved as it is computed. Assembling the frames into a GIF is left to the tool of your choice.
+
+```javascript
+in  = "test-images/images/dendrochronology.tif";
+out = "surveys/";
+sigmas = newArray(1, 2, 3, 5, 8, 12, 18, 26);
+setBatchMode(true);
+for (i = 0; i < sigmas.length; i++) {
+    open(in);
+    run("OrientationJ Analysis", "tensor=" + sigmas[i] + " gradient=0 color-survey=on "
+        + "hue=Orientation sat=Coherency bri=Original-Image ");
+    saveAs("PNG", out + "survey-" + IJ.pad(i, 2) + "-sigma" + sigmas[i] + ".png");
+    close("*");
+}
+```
+
+![The growth rings analyzed at eight scales](../assets/rings-scale.gif)
+
+<p class="oj-caption">The eight frames the macro writes, on the complete image of a wood section.</p>

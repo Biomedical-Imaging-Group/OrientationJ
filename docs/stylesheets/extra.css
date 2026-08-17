@@ -118,10 +118,19 @@
   font-size: 1.08rem;
   line-height: 1.3;
   letter-spacing: 0;
-  display: table;                    /* the rule below stops with the words */
-  margin: 2.2em 0 0.8em;
-  padding-bottom: 0.22em;
-  border-bottom: 2px solid var(--oj-red);
+  position: relative;
+  margin: 2.2em 0 0.9em;
+  padding-bottom: 0.3em;
+}
+/* the dash of the EPFL mark, under the first letter of the section */
+.md-typeset h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0.62em;
+  height: 0.16em;
+  background-color: var(--oj-red);
 }
 
 /* h3 — a subsection: same ink, smaller, no rule; the red above it has already

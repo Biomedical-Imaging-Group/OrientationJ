@@ -11,26 +11,17 @@
 
 # Selecting the scale σ
 
-σ ("Local window") is the one setting that really changes the numbers: it fixes the size of the structures the measurement describes.
+*σ ("Local window") is the one setting that really changes the numbers: the standard deviation, in pixels, of the Gaussian window over which the tensor is averaged. It decides what "local" means, and therefore which structures the measurement describes.*
 
-σ ("Local window") is the standard deviation, in pixels, of the Gaussian window over which the tensor is averaged. It decides what *local* means, and therefore which structures the measurement describes.
+![Color survey of the growth rings for increasing σ](../assets/rings-scale.gif)
 
-Start at about **half the width of the structures you care about**: σ = 1–2 px for thin fibers, more for coarse bundles. Then keep the trade-off in mind — a small σ follows fine detail but gives noisy angles and low coherency everywhere, while a large σ gives stable, smooth angles that blend neighboring structures and round off corners. When the structures live at several scales, run the analysis at several σ and compare: the coherency map tells you at which scale each region is best described.
+<p class="oj-caption">The same section of wood analyzed with a growing window, from σ = 1 to 26 px. At the smallest scale the measurement follows every ring and every scratch; as σ grows the rings merge into the regional trend and the noise of the wood texture disappears with them. The macro that produces this series is on the <a href="../macros/">macros page</a>.</p>
 
-The effect, image by image and on the angular histogram, is shown in [the scale parameter σ](select-scale.md).
+## Two rules of thumb
 
-## The scale parameter
+**Match the structure width.** Start with σ of about half the width of the fibers or stripes of interest — σ = 1 to 2 px for thin fibers, more for coarse bundles. σ is a real number, not an integer: **1.5** or **2.5** are perfectly ordinary values, and stepping through 1.5, 2, 2.5 is often how the right scale is found.
 
-σ is the standard deviation, in pixels, of the Gaussian window over which the tensor is averaged. It is the most consequential choice: it defines what *local* means, and therefore which structures the measurement describes.
-
-![Color survey of collagen for increasing σ](../assets/scale-survey.gif)
-
-<p class="oj-caption">The same collagen field analyzed with a growing window. A small σ resolves individual fibers and reacts to noise; a large σ merges neighbors into a smooth regional trend.</p>
-
-Two rules of thumb:
-
-- **Match the structure width.** Start with σ of about half the width of the fibers or stripes of interest — σ = 1–2 px for thin fibers, more for coarse bundles.
-- **Know what you trade.** A small σ follows fine detail but yields noisy angles and low coherency everywhere; a large σ gives stable, smooth angles but blends neighboring structures and rounds corners. When structures live at several scales, analyze at several σ and compare: the coherency map tells you at which scale each region is best described.
+**Know what you trade: detail against noise.** The tensor is built from a gradient, and differentiating amplifies noise — the finer the detail you ask for, the more of the noise you get with it. A small σ therefore follows every structure but returns angles that jitter and coherency that stays low; a large σ averages that noise away and gives stable, smooth angles, at the price of blending neighboring structures and rounding corners. Where structures live at several scales, analyze at several σ and compare: the coherency map tells you at which scale each region is best described.
 
 The effect is easiest to read on the angular histogram, where a growing σ sharpens a well-defined peak and suppresses the background spread:
 

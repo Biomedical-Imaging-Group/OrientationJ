@@ -104,5 +104,5 @@ nav:
       - use-cases/index.md
       - In the literature: "oj:use-cases/#orientationj-in-the-literature"
       - External resources: "oj:use-cases/#external-resources"
-      - Other tools: "oj:use-cases/#other-tools-for-directional-image-analysis"
+      - Comparisons and tools: "oj:use-cases/#comparisons-validation-and-other-tools"
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/
