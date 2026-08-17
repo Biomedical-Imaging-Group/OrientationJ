@@ -15,7 +15,7 @@
 
 ![Color survey of the nematic pattern for increasing σ](../assets/nematic-scale.gif)
 
-<p class="oj-caption">The same nematic field analyzed with a growing window, from σ = 1 to 26 px. At the smallest scale every filament is followed individually and the noise between them comes through; as σ grows the filaments merge into the regional flow and only the trend that survives at that size is left. The macro that produces this series is on the <a href="../macros/">macros page</a>.</p>
+<p class="oj-caption">The same nematic field analyzed with a growing window, from σ = 0.5 to 128 px, each window twice the one before. At the smallest scale every filament is followed individually and the noise between them comes through; as σ grows the filaments merge into the regional flow and only the trend that survives at that size is left. The macro that produces this series is on the <a href="../macros/">macros page</a>.</p>
 
 ## Two rules of thumb
 

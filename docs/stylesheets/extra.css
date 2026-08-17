@@ -40,6 +40,12 @@
 [data-md-color-scheme="slate"] .md-copyright .oj-foot-mark {
   content: url("../assets/center-for-imaging-white.svg");
 }
+[data-md-color-scheme="slate"] .oj-banner__sub {
+  color: var(--md-default-fg-color--light);
+}
+[data-md-color-scheme="slate"] .oj-banner__credit {
+  color: var(--md-default-fg-color);
+}
 [data-md-color-scheme="slate"] .oj-banner__logo {
   content: url("../assets/logo-orientationj-dark.png");
 }

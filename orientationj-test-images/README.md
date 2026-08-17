@@ -1,15 +1,15 @@
 # OrientationJ Test Images
 
-16 grayscale 2D images for testing and benchmarking orientation analysis: **9 synthetic**, whose orientation is known by construction, and **7 real** images, tagged ![real](https://img.shields.io/badge/real-db3f2e) below. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.
+16 grayscale 2D images for testing and benchmarking orientation analysis: **9 synthetic**, whose orientation is known by construction, and **7 real** images. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.
 
-[<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png" width="560">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png)
+<p class="oj-center"><a href="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png"><img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png" alt="The sixteen test images" width="620"></a></p>
+
 
 The folder holds the 16 source images in [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/images), the 16 binary masks in [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks), and in [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results) one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field). All of it is computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1). The images are listed below in the order of the montage; click a panel for full size.
 
+<hr>
 
----
-
-## cell_aemisegger ![real](https://img.shields.io/badge/real-db3f2e)
+### cell_aemisegger ![real](https://img.shields.io/badge/real-db3f2e)
 
 728 × 728, uint8, values in [0, 252] — real: fluorescence cell, actin fibers.
 
@@ -17,7 +17,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/cell_aemisegger.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/cell_aemisegger.png)
 
-## collagen ![real](https://img.shields.io/badge/real-db3f2e)
+### collagen ![real](https://img.shields.io/badge/real-db3f2e)
 
 512 × 512, uint8, values in [2, 255] — real: collagen fibers.
 

@@ -10,11 +10,11 @@
 </div>
 
 
-<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png" alt="The OrientationJ Analysis dialog" width="500" align="right" style="margin-left: 1.5em;">
-
 # Test images
 
-*16 grayscale 2D images for testing and benchmarking orientation analysis: **9 synthetic**, whose orientation is known by construction, and **7 real** images. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.*
+16 grayscale 2D images for testing and benchmarking orientation analysis: **9 synthetic**, whose orientation is known by construction, and **7 real** images. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.
+
+<p class="oj-center"><a href="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png"><img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/orientationj-test-images/results/montage.png" alt="The sixteen test images" width="620"></a></p>
 
 
 The folder holds the 16 source images in [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/images), the 16 binary masks in [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks), and in [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results) one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field). All of it is computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1). The images are listed below in the order of the montage; click a panel for full size.
