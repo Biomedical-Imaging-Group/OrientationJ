@@ -85,7 +85,7 @@ nav:
       - user-guide/index.md
       - All plugins: user-guide/plugins.md
       - Macros: user-guide/macros.md
-      - Selecting the scale σ: user-guide/select-scale.md
+      - Analysis Scale σ: user-guide/select-scale.md
       - Selecting the gradient: user-guide/select-gradient.md
   - How to cite: how-to-cite.md
   - Theory:

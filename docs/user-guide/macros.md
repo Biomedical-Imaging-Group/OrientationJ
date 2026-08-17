@@ -73,10 +73,10 @@ for (i = 0; i < list.length; i++) {
 
 ### A series of scales, as an animation
 
-The macro that produced the animation of [selecting the scale σ](select-scale.md): the same image analyzed at eight windows, from one pixel to twenty-six, each survey saved as it is computed. Assembling the frames into a GIF is left to the tool of your choice.
+The macro that produced the animation of the [analysis scale σ](select-scale.md): the same image analyzed at eight windows, from one pixel to twenty-six, each survey saved as it is computed. Assembling the frames into a GIF is left to the tool of your choice.
 
 ```javascript
-in  = "test-images/images/dendrochronology.tif";
+in  = "test-images/images/synthetic_nematic_512.tif";
 out = "surveys/";
 sigmas = newArray(1, 2, 3, 5, 8, 12, 18, 26);
 setBatchMode(true);
@@ -89,6 +89,6 @@ for (i = 0; i < sigmas.length; i++) {
 }
 ```
 
-![The growth rings analyzed at eight scales](../assets/rings-scale.gif)
+![The nematic pattern analyzed at eight scales](../assets/nematic-scale.gif)
 
-<p class="oj-caption">The eight frames the macro writes, on the complete image of a wood section.</p>
+<p class="oj-caption">The eight frames the macro writes, on the complete nematic image.</p>
