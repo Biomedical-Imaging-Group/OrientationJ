@@ -18,7 +18,7 @@ title: Theory
 
 # Theory
 
-*How OrientationJ measures a direction: the tensor it builds around every pixel, and the features it reads from it. The two settings, scale and gradient, are explained in [how to use](../user-guide/index.md).*
+How OrientationJ measures a direction: the tensor it builds around every pixel, and the features it reads from it. The two settings, scale and gradient, are explained in [how to use](../user-guide/index.md).
 
 ## Gradient Structure Tensor
 

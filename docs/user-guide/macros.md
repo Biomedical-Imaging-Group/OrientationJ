@@ -73,12 +73,12 @@ for (i = 0; i < list.length; i++) {
 
 ### A series of scales, as an animation
 
-The macro that produced the animation of the [analysis scale σ](select-scale.md): the same image analyzed at eight windows, from one pixel to twenty-six, each survey saved as it is computed. Assembling the frames into a GIF is left to the tool of your choice.
+The macro that produced the animation of the [analysis scale σ](select-scale.md): the same image analyzed at nine windows, each twice the one before, from half a pixel to a hundred and twenty-eight, each survey saved as it is computed. Assembling the frames into a GIF is left to the tool of your choice.
 
 ```javascript
 in  = "test-images/images/synthetic_nematic_512.tif";
 out = "surveys/";
-sigmas = newArray(1, 2, 3, 5, 8, 12, 18, 26);
+sigmas = newArray(0.5, 1, 2, 4, 8, 16, 32, 64, 128);
 setBatchMode(true);
 for (i = 0; i < sigmas.length; i++) {
     open(in);
@@ -91,4 +91,4 @@ for (i = 0; i < sigmas.length; i++) {
 
 ![The nematic pattern analyzed at eight scales](../assets/nematic-scale.gif)
 
-<p class="oj-caption">The eight frames the macro writes, on the complete nematic image.</p>
+<p class="oj-caption">The nine frames the macro writes, on the complete nematic image.</p>
