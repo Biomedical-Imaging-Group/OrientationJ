@@ -9,7 +9,7 @@
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-# OrientationJ Operator
+# Operator
 
 How short can an honest gradient-structure-tensor operator be? [gst_operator.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/gst_operator.py) computes the three OrientationJ features with **separable Gaussian derivatives in the space domain** — no Fourier transform, no spline prefilter, no boundary handling beyond mirroring — in sixty lines of NumPy:
 

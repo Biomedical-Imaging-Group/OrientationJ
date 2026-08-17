@@ -20,7 +20,7 @@ title: Theory
 
 # Theory
 
-## The structure tensor
+## Gradient Structure Tensor
 
 The aim is to characterize the orientation and isotropy properties of a local area of interest (Region of Interest, ROI) in an image. To that end, we first define the weighted inner product
 

@@ -9,7 +9,7 @@
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-# OrientationJ Python Port
+# Python port
 
 A faithful NumPy port of the OrientationJ gradient structure tensor (GST) and three
 notebooks that run it on the 16 [test images](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images).

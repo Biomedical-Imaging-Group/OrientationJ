@@ -10,14 +10,15 @@ site_description: >-
 site_author: Daniel Sage
 copyright: >-
   <span class="oj-foot-left"><img class="oj-foot-mark" src="oj:assets/center-for-imaging.svg"
-  alt="EPFL Center for Imaging"><span><span class="oj-foot-name"><a
-  href="mailto:daniel.sage@epfl.ch">daniel.sage@epfl.ch</a></span><span class="oj-foot-affiliation"><a
+  alt="EPFL Center for Imaging"><span class="oj-foot-who"><span class="oj-foot-label">Contact</span><a
+  href="mailto:daniel.sage@epfl.ch">daniel.sage@epfl.ch</a><br><a
   href="https://imaging.epfl.ch/">Center for Imaging</a> and <a
   href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a
-  href="https://www.epfl.ch/">EPFL</a></span></span></span>
-  <span class="oj-foot-right"><span class="oj-foot-title">Orientation<span
-  class="oj-banner__j">J</span></span><span class="oj-foot-when">Version 2.1.0 · August 2026 · <a
-  href="https://github.com/Biomedical-Imaging-Group/OrientationJ">GitHub</a></span></span>
+  href="https://www.epfl.ch/">EPFL</a></span></span>
+  <span class="oj-foot-right"><span class="oj-foot-label">Software</span><span
+  class="oj-foot-title">OrientationJ 2.1.0</span><br>August 2026 · <a
+  href="https://github.com/Biomedical-Imaging-Group/OrientationJ">GitHub</a> · <a
+  href="https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/LICENSE">GPL-3.0</a></span>
 
 theme:
   name: material
@@ -80,10 +81,8 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
 
 nav:
-  - Home: index.md
-  - Installation:
-      - installation/index.md
-      - Version history: installation/history.md
+  - OrientationJ: index.md
+  - Installation: installation/index.md
   - User guide:
       - user-guide/index.md
       - All plugins: user-guide/plugins.md
@@ -93,9 +92,10 @@ nav:
   - Theory:
       - theory/index.md
       # sections of the page above: see docs/javascripts/nav.js
-      - The structure tensor: "oj:theory/#the-structure-tensor"
+      - Gradient Structure Tensor: "oj:theory/#gradient-structure-tensor"
       - Features and invariants: "oj:theory/#features-and-invariants"
   - Test images: test-images.md
+  - How to cite: how-to-cite.md
   - Assessments:
       - assessment/index.md
       - Benchmarking: assessment/benchmarking.md
@@ -105,7 +105,6 @@ nav:
   - Use cases:
       - use-cases/index.md
       - In the literature: "oj:use-cases/#orientationj-in-the-literature"
-      - References: "oj:use-cases/#references-of-orientationj"
       - External resources: "oj:use-cases/#external-resources"
       - Other tools: "oj:use-cases/#other-tools-for-directional-image-analysis"
   - Javadoc API: https://Biomedical-Imaging-Group.github.io/OrientationJ/api/

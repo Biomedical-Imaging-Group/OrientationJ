@@ -23,34 +23,6 @@ title: Use cases
 
 <p class="oj-center"><a class="oj-button" href="literature.html">Open the reference table</a></p>
 
-## References of OrientationJ
-
-The publications to cite when OrientationJ contributed to your results, each matching what you used — the method, the angular distribution, the local measurements, or the monogenic analysis.
-
-<p class="oj-cite-topic">The method — the gradient structure tensor and its features</p>
-
-> Püspöki Z, Storath M, Sage D, Unser M (2016). Transforms and Operators for Directional Bioimage Analysis: A Survey. *Advances in Anatomy, Embryology and Cell Biology*, vol. 219, Focus on Bio-Image Informatics, Springer, pp. 69–93. [doi:10.1007/978-3-319-28549-8_3](https://doi.org/10.1007/978-3-319-28549-8_3)
-
-[PDF](https://bigwww.epfl.ch/publications/puespoeki1603.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/puespoeki1603.html){ .oj-chip }
-
-<p class="oj-cite-topic">The angular distribution — collagen waviness in the arterial adventitia</p>
-
-> Rezakhaniha R, Agianniotis A, Schrauwen JTC, Griffa A, Sage D, Bouten CVC, van de Vosse FN, Unser M, Stergiopulos N (2012). Experimental Investigation of Collagen Waviness and Orientation in the Arterial Adventitia Using Confocal Laser Scanning Microscopy. *Biomechanics and Modeling in Mechanobiology* 11(3–4): 461–473. [doi:10.1007/s10237-011-0325-z](https://doi.org/10.1007/s10237-011-0325-z)
-
-[PDF](https://bigwww.epfl.ch/publications/rezakhaniha1201.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/rezakhaniha1201.html){ .oj-chip }
-
-<p class="oj-cite-topic">The local measurements — elastin in human cerebral arteries</p>
-
-> Fonck E, Feigl GG, Fasel J, Sage D, Unser M, Rüfenacht DA, Stergiopulos N (2009). Effect of Aging on Elastin Functionality in Human Cerebral Arteries. *Stroke* 40(7): 2552–2556. [doi:10.1161/STROKEAHA.108.528091](https://doi.org/10.1161/STROKEAHA.108.528091)
-
-[PDF](https://bigwww.epfl.ch/publications/fonck0901.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/fonck0901.html){ .oj-chip }
-
-<p class="oj-cite-topic">The multiresolution analysis — MonogenicJ</p>
-
-> Unser M, Sage D, Van De Ville D (2009). Multiresolution Monogenic Signal Analysis Using the Riesz–Laplace Wavelet Transform. *IEEE Transactions on Image Processing* 18(11): 2402–2418. [doi:10.1109/TIP.2009.2027628](https://doi.org/10.1109/TIP.2009.2027628)
-
-[PDF](https://bigwww.epfl.ch/publications/unser0907.pdf){ .oj-chip } [BibTeX](https://bigwww.epfl.ch/publications/unser0907.html){ .oj-chip }
-
 ## External resources
 
 **[OrientationJ, the original page](https://bigwww.epfl.ch/demo/orientation/)** and **[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/)** — the two official pages: the first at the Biomedical Imaging Group, with the jar, a description of every mode, recordable macro examples and a gallery of published applications; the second at the Center for Imaging, for the Python successor that also measures 3D volumes.

@@ -9,7 +9,7 @@
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
-# Plugins
+# All plugins
 
 What each command under **Plugins ▸ OrientationJ** produces, in the order the menu lists them, with an example of its output.
 
