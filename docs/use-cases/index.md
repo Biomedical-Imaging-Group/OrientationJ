@@ -25,13 +25,13 @@ title: Use cases
 
 ## External resources
 
-**[OrientationJ, the original page](https://bigwww.epfl.ch/demo/orientation/)** and **[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/)** — the two official pages: the first at the Biomedical Imaging Group, with the jar, a description of every mode, recordable macro examples and a gallery of published applications; the second at the Center for Imaging, for the Python successor that also measures 3D volumes.
+**[OrientationJ, the original page](https://bigwww.epfl.ch/demo/orientation/)** and **[OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/)** — from the Biomedical Imaging Group.
 
-**[Source code on GitHub](https://github.com/Biomedical-Imaging-Group/OrientationJ)** — the Java sources under GPL-3.0, the `plugins.config` that declares the menu commands, and the releases.
+**[Source code on GitHub](https://github.com/Biomedical-Imaging-Group/OrientationJ)** — the Java source code under GPL-3.0 and the releases.
 
 **[MonogenicJ](https://bigwww.epfl.ch/demo/monogenicj/)** — the companion plugin: wavelet-based multiresolution monogenic analysis (orientation, coherency, wavenumber per scale), bundled with OrientationJ since version 2.0.7.
 
-**[OrientationPy on PyPI](https://pypi.org/project/orientationpy/)** — `pip install orientationpy`, also on bioconda, with a [napari plugin](https://github.com/EPFL-Center-for-Imaging/napari-orientationpy) for those who prefer a viewer.
+**[OrientationPy on PyPI](https://pypi.org/project/orientationpy/)** — `pip install orientationpy`, with a [napari plugin](https://github.com/EPFL-Center-for-Imaging/napari-orientationpy).
 
 **[image.sc forum](https://forum.image.sc/)** — where questions on the plugins and their parameters are asked and answered; tag the post `orientationj`. Bugs and wishes go to the [GitHub issues](https://github.com/Biomedical-Imaging-Group/OrientationJ/issues).
 
@@ -39,7 +39,7 @@ title: Use cases
 
 ## Comparisons, validation and other tools
 
-**[Validation of structure tensor analysis](https://doi.org/10.1016/j.jneumeth.2025.110539)** — Gray B, Smith A, MacKenzie-Graham A, Shattuck D, Tward D (2025), *Validation of structure tensor analysis for orientation estimation in brain tissue microscopy*, Journal of Neuroscience Methods 423:110539. A simulation study of the method itself: the choice of parameters matters little for a single orientation, accuracy falls with anisotropic pixels, and where fibers cross a poor choice makes the estimate essentially random — a limit of any single tensor per pixel.
+**[Validation of structure tensor analysis](https://doi.org/10.1016/j.jneumeth.2025.110539)** — Gray B, Smith A, MacKenzie-Graham A, Shattuck D, Tward D (2025), *Validation of structure tensor analysis for orientation estimation in brain tissue microscopy*, Journal of Neuroscience Methods 423:110539. A simulation study of the method itself.
 
 **[Comparison of fiber orientation analysis methods](https://documents.thermofisher.com/TFS-Assets/MSD/Scientific-Resources/wp0010-comparison-fiber-analysis.pdf)** — a Thermo Fisher white paper comparing the usual approaches on the same images; vendor literature rather than a peer-reviewed study, but a compact overview of what each family of methods measures.
 
@@ -53,4 +53,4 @@ title: Use cases
 
 **[CT-FIRE](https://doi.org/10.1117/1.JBO.19.1.016007)** — fiber tracking and extraction for collagen in second-harmonic-generation images.
 
-**[skimage.feature.structure_tensor](https://scikit-image.org/docs/stable/api/skimage.feature.html#skimage.feature.structure_tensor)** — the minimal structure tensor of scikit-image (finite-difference gradients only), the closest thing in the Python ecosystem outside OrientationPy.
+**[skimage.feature.structure_tensor](https://scikit-image.org/docs/stable/api/skimage.feature.html#skimage.feature.structure_tensor)** — the minimal structure tensor of scikit-image (finite-difference gradients only).

@@ -267,13 +267,14 @@
   font-weight: 600;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  color: var(--md-default-fg-color);
+  color: #8a8a8a;                    /* brighter: 3.5:1, which is AA for type
+                                        this large and bold */
 }
 .oj-banner__credit {
   margin: 0.5em 0 0;
   font-size: 0.6rem;
   line-height: 1.6;
-  color: var(--md-default-fg-color--lighter);
+  color: #2e2e2e;                    /* darker: nearly the ink of the text */
 }
 .oj-banner__credit a {
   color: inherit;
