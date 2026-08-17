@@ -12,10 +12,8 @@ copyright: >-
   <span class="oj-foot-left"><img class="oj-foot-mark" src="oj:assets/center-for-imaging.svg"
   alt="EPFL Center for Imaging"><span class="oj-foot-who"><span class="oj-foot-label">Contact</span><a
   href="mailto:daniel.sage@epfl.ch">daniel.sage@epfl.ch</a><br><a
-  href="https://imaging.epfl.ch/">Center for Imaging</a> and <a
-  href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a
-  href="https://www.epfl.ch/">EPFL</a></span></span>
-  <span class="oj-foot-right"><span class="oj-foot-label">Software</span><span
+  href="https://imaging.epfl.ch/">imaging.epfl.ch</a></span></span>
+  <span class="oj-foot-right"><span class="oj-foot-label">Open-source software</span><span
   class="oj-foot-title">OrientationJ 2.1.0</span><br>August 2026 · <a
   href="https://github.com/Biomedical-Imaging-Group/OrientationJ">GitHub</a> · <a
   href="https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/LICENSE">GPL-3.0</a></span>
