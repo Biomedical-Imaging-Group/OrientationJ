@@ -15,9 +15,9 @@ title: How to use
 
 # How to use
 
-OrientationJ is a suite of plugins for [ImageJ](https://imagej.net/ij/) and [Fiji](https://fiji.sc/), written in plain Java with no dependency to install (see [Installation](../installation/index.md)). Open a 2D grayscale image, pick a command, and the result appears — nothing to configure beyond the dialog in front of you. Whatever the command, the computation underneath is the same: the gradient structure tensor is computed over a local window (see [Theory](../theory/index.md)) to provide pixelwise directional quantities.
+OrientationJ is a series of plugins for [ImageJ](https://imagej.net/ij/) and [Fiji](https://fiji.sc/), written in plain Java with no dependency to install (see [Installation](../installation/index.md)). Open a 2D grayscale image, pick a command, and the result appears — nothing to configure beyond the dialog in front of you. Whatever the command, the computation underneath is the same: the gradient structure tensor is computed over a local window (see [Theory](../theory/index.md)) to provide pixelwise directional quantities.
 
-The pages of this section take it in order: what [all the plugins](plugins.md) produce, how to drive them from a [macro](macros.md), and how to choose the two settings that change the numbers — [the analysis scale σ](select-scale.md) and [the gradient](select-gradient.md). To try them on data whose answer is known, take one of the sixteen [test images](../test-images.md), each with its mask.
+This section describes [all the plugins](plugins.md) and the [color survey](color-survey.md) they build, how to drive them from a [macro](macros.md), and how to choose the two settings that change the numbers: [the analysis scale σ](select-scale.md) and [the gradient](select-gradient.md). Try them on your own data, or on the 16 [test images](../test-images.md), whose answer is known.
 
 ## The user interface
 
