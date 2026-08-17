@@ -81,19 +81,19 @@ extra_javascript:
 nav:
   - OrientationJ: index.md
   - Installation: installation/index.md
-  - User guide:
+  - How to use:
       - user-guide/index.md
       - All plugins: user-guide/plugins.md
       - Macros: user-guide/macros.md
       - Selecting the scale σ: user-guide/select-scale.md
       - Selecting the gradient: user-guide/select-gradient.md
+  - How to cite: how-to-cite.md
   - Theory:
       - theory/index.md
       # sections of the page above: see docs/javascripts/nav.js
       - Gradient Structure Tensor: "oj:theory/#gradient-structure-tensor"
       - Features and invariants: "oj:theory/#features-and-invariants"
   - Test images: test-images.md
-  - How to cite: how-to-cite.md
   - Assessments:
       - assessment/index.md
       - Benchmarking: assessment/benchmarking.md

@@ -6,6 +6,10 @@
   --md-text-font: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --md-code-font: "Menlo", "Consolas", "Liberation Mono", monospace;
 }
+/* a little tighter than Material's 1.6 */
+.md-typeset {
+  line-height: 1.52;
+}
 
 /* EPFL red — #FF0000, the red of the EPFL logo and of the Center for Imaging
    mark in the banner. The palette attributes sit on <body>, and Material
@@ -114,7 +118,10 @@
   font-size: 1.08rem;
   line-height: 1.3;
   letter-spacing: 0;
-  margin: 2.2em 0 0.7em;
+  display: table;                    /* the rule below stops with the words */
+  margin: 2.2em 0 0.8em;
+  padding-bottom: 0.22em;
+  border-bottom: 2px solid var(--oj-red);
 }
 
 /* h3 — a subsection: same ink, smaller, no rule; the red above it has already

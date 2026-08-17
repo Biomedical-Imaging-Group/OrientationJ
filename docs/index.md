@@ -12,41 +12,39 @@
 
 # OrientationJ
 
-**Open-source software for the directional analysis of 2D images.** A suite of Java plugins for [ImageJ and Fiji](installation/index.md), free under the GPL-3.0 licence — [how to cite](how-to-cite.md) — and, for volumes, a Python successor that also works in 3D, [OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/).
+OrientationJ is open-source software for the directional analysis of 2D images: a series of Java plugins, easy to install on [ImageJ and Fiji](installation/index.md), free under the GPL-3.0 licence — [how to cite](how-to-cite.md). For volumetric data, a Python successor works in 2D and in 3D, [OrientationPy](https://epfl-center-for-imaging.gitlab.io/orientationpy/).
 
-It rests on the [gradient structure tensor](theory/index.md#gradient-structure-tensor), evaluated over a small window at every pixel, from which it computes the [features](theory/index.md#features-and-invariants) that describe the local structure — its **orientation**, the **coherency** telling whether that orientation is well defined, the **energy** telling whether there is any structure at all. One parameter governs the measurement: the analysis scale σ, the size of that window, [chosen from the width of the structures](user-guide/select-scale.md).
+It relies on the [gradient structure tensor](theory/index.md#gradient-structure-tensor), evaluated over a small window at every pixel, from which it computes the [directional features](theory/index.md#features-and-invariants) that describe the local structure: the **orientation** itself, the **coherency** telling whether that orientation is well defined, and the **energy** telling whether there is any structure at all. One parameter controls the measurement, [the analysis scale σ](user-guide/select-scale.md), the size of that window.
 
-### Fiji/ImageJ plugins
+The suite holds several [plugins](user-guide/plugins.md): `Analysis` for the feature maps and the color survey, `Distribution` for the angular histogram, `Vector Field` for the overlay, `Measure` and `Dominant Direction` for numbers, and `MonogenicJ` for a multiresolution analysis. Every command runs from a dialog and from an [ImageJ macro](user-guide/macros.md), so one setting can be replayed over a whole folder.
 
-`Analysis` produces the feature maps and the color survey; `Distribution` turns them into an angular histogram; `Vector Field` overlays a readable field of directions. Others report numbers or group structures: `Measure` and `Dominant Direction`, `Clustering` and `Horizontal Alignment`, and [`Corner Harris`](https://en.wikipedia.org/wiki/Harris_corner_detector). In addition, `MonogenicJ` brings a multiresolution analysis ([Unser et al., 2009](https://doi.org/10.1109/TIP.2009.2027628)). Every command runs from a dialog and from an [ImageJ macro](user-guide/macros.md), so a setting that works on one image can be replayed over a whole folder.
+In addition, sixteen [test images](test-images.md) come with the documentation, and the [assessments](assessment/index.md) built on them compare OrientationJ with six other tools, with two Python implementations of the same tensor, and its five gradients against analytic truth.
 
-In addition, the sixteen images the documentation works with are published with their masks in [Test images](test-images.md), and the [Assessments](assessment/index.md) measure what the plugin does: against six other tools, against analytic truth, and against two Python implementations of the same tensor.
-
-### Applications
+## Applications
 
 Fibers, filaments, fringes, cracks, fractures, flows, growth rings: many scientific images are made of elongated structures, and what matters about them is their direction. OrientationJ quantifies it everywhere in the image — the local orientation, how consistently it holds, and how anisotropic the neighborhood is. More than 300 published studies have used it, from the actin cytoskeleton to nanofibers and bone: [what they did with it](use-cases/index.md).
 
-### In 3D, with OrientationPy
+## In 3D, with OrientationPy
 
 OrientationJ measures orientation in 2D images only. For volumes, the EPFL Center for Imaging develops **OrientationPy**, its Python successor: the same gradient structure tensor, in 2D and in 3D, usable as a library or through its [napari plugin](https://github.com/EPFL-Center-for-Imaging/napari-orientationpy).
 
 [OrientationPy — orientation in 2D and 3D](https://epfl-center-for-imaging.gitlab.io/orientationpy/){ .oj-button }
 
 
-### Example of analysis scale
+## Example of analysis scale
 
 The same measurement, run at a growing analysis scale σ on the classic *Tree Rings* sample: small windows follow every detail, large ones summarize the trend ([macro](assets/tree-orientation.txt)).
 
 ![Color survey of the Tree Rings sample while the local window grows](assets/tree-orientation.gif){ .oj-tree }
 
-### Demonstration in the browser, without installing anything
+## Demonstration in the browser, without installing anything
 
 The [interactive online demo](https://bigwww.epfl.ch/demo/ip/demos/orientation/) runs the analysis in the browser, on the samples provided or on your own image: move the σ slider and the color survey follows.
 
 <p class="oj-center"><a href="https://bigwww.epfl.ch/demo/ip/demos/orientation/" title="Open the interactive online demo"><img src="assets/online-demo.jpg" alt="The online demo: the Tree Rings sample and its color survey, side by side" width="620"></a></p>
 
 
-### Input and color survey
+## Input and color survey
 
 <div class="oj-compare">
 <img src="assets/collagen-input.jpg" alt="Collagen fibers, original image">
@@ -58,13 +56,3 @@ The [interactive online demo](https://bigwww.epfl.ch/demo/ip/demos/orientation/)
 
 <p class="oj-caption">Drag the handle: collagen fibers on the left, the same field as a color survey on the right<br>hue gives the orientation, saturation the coherency.</p>
 
-
-## How to cite
-
-Four publications document the method, the angular distribution, the local measurements and the monogenic analysis; the one to cite depends on what you used. They are listed, with their PDF and BibTeX, on the [how to cite](how-to-cite.md) page.
-
-## Use cases
-
-OrientationJ is used wherever the direction of a structure carries the information: the actin cytoskeleton and stress fibers in cell biology, collagen at the tumor–stroma interface in cancer research, engineered cardiac tissue, electrospun nanofibers and composites in materials science, bone and arterial wall in biomechanics, and any other image made of stripes or fronts.
-
-**More than 300 publications** have used it since 2013. They are listed, with the sentence describing each use, on the [Use cases](use-cases/index.md) page. The release notes, version by version, are on the [version history](installation/index.md#version-history) page.
