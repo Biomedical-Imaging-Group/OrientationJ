@@ -8,7 +8,7 @@
 //   Fiji.app/Contents/MacOS/ImageJ-macosx --headless --console -macro macro-directionality.ijm
 
 root = "/Users/dsage/Desktop/dev/OrientationJ/";
-input = root + "orientationj-test-images/images/";
+input = root + "test-images/images/";
 output = root + "assessment/benchmarking/results/fiji/";
 
 if (!File.exists(input)) exit("Input folder not found: " + input);

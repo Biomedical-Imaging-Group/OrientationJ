@@ -12,7 +12,7 @@
 # Python port
 
 A faithful NumPy port of the OrientationJ gradient structure tensor (GST) and three
-notebooks that run it on the 16 [test images](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images).
+notebooks that run it on the 16 [test images](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images).
 
 ## Contents
 
@@ -27,11 +27,11 @@ notebooks that run it on the 16 [test images](https://github.com/Biomedical-Imag
 
 ## Experiments
 
-The resulting panels are published in the [test-images results](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/results).
+The resulting panels are published in the [test-images results](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/results).
 
 ### Masks
 The distribution and the vector field are computed **inside the masks** of
-[../orientationj-test-images/masks](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks) (nonzero = analyzed). This removes the flat background, whose degenerate structure tensor (exactly Jxy = 0 or Jxx = Jyy in float32) otherwise piles up in the 0°, ±45° and ±90° bins.
+[../test-images/masks](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/masks) (nonzero = analyzed). This removes the flat background, whose degenerate structure tensor (exactly Jxy = 0 or Jxx = Jyy in float32) otherwise piles up in the 0°, ±45° and ±90° bins.
 
 ### Settings
 

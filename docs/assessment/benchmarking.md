@@ -13,7 +13,7 @@
 
 Compares the distribution of orientation measured by **seven tools**, all with the cubic-spline gradient and the structure-tensor window σ = 1 wherever the tool exposes those choices, on four images of the [test set](../test-images.md). Two comparisons:
 
-- **masked** — only pixels inside [the structure masks](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/orientationj-test-images/masks);
+- **masked** — only pixels inside [the structure masks](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/masks);
   without Directionality (no mask support);
 - **full** — every pixel of the image, without the direct gradient, whose unsmoothed histogram is dominated by the flat background.
 
