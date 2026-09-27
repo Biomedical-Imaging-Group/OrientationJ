@@ -86,6 +86,14 @@ public class OrientationParameters {
 	public double				vectorScale				= 100;
 	public int					vectorType				= 0;
 
+	// Aggregation of the pixels of a grid cell in the vector field (since 2.2.0)
+	final public static int		AGGREGATION_NEMATIC		= 0;	// mean of the doubled angle, every pixel weighs 1; confidence = nematic order
+	final public static int		AGGREGATION_STRUCTURE	= 1;	// mean of the doubled angle, every pixel weighs its energy; confidence = coherency
+	final public static int		AGGREGATION_AVERAGE		= 2;	// mean of the orientation vectors, as before 2.2.0
+	final static public String	aggregationName[]		= { "Nematic Tensor", "Structure Tensor", "Simple Average" };
+	final static public String	aggregationKey[]		= { "nematic", "structure", "average" };
+	public int					vectorAggregation		= AGGREGATION_NEMATIC;
+
 	public boolean				hsb						= true;
 	public boolean				scaleEnergy				= true;
 	public boolean				scaleDirectionality		= true;
@@ -255,12 +263,33 @@ public class OrientationParameters {
 		vectorGrid = Integer.parseInt(Macro.getValue(options, "vectorgrid", "10"));
 		vectorScale = Double.parseDouble(Macro.getValue(options, "vectorscale", "100"));
 		vectorType = Integer.parseInt(Macro.getValue(options, "vectortype", "0"));
+		vectorAggregation = parseAggregation(Macro.getValue(options, "vectoraggregation", aggregationKey[AGGREGATION_NEMATIC]));
 
 		// Color
 		featureHue = Macro.getValue(options, "hue", "Orientation");
 		featureSat = Macro.getValue(options, "sat", "Coherency");
 		featureBri = Macro.getValue(options, "bri", "Constant");
 
+	}
+
+	/**
+	 * Aggregation of the vector field from its macro value: a key of aggregationKey[]
+	 * ("nematic", "structure", "average"), or its index. Unknown values give the default,
+	 * the nematic tensor.
+	 */
+	public static int parseAggregation(String value) {
+		String v = value.trim().toLowerCase();
+		for (int k = 0; k < aggregationKey.length; k++)
+			if (v.equals(aggregationKey[k]))
+				return k;
+		try {
+			int k = Integer.parseInt(v);
+			if (k >= 0 && k < aggregationKey.length)
+				return k;
+		}
+		catch (NumberFormatException ex) {
+		}
+		return AGGREGATION_NEMATIC;
 	}
 
 }

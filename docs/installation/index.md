@@ -18,7 +18,7 @@ title: Installation
 
 ## On ImageJ
 
-1. Download [`OrientationJ_.jar`](../assets/OrientationJ_.jar) (version 2.1.0). Older versions are on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
+1. Download [`OrientationJ_.jar`](../assets/OrientationJ_.jar) (version 2.2.0). Older versions are on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
 2. Copy it into the `plugins` folder of your ImageJ installation.
 3. Restart ImageJ. The commands appear under **Plugins ▸ OrientationJ**.
 
@@ -57,6 +57,14 @@ OrientationJ is free and open-source software, distributed under the [GNU Genera
 ## Version history
 
 All releases are by Daniel Sage. Older versions are also on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
+
+### 2.2.0 — 27 September 2026
+
+* New option in Vector Field: "Aggregation" of the pixels of a grid cell — Nematic Tensor (default), Structure Tensor, or Simple Average (the behaviour of the previous versions)
+* Nematic Tensor averages the doubled angle of the pixels with equal weights; Structure Tensor weights each pixel by its gradient energy; Simple Average is the mean of the orientation vectors, which biased towards 0° the cells whose orientations straddle ±90°
+* The Coherency column of the OJ-Table-Vector-Field is now the coherency of the cell tensor (the nematic order for Nematic Tensor); with Simple Average it stays the mean of the pixel coherencies
+* New macro key `vectoraggregation=nematic|structure|average`; a macro without it runs with Nematic Tensor, so vector fields recorded with earlier versions may change
+* Fixed the macro example of the documentation, whose keys did not match the recorder (`vectorgrid`, `vectorscale`, `vectortype`)
 
 ### 2.1.0 — 6 August 2026
 

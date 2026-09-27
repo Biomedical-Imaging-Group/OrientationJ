@@ -42,8 +42,14 @@ The grid and the analysis scale act together: the same field, drawn while σ gro
 
 ![Vector field of collagen while the analysis scale grows](../assets/vectorfield-scale.gif)
 
-!!! note "Parameters" 
-    *Vector Field* add a minimum coherency and a minimum energy. These do not change the measurement; they decide which pixels are allowed to vote. Raising the coherency threshold keeps only the well-oriented pixels, and raising the energy threshold discards the flat background — the practical way to stop empty regions from filling a histogram with meaningless angles.
+!!! note "Parameters"
+    *Grid size* is the side of a cell in pixels. *Aggregation* (since 2.2.0) is how the pixels of a cell are combined into one vector:
+
+    - **Nematic Tensor** (default) — the mean of the doubled angle of the pixels, every pixel weighing 1; the coherency of the cell is the nematic order of that mean, 1 when every pixel agrees, 0 when the orientations cancel.
+    - **Structure Tensor** — the same mean, every pixel weighing its gradient energy: the cell is the structure tensor of the plugin at the scale of the grid, and the background pixels, which carry no energy, do not vote. The coherency of the cell is the coherency of that tensor.
+    - **Simple Average** — the mean of the orientation vectors, as in the versions before 2.2.0. It treats the orientation as a direction rather than an axis, so a cell whose orientations straddle ±90° is pulled towards 0°. Kept for continuity.
+
+    *Length vector* scales each vector by nothing, by the energy, by the coherency or by both; *Scale vector* sets the overall length in percent of the cell. The choice between the two tensors is discussed in the [Structure vs nematic](../assessment/structure-nematic.md) assessment.
 
 
 ## Measure

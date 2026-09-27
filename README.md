@@ -30,7 +30,7 @@ OrientationJ measures orientation in 2D images only. For volumes, the EPFL [Cent
 
 ## Installation
 
-**On ImageJ** — download [`OrientationJ_.jar`](https://Biomedical-Imaging-Group.github.io/OrientationJ/assets/OrientationJ_.jar) (version 2.1.0), copy it into the `plugins` folder, restart. **On Fiji** — **Help ▸ Update… ▸ Manage update sites**, tick **BIG-EPFL**, apply and restart; Fiji then keeps the plugin up to date by itself. Either way the commands appear under **Plugins ▸ OrientationJ**. Both routes, with the older versions and the build from source: [installation](https://Biomedical-Imaging-Group.github.io/OrientationJ/installation/).
+**On ImageJ** — download [`OrientationJ_.jar`](https://Biomedical-Imaging-Group.github.io/OrientationJ/assets/OrientationJ_.jar) (version 2.2.0), copy it into the `plugins` folder, restart. **On Fiji** — **Help ▸ Update… ▸ Manage update sites**, tick **BIG-EPFL**, apply and restart; Fiji then keeps the plugin up to date by itself. Either way the commands appear under **Plugins ▸ OrientationJ**. Both routes, with the older versions and the build from source: [installation](https://Biomedical-Imaging-Group.github.io/OrientationJ/installation/).
 
 ## Documentation
 

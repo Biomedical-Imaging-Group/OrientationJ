@@ -24,7 +24,8 @@ Conventions (identical to the plugin):
     float buffer, so the numbers match the Java output to float precision.
 
 Defaults are the plugin macro defaults: sigma = 1 (structure tensor), epsilon = 0.001,
-min-coherency = 0 %, min-energy = 0 %, vector grid = 10, scale = 100 %, type = 0.
+min-coherency = 0 %, min-energy = 0 %, vector grid = 10, scale = 100 %, type = 0,
+aggregation = 'nematic' (plugin 2.2.0; 'average' reproduces the versions before).
 
 Daniel Sage, Biomedical Imaging Group, EPFL.
 """
@@ -252,11 +253,25 @@ def distribution_table(features, min_coherency=0.0, min_energy=0.0, mask=None):
 
 # --------------------------- vector field (OrientationResults.displayVectorField)
 
-def vector_field(features, grid=10, mask=None, min_mask_fraction=0.5):
-    """OrientationJ Vector Field: block averages of the orientation vector
-    (cos theta, sin theta), the coherency and the energy on a grid of
-    grid x grid pixels. Out-of-image samples of partial border blocks count as
-    orientation 0, coherency 0, energy 0, exactly like the plugin.
+def vector_field(features, grid=10, mask=None, min_mask_fraction=0.5,
+                 aggregation='nematic'):
+    """OrientationJ Vector Field (2.2.0): one vector per cell of grid x grid
+    pixels, from the per-pixel orientation, coherency and energy.
+
+    aggregation, as the plugin's "Aggregation" option (macro key
+    vectoraggregation):
+      'nematic'   (default) mean of the doubled-angle vectors (cos 2t, sin 2t),
+                  every pixel weighing 1; the cell Coherency is the nematic
+                  order |mean|,
+      'structure' the same mean, every pixel weighing its energy E; since the
+                  anisotropic part of a pixel tensor is E*C*(cos 2t, sin 2t),
+                  the cell Coherency |sum| / sum(E) is the coherency of the
+                  summed structure tensor,
+      'average'   the behaviour before 2.2.0: mean of the orientation vectors
+                  (cos t, sin t) and mean of the pixel coherencies.
+    The two tensors give the cell orientation as half the angle of the sum.
+    Out-of-image samples of partial border blocks count as orientation 0,
+    coherency 0, energy 0, exactly like the plugin.
 
     mask restricts the field to a region of interest (nonzero = inside);
     a cell is kept when more than min_mask_fraction of its grid x grid area
@@ -266,6 +281,8 @@ def vector_field(features, grid=10, mask=None, min_mask_fraction=0.5):
     X, Y, Slice (always 0, kept for parity with the plugin's table), DX, DY,
     Orientation (degrees), Coherency, Energy.
     """
+    if aggregation not in ('nematic', 'structure', 'average'):
+        raise ValueError("aggregation must be 'nematic', 'structure' or 'average'")
     orientation = features['orientation'].astype(np.float64)
     coherency = features['coherency'].astype(np.float64)
     energy = features['energy'].astype(np.float64)
@@ -290,14 +307,23 @@ def vector_field(features, grid=10, mask=None, min_mask_fraction=0.5):
         blocks = padded[ystart:, xstart:].reshape(yblocks, grid, xblocks, grid)
         return blocks.mean(axis=(1, 3))
 
-    dx = block_mean(np.cos(orientation), constant=1.0)
-    dy = block_mean(np.sin(orientation))
-    coh = block_mean(coherency)
     ene = block_mean(energy)
-
-    angle = np.degrees(np.arctan2(dy, dx))
-    angle = np.where(angle < -90.0, angle + 180.0, angle)
-    angle = np.where(angle > 90.0, angle - 180.0, angle)
+    if aggregation == 'average':
+        dx = block_mean(np.cos(orientation), constant=1.0)
+        dy = block_mean(np.sin(orientation))
+        coh = block_mean(coherency)
+        angle = np.degrees(np.arctan2(dy, dx))
+        angle = np.where(angle < -90.0, angle + 180.0, angle)
+        angle = np.where(angle > 90.0, angle - 180.0, angle)
+    else:
+        weight = energy * coherency if aggregation == 'structure' else np.ones_like(energy)
+        norm = ene if aggregation == 'structure' else np.ones_like(ene)
+        sx = block_mean(weight * np.cos(2.0 * orientation), constant=1.0 if aggregation == 'nematic' else 0.0)
+        sy = block_mean(weight * np.sin(2.0 * orientation))
+        coh = np.divide(np.hypot(sx, sy), norm, out=np.zeros_like(sx), where=norm > 0)
+        half = 0.5 * np.arctan2(sy, sx)
+        dx, dy = np.cos(half), np.sin(half)
+        angle = np.degrees(half)
 
     ys, xs = np.mgrid[0:yblocks, 0:xblocks]
     keep = (ene > 0) & (coh > 0)

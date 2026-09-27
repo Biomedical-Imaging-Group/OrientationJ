@@ -28,12 +28,15 @@ saveAs("PNG", "collagen-survey.png");
 
 ```javascript
 open("synthetic_nematic_512.tif");
-run("OrientationJ Vector Field", "tensor=4.0 gradient=0 grid=20 "
-    + "scale=110 type=Coherency overlay=on ");
+run("OrientationJ Vector Field", "tensor=4.0 gradient=0 vectorgrid=20 "
+    + "vectorscale=110 vectortype=2 vectoraggregation=nematic "
+    + "vectoroverlay=on vectortable=off");
 saveAs("PNG", "nematic-vectorfield.png");
 ```
 
 ![The vector field written by the macro, on the nematic image](../assets/macro-vectorfield.jpg)
+
+The keys of *Vector Field*, as the recorder writes them: `vectorgrid` (cell size in pixels), `vectorscale` (length in percent of the cell), `vectortype` (0 constant, 1 by energy, 2 by coherency, 3 by both), `vectoraggregation` (`nematic`, `structure` or `average`, since 2.2.0; a macro without it runs with `nematic`), `vectoroverlay` and `vectortable` (`on` or `off`).
 
 ### An orientation distribution, background excluded
 
