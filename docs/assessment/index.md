@@ -21,3 +21,4 @@ Each section is the report of one experiment with the code that produced it.
 - **[Compare gradients](compare-gradients.md)** — the five gradients of the plugin measured against analytic ground truth, error against structure size.
 - **[Python port](python-port.md)** — a faithful reimplementation in Python, agreeing with the Java plugin to the last bit, used to produce the reference maps.
 - **[Operator](operator.md)** — the same measurement in sixty lines of separable convolutions, with no transform at all, and what it costs in accuracy.
+- **[Structure vs nematic](structure-nematic.md)** — the structure tensor against the nematic tensor and the naive mean of angles, on a saturated-ring image with an analytic reference, under saturation, ramp, noise and window size.

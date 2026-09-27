@@ -16,7 +16,8 @@ IMAGES = os.path.join('..', 'images')
 OUTPUT = os.path.join('..', 'results', 'montage.png')
 
 paths = sorted(glob.glob(os.path.join(IMAGES, '*.tif')))
-fig, axes = plt.subplots(4, 4, figsize=(12, 12.4))
+rows = (len(paths) + 3) // 4
+fig, axes = plt.subplots(rows, 4, figsize=(12, 3.1 * rows))
 for ax, path in zip(axes.flat, paths):
     image = tifffile.imread(path).astype(np.float64)
     ax.imshow(image, cmap='gray')

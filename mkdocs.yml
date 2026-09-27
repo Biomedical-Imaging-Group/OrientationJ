@@ -101,6 +101,7 @@ nav:
       - Compare gradients: assessment/compare-gradients.md
       - Python port: assessment/python-port.md
       - Operator: assessment/operator.md
+      - Structure vs nematic: assessment/structure-nematic.md
   - Use cases:
       - use-cases/index.md
       - In the literature: "oj:use-cases/#orientationj-in-the-literature"
