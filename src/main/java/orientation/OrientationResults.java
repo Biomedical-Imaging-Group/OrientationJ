@@ -300,7 +300,8 @@ public class OrientationResults {
 		int size = params.vectorGrid;
 		int type = params.vectorType;
 		double scale = params.vectorScale;
-		
+		int aggregation = params.vectorAggregation;
+
 		int nt = gim.energy.getSizeZ();
 		Clusters[] clusters = new Clusters[nt];
 		int xstart = (gim.nx - (gim.nx / size) * size) / 2;
@@ -308,7 +309,16 @@ public class OrientationResults {
 		double max = gim.energy.getMaximum();
 		if (max <= 0)
 			return;
-		
+
+		// Aggregation of the pixels of a cell (since 2.2.0):
+		//  - Nematic Tensor:   mean of the doubled-angle vectors (cos 2a, sin 2a), every pixel weighs 1;
+		//                      the cell confidence is the nematic order |mean| in [0, 1]
+		//  - Structure Tensor: the same, every pixel weighs its energy; the anisotropic part of a pixel tensor
+		//                      is E * C * (cos 2a, sin 2a), so the cell confidence |sum| / sum(E) is the
+		//                      coherency of the summed tensor
+		//  - Simple Average:   mean of the orientation vectors (cos a, sin a), as before 2.2.0, and the
+		//                      cell confidence is the mean of the pixel coherencies
+		// The two tensors give the cell orientation as half the angle of the sum, in [-90, 90] degrees.
 		int size2 = size * size;
 		for (int t = 0; t < nt; t++) {
 			clusters[t] = new Clusters();
@@ -316,21 +326,39 @@ public class OrientationResults {
 				for (int x = xstart; x < gim.nx; x += size) {
 					double dx = 0.0;
 					double dy = 0.0;
+					double weights = 0.0;
 					double coherencies = 0.0;
 					double energies = 0.0;
 					for (int k = 0; k < size; k++)
 						for (int l = 0; l < size; l++) {
 							double angle = gim.orientation.getPixel(x+k, y+l, t);
 							double coh = gim.coherency.getPixel(x+k, y+l, t);
-							dx += Math.cos(angle);
-							dy += Math.sin(angle);
+							double ene = gim.energy.getPixel(x+k, y+l, t);
+							if (aggregation == OrientationParameters.AGGREGATION_AVERAGE) {
+								dx += Math.cos(angle);
+								dy += Math.sin(angle);
+							}
+							else {
+								double w = (aggregation == OrientationParameters.AGGREGATION_STRUCTURE) ? ene * coh : 1.0;
+								dx += w * Math.cos(2.0 * angle);
+								dy += w * Math.sin(2.0 * angle);
+								weights += (aggregation == OrientationParameters.AGGREGATION_STRUCTURE) ? ene : 1.0;
+							}
 							coherencies += coh;
-							energies += gim.energy.getPixel(x+k, y+l,t);
+							energies += ene;
 						}
-					dx /= size2;
-					dy /= size2;
 					coherencies /= size2;
 					energies /= size2;
+					if (aggregation == OrientationParameters.AGGREGATION_AVERAGE) {
+						dx /= size2;
+						dy /= size2;
+					}
+					else {
+						coherencies = (weights > 0) ? Math.hypot(dx, dy) / weights : 0.0;
+						double a = 0.5 * Math.atan2(dy, dx);
+						dx = Math.cos(a);
+						dy = Math.sin(a);
+					}
 					if (energies > 0)
 						if (coherencies > 0)
 							clusters[t].add(new Cluster(x, y, size, size, dx, dy, coherencies, (energies / max)));

@@ -99,6 +99,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 
 	private SpinnerDouble			spnVectorFieldScale		= new SpinnerDouble(80.0, 0, 10000, 1);
 	private JComboBox<String>		cmbVectorFieldType		= new JComboBox<String>(new String[] { "Maximum", "~ Energy", "~ Coherency", "~ Ene. x Coh." });
+	private JComboBox<String>		cmbVectorFieldAggregation = new JComboBox<String>(OrientationParameters.aggregationName);
 	private SpinnerInteger			spnVectorFieldGrid		= new SpinnerInteger(10, 1, 10000, 1);
 
 	private SpinnerInteger			spnNbClasses				= new SpinnerInteger(3, 1, 10000, 1);
@@ -232,10 +233,12 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 			GridPanel pnVectors = new GridPanel("Vector Field");
 			pnVectors.place(0, 0, new JLabel("Grid size"));
 			pnVectors.place(0, 1, spnVectorFieldGrid);
-			pnVectors.place(1, 0, new JLabel("Length vector"));
-			pnVectors.place(1, 1, cmbVectorFieldType);
-			pnVectors.place(2, 0, new JLabel("Scale vector (%)"));
-			pnVectors.place(2, 1, spnVectorFieldScale);
+			pnVectors.place(1, 0, new JLabel("Aggregation"));
+			pnVectors.place(1, 1, cmbVectorFieldAggregation);
+			pnVectors.place(2, 0, new JLabel("Length vector"));
+			pnVectors.place(2, 1, cmbVectorFieldType);
+			pnVectors.place(3, 0, new JLabel("Scale vector (%)"));
+			pnVectors.place(3, 1, spnVectorFieldScale);
 			pnVectors.place(6, 0, showVectorFieldTable);
 			pnVectors.place(6, 1, showVectorFieldOverlay);
 			showVectorFieldTable.addActionListener(this);
@@ -243,6 +246,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 			spnVectorFieldGrid.addChangeListener(this);
 			spnVectorFieldScale.addChangeListener(this);
 			cmbVectorFieldType.addActionListener(this);
+			cmbVectorFieldAggregation.addActionListener(this);
 			pnMain.place(3, 0, pnVectors);
 		}
 
@@ -335,6 +339,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 		settings.record("spnHarrisMin", spnHarrisMin, "10");
 		settings.record("spnVectorFieldGrid", spnVectorFieldGrid, "10");
 		settings.record("cmbVectorFieldType", cmbVectorFieldType, (String) cmbVectorFieldType.getItemAt(0));
+		settings.record("cmbVectorFieldAggregation", cmbVectorFieldAggregation, OrientationParameters.aggregationName[OrientationParameters.AGGREGATION_NEMATIC]);
 		settings.record("spnVectorFieldScale", spnVectorFieldScale, "100");
 		settings.record("showVectorFieldTable", showVectorFieldTable, true);
 		settings.record("showVectorFieldOverlay", showVectorFieldOverlay, true);
@@ -390,7 +395,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 			start(Job.VECTOR_FIELD);
 		else if (e.getSource() == bnRun) 
 			start(Job.RUN);
-		else if (gim!=null && e.getSource() == cmbVectorFieldType) 
+		else if (gim!=null && (e.getSource() == cmbVectorFieldType || e.getSource() == cmbVectorFieldAggregation))
 			start(Job.VECTOR_FIELD);
 		updateInterface();
 	}
@@ -435,6 +440,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 
 		params.vectorGrid = spnVectorFieldGrid.get();
 		params.vectorType = cmbVectorFieldType.getSelectedIndex();
+		params.vectorAggregation = cmbVectorFieldAggregation.getSelectedIndex();
 		params.vectorScale = spnVectorFieldScale.get();
 		
 		params.harrisL = spnHarrisL.get();
@@ -465,6 +471,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 
 		spnVectorFieldGrid.set(params.vectorGrid);
 		cmbVectorFieldType.setSelectedIndex(params.vectorType);
+		cmbVectorFieldAggregation.setSelectedIndex(params.vectorAggregation);
 		spnVectorFieldScale.set(params.vectorScale);
 		
 		spnHarrisL.set(params.harrisL);
@@ -650,6 +657,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 			options += "vectorgrid=" + spnVectorFieldGrid.get() + " ";
 			options += "vectorscale=" + spnVectorFieldScale.get() + " ";
 			options += "vectortype=" + cmbVectorFieldType.getSelectedIndex() + " ";
+			options += "vectoraggregation=" + OrientationParameters.aggregationKey[cmbVectorFieldAggregation.getSelectedIndex()] + " ";
 			options += params.showVectorOverlay ? "vectoroverlay=on " : "vectoroverlay=off ";
 			options += params.showVectorTable ? "vectortable=on " : "vectortable=off ";
 		}

@@ -98,6 +98,8 @@ The others stay at their baseline. In each figure: top, the inputs; middle, the 
 
 ## In short
 
+Since version 2.2.0 the *Vector Field* command of the plugin offers the three aggregations of this assessment for the pixels of a grid cell — Nematic Tensor (default), Structure Tensor, and the Simple Average of the earlier versions.
+
 The three estimators share the gradient and the window and differ by the weight of a pixel: none, one, or its gradient energy. On clean rings the two tensors are exact and the naive mean fails at the wrap-around. Under saturation and a ramp — flat regions whose only gradient is spurious — the unit weight of the nematic tensor lets those pixels vote and biases it towards the ramp, a bias that no window size removes; the energy weight of the structure tensor silences them. The same weight exposes the structure tensor to strong impulses, which the nematic tensor ignores. Noise that randomizes the spurious pixels reduces the nematic bias but lowers its order.
 
 ## Files

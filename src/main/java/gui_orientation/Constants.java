@@ -31,8 +31,8 @@ package gui_orientation;
 
 public class Constants {
 	static public String softname = "OrientationJ";
-	static public String version = "2.1.0";
-	static public String date = "6 August 2026";
+	static public String version = "2.2.0";
+	static public String date = "27 September 2026";
 	static public String author = "Daniel Sage";
 	static public String link = "https://bigwww.epfl.ch/demo/orientationj/";
 	static public String copyright = "(c) BIG EPFL 2009-2026.";
