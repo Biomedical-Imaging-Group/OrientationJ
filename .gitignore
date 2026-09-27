@@ -33,13 +33,18 @@ hs_err_pid*
 .claude/
 __pycache__/
 
-# research material: the four published assessments, without their results
+# research material: the five published assessments, without their results
 /assessment/*
 !/assessment/benchmarking/
 !/assessment/gradients/
 !/assessment/gst_operator/
 !/assessment/orientationj_python_port/
+!/assessment/structure_nematic/
 /assessment/benchmarking/results/
 /assessment/gradients/results/
 /assessment/gst_operator/results/
 /assessment/orientationj_python_port/results/
+/assessment/structure_nematic/results/
+
+# work in progress, not published
+/scratch/

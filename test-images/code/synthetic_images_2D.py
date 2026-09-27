@@ -75,21 +75,32 @@ def chirp(size=N, fmin=0.02, fmax=0.16):
     return normalize(1 + np.sin(2 * np.pi * frequency * radius) * apodisation)
 
 
-def wave(size=N, angle1=30.0, period1=8.0, angle2=-60.0, period2=64.0):
-    """Two overlapping sinusoidal waves at different orientations and very different periods.
+def wave(size=N, angles=(5.0, 45.0, 85.0), periods=(2.0, 8.0, 64.0),
+         noise=0.5, diameter=480.0, taper=0.25, seed=0):
+    """Three overlapping sinusoidal waves of equal amplitude, plus uniform noise, in a round window.
 
-    The fringes of each wave appear at (90 - angle) degrees in the displayed image:
-    +60 and -30 degrees with the default settings. The two waves have equal amplitude,
-    so both stay clearly visible: fine fringes of period1 crossed by broad bands of
-    period2, with a large ratio (8x) between the two periods.
+    `angles` are the orientations of the fringes in the displayed image, in degrees
+    counter-clockwise from the horizontal (the OrientationJ convention), one per period:
+    5 degrees at 2 px (the Nyquist limit), 45 degrees at 8 px, 85 degrees at 64 px.
+    Uniform noise in [-noise, noise] is added on top (one wave has amplitude 1), then
+    the whole is multiplied by a circular Tukey window of the given diameter: flat
+    inside, cosine taper over the outer fraction `taper` of the radius, zero outside.
     """
-    y, x = np.mgrid[0:size, 0:size]
-    radian1 = np.deg2rad(angle1)
-    radian2 = np.deg2rad(angle2)
-    projection1 = (x - size / 2) * np.cos(radian1) + (y - size / 2) * np.sin(radian1)
-    projection2 = (x - size / 2) * np.cos(radian2) + (y - size / 2) * np.sin(radian2)
-    return normalize(np.sin(2 * np.pi * projection1 / period1)
-                     + np.sin(2 * np.pi * projection2 / period2))
+    y, x = np.mgrid[0:size, 0:size].astype(float)
+    image = np.zeros((size, size))
+    for angle, period in zip(angles, periods):
+        radian = np.deg2rad(angle)
+        projection = (x - size / 2) * np.sin(radian) + (y - size / 2) * np.cos(radian)
+        image = image + np.sin(2 * np.pi * projection / period)
+    image = image + np.random.default_rng(seed).uniform(-noise, noise, image.shape)
+
+    radius = diameter / 2
+    r, _ = polar(size)
+    flat = (1 - taper) * radius
+    window = np.where(r <= flat, 1.0,
+                      np.where(r >= radius, 0.0,
+                               0.5 * (1 + np.cos(np.pi * (r - flat) / (radius - flat)))))
+    return normalize(image * window)
 
 
 def spiral(size=N, turns=12):

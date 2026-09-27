@@ -145,7 +145,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 ## synthetic_wave_512
 
-512 × 512, float32, values in [0, 1] — synthetic: fringes at exactly +60° and −30°, two scales at once.
+512 × 512, float32, values in [0, 1] — synthetic: three waves with fringes at exactly 5°, 45° and 85° and periods of 2, 8 and 64 px, plus uniform noise, in a circular Tukey window of 480 px.
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_wave_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_wave_512.tif)
 
