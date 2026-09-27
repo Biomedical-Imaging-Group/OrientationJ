@@ -81,12 +81,13 @@ public class OrientationKMeans {
         }
 
 		ResultsTable table = new ResultsTable();
-		
+
 		for(int k=0; k<nbClasses; k++) {
+			table.incrementCounter();
 			table.addValue("Class k", (k+1));
 			table.addValue("Orientation [Degree]", Math.toDegrees(classAngle[k]));
 		}
-		table.show("OJ-Table-Vector-Field-");
+		table.show("OJ-Table-Clustering-");
 
         return out;
 	}
@@ -113,22 +114,30 @@ public class OrientationKMeans {
 		return Math.abs(ocos[p] * classCos[m] + osin[p]*classSin[m]);
 	}
 
+	/**
+	 * Moves each class to the mean orientation of its members. An orientation is an
+	 * axis, so the mean is taken on the doubled angle (the nematic tensor with unit
+	 * weights): (cos 2a, sin 2a) summed, half the angle of the sum. Before 2.2.0 the
+	 * sum was taken on (cos a, sin a), which pulled the classes near +/-90 degrees
+	 * towards 0, and the result was folded by pi/2 instead of pi.
+	 * A class without members keeps its angle.
+	 */
 	private void update(float classAngle[]) {
 		int nbClasses = classAngle.length;
 		for(int k=0; k<nbClasses; k++) {
 			double dx = 0.0;
 			double dy = 0.0;
+			int members = 0;
 			for(int j=0; j<regions.length; j++) {
 				if(regions[j] == k) {
-					dx += ocos[j];
-					dy += osin[j];
+					dx += ocos[j] * ocos[j] - osin[j] * osin[j];		// cos 2a
+					dy += 2.0 * ocos[j] * osin[j];						// sin 2a
+					members++;
 				}
 			}
-			double angle = Math.atan2(dy, dx);
-			if (angle > Math.PI/2)
-				angle -= Math.PI/2;
-			if (angle < -Math.PI/2)
-				angle += Math.PI/2;
+			if (members == 0)
+				continue;
+			double angle = 0.5 * Math.atan2(dy, dx);					// in [-pi/2, pi/2]
 			classAngle[k] = (float)angle;
 	        classSin[k] = Math.sin(angle);
 	        classCos[k] = Math.cos(angle);
