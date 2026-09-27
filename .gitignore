@@ -15,6 +15,7 @@
 # Package Files #
 *.jar
 !/docs/assets/OrientationJ_.jar
+!/release/*.jar
 *.war
 *.nar
 *.ear

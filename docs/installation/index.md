@@ -56,7 +56,7 @@ OrientationJ is free and open-source software, distributed under the [GNU Genera
 
 ## Version history
 
-All releases are by Daniel Sage. Older versions are also on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
+All releases are by Daniel Sage. The jar of every version since 2.0.8 is in the [release folder](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/release) of the repository; older versions are on the [ImageJ update site](https://sites.imagej.net/BIG-EPFL/plugins/).
 
 ### 2.2.0 — 27 September 2026
 
@@ -65,6 +65,7 @@ All releases are by Daniel Sage. Older versions are also on the [ImageJ update s
 * The Coherency column of the OJ-Table-Vector-Field is now the coherency of the cell tensor (the nematic order for Nematic Tensor); with Simple Average it stays the mean of the pixel coherencies
 * New macro key `vectoraggregation=nematic|structure|average`; a macro without it runs with Nematic Tensor, so vector fields recorded with earlier versions may change
 * Fixed the macro example of the documentation, whose keys did not match the recorder (`vectorgrid`, `vectorscale`, `vectortype`)
+* Fixed Clustering: the centre of a class was the mean of the orientation vectors, which pulled the classes near ±90° towards 0° and was folded by 90° instead of 180°; it is now the nematic mean of the doubled angle. The class table is now written one class per row, under the title OJ-Table-Clustering
 
 ### 2.1.0 — 6 August 2026
 
