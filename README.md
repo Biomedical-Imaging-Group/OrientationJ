@@ -9,7 +9,7 @@
 
 <hr>
 
-<p align="center"><img src="docs/assets/tree-orientation.gif" alt="Color survey of the Tree Rings sample while the local window grows from 1 px to 32 px"><br><sub>The Tree Rings sample, its color survey while the local window grows from 1 px to 32 px (<a href="docs/assets/tree-orientation.txt">macro</a>, <a href="docs/assets/tree-orientation.py">script</a>)</sub></p>
+<p align="center"><sub><img src="docs/assets/tree-orientation.gif" alt="Color survey of the Tree Rings sample while the local window grows from 1 px to 32 px"></p>
 
 <p align="center">
 <a href="https://Biomedical-Imaging-Group.github.io/OrientationJ/"><img src="https://img.shields.io/badge/Documentation-github.io/OrientationJ/-db3f2e?style=for-the-badge" alt="Documentation"></a>
