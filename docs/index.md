@@ -12,7 +12,7 @@
 
 # OrientationJ
 
-OrientationJ is open-source software for the directional analysis of 2D images: a series of Java plugins, easy to install on [ImageJ and Fiji](installation/index.md), free under the GPL-3.0 licence — [how to cite](how-to-cite.md). It relies on the [gradient structure tensor](theory/index.md#gradient-structure-tensor), evaluated over a small window at every pixel, from which it computes the [directional features](theory/index.md#features-and-invariants) that say how the local structure is organized: its **orientation**, the **coherency** telling whether that orientation is well defined, and how anisotropic the neighborhood is. One parameter controls the measurement, [the analysis scale σ](user-guide/select-scale.md), the size of that window.
+OrientationJ is open-source software for the directional analysis of 2D images: a series of Java plugins, easy to install on [ImageJ and Fiji](installation/index.md), free under the GPL-3.0 licence — [how to cite](how-to-cite.md). It relies on the [gradient structure tensor](theory/index.md#gradient-structure-tensor), evaluated over a small window at every pixel, from which it computes the [directional features](theory/index.md#features-and-invariants) that say how the local structure is organized: its **orientation**, the **coherency** telling whether that orientation is well defined, and how anisotropic the neighborhood is. One parameter controls the measurement, [the local window](user-guide/local-window.md), the size of that window.
 
 OrientationJ holds several [plugins](user-guide/plugins.md): `Analysis` for the feature maps and the [color survey](user-guide/color-survey.md), `Distribution` for the angular histogram, `Vector Field` for the overlay, and `MonogenicJ` for a multiresolution analysis. Every command runs from a [dialog](user-guide/index.md#the-user-interface) and from an [ImageJ macro](user-guide/macros.md). In addition, 16 [test images](test-images.md) come with the documentation, together with the [assessments](assessment/index.md) built on them: the plugin across [the sizes of its aggregation](assessment/aggregation-window.md), the angular distribution against [other tools](assessment/benchmarking.md), the [accuracy of the five gradients](assessment/compare-gradients.md), and a [minimal Python operator](assessment/operator.md) of the same tensor.
 
@@ -27,9 +27,9 @@ OrientationJ measures orientation in 2D images only. For volumes, the EPFL Cente
 [OrientationPy — orientation in 2D and 3D](https://epfl-center-for-imaging.gitlab.io/orientationpy/){ .oj-button }
 
 
-## Example of analysis scale
+## Example of local window
 
-The same measurement, run at a growing analysis scale σ on the classic *Tree Rings* sample: small windows follow every detail, large ones summarize the trend ([macro](assets/tree-orientation.txt)).
+The same measurement, run with a growing local window on the classic *Tree Rings* sample: small windows follow every detail, large ones summarize the trend ([macro](assets/tree-orientation.txt)).
 
 ![Color survey of the Tree Rings sample while the local window grows](assets/tree-orientation.gif){ .oj-tree }
 

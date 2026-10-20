@@ -13,7 +13,7 @@
 
 What each command under **Plugins ▸ OrientationJ** produces, in the order the menu lists them, with an example of its output.
 
-Every command works from the same measurement: a gradient at each pixel, the gradient structure tensor averaged over the local window σ, and the eigen-analysis that gives orientation, coherency and energy. What changes from one command to the next is only what is done with those three numbers — painted over the image, binned into a histogram, drawn as arrows, or reported in a table. They therefore share the settings described in [the analysis scale σ](select-scale.md) and [selecting the gradient](select-gradient.md), and every one of them is scriptable from an ImageJ macro.
+Every command works from the same measurement: a gradient at each pixel, the gradient structure tensor averaged over the local window, and the eigen-analysis that gives orientation, coherency and energy. What changes from one command to the next is only what is done with those three numbers — painted over the image, binned into a histogram, drawn as arrows, or reported in a table. They therefore share the settings described in [the analysis scale σ](local-window.md) and [selecting the gradient](select-gradient.md), and every one of them is scriptable from an ImageJ macro.
 
 ## Analysis
 
@@ -21,7 +21,7 @@ Produces the feature maps — orientation, coherency, energy, directionality, an
     
 Three images, each analyzed at a small and at a medium scale. The hue follows the local direction in both, but the small window resolves every fiber while the larger one keeps only the trend that survives at its size:
 
-![Color surveys of three test images at two analysis scales](../assets/analysis-surveys.jpg)
+![Color surveys of three test images at two local windows](../assets/analysis-surveys.jpg)
 
 ## Distribution
 
@@ -38,15 +38,15 @@ Overlays one vector per grid cell, with a length that is constant or scaled by e
 
 ![Vector field overlaid on an image](../assets/vector-field.png)
 
-The grid and the analysis scale act together: the same field, drawn while σ grows, keeps only the trend that survives at that scale.
+The grid and the local window act together: the same field, drawn while the window grows, keeps only the trend that survives at that size.
 
-![Vector field of collagen while the analysis scale grows](../assets/vectorfield-scale.gif)
+![Vector field of collagen while the local window grows](../assets/vectorfield-scale.gif)
 
 !!! note "Parameters"
     *Grid size* is the side of a cell in pixels. *Aggregation* (since 2.2.0) is how the pixels of a cell are combined into one vector:
 
     - **Nematic Tensor** (default) — the mean of the doubled angle of the pixels, every pixel weighing 1; the coherency of the cell is the nematic order of that mean, 1 when every pixel agrees, 0 when the orientations cancel.
-    - **Structure Tensor** — the same mean, every pixel weighing its gradient energy: the cell is the structure tensor of the plugin at the scale of the grid, and the background pixels, which carry no energy, do not vote. The coherency of the cell is the coherency of that tensor.
+    - **Structure Tensor** — the same mean, every pixel weighing its gradient energy: the cell is the structure tensor of the plugin over the grid cell, and the background pixels, which carry no energy, do not vote. The coherency of the cell is the coherency of that tensor.
     - **Simple Average** — the mean of the orientation vectors, as in the versions before 2.2.0. It treats the orientation as a direction rather than an axis, so a cell whose orientations straddle ±90° is pulled towards 0°. Kept for continuity.
 
     *Length vector* scales each vector by nothing, by the energy, by the coherency or by both; *Scale vector* sets the overall length in percent of the cell. The choice between the two tensors is discussed in the [Structure vs nematic](../assessment/structure-nematic.md) assessment.

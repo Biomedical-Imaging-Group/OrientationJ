@@ -86,7 +86,7 @@ nav:
       - All plugins: user-guide/plugins.md
       - Color Survey HSB: user-guide/color-survey.md
       - Macros: user-guide/macros.md
-      - Analysis Scale σ: user-guide/select-scale.md
+      - Local window: user-guide/local-window.md
       - Selecting the gradient: user-guide/select-gradient.md
   - How to cite: how-to-cite.md
   - Theory:

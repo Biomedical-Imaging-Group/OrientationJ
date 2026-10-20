@@ -76,7 +76,7 @@ for (i = 0; i < list.length; i++) {
 
 ### A series of scales, as an animation
 
-The macro that produced the animation of the [analysis scale σ](select-scale.md): the same image analyzed at nine windows, each twice the one before, from half a pixel to a hundred and twenty-eight, each survey saved as it is computed. Assembling the frames into a GIF is left to the tool of your choice.
+The macro that produced the animation of the [local window](local-window.md): the same image analyzed at nine windows, each twice the one before, from half a pixel to a hundred and twenty-eight, each survey saved as it is computed. Assembling the frames into a GIF is left to the tool of your choice.
 
 ```javascript
 in  = "test-images/images/synthetic_nematic_512.tif";

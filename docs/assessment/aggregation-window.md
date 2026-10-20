@@ -16,7 +16,7 @@ OrientationJ aggregates the gradient of many pixels before it reads an orientati
 1. **the structure-tensor window** σ = 1, 2, 3, 4, 5, 6, 8, 10 px, with *Analysis* — the orientation map (degrees) and the color survey at each σ;
 2. **the vector-field grid** = 8, 12, 16, 24, 32, 48, 64 px, with *Vector Field* at σ = 1 and the nematic aggregation of the cell (the default since 2.2.0) — the OJ-Vector-Field table at each grid size.
 
-The σ parameter itself is described on the [Analysis Scale σ](../user-guide/select-scale.md) page, the grid and its aggregation on the [plugins](../user-guide/plugins.md#vector-field) page.
+The σ parameter itself is described on the [Local window](../user-guide/local-window.md) page, the grid and its aggregation on the [plugins](../user-guide/plugins.md#vector-field) page.
 
 ## The four images
 

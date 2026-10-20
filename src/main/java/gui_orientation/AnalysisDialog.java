@@ -139,7 +139,7 @@ public class AnalysisDialog extends JDialog implements ActionListener, ChangeLis
 
 		// Panel Tensor
 		GridToolbar pnTensor = new GridToolbar(false, 2);
-		pnTensor.place(0, 0, new JLabel("Local window \u03C3"));
+		pnTensor.place(0, 0, new JLabel("Local window"));
 		pnTensor.place(0, 2, spnST);
 		pnTensor.place(0, 3, new JLabel("pixel"));
 		pnTensor.place(2, 0, new JLabel("Gradient"));

@@ -79,7 +79,7 @@ public class Help extends JEditorPane {
 				+ " a local window. Here, the local window is characterized by a 2D Gaussian function"
 				+ " of standard deviation &sigma;." 
 				+ " The parameter &sigma; (expressed in pixel unit) is a critical parameter that"
-				+ " determines the scale of the analysis. It should have a value roughly close to the"
+				+ " sets the size of the neighborhood that votes for the orientation. It should have a value roughly close to the"
 				+ " structure of interest (e.g. thickness of the filament)");
 		append("h2", "Gradient");
 		append("p", "OrientationJ has different methods to compute the gradient.<ul> "

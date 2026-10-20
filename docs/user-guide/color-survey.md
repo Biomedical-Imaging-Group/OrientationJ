@@ -19,7 +19,7 @@ Each channel carries one feature. **Hue** takes the orientation, over half the w
 
 <p class="oj-caption">The color coding of the orientation: green at 0°, blue at +45°, orange at −45°, red at ±90°. Any feature can be assigned to any channel in the dialog; this is the default.</p>
 
-![Color surveys of three test images at two analysis scales](../assets/analysis-surveys.jpg)
+![Color surveys of three test images at two local windows](../assets/analysis-surveys.jpg)
 
 <p class="oj-caption">Three images, each analyzed at a small and at a large scale. The hue follows the local direction in both; the small window resolves every fiber, the larger one keeps only the trend that survives at its size.</p>
 
