@@ -1,6 +1,6 @@
 # Benchmarking
 
-The orientation distribution of OrientationJ compared with six other tools on the same images and the same masks — the Fiji plugin, its Python port, OrientationPy, the minimal operator, scikit-image, the direct gradient and Fiji's Directionality.
+The orientation distribution of OrientationJ compared with five other tools on the same images and the same masks — OrientationPy, the minimal operator, scikit-image, the direct gradient and Fiji's Directionality.
 
 **Read it here: [Benchmarking](https://Biomedical-Imaging-Group.github.io/OrientationJ/assessment/benchmarking/).** This folder holds the notebook, the macros and the scripts that produce it.
 

@@ -97,9 +97,9 @@ nav:
   - Test images: test-images.md
   - Assessments:
       - assessment/index.md
+      - Aggregation window: assessment/aggregation-window.md
       - Benchmarking: assessment/benchmarking.md
       - Compare gradients: assessment/compare-gradients.md
-      - Python port: assessment/python-port.md
       - Operator: assessment/operator.md
       - Structure vs nematic: assessment/structure-nematic.md
   - Use cases:

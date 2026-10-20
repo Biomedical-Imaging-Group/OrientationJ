@@ -51,7 +51,7 @@ saveAs("Results", "collagen-distribution.csv");
 
 ![The orientation distribution of collagen, thresholded](../assets/macro-distribution.jpg)
 
-<p class="oj-caption">The histogram this macro writes. The plugin cannot save its table without a display, so this one is recomputed with the <a href="../../assessment/python-port/">Python port</a>, which reproduces the plugin&rsquo;s distribution exactly.</p>
+<p class="oj-caption">The histogram this macro writes. The plugin cannot save its table without a display, so this one is redrawn from the orientation, coherency and energy maps of the plugin, with its binning and its thresholds.</p>
 
 ### A whole folder in one run
 

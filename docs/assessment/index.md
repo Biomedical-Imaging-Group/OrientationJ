@@ -17,8 +17,8 @@ title: Assessments
 
 Each section is the report of one experiment with the code that produced it.
 
-- **[Benchmarking](benchmarking.md)** — the orientation distribution of OrientationJ against six other tools, on the same images and the same masks.
+- **[Aggregation window](aggregation-window.md)** — the plugin run on four images with a growing structure-tensor window σ and a growing vector-field grid: orientation distributions, color surveys and vector fields at every size.
+- **[Benchmarking](benchmarking.md)** — the orientation distribution of OrientationJ against five other tools, on the same images and the same masks.
 - **[Compare gradients](compare-gradients.md)** — the five gradients of the plugin measured against analytic ground truth, error against structure size.
-- **[Python port](python-port.md)** — a faithful reimplementation in Python, agreeing with the Java plugin to the last bit, used to produce the reference maps.
 - **[Operator](operator.md)** — the same measurement in sixty lines of separable convolutions, with no transform at all, and what it costs in accuracy.
 - **[Structure vs nematic](structure-nematic.md)** — the structure tensor against the nematic tensor and the naive mean of angles, on a saturated-ring image with an analytic reference, under saturation, ramp, noise and window size.

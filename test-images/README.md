@@ -5,7 +5,7 @@
 <p class="oj-center"><a href="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/montage.png"><img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/montage.png" alt="The sixteen test images" width="620"></a></p>
 
 
-The folder holds the 16 source images in [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/images), the 16 binary masks in [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/masks), and in [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/results) one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field). All of it is computed with the [OrientationJ Python port](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/orientationj_python_port) at the plugin defaults (cubic-spline gradient, σ = 1). The images are listed below in the order of the montage; click a panel for full size.
+The folder holds the 16 source images in [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/images), the 16 binary masks in [masks/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/masks), and in [results/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images/results) one overview panel per image (original, mask, orientation, coherency, energy, color survey, masked distribution, vector field). All of it is computed at the plugin defaults (cubic-spline gradient, σ = 1); [macro-maps.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/test-images/code/macro-maps.ijm) computes the feature maps (orientation, coherency, energy, 32-bit TIFF) with the plugin into `results/maps/`, which is not tracked. The images are listed below in the order of the montage; click a panel for full size.
 
 <hr>
 
@@ -13,7 +13,7 @@ The folder holds the 16 source images in [images/](https://github.com/Biomedical
 
 728 × 728, uint8, values in [0, 252] — real: fluorescence cell, actin fibers.
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/cell_aemisegger.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/cell_aemisegger.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/cell_aemisegger-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/cell_aemisegger-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/cell_aemisegger-energy.tif)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/cell_aemisegger.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/cell_aemisegger.tif)
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/cell_aemisegger.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/cell_aemisegger.png)
 
@@ -21,7 +21,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 512 × 512, uint8, values in [2, 255] — real: collagen fibers.
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/collagen.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/collagen.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/collagen-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/collagen-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/collagen-energy.tif)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/collagen.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/collagen.tif)
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/collagen.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/collagen.png)
 
@@ -85,7 +85,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 1024 × 1024, float32, values in [0, 1] — synthetic: radial chirp with a frequency sweep; the tangential ground-truth orientation is known at every pixel.
 
-Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_chirp_1024.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_chirp_1024.tif) · [orientation](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/synthetic_chirp_1024-orientation.tif) · [coherency](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/synthetic_chirp_1024-coherency.tif) · [energy](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/maps/synthetic_chirp_1024-energy.tif)
+Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_chirp_1024.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_chirp_1024.tif)
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/synthetic_chirp_1024.png" width="620">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/results/synthetic_chirp_1024.png)
 

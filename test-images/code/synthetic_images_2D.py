@@ -6,9 +6,7 @@ Synthetic test-image generators for OrientationJ.
 All generators return a square 2D image, 32-bit float, values in [0, 1]
 (default size N, except the entries of SIZES, e.g. chirp at 1024).
 Running the module (or calling save_all) writes the images in this folder
-as synthetic_<name>_<size>.tif. The faithful Python port of the analysis
-lives in ../gst_python/orientationj.py (gradient, structure tensor,
-features, survey, distribution, vector field).
+as synthetic_<name>_<size>.tif.
 
 Daniel Sage, Biomedical Imaging Group, EPFL.
 """
