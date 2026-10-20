@@ -9,6 +9,9 @@
   <p class="oj-banner__credit"><a href="mailto:daniel.sage@epfl.ch">Daniel Sage</a> · <a href="https://imaging.epfl.ch/">Center for Imaging</a> and <a href="https://bigwww.epfl.ch/">Biomedical Imaging Group</a>, <a href="https://www.epfl.ch/">Ecole Polytechnique Fédérale de Lausanne (EPFL)</a></p>
 </div>
 
+![Color survey of the Tree Rings sample while the local window grows from 1 px to 32 px](assets/tree-orientation.gif){ .oj-tree }
+
+<p class="oj-caption">The Tree Rings sample, its color survey while the local window grows from 1 px to 32 px (<a href="assets/tree-orientation.txt">macro</a>, <a href="assets/tree-orientation.py">script</a>)</p>
 
 # OrientationJ
 
@@ -26,12 +29,6 @@ OrientationJ measures orientation in 2D images only. For volumes, the EPFL Cente
 
 [OrientationPy — orientation in 2D and 3D](https://epfl-center-for-imaging.gitlab.io/orientationpy/){ .oj-button }
 
-
-## Example of local window
-
-The same measurement, run with a growing local window on the classic *Tree Rings* sample: small windows follow every detail, large ones summarize the trend ([macro](assets/tree-orientation.txt)).
-
-![Color survey of the Tree Rings sample while the local window grows](assets/tree-orientation.gif){ .oj-tree }
 
 ## Demonstration in the browser
 

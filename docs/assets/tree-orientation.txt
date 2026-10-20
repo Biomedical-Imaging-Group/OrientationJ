@@ -1,32 +1,47 @@
 /*
- * OrientationJ
+ * OrientationJ -- the animation of the local window on the Tree Rings sample
  *
- * This macro is an example how to call the OrientationJ plugin.
- * It produces a series of slowly variation of the structure tensor window
+ * Takes the left 1200 x 162 px of the ImageJ sample "Tree Rings" and runs
+ * OrientationJ Analysis for a geometric series of local windows, sigma = 2^(k/6) px
+ * for k = 0 ... 30, i.e. from 1 px to 32 px with six frames per doubling. For
+ * every window it saves the orientation (radians) and the coherency as 32-bit
+ * TIFFs in ~/tree-orientation/frames/, next to the cropped image. The companion
+ * script tree-orientation.py composes the color survey (hue = orientation,
+ * saturation = sqrt(coherency), brightness = image), labels and scales the frames
+ * to 800 x 108 px and assembles the animated GIF, sweeping up, holding, and
+ * sweeping back down.
  *
- * Daniel Sage
- * Biomedical Imaging Group (BIG), Ecole Polytechnique Federale de Lausanne (EPFL), Swizterland
- * 
- * 24 January 2014
+ * Run in Fiji: Plugins > Macros > Run..., or headless:
+ *   Fiji.app/Contents/MacOS/ImageJ-macosx --headless --console -macro tree-orientation.txt
  *
- * Full information http://bigwww.epfl.ch/demo/orientation/
- *
- * You'll be free to use this software for research purposes, but you should not redistribute it 
- * without our consent. In addition, we expect you to include a citation or acknowledgement 
- * whenever you present or publish results that are based on it.
- *
+ * Daniel Sage, Biomedical Imaging Group, EPFL -- 24 January 2014, revised 20 October 2026
  */
- 
-run("Tree Rings (48K)");
-run("Size...", "width=898 height=81 constrain interpolation=Bilinear");
-rename("in");
-n = 40;
-for ( i=1; i<n; i++) { 
-	selectWindow("in");
-	a = 0.5 + (i-n/2)*(i-n/2)*0.5;
-	run("OrientationJ Analysis", "tensor=" + a + " hue=Orientation sat=Coherency bri=Original-Image ");
-}
-run("Images to Stack", "title=Color-survey");
-selectWindow("in");
-close();
 
+out = getDirectory("home") + "tree-orientation/frames/";
+File.makeDirectory(getDirectory("home") + "tree-orientation/");
+File.makeDirectory(out);
+
+run("Tree Rings (48K)");
+makeRectangle(0, 0, 1200, 162);
+run("Crop");
+rename("in");
+saveAs("Tiff", out + "input.tif");
+rename("in");
+setBatchMode(true);
+
+steps = 6;                       // frames per doubling of the local window
+for (k = 0; k <= 30; k++) {
+	sigma = pow(2, k / steps);   // 1 ... 32 px
+	selectWindow("in");
+	run("OrientationJ Analysis", "tensor=" + sigma + " gradient=0 "
+		+ "orientation=on coherency=on radian=on ");
+	selectWindow("OJ-Orientation-1");
+	saveAs("Tiff", out + "orientation-" + IJ.pad(k, 2) + ".tif");
+	selectWindow("OJ-Coherency-1");
+	saveAs("Tiff", out + "coherency-" + IJ.pad(k, 2) + ".tif");
+	close("OJ-*");
+	close("orientation-*");
+	close("coherency-*");
+	print("k = " + k + "  sigma = " + d2s(sigma, 2) + " px");
+}
+print("done: 31 windows in " + out);
