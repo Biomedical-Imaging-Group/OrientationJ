@@ -46,10 +46,3 @@ Isotropic noise has no preferred direction, so the distribution of the measured 
 ## What to choose
 
 Keep the **cubic spline**: it is accurate down to fine structures, unbiased on isotropic data, and local. Take **Fourier** or **Riesz** when the structures approach the pixel and the image is band-limited and free of border artifacts, and **Gaussian** when the data is noisy and a little smoothing is welcome — it is also the gradient of the [minimal operator](operator.md). Avoid the **finite difference** unless speed outweighs everything: it is the only one that is both biased on noise and inaccurate on fine structures.
-
-## Files
-
-| file | content |
-|---|---|
-| [gradients.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gradients/gradients.ipynb) | angular errors, error versus period, isotropy and wave figures, conclusion |
-| [macro-gradients.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gradients/macro-gradients.ijm) | Fiji macro — OrientationJ Analysis with each gradient, saves the orientation maps |

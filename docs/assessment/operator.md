@@ -25,12 +25,3 @@ Two widths control everything: `sigma_gradient` for the derivative, `sigma` for 
 Run on one image, the operator returns the coherency, the energy and the orientation — the same three maps the *Analysis* command produces, from the same tensor:
 
 [<img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png">](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/gst_operator/operator-features.png)
-
-## Files
-
-| file | content |
-|---|---|
-| [gst_operator.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/gst_operator.py) | the operator: Gaussian kernels, gradient, structure tensor, features |
-| [gst_operator.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/gst_operator.ipynb) | the validation: exactness, agreement with the plugin, accuracy versus structure size |
-| [macro-reference.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/macro-reference.ijm) | Fiji macro — OrientationJ Analysis (spline, σ = 2) on the 16 test images, saves the three maps the notebook compares against |
-| [agreement.csv](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/gst_operator/agreement.csv) | per-image angular difference and feature correlations |

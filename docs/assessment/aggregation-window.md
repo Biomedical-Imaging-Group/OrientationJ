@@ -81,19 +81,3 @@ run("OrientationJ Vector Field", "tensor=1 gradient=0 vectorgrid=" + grid
 <img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/aggregation_window/collagen-vectors.gif" width="49%" alt="collagen, vector field over the grid size">
 <img src="https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/assessment/aggregation_window/cell_aemisegger-vectors.gif" width="49%" alt="cell_aemisegger, vector field over the grid size">
 </p>
-
-## Files
-
-| file | content |
-|---|---|
-| [macro-aggregation-analysis.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/aggregation_window/macro-aggregation-analysis.ijm) | Fiji macro — OrientationJ Analysis (spline) at the eight σ on the four images; saves the orientation map (32-bit TIFF, degrees) and the color survey (PNG) of each run |
-| [macro-aggregation-vectorfield.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/aggregation_window/macro-aggregation-vectorfield.ijm) | Fiji macro — OrientationJ Vector Field (spline, σ = 1, nematic) at the seven grid sizes on the four images; saves the OJ-Vector-Field table (CSV) of each run |
-| [aggregation_window.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/aggregation_window/aggregation_window.ipynb) | bins the orientation maps inside the masks, draws the figures, assembles the GIFs |
-
-```
-Fiji.app/Contents/MacOS/ImageJ-macosx --headless --console -macro macro-aggregation-analysis.ijm
-Fiji.app/Contents/MacOS/ImageJ-macosx -macro macro-aggregation-vectorfield.ijm quit
-jupyter nbconvert --to notebook --execute --inplace aggregation_window.ipynb
-```
-
-The first macro runs headless. The second needs the Fiji GUI, since the results table cannot be saved without a window manager; the `quit` argument makes Fiji exit when it is done. The plugin outputs go to `results/fiji/`, the figures to `results/`; neither folder is tracked. The notebook needs `numpy`, `pandas`, `matplotlib`, `tifffile` and `Pillow`.

@@ -41,15 +41,3 @@ Compares the distribution of orientation measured by **six tools**, all with the
 All tools share the OrientationJ angle convention (verified on calibration
 sinusoids): degrees in [−90, +90], counter-clockwise from the horizontal of the
 displayed image. Histograms: 180 bins of 1°, normalized to probability per bin.
-
-## Files
-
-| file | content |
-|---|---|
-| [benchmark_orientation.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking/benchmark_orientation.ipynb) | runs the four Python tools, loads the Fiji results, draws the comparison |
-| [macro-orientationj.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking/macro-orientationj.ijm) | Fiji macro — OrientationJ Analysis (spline, σ = 1 and σ = 0), saves the orientation maps |
-| [macro-directionality.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking/macro-directionality.ijm) | Fiji macro — Directionality plugin (GUI only: it saves the displayed table) |
-| [script-directionality.groovy](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/benchmarking/script-directionality.groovy) | same as the macro through the plugin API, also works headless |
-
-
-

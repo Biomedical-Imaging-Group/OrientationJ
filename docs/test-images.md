@@ -14,7 +14,7 @@
 
 20 grayscale 2D images for testing and benchmarking orientation analysis: **8 synthetic**, whose orientation is known by construction, **4 compositions** of rings, ramp and noise at four levels of degradation, the test image of the [structure vs nematic](https://Biomedical-Imaging-Group.github.io/OrientationJ/assessment/structure-nematic/) assessment, and **8 real** images. Each image comes with a binary mask of its meaningful structures, and with an overview panel of the results.
 
-<p class="oj-center"><a href="assets/test-images/montage.jpg"><img src="assets/test-images/montage.jpg" alt="The twenty test images" width="620"></a></p>
+<p class="oj-center"><a href="../assets/test-images/montage.jpg"><img src="../assets/test-images/montage.jpg" alt="The twenty test images" width="620"></a></p>
 
 
 The [test-images](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/test-images) folder of the repository holds the 20 source images in `images/`, the 20 binary masks in `masks/`, and in `code/` what builds them: [synthetic_images_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/test-images/code/synthetic_images_2D.ipynb) generates the synthetic images and the compositions, [masks_2D.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/test-images/code/masks_2D.ipynb) the masks (the gradient energy above 0.5% of its maximum, or the analytic annulus for the compositions), and [macro-maps.ijm](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/test-images/code/macro-maps.ijm) computes with the plugin the feature maps of every image (orientation, coherency, energy, 32-bit TIFF). Below, every image comes with an overview panel: original, mask, orientation, coherency, energy, color survey, masked distribution and vector field, all computed at the plugin defaults (cubic-spline gradient, σ = 1). The images are listed in the order of the montage; click a panel for full size.
@@ -29,7 +29,7 @@ The [test-images](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/cell_aemisegger.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/cell_aemisegger.tif)
 
-[<img src="assets/test-images/cell_aemisegger.jpg" width="620">](assets/test-images/cell_aemisegger.jpg)
+[<img src="../assets/test-images/cell_aemisegger.jpg" width="620">](../assets/test-images/cell_aemisegger.jpg)
 
 ### collagen ![real](https://img.shields.io/badge/real-db3f2e)
 
@@ -37,7 +37,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/collagen.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/collagen.tif)
 
-[<img src="assets/test-images/collagen.jpg" width="620">](assets/test-images/collagen.jpg)
+[<img src="../assets/test-images/collagen.jpg" width="620">](../assets/test-images/collagen.jpg)
 
 ### dendrochronology ![real](https://img.shields.io/badge/real-db3f2e)
 
@@ -45,7 +45,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/dendrochronology.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/dendrochronology.tif)
 
-[<img src="assets/test-images/dendrochronology.jpg" width="620">](assets/test-images/dendrochronology.jpg)
+[<img src="../assets/test-images/dendrochronology.jpg" width="620">](../assets/test-images/dendrochronology.jpg)
 
 ### fibronectin_arafat_plos2025 ![real](https://img.shields.io/badge/real-db3f2e)
 
@@ -55,7 +55,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 <sub>M. Arafat et al., *PLOS ONE* (2025), [doi:10.1371/journal.pone.0320006](https://doi.org/10.1371/journal.pone.0320006).</sub>
 
-[<img src="assets/test-images/fibronectin_arafat_plos2025.jpg" width="620">](assets/test-images/fibronectin_arafat_plos2025.jpg)
+[<img src="../assets/test-images/fibronectin_arafat_plos2025.jpg" width="620">](../assets/test-images/fibronectin_arafat_plos2025.jpg)
 
 ### fibrous_tissues_fibero2024 ![real](https://img.shields.io/badge/real-db3f2e)
 
@@ -65,7 +65,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 <sub>FiberO dataset (2024), [doi:10.3389/fbioe.2024.1497837](https://doi.org/10.3389/fbioe.2024.1497837).</sub>
 
-[<img src="assets/test-images/fibrous_tissues_fibero2024.jpg" width="620">](assets/test-images/fibrous_tissues_fibero2024.jpg)
+[<img src="../assets/test-images/fibrous_tissues_fibero2024.jpg" width="620">](../assets/test-images/fibrous_tissues_fibero2024.jpg)
 
 ### fiji_directionality_montage ![real](https://img.shields.io/badge/real-db3f2e)
 
@@ -75,7 +75,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 <sub>Montage from the documentation of the Fiji [Directionality](https://imagej.net/plugins/directionality) plugin.</sub>
 
-[<img src="assets/test-images/fiji_directionality_montage.jpg" width="620">](assets/test-images/fiji_directionality_montage.jpg)
+[<img src="../assets/test-images/fiji_directionality_montage.jpg" width="620">](../assets/test-images/fiji_directionality_montage.jpg)
 
 ### nanofiber_fiji_diameterj ![real](https://img.shields.io/badge/real-db3f2e)
 
@@ -85,7 +85,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 <sub>DiameterJ sample — S. A. Hotaling et al., *Data in Brief* (2015), [doi:10.1016/j.dib.2015.07.012](https://doi.org/10.1016/j.dib.2015.07.012).</sub>
 
-[<img src="assets/test-images/nanofiber_fiji_diameterj.jpg" width="620">](assets/test-images/nanofiber_fiji_diameterj.jpg)
+[<img src="../assets/test-images/nanofiber_fiji_diameterj.jpg" width="620">](../assets/test-images/nanofiber_fiji_diameterj.jpg)
 
 ### polymer_slice_quanfima2018 ![real](https://img.shields.io/badge/real-db3f2e)
 
@@ -93,7 +93,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/polymer_slice_quanfima2018.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/polymer_slice_quanfima2018.tif)
 
-[<img src="assets/test-images/polymer_slice_quanfima2018.jpg" width="620">](assets/test-images/polymer_slice_quanfima2018.jpg)
+[<img src="../assets/test-images/polymer_slice_quanfima2018.jpg" width="620">](../assets/test-images/polymer_slice_quanfima2018.jpg)
 
 <hr>
 
@@ -105,7 +105,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_bundles_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_bundles_512.tif)
 
-[<img src="assets/test-images/synthetic_bundles_512.jpg" width="620">](assets/test-images/synthetic_bundles_512.jpg)
+[<img src="../assets/test-images/synthetic_bundles_512.jpg" width="620">](../assets/test-images/synthetic_bundles_512.jpg)
 
 ### synthetic_chirp_1024 ![synthetic](https://img.shields.io/badge/synthetic-2e7bdb)
 
@@ -113,7 +113,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_chirp_1024.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_chirp_1024.tif)
 
-[<img src="assets/test-images/synthetic_chirp_1024.jpg" width="620">](assets/test-images/synthetic_chirp_1024.jpg)
+[<img src="../assets/test-images/synthetic_chirp_1024.jpg" width="620">](../assets/test-images/synthetic_chirp_1024.jpg)
 
 ### synthetic_filaments_512 ![synthetic](https://img.shields.io/badge/synthetic-2e7bdb)
 
@@ -121,7 +121,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_filaments_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_filaments_512.tif)
 
-[<img src="assets/test-images/synthetic_filaments_512.jpg" width="620">](assets/test-images/synthetic_filaments_512.jpg)
+[<img src="../assets/test-images/synthetic_filaments_512.jpg" width="620">](../assets/test-images/synthetic_filaments_512.jpg)
 
 ### synthetic_nematic_512 ![synthetic](https://img.shields.io/badge/synthetic-2e7bdb)
 
@@ -131,7 +131,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 <sub>Pattern inspired by active nematics — A. Doostmohammadi, J. Ignés-Mullol, J. M. Yeomans, F. Sagués, *Active nematics*, Nature Communications 9:3246 (2018), [doi:10.1038/s41467-018-05666-8](https://doi.org/10.1038/s41467-018-05666-8).</sub>
 
-[<img src="assets/test-images/synthetic_nematic_512.jpg" width="620">](assets/test-images/synthetic_nematic_512.jpg)
+[<img src="../assets/test-images/synthetic_nematic_512.jpg" width="620">](../assets/test-images/synthetic_nematic_512.jpg)
 
 ### synthetic_noise_512 ![synthetic](https://img.shields.io/badge/synthetic-2e7bdb)
 
@@ -139,7 +139,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_noise_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_noise_512.tif)
 
-[<img src="assets/test-images/synthetic_noise_512.jpg" width="620">](assets/test-images/synthetic_noise_512.jpg)
+[<img src="../assets/test-images/synthetic_noise_512.jpg" width="620">](../assets/test-images/synthetic_noise_512.jpg)
 
 ### synthetic_rings_dither_512 ![synthetic](https://img.shields.io/badge/synthetic-2e7bdb)
 
@@ -147,7 +147,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_rings_dither_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_rings_dither_512.tif)
 
-[<img src="assets/test-images/synthetic_rings_dither_512.jpg" width="620">](assets/test-images/synthetic_rings_dither_512.jpg)
+[<img src="../assets/test-images/synthetic_rings_dither_512.jpg" width="620">](../assets/test-images/synthetic_rings_dither_512.jpg)
 
 ### synthetic_spiral_512 ![synthetic](https://img.shields.io/badge/synthetic-2e7bdb)
 
@@ -155,7 +155,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_spiral_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_spiral_512.tif)
 
-[<img src="assets/test-images/synthetic_spiral_512.jpg" width="620">](assets/test-images/synthetic_spiral_512.jpg)
+[<img src="../assets/test-images/synthetic_spiral_512.jpg" width="620">](../assets/test-images/synthetic_spiral_512.jpg)
 
 ### synthetic_wave_512 ![synthetic](https://img.shields.io/badge/synthetic-2e7bdb)
 
@@ -163,7 +163,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/synthetic_wave_512.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/synthetic_wave_512.tif)
 
-[<img src="assets/test-images/synthetic_wave_512.jpg" width="620">](assets/test-images/synthetic_wave_512.jpg)
+[<img src="../assets/test-images/synthetic_wave_512.jpg" width="620">](../assets/test-images/synthetic_wave_512.jpg)
 
 <hr>
 
@@ -175,7 +175,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/composition_rings_degraded_none_384.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/composition_rings_degraded_none_384.tif)
 
-[<img src="assets/test-images/composition_rings_degraded_none_384.jpg" width="620">](assets/test-images/composition_rings_degraded_none_384.jpg)
+[<img src="../assets/test-images/composition_rings_degraded_none_384.jpg" width="620">](../assets/test-images/composition_rings_degraded_none_384.jpg)
 
 ### composition_rings_degraded_low_384 ![composition](https://img.shields.io/badge/composition-8e44ad)
 
@@ -183,7 +183,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/composition_rings_degraded_low_384.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/composition_rings_degraded_low_384.tif)
 
-[<img src="assets/test-images/composition_rings_degraded_low_384.jpg" width="620">](assets/test-images/composition_rings_degraded_low_384.jpg)
+[<img src="../assets/test-images/composition_rings_degraded_low_384.jpg" width="620">](../assets/test-images/composition_rings_degraded_low_384.jpg)
 
 ### composition_rings_degraded_medium_384 ![composition](https://img.shields.io/badge/composition-8e44ad)
 
@@ -191,7 +191,7 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/composition_rings_degraded_medium_384.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/composition_rings_degraded_medium_384.tif)
 
-[<img src="assets/test-images/composition_rings_degraded_medium_384.jpg" width="620">](assets/test-images/composition_rings_degraded_medium_384.jpg)
+[<img src="../assets/test-images/composition_rings_degraded_medium_384.jpg" width="620">](../assets/test-images/composition_rings_degraded_medium_384.jpg)
 
 ### composition_rings_degraded_high_384 ![composition](https://img.shields.io/badge/composition-8e44ad)
 
@@ -199,4 +199,4 @@ Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/Ori
 
 Download: [image](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/images/composition_rings_degraded_high_384.tif) · [mask](https://raw.githubusercontent.com/Biomedical-Imaging-Group/OrientationJ/master/test-images/masks/composition_rings_degraded_high_384.tif)
 
-[<img src="assets/test-images/composition_rings_degraded_high_384.jpg" width="620">](assets/test-images/composition_rings_degraded_high_384.jpg)
+[<img src="../assets/test-images/composition_rings_degraded_high_384.jpg" width="620">](../assets/test-images/composition_rings_degraded_high_384.jpg)
