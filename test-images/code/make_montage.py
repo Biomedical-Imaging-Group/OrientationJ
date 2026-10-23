@@ -1,10 +1,10 @@
-"""Montage of the test images, small, in one PNG for the README.
+"""Montage of the test images, small, in one JPEG for the README and the docs.
 
 Three titled panels: the real images (2 rows x 4), the synthetic images
 (2 rows x 4) and the compositions, the degraded rings (1 row x 4, by level).
 
 Run from this folder:  python3 make_montage.py
-Output: ../results/montage.png
+Output: ../../docs/assets/test-images/montage.jpg
 """
 import glob
 import os
@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 import tifffile
 
 IMAGES = os.path.join('..', 'images')
-OUTPUT = os.path.join('..', 'results', 'montage.png')
+OUTPUT = os.path.join('..', '..', 'docs', 'assets', 'test-images', 'montage.jpg')
 COLUMNS = 4
 TITLE_COLOR = '#3a3a37'
 
@@ -44,5 +44,6 @@ for subfigure, (title, panel), n_rows in zip(subfigures, PANELS, rows):
         image = tifffile.imread(os.path.join(IMAGES, name + '.tif')).astype(np.float64)
         ax.imshow(image, cmap='gray')
         ax.set_title(name, fontsize=8, color=TITLE_COLOR)
-fig.savefig(OUTPUT, dpi=100, bbox_inches='tight', facecolor='white')
+os.makedirs(os.path.dirname(OUTPUT), exist_ok=True)
+fig.savefig(OUTPUT, dpi=100, bbox_inches='tight', facecolor='white', pil_kwargs={'quality': 88})
 print('written', OUTPUT, f'({os.path.getsize(OUTPUT) // 1024} KB)')

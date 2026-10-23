@@ -23,23 +23,9 @@ Let \(f(\mathbf x)\) be the image, \(\mathbf g = \nabla f\) its gradient (centra
 
 For both tensors the orientation is the eigenvector of the largest eigenvalue, \(\hat\theta = \tfrac12 \operatorname{atan2}(2M_{xy},\, M_{xx} - M_{yy}) + 90^\circ\). The nematic tensor is the structure tensor with unit weights; the coherency and the nematic order are the same formula applied to the two tensors.
 
-## The test image and the evaluation
-
-The test image is the composition of the [test images](../test-images.md): sine rings on an annulus, saturated (clipped), on a vertical intensity ramp of orientation 0°, plus Gaussian noise, at four levels of degradation, `composition_rings_degraded_<level>_384`, each with its annulus mask. The ring gradient is radial, so the **reference orientation** is tangential and known at every pixel: \(\theta_{\mathrm{ref}} = \operatorname{atan2}(y - c_y,\, x - c_x) + 90^\circ\). The **evaluation mask** is the annulus, where every orientation is equally represented, so the reference histogram is flat. The **error** is the axial difference \(\hat\theta - \theta_{\mathrm{ref}}\) wrapped to \([-90^\circ, 90^\circ)\); the MAE is its mean absolute value over the mask.
-
-Five degradations, each with four levels. The four test images set saturation, Gaussian noise and ramp to the same level; the sweeps vary one degradation at a time, the others staying at their baseline (bold), and add two degradations that the test images do not carry, shot noise and speckle noise:
-
-| degradation | parameter | none | low | medium | high |
-|---|---|---|---|---|---|
-| saturation, ratio of clipped pixels | \(\rho_{\mathrm{sat}}\) | 0 | **0.4** | 0.6 | 0.8 |
-| Gaussian noise, standard deviation | \(\sigma_{\mathrm{noise}}\) | 0 | **0.005** | 0.015 | 0.025 |
-| vertical intensity ramp, slope | \(\beta_{\mathrm{ramp}}\) | 0 | **0.01** | 0.02 | 0.05 |
-| shot noise (Poisson), intensity of one photon | \(\lambda_{\mathrm{shot}}\) | **0** | 0.005 | 0.05 | 0.5 |
-| speckle noise (salt and pepper), ratio of pixels set to the maximum or the minimum | \(\rho_{\mathrm{sp}}\) | **0** | 0.002 | 0.01 | 0.02 |
-
-In the saturated regions the ring gradient is zero; only the ramp and the noise set the pixel orientation there. The nematic tensor gives these pixels the weight 1, the structure tensor the weight \(\approx \beta_{\mathrm{ramp}}^2\). The window is \(\sigma_{\mathrm{agg}} = 7\) px unless it is the parameter varied.
-
 ## Results
+
+The test image is the composition of the [test images](../test-images.md), `composition_rings_degraded_<level>_384`: saturated sine rings on an annulus, on a vertical intensity ramp of orientation 0°, plus Gaussian noise, with its annulus mask. The ring gradient is radial, so the reference orientation is tangential and known at every pixel; the error of an estimator is the axial difference to that reference, wrapped to \([-90^\circ, 90^\circ)\), and the MAE is its mean absolute value inside the mask, where every orientation is equally represented. In the saturated regions the ring gradient is zero; only the ramp and the noise set the pixel orientation there. The nematic tensor gives these pixels the weight 1, the structure tensor the weight \(\approx \beta_{\mathrm{ramp}}^2\). The window is \(\sigma_{\mathrm{agg}} = 7\) px unless it is the parameter varied.
 
 ### The four levels
 
@@ -97,14 +83,3 @@ The others stay at their baseline. In each figure: top, the inputs; middle, the 
 Since version 2.2.0 the *Vector Field* command of the plugin offers the three aggregations of this assessment for the pixels of a grid cell — Nematic Tensor (default), Structure Tensor, and the Simple Average of the earlier versions.
 
 The three estimators share the gradient and the window and differ by the weight of a pixel: none, one, or its gradient energy. On clean rings the two tensors are exact and the naive mean fails at the wrap-around. Under saturation and a ramp — flat regions whose only gradient is spurious — the unit weight of the nematic tensor lets those pixels vote and biases it towards the ramp, a bias that no window size removes; the energy weight of the structure tensor silences them. The same weight exposes the structure tensor to strong impulses, which the nematic tensor ignores. Noise that randomizes the spurious pixels reduces the nematic bias but lowers its order.
-
-## Files
-
-| file | content |
-|---|---|
-| [ring_experiment_lib.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/structure_nematic/ring_experiment_lib.py) | the three estimators, the evaluation in the mask, the loader of the test images, the degradations of the sweeps, the drawing helpers |
-| [structure_nematic_experiment.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/structure_nematic/structure_nematic_experiment.ipynb) | the experiment: the four levels, one sweep per degradation, the sweep of the window |
-| [create_abstract_figure.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/structure_nematic/create_abstract_figure.ipynb) | the summary figure at the medium level |
-| [test images](../test-images.md) | the test image at the four levels, `composition_rings_degraded_<level>_384`, 32-bit TIFF with its annulus mask, and the notebook that generates it |
-
-Run with `jupyter nbconvert --to notebook --execute --inplace <notebook>`; needs `numpy`, `scipy`, `matplotlib`, `tifffile`.
