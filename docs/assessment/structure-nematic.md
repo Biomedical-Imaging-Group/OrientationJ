@@ -23,21 +23,17 @@ Let \(f(\mathbf x)\) be the image, \(\mathbf g = \nabla f\) its gradient (centra
 
 For both tensors the orientation is the eigenvector of the largest eigenvalue, \(\hat\theta = \tfrac12 \operatorname{atan2}(2M_{xy},\, M_{xx} - M_{yy}) + 90^\circ\). The nematic tensor is the structure tensor with unit weights; the coherency and the nematic order are the same formula applied to the two tensors.
 
-## The test image
+## The test image and the evaluation
 
-35982
-f_0(\mathbf x) = A\,\operatorname{clip}\!\Big(\gamma_{\mathrm{sat}}\, w_{\mathrm{ring}}(r)\, \sin\frac{2\pi r}{T},\, -1,\, 1\Big) + \beta_{\mathrm{ramp}}\,(c_y - y), \qquad r = \lVert\mathbf x - \mathbf c\rVert .
-35982
+The test image is the composition of the [test images](../test-images.md): sine rings on an annulus, saturated (clipped), on a vertical intensity ramp of orientation 0°, plus Gaussian noise, at four levels of degradation, `composition_rings_degraded_<level>_384`, each with its annulus mask. The ring gradient is radial, so the **reference orientation** is tangential and known at every pixel: \(\theta_{\mathrm{ref}} = \operatorname{atan2}(y - c_y,\, x - c_x) + 90^\circ\). The **evaluation mask** is the annulus, where every orientation is equally represented, so the reference histogram is flat. The **error** is the axial difference \(\hat\theta - \theta_{\mathrm{ref}}\) wrapped to \([-90^\circ, 90^\circ)\); the MAE is its mean absolute value over the mask.
 
-Concentric sine rings of amplitude \(A = 0.5\) and period \(T = 20\) px, restricted to an annulus (\(70 \le r \le 175\) px) by the window \(w_{\mathrm{ring}}\). The ring gradient is radial, so the **reference orientation** is tangential and known at every pixel: \(\theta_{\mathrm{ref}} = \operatorname{atan2}(y - c_y,\, x - c_x) + 90^\circ\). The **evaluation mask** is the flat part of the annulus, where every orientation is equally represented, so the reference histogram is flat. The **error** is the axial difference \(\hat\theta - \theta_{\mathrm{ref}}\) wrapped to \([-90^\circ, 90^\circ)\); the MAE is its mean absolute value over the mask.
-
-Five degradations, each with four levels; a degradation that is not varied stays at its baseline (bold):
+Five degradations, each with four levels. The four test images set saturation, Gaussian noise and ramp to the same level; the sweeps vary one degradation at a time, the others staying at their baseline (bold), and add two degradations that the test images do not carry, shot noise and speckle noise:
 
 | degradation | parameter | none | low | medium | high |
 |---|---|---|---|---|---|
-| saturation: gain \(\gamma_{\mathrm{sat}}\) and clipping at ±1; the level is the ratio of clipped pixels | \(\rho_{\mathrm{sat}}\) | 0 | **0.4** | 0.6 | 0.8 |
+| saturation, ratio of clipped pixels | \(\rho_{\mathrm{sat}}\) | 0 | **0.4** | 0.6 | 0.8 |
 | Gaussian noise, standard deviation | \(\sigma_{\mathrm{noise}}\) | 0 | **0.005** | 0.015 | 0.025 |
-| vertical intensity ramp, slope, orientation 0° | \(\beta_{\mathrm{ramp}}\) | 0 | **0.01** | 0.02 | 0.05 |
+| vertical intensity ramp, slope | \(\beta_{\mathrm{ramp}}\) | 0 | **0.01** | 0.02 | 0.05 |
 | shot noise (Poisson), intensity of one photon | \(\lambda_{\mathrm{shot}}\) | **0** | 0.005 | 0.05 | 0.5 |
 | speckle noise (salt and pepper), ratio of pixels set to the maximum or the minimum | \(\rho_{\mathrm{sp}}\) | **0** | 0.002 | 0.01 | 0.02 |
 
@@ -106,9 +102,9 @@ The three estimators share the gradient and the window and differ by the weight 
 
 | file | content |
 |---|---|
-| [ring_experiment_lib.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/structure_nematic/ring_experiment_lib.py) | the ring image and its degradations, the three estimators, the evaluation in the mask, the drawing helpers |
+| [ring_experiment_lib.py](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/structure_nematic/ring_experiment_lib.py) | the three estimators, the evaluation in the mask, the loader of the test images, the degradations of the sweeps, the drawing helpers |
 | [structure_nematic_experiment.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/structure_nematic/structure_nematic_experiment.ipynb) | the experiment: the four levels, one sweep per degradation, the sweep of the window |
 | [create_abstract_figure.ipynb](https://github.com/Biomedical-Imaging-Group/OrientationJ/blob/master/assessment/structure_nematic/create_abstract_figure.ipynb) | the summary figure at the medium level |
-| [images/](https://github.com/Biomedical-Imaging-Group/OrientationJ/tree/master/assessment/structure_nematic/images) | the ring image at the four levels, 32-bit TIFF |
+| [test images](../test-images.md) | the test image at the four levels, `composition_rings_degraded_<level>_384`, 32-bit TIFF with its annulus mask, and the notebook that generates it |
 
 Run with `jupyter nbconvert --to notebook --execute --inplace <notebook>`; needs `numpy`, `scipy`, `matplotlib`, `tifffile`.

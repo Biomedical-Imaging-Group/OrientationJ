@@ -25,9 +25,8 @@ ANGLE_BIN = 1.0             # bin width of the orientation histograms [deg]
 ERROR_LIM = 30.0            # colour range of the error maps [deg]
 EPS = 1e-15
 RESULTS = Path('results')   # figures
-IMAGES = Path('images')     # test images, 32-bit TIFF
 RESULTS.mkdir(exist_ok=True)
-IMAGES.mkdir(exist_ok=True)
+TEST_IMAGES = Path('..') / '..' / 'test-images'   # the four level images are precomputed there
 
 
 # ============================================================
@@ -133,11 +132,22 @@ def degradation_label(data):
     return label + (f', ρ_sp = {data["speckle_ratio"]:g}' if data['speckle_ratio'] > 0 else '')
 
 
-def save_image_tiff(image, name):
-    """Save an image as 32-bit float TIFF in IMAGES."""
-    path = IMAGES / f'{name}.tif'
-    tifffile.imwrite(path, np.asarray(image, dtype=np.float32))
-    return path
+def load_ring_image(level, saturation_ratio, noise_std, ramp_slope):
+    """The precomputed ring image of a degradation level ('none', 'low', 'medium', 'high'): the 32-bit TIFF
+    composition_rings_degraded_<level>_384 of test-images, with its annulus mask and the analytic tangential reference.
+    The test image is make_ring_image at that level (same geometry, same noise seed), rescaled to [0, 1] by
+    test-images/code/synthetic_images_2D.py: a linear rescale leaves the orientations, S and C unchanged. The three
+    degradation values are only used for the labels; shot noise and speckle are absent from these images."""
+    name = f'composition_rings_degraded_{level}_384'
+    image = tifffile.imread(TEST_IMAGES / 'images' / f'{name}.tif').astype(float)
+    mask = tifffile.imread(TEST_IMAGES / 'masks' / f'{name}.tif') > 0
+    size = image.shape[0]
+    c = (size - 1) / 2.0
+    y, x = np.mgrid[:size, :size]
+    reference = (np.degrees(np.arctan2(y - c, x - c)) + 90.0) % 180.0
+    return {'image': image, 'clean': None, 'reference': reference, 'mask': mask, 'center': c,
+            'saturation_ratio': saturation_ratio, 'noise_std': noise_std, 'ramp_slope': ramp_slope,
+            'shot_lambda': 0.0, 'speckle_ratio': 0.0}
 
 
 # ============================================================
